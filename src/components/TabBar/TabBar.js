@@ -9,17 +9,17 @@ class TabBar extends Component {
 
     render() {
         return (
-                <Tabs defaultActiveKey={2}>
-                    <Tab eventKey={1} title="About">
-                        <About/>
-                    </Tab>
-                    <Tab eventKey={2} title="Academic">
-                        <Academic/>
-                    </Tab>
-                    <Tab eventKey={3} title="Experience">
-                        <Experience/>
-                    </Tab>
-                </Tabs>
+            <Tabs defaultActiveKey={2}>
+                <Tab eventKey={1} title="About">
+                    <About/>
+                </Tab>
+                <Tab eventKey={2} title="Academic">
+                    <Academic/>
+                </Tab>
+                <Tab eventKey={3} title="Experience">
+                    <Experience/>
+                </Tab>
+            </Tabs>
         )
     }
 }

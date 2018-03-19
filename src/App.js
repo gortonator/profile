@@ -130,7 +130,7 @@ class App extends Component {
                         <Coop/>
                     </Col>
                     <Col md={8}>
-                        <Tab/>
+                        <TabBar/>
                     </Col>
                 </Row>
             </div>
