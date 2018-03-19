@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import About from './About/About';
 import Academic from './Academic/Academic';
-import Experience from './Experience/Experience';
+import Experience from './ExtraExperience/ExtraExperiences';
+import Project from './Project/Projects';
 import Skill from './Skill/Skill';
 import { Tab, Tabs } from 'react-bootstrap';
 import styled from 'styled-components'
@@ -51,7 +52,10 @@ class TabBar extends Component {
                     <Tab eventKey={3} title="Experience">
                         <Experience/>
                     </Tab>
-                    <Tab eventKey={4} title="Skill">
+                    <Tab eventKey={4} title="Project">
+                        <Project/>
+                    </Tab>
+                    <Tab eventKey={5} title="Skill">
                         <Skill labelText="Skill" keyName="skill" action={this.changeState} value={this.state.skill}/>
                     </Tab>
                 </Tabs>
