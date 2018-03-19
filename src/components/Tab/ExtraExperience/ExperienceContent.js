@@ -33,23 +33,23 @@ export default class ExperienceContent extends Component {
     render() {
         return(
             <div>
-                <div><label for={"jobTitle"}>Job Title</label></div>
+                <div><label htmlFor={"jobTitle"}>Job Title</label></div>
                 <input onChange={this.handleTitle.bind(this)} id={"jobTitle"} value={this.props.item.jobTitle} size={50}></input>
                 <br/><br/>
 
-                <div><label for={"company"}>Company</label></div>
+                <div><label htmlFor={"company"}>Company</label></div>
                 <input onChange={this.handleCompany.bind(this)} id={"company"} value={this.props.item.company} size={50}></input>
                 <br/><br/>
 
-                <div><label for={"startDate"}>Start Date</label></div>
+                <div><label htmlFor={"startDate"}>Start Date</label></div>
                 <input onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
                 <br/><br/>
 
-                <div><label for={"endDate"}>End Date</label></div>
+                <div><label htmlFor={"endDate"}>End Date</label></div>
                 <input onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
                 <br/><br/>
 
-                <div><label for={"desc"}>Description</label></div>
+                <div><label htmlFor={"desc"}>Description</label></div>
                 <textarea onChange={this.handleDesc.bind(this)} id={"desc"}
                           value={this.props.item.description} cols={50} rows={6}></textarea>
             </div>
