@@ -18,7 +18,7 @@ export default class ExtraExperiences extends Component {
                     company: "Intel",
                     startDate: "01/01/2017",
                     endDate: "12/31/2017",
-                    desc: "I worked as Electric Engineer."
+                    desc: "I worked as Electronic Engineer."
                 },
                 {
                     id: 2,
@@ -73,25 +73,26 @@ export default class ExtraExperiences extends Component {
                 <table>
                     <tbody>
                     <tr>
-                        <td>
-                            <p>Previous Experience</p>
+                        <td width="90%">
+                            <p>Experiences</p>
                         </td>
-                        <td>
+                        <td width="10%">
                             <Button bsStyle="primary" onClick={this.addNewExperience}>
-                                Add New Experience
+                                Add
                             </Button>
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <br/>
 
                 {this.state.experiences.map(item => (
                     <div key={item.id}>
                         <table>
                             <tbody>
                             <tr>
-                                <td><p>{item.jobTitle}</p></td>
-                                <td>
+                                <td width="90%"><p>{item.jobTitle}</p></td>
+                                <td width="10%">
                                     <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
                                         Edit
                                     </Button>

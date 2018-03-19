@@ -71,27 +71,28 @@ export default class Projects extends Component {
                 <table>
                     <tbody>
                     <tr>
-                        <td>
-                            <p>Project</p>
+                        <td width="90%">
+                            <p>Projects</p>
                         </td>
-                        <td>
+                        <td width="10%">
                             <Button bsStyle="primary" onClick={this.addNewProject}>
-                                Add New Project
+                                Add
                             </Button>
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <br/>
 
                 {this.state.projects.map(item => (
                     <div key={item.id}>
                         <table>
                             <tbody>
                             <tr>
-                                <td>
+                                <td width="90%">
                                     <p>{item.projectName}</p>
                                 </td>
-                                <td>
+                                <td width="10%">
                                     <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
                                         Edit
                                     </Button>
