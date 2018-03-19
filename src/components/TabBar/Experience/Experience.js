@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 
-class Tab extends Component {
+class Experience extends Component {
 
     render() {
         return (
             <div>
-                Tab
+                Experience
             </div>
         )
     }
 }
 
-export default Tab
+export default Experience
