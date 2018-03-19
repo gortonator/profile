@@ -71,34 +71,36 @@ export default class ExtraExperiences extends Component {
         return (
             <div>
                 <table>
-                    <tr>
-                        <td>
-                            <p>Previous Experience</p>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" onClick={this.addNewExperience}>
-                                Add New Experience
-                            </button>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Previous Experience</p>
+                            </td>
+                            <td>
+                                <Button bsStyle="primary" onClick={this.addNewExperience}>
+                                    Add New Experience
+                                </Button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 {this.state.experiences.map(item => (
-                    <div>
+                    <div key={item.id}>
                         <table>
-                            <tr key={item.id}>
-                                <td>
-                                    <p>{item.jobTitle}</p>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" onClick={() => this.handleEdit(item)}>
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr><p>{item.company}</p></tr>
-                            <tr><p>{item.startDate + " - " + item.endDate}</p></tr>
-                            <tr><p>{item.desc}</p></tr>
+                            <tbody>
+                                <tr>
+                                    <td><p>{item.jobTitle}</p></td>
+                                    <td>
+                                        <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
+                                            Edit
+                                        </Button>
+                                    </td>
+                                </tr>
+                                <tr><td><p>{item.company}</p></td></tr>
+                                <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
+                                <tr><td><p>{item.desc}</p></td></tr>
+                            </tbody>
                         </table>
                         <br/>
 

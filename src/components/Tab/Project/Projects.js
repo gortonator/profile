@@ -69,33 +69,37 @@ export default class Projects extends Component {
         return (
             <div>
                 <table>
-                    <tr>
-                        <td>
-                            <p>Project</p>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" onClick={this.addNewProject}>
-                                Add New Project
-                            </button>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Project</p>
+                            </td>
+                            <td>
+                                <Button bsStyle="primary" onClick={this.addNewProject}>
+                                    Add New Project
+                                </Button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 {this.state.projects.map(item => (
-                    <div>
+                    <div key={item.id}>
                         <table>
-                            <tr key={item.id}>
-                                <td>
-                                    <p>{item.projectName}</p>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" onClick={() => this.handleEdit(item)}>
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr><p>{item.startDate + " - " + item.endDate}</p></tr>
-                            <tr><p>{item.desc}</p></tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>{item.projectName}</p>
+                                    </td>
+                                    <td>
+                                        <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
+                                            Edit
+                                        </Button>
+                                    </td>
+                                </tr>
+                                <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
+                                <tr><td><p>{item.desc}</p></td></tr>
+                            </tbody>
                         </table>
                         <br/>
 
