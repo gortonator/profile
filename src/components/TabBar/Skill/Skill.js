@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EditIcon from "./EditIcon";
+import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
 
 class Skill extends Component {
@@ -52,8 +52,7 @@ const Wrapper = styled.div`
         color:#555555;
         width: 800px;
         font-size: 20px;
-        border: 1px;
-        border-style: solid;
+        margin: 2%;
     `
 
 const TextArea = styled.textarea`

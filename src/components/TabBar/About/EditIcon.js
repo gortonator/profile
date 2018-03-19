@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import img_editIcon from '../../images/editIcon.png'
-import img_editIcon_black from '../../images/editIcon_black.png'
+import img_editIcon from '../../../image/editIcon.png'
+import img_editIcon_black from '../../../image/editIcon_black.png'
 import styled from "styled-components";
 
 class EditIcon extends Component {
