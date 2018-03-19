@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {ListGroup, ListGroupItem, Panel, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+
+import {Row, Col, Grid, css,ListGroup, ListGroupItem, Panel, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 
 
 class Intro extends Component {
@@ -13,6 +14,17 @@ class Intro extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
+
+        	intro : {
+        		"name" : "Jeremy Rose",
+        		"city" : "Seattle",
+        		"state" : "WA",
+        		"gender" : "Male",
+        		"campus" : "Seattle",
+        		"startTerm" : "Fall 2016",
+        		"endTerm" : "May 2018",
+        		"summary" : "I'm a student"
+        	},
             summary: this.props.summary,
             show: false
         };
@@ -43,34 +55,43 @@ class Intro extends Component {
         console.log(this.state);
         return (
             <div>
-                <Panel bsStyle="danger">
-                    <Panel.Heading>
-                        <Panel.Title componentClass="h3">
-                            Summary
-                            <Button style={{float: "right"}} bsStyle="danger" bsSize="xsmall" onClick={this.handleShow}>
-                                Edit
-                            </Button>
-                        </Panel.Title>
-                    </Panel.Heading>
-                    <Panel.Body>
-                        {this.state.summary}
-                    </Panel.Body>
-                </Panel>
+            	<Grid>
+            		<Row className="show-grid">
+            			<Col md={3}>
+            				<h1>{this.state.intro.name}</h1>
+            			</Col>
 
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Summary</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <FormGroup controlId="formControlsTextarea">
-                            <FormControl rows="3" value={this.state.summary} onChange={this.handleChange} componentClass="textarea"/>
-                        </FormGroup>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button bsStyle="success" onClick={this.handleSubmit}>Save</Button>
-                        <Button onClick={this.handleClose}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
+            			<Col md={3}>
+            				<p>{this.state.intro.city}, {this.state.intro.state}</p>
+            			</Col>
+
+            		</Row>
+
+            		<p> PROFILE _______________________________________________ </p>
+
+            		<Row className="show-grid">
+            			<Col md={3}>
+            				<p>Gender:   {this.state.intro.gender}</p>
+            			</Col>
+            			<Col md={3}>
+            				<p>Start Term:    {this.state.intro.startTerm}</p>
+            			</Col>
+            		</Row>
+
+            		<Row className="show-grid">
+            			<Col md={3}>
+            				<p>Campus:   {this.state.intro.campus}</p>
+            			</Col>
+            			<Col md={3}>
+            				<p>End Term:     {this.state.intro.endTerm}</p>
+            			</Col>
+            		</Row>
+
+            		<p>Summary</p>
+            		<p>{this.state.intro.summary}</p>
+
+            	</Grid>
+               
 
             </div>
         )
