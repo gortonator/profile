@@ -118,11 +118,11 @@ class App extends Component {
             <div>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
-                    <Row className="show-grid" style={{margin: "2%"}}>
-                        <Col md={4}>
-                            <Picture/>
+                    <Row className="show-grid" style={{margin: "auto", maxWidth:"1000px", width:"100%"}}>
+                        <Col md={4} style={{width:"400px"}}>
+                            <Picture />
                         </Col>
-                        <Col md={8}>
+                        <Col md={8} style={{width:"400px"}}>
                             <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
                         </Col>
                     </Row>
@@ -140,5 +140,12 @@ class App extends Component {
         );
     }
 }
+
+
+const divStyle = {
+    margin: "2%",
+    maxWidth: 700,
+};
+
 
 export default App;
