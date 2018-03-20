@@ -74,7 +74,7 @@ export default class Projects extends Component {
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <SubTitle1>My Projects</SubTitle1>
+                            <SubTitle1>MY PROJECTS</SubTitle1>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewProject}>
@@ -99,7 +99,7 @@ export default class Projects extends Component {
                                 </td>
                             </tr>
                             <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><p>{item.desc}</p></td></tr>
+                            <tr><td><TextArea>{item.desc}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -143,4 +143,8 @@ const SubTitle1 = styled.h5`
     font-size: 2em;
     font-weight: 400;
     color: #e78885;
+    `
+
+const TextArea = styled.p`
+        white-space: pre-line;
     `
