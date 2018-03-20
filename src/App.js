@@ -119,11 +119,11 @@ class App extends Component {
             <Wrapper>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
-                    <Row className="show-grid" style={{margin: "auto", maxWidth:"1000px", width:"100%"}}>
-                        <Col md={4} style={{width:"400px"}}>
+                    <Row className="show-grid" >
+                        <Col md={4}>
                             <Picture />
                         </Col>
-                        <Col md={8} style={{width:"400px"}}>
+                        <Col md={8}>
                             <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
                         </Col>
                     </Row>
@@ -142,7 +142,7 @@ class App extends Component {
     }
 }
 
-
+// style={{margin: "auto", maxWidth:"1300px", width:"100%"}}
 const divStyle = {
     margin: "2%",
     maxWidth: 700,

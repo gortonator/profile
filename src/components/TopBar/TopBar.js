@@ -2,34 +2,19 @@ import React, {Component} from 'react';
 import {nav, css} from 'react-bootstrap';
 import {Navbar, NavItem, Nav, NavDropdown, MenuItem, Image, FormGroup, FormControl, Button} from 'react-bootstrap';
 import profile_image from '../../image/profile_image.png'
+import logo from '../../image/neu.png'
 
 class TopBar extends Component {
 
     render() {
         return (
             <div>
-                {/*<Navbar collapseOnSelect className="navbar-trans">*/}
-                    {/*<Navbar.Header>*/}
-                        {/*<Navbar.Brand>*/}
-                            {/*<a href="/">Northeastern University</a>*/}
-                        {/*</Navbar.Brand>*/}
-                        {/*<Navbar.Toggle />*/}
-                    {/*</Navbar.Header>*/}
-                    {/*<Navbar.Collapse>*/}
-                        {/*<Nav pullRight>*/}
-                            {/*<NavItem eventKey={1}>*/}
-                                {/*<input class="form-control mr-sm-2" placeholder="Find students"/>*/}
-                            {/*</NavItem>*/}
-                            {/*<NavItem eventKey={1}>*/}
-                                {/*My profile*/}
-                            {/*</NavItem>*/}
-                        {/*</Nav>*/}
-                    {/*</Navbar.Collapse>*/}
-                {/*</Navbar>*/}
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#brand">Northeastern University</a>
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            <a style={title}>Northeastern University</a>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
@@ -49,7 +34,16 @@ class TopBar extends Component {
                                 {/*<MenuItem eventKey={3.3}>Separated link</MenuItem>*/}
                             {/*</NavDropdown>*/}
                         {/*</Nav>*/}
+                        {/*<Nav pullLeft>*/}
+                            {/*<NavItem eventKey={1} href="#">*/}
+                                {/*<Image style={{height: "25px"}} src={logo} alt="pic" />*/}
+                            {/*</NavItem>*/}
+                            {/*<NavItem eventKey={1} href="#">*/}
+                                {/*<a href="#brand" className="subtitle">Northeastern University</a>*/}
+                            {/*</NavItem>*/}
+                        {/*</Nav>*/}
                         <Navbar.Form pullLeft>
+
                             <FormGroup>
                                 <FormControl type="text" placeholder="Find students" />
                             </FormGroup>{' '}
@@ -68,6 +62,12 @@ class TopBar extends Component {
             </div>
         )
     }
+}
+
+const title = {
+    fontSize: '25px',
+    fontWeight: '800',
+    color: '#e78885',
 }
 
 export default TopBar
