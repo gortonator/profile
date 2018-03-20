@@ -119,9 +119,9 @@ class App extends Component {
             <Wrapper>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
-                    <Row className="show-grid" style={{margin: "2%"}}>
-                        <Col md={4}>
-                            <Picture/>
+                    <Row className="show-grid" >
+                        <Col md={4} style={{maxWidth:"300px"}}>
+                            <Picture />
                         </Col>
                         <Col md={8}>
                             <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
@@ -142,6 +142,11 @@ class App extends Component {
     }
 }
 
+// style={{margin: "auto", maxWidth:"1300px", width:"100%"}}
+const divStyle = {
+    margin: "2%",
+    maxWidth: 700,
+};
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
