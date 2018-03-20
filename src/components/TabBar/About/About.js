@@ -27,17 +27,12 @@ class About extends Component {
 }
 
 const AboutTable = styled.table`
-        width: 600px;
         line-height: 20px;
     `
 
 const Wrapper = styled.div`
-        width: 600px;
+        width: 70%;
         margin: 2%;
-        font-family: "Helvetica";
-        font-size: 1.5em;
-        font-weight: 100;
-        color: #555555;
     `
 
 export default About

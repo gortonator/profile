@@ -4,6 +4,7 @@ import Picture from './components/Picture/Picture'
 import Intro from './components/Intro/Intro'
 import Coop from './components/Coop/Coop'
 import TabBar from './components/TabBar/TabBar'
+import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
 
 
@@ -115,7 +116,7 @@ class App extends Component {
     render() {
         // console.log("page", this.state);
         return (
-            <div>
+            <Wrapper>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
                     <Row className="show-grid" style={{margin: "2%"}}>
@@ -135,10 +136,18 @@ class App extends Component {
                         </Col>
                     </Row>
                 </div>
-            </div>
+            </Wrapper>
 
         );
     }
 }
+
+const Wrapper = styled.div` 
+    font-family: 'Oxygen', sans-serif;
+    Font-size: 20px;
+    width: 70%;
+    margin: auto;
+    `
+
 
 export default App;

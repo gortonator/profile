@@ -72,7 +72,7 @@ class AboutItem extends Component {
 }
 
 const LinkText = styled.span`
-        color: #CC0000;
+        color: #e78885;
         
         &:hover {
             cursor: pointer;

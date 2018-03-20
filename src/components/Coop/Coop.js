@@ -34,7 +34,7 @@ class Coop extends Component {
                 <h2> {coop.company} </h2>
                 <p> {coop.title} </p>
                 <p> {coop.time} </p>
-                <p> Worked as {coop.position} </p>
+                <p> Worked as {coop.position} </p><hr/>
                 </div>
             );
 
@@ -44,7 +44,7 @@ class Coop extends Component {
 
     render() {
         return (
-            <div><p> COOP <hr className="inline-hr"/> </p>
+            <div><p className="subtitle"> COOP <hr className="inline-hr"/> </p>
             { this.renderCoop() } </div>
             );
     }
