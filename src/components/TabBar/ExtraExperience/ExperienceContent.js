@@ -34,11 +34,11 @@ export default class ExperienceContent extends Component {
         return(
             <div>
                 <div><label htmlFor={"jobTitle"}>Job Title</label></div>
-                <input placeholder={"jobTitle"}  onChange={this.handleTitle.bind(this)} id={"jobTitle"} value={this.props.item.jobTitle} size={50}></input>
+                <input placeholder={"Job Title"}  onChange={this.handleTitle.bind(this)} id={"jobTitle"} value={this.props.item.jobTitle} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"company"}>Company</label></div>
-                <input placeholder={"company"} onChange={this.handleCompany.bind(this)} id={"company"} value={this.props.item.company} size={50}></input>
+                <input placeholder={"Company"} onChange={this.handleCompany.bind(this)} id={"company"} value={this.props.item.company} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
@@ -50,7 +50,7 @@ export default class ExperienceContent extends Component {
                 <br/><br/>
 
                 <div><label htmlFor={"desc"}>Description</label></div>
-                <textarea placeholder={"description"} onChange={this.handleDesc.bind(this)} id={"desc"}
+                <textarea placeholder={"Description"} onChange={this.handleDesc.bind(this)} id={"desc"}
                           value={this.props.item.description} cols={50} rows={6}></textarea>
             </div>
         )

@@ -52,6 +52,7 @@ class Skill extends Component {
 const Wrapper = styled.div`
         width: 100%;
         margin: 2%;
+        font-family: 'Oxygen', sans-serif;
     `
 
 const TextArea = styled.textarea`

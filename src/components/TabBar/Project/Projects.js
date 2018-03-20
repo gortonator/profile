@@ -70,11 +70,11 @@ export default class Projects extends Component {
     render() {
         return (
             <Wrapper>
-                <table>
+                <table width="100%">
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <SubTitle1>My Projects</SubTitle1>
+                            <SubTitle1>MY PROJECTS</SubTitle1>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewProject}>
@@ -84,22 +84,21 @@ export default class Projects extends Component {
                     </tr>
                     </tbody>
                 </table>
-                <br/>
 
                 {this.state.projects.map(item => (
                     <div key={item.id}>
-                        <table>
+                        <table width="100%">
                             <tbody>
                             <tr>
-                                <td width="97%">
+                                <td width="95%">
                                     <h2>{item.projectName}</h2>
                                 </td>
-                                <td width="3%">
+                                <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
                             <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><p>{item.desc}</p></td></tr>
+                            <tr><td><TextArea>{item.desc}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -135,6 +134,7 @@ export default class Projects extends Component {
 
 const Wrapper = styled.div`
         margin: 2%;
+        font-family: 'Oxygen', sans-serif;
     `
 
 const SubTitle1 = styled.h5`
@@ -142,4 +142,8 @@ const SubTitle1 = styled.h5`
     font-size: 2em;
     font-weight: 400;
     color: #e78885;
+    `
+
+const TextArea = styled.p`
+        white-space: pre-line;
     `

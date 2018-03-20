@@ -74,11 +74,11 @@ export default class ExtraExperiences extends Component {
     render() {
         return (
             <Wrapper>
-                <table>
+                <table width="100%">
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <SubTitle1>My Experiences</SubTitle1>
+                            <SubTitle1>MY EXPERIENCES</SubTitle1>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewExperience}>
@@ -88,22 +88,20 @@ export default class ExtraExperiences extends Component {
                     </tr>
                     </tbody>
                 </table>
-                <br/>
-
 
                 {this.state.experiences.map(item => (
                     <div key={item.id}>
-                        <table>
+                        <table width="100%">
                             <tbody>
                             <tr>
-                                <td width="97%"><h2>{item.company}</h2></td>
-                                <td width="3%">
+                                <td width="95%"><h2>{item.company}</h2></td>
+                                <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
                             <tr><td><p>{item.jobTitle}</p></td></tr>
                             <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><p>{item.desc}</p></td></tr>
+                            <tr><td><TextArea>{item.desc}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -139,6 +137,7 @@ export default class ExtraExperiences extends Component {
 
 const Wrapper = styled.div`
         margin: 2%;
+        font-family: 'Oxygen', sans-serif;
     `
 
 const SubTitle1 = styled.h5`
@@ -146,4 +145,8 @@ const SubTitle1 = styled.h5`
     font-size: 2em;
     font-weight: 400;
     color: #e78885;
+    `
+
+const TextArea = styled.p`
+        white-space: pre-line;
     `

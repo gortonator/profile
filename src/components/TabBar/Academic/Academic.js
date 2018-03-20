@@ -15,8 +15,9 @@ const listItems = courses.map((course) =>
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <SubTitle1>MY COURSES</SubTitle1>
+                <br/>
                 <List>{listItems}</List>
             </div>
         )
@@ -31,10 +32,9 @@ const SubTitle1 = styled.h5`
     `
 
 const List = styled.li`
-    font-family: "Helvetica Neue";
+    font-family: 'Oxygen', sans-serif;;
     font-size: 1em;
-    font-weight: 100;
-    color: #8c8c8c;
+    list-style-type: none;
     `
 
 export default Academic

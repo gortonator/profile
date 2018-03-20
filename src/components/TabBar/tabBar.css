@@ -1,3 +1,8 @@
+.wrapper {
+    width: 100%;
+    margin: 2%;
+}
+
 a {
     color: #a09898;
 }
@@ -8,7 +13,7 @@ a:hover,a:focus{
     background-color: white;
 }
 .tab .nav-tabs{
-    /*font-family: 'Khand', sans-serif;*/
+    font-family: 'Khand', sans-serif;
     /*color: #a09898;*/
     /*font-size: 1.5em;*/
     border-bottom: none;
