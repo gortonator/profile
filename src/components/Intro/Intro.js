@@ -58,7 +58,6 @@ class Intro extends Component {
     render() {
         console.log(this.state);
         return (
-
             	<Grid>
             		<Row className="show-grid">
             			<Col md={12}> <p id="intro-name">{this.state.intro.name}
@@ -80,13 +79,13 @@ class Intro extends Component {
                         <Col md={3}><p className="grayContent">{this.state.intro.campus}</p> </Col>
             			<Col md={3}><p>End Term:</p></Col>
                         <Col md={3}><p className="grayContent">{this.state.intro.endTerm}</p> </Col>
-            			
+
             		</Row>
 
             	    <hr/>
                     <Row className="show-grid">
                     	<Col md={12}> <p className="subtitle">Summary&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.handleShow}/></p> </Col>
-                     
+
                     </Row>
 
                     <Row className="show-grid">
