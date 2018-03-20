@@ -38,6 +38,11 @@ export default class EditProject extends Component {
     }
 
     editProject = () => {
+        if(!this.state.projectName || this.state.projectName.trim().length === 0){
+            alert("Project Name can't be blank!")
+            return
+        }
+
         if(this.isValidDate(this.state.startDate)) {
             this.props.item.startDate = this.state.startDate
         }
@@ -60,8 +65,12 @@ export default class EditProject extends Component {
     }
 
     deleteProject = () => {
-        this.props.deleteFunc(this.props.item)
-        this.props.closePopup()
+        if (window.confirm('Are you sure you want to delete this experience?')) {
+            this.props.deleteFunc(this.props.item)
+            this.props.closePopup()
+        } else {
+            // Do nothing!
+        }
     }
 
     isValidDate(dateString)

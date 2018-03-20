@@ -29,19 +29,19 @@ export default class ProjectContent extends Component {
         return(
             <div>
                 <div><label htmlFor={"projectName"}>Project Name</label></div>
-                <input onChange={this.handleTitle.bind(this)} id={"projectName"} value={this.props.item.projectName} size={50}></input>
+                <input placeholder={"project Name"} onChange={this.handleTitle.bind(this)} id={"projectName"} value={this.props.item.projectName} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
-                <input onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
+                <input placeholder={"mm/dd/yyyy"} onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"endDate"}>End Date</label></div>
-                <input onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
+                <input placeholder={"mm/dd/yyyy"} onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"desc"}>Description</label></div>
-                <textarea onChange={this.handleDesc.bind(this)} id={"desc"}
+                <textarea placeholder={"description"} onChange={this.handleDesc.bind(this)} id={"desc"}
                           value={this.props.item.description} cols={50} rows={6}></textarea>
             </div>
         )

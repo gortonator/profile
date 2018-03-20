@@ -6,8 +6,8 @@ export default class AddProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            projectName: "project name",
-            description: "description"
+            projectName: "",
+            description: ""
         }
     }
 
@@ -62,6 +62,11 @@ export default class AddProject extends Component {
     }
 
     AddProject = () => {
+        if(!this.state.projectName || this.state.projectName.trim().length === 0){
+            alert("Project Name can't be blank!")
+            return
+        }
+
         if(!this.isValidDate(this.state.startDate)) {
             alert('Invalid start date. Date must be in mm/dd/yyyy format.')
             return
