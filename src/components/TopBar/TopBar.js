@@ -11,39 +11,16 @@ class TopBar extends Component {
             <div>
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
-                        <Navbar.Brand>
-                        </Navbar.Brand>
+                        <a class="navbar-brand">
+                            <Image style={{height: "25px"}} src={logo} alt="pic" />
+                        </a>
                         <Navbar.Brand>
                             <a style={title}>Northeastern University</a>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        {/*<Nav>*/}
-                            {/*<NavItem eventKey={1} href="#">*/}
-                                {/*Link*/}
-                            {/*</NavItem>*/}
-                            {/*<NavItem eventKey={2} href="#">*/}
-                                {/*Link*/}
-                            {/*</NavItem>*/}
-                            {/*<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">*/}
-                                {/*<MenuItem eventKey={3.1}>Action</MenuItem>*/}
-                                {/*<MenuItem eventKey={3.2}>Another action</MenuItem>*/}
-                                {/*<MenuItem eventKey={3.3}>Something else here</MenuItem>*/}
-                                {/*<MenuItem divider />*/}
-                                {/*<MenuItem eventKey={3.3}>Separated link</MenuItem>*/}
-                            {/*</NavDropdown>*/}
-                        {/*</Nav>*/}
-                        {/*<Nav pullLeft>*/}
-                            {/*<NavItem eventKey={1} href="#">*/}
-                                {/*<Image style={{height: "25px"}} src={logo} alt="pic" />*/}
-                            {/*</NavItem>*/}
-                            {/*<NavItem eventKey={1} href="#">*/}
-                                {/*<a href="#brand" className="subtitle">Northeastern University</a>*/}
-                            {/*</NavItem>*/}
-                        {/*</Nav>*/}
                         <Navbar.Form pullLeft>
-
                             <FormGroup>
                                 <FormControl type="text" placeholder="Find students" />
                             </FormGroup>{' '}

@@ -120,7 +120,7 @@ class App extends Component {
                 <div style={{margin:"2%"}}>
                     <TopBar/>
                     <Row className="show-grid" >
-                        <Col md={4}>
+                        <Col md={4} style={{maxWidth:"300px"}}>
                             <Picture />
                         </Col>
                         <Col md={8}>
