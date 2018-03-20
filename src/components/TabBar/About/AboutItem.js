@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import EditIcon from "./EditIcon";
+import {FormControl} from "react-bootstrap";
+import styled from "styled-components";
 
 class AboutItem extends Component {
 
@@ -13,6 +15,7 @@ class AboutItem extends Component {
         this.makeEditable = this.makeEditable.bind(this);
         this.changeContentOnEnter = this.changeContentOnEnter.bind(this);
         this.changeContent = this.changeContent.bind(this);
+        this.openNewPage = this.openNewPage.bind(this);
     }
 
     makeEditable() {
@@ -36,10 +39,16 @@ class AboutItem extends Component {
         this.props.action(this.props.keyName, event.target.value);
     }
 
+    openNewPage(){
+        window.open("http://" + this.state.content);
+    }
+
     getContentComponent() {
         if(this.state.editable) {
-            return <input defaultValue={this.state.content} onKeyDown={this.changeContentOnEnter} onBlur={this.changeContent} autoFocus/>;
-        }else {
+            return <FormControl defaultValue={this.state.content} onKeyDown={this.changeContentOnEnter} onBlur={this.changeContent} autoFocus/>;
+        }else if(this.props.isLink){
+            return <LinkText onClick={this.openNewPage}>{this.state.content}</LinkText>;
+        }else{
             return this.state.content;
         }
     }
@@ -55,11 +64,19 @@ class AboutItem extends Component {
         return (
             <tr>
                 <td width="30%" height="50px">{this.props.labelText}:</td>
-                <td style={{color:"#555555"}} width="50%">{this.getContentComponent()}</td>
-                <td width="20%">{editIcon}</td>
+                <td width="50%">{this.getContentComponent()}</td>
+                <td width="20%" align="middle">{editIcon}</td>
             </tr>
         )
     }
 }
+
+const LinkText = styled.span`
+        color: #CC0000;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    `
 
 export default AboutItem

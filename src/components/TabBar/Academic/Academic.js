@@ -32,7 +32,7 @@ const SubTitle1 = styled.h5`
 
 const List = styled.li`
     font-family: "Helvetica Neue";
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 100;
     color: #8c8c8c;
     `

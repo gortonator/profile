@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
+import {FormControl, FormGroup} from "react-bootstrap";
 
 class Skill extends Component {
 
@@ -40,7 +41,7 @@ class Skill extends Component {
 
         return (
             <Wrapper>
-                <p style={{color:"#000000"}}>{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
+                <p>{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
                 <br/>
                 {this.getContentComponent()}
             </Wrapper>
@@ -49,13 +50,16 @@ class Skill extends Component {
 }
 
 const Wrapper = styled.div`
-        color:#555555;
-        width: 800px;
-        font-size: 20px;
+        width: 600px;
         margin: 2%;
+        font-family: "Helvetica";
+        font-size: 1.5em;
+        font-weight: 100;
+        color: #555555;
     `
 
 const TextArea = styled.textarea`
+        resize: none;
         width: 600px;
         height: 300px;
         line-height: 50px;
