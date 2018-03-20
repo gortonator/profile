@@ -11,5 +11,12 @@ body {
 }
 
 .intro-name{
-	font-size: 20px;
+  font-size: 40px;
+  font-weight: 1000;
+}
+
+.subtitle{
+  font-size: 25px;
+  font-weight: 800;
+  color: #e78885;
 }

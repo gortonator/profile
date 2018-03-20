@@ -50,24 +50,16 @@ class Skill extends Component {
 }
 
 const Wrapper = styled.div`
-        width: 600px;
+        width: 70%;
         margin: 2%;
-        font-family: "Helvetica";
-        font-size: 1.5em;
-        font-weight: 100;
-        color: #555555;
     `
 
 const TextArea = styled.textarea`
         resize: none;
-        width: 600px;
-        height: 300px;
         line-height: 50px;
     `
 
 const Show = styled.p`
-        width: 600px;
-        height: 300px;
         white-space: pre-line;
         line-height: 50px;
     `

@@ -63,10 +63,11 @@ class Intro extends Component {
             			<Col md={3}> <p>{this.state.intro.city}, {this.state.intro.state}</p> </Col>
             		</Row>
 
-            		<p>PROFILE <hr className="inline-hr"/></p>
+            		{/*<p className="subtitle">PROFILE <hr/></p>*/}
+            		<br/>
 
             		<Row className="show-grid">
-            			<Col md={3}> <p>Gender:   {this.state.intro.gender}</p> </Col>
+                        <Col md={3}> <p>Gender: {this.state.intro.gender}</p> </Col>
             			<Col md={3}> <p>Start Term:    {this.state.intro.startTerm}</p> </Col>
             		</Row>
 
@@ -76,9 +77,9 @@ class Intro extends Component {
             			
             		</Row>
 
-            	
+            	    <hr/>
                     <Row className="show-grid">
-                    	<Col md={3}> <p>Summary <EditIcon onClick={this.handleShow}/></p> </Col>
+                    	<Col md={3}> <p className="subtitle">Summary <EditIcon onClick={this.handleShow}/></p> </Col>
                      
                     </Row>
 
