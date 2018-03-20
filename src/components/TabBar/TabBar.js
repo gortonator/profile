@@ -5,6 +5,7 @@ import Experience from './ExtraExperience/ExtraExperiences';
 import Project from './Project/Projects';
 import Skill from './Skill/Skill';
 import { Tab, Tabs } from 'react-bootstrap';
+import './tabBar.css';
 import styled from 'styled-components'
 
 class TabBar extends Component {
@@ -34,31 +35,31 @@ class TabBar extends Component {
 
     render() {
         return (
-                <Tabs defaultActiveKey={1}>
-                    <Tab eventKey={1} title="About">
-                        <About phone={this.state.phone}
-                               email={this.state.email}
-                               address={this.state.address}
-                               dob={this.state.dob}
-                               linkedin={this.state.linkedin}
-                               github={this.state.github}
-                               facebook={this.state.facebook}
-                               website={this.state.website}
-                               action={this.changeState}/>
-                    </Tab>
-                    <Tab eventKey={2} title="Academic">
-                        <Academic/>
-                    </Tab>
-                    <Tab eventKey={3} title="Experience">
-                        <Experience/>
-                    </Tab>
-                    <Tab eventKey={4} title="Project">
-                        <Project/>
-                    </Tab>
-                    <Tab eventKey={5} title="Skill">
-                        <Skill labelText="Skill" keyName="skill" action={this.changeState} value={this.state.skill}/>
-                    </Tab>
-                </Tabs>
+            <Tabs className="tab nav-tabs" defaultActiveKey={1}>
+                <Tab className="tab nav-tabs pane" eventKey={1} title="About">
+                    <About phone={this.state.phone}
+                           email={this.state.email}
+                           address={this.state.address}
+                           dob={this.state.dob}
+                           linkedin={this.state.linkedin}
+                           github={this.state.github}
+                           facebook={this.state.facebook}
+                           website={this.state.website}
+                           action={this.changeState}/>
+                </Tab>
+                <Tab className="tab nav-tabs pane" eventKey={2} title="Academic">
+                    <Academic/>
+                </Tab>
+                <Tab className="tab nav-tabs pane" eventKey={3} title="Experience">
+                    <Experience/>
+                </Tab>
+                <Tab className="tab nav-tabs pane" eventKey={4} title="Project">
+                    <Project/>
+                </Tab>
+                <Tab className="tab nav-tabs pane" eventKey={5} title="Skill">
+                    <Skill labelText="Skill" keyName="skill" action={this.changeState} value={this.state.skill}/>
+                </Tab>
+            </Tabs>
         )
     }
 }
