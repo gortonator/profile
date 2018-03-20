@@ -74,7 +74,7 @@ export default class ExtraExperiences extends Component {
     render() {
         return (
             <Wrapper>
-                <table>
+                <table width="100%">
                     <tbody>
                     <tr>
                         <td width="90%">
@@ -88,16 +88,14 @@ export default class ExtraExperiences extends Component {
                     </tr>
                     </tbody>
                 </table>
-                <br/>
-
 
                 {this.state.experiences.map(item => (
                     <div key={item.id}>
-                        <table>
+                        <table width="100%">
                             <tbody>
                             <tr>
-                                <td width="97%"><h2>{item.company}</h2></td>
-                                <td width="3%">
+                                <td width="95%"><h2>{item.company}</h2></td>
+                                <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>

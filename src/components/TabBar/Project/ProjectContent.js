@@ -29,7 +29,7 @@ export default class ProjectContent extends Component {
         return(
             <div>
                 <div><label htmlFor={"projectName"}>Project Name</label></div>
-                <input placeholder={"project Name"} onChange={this.handleTitle.bind(this)} id={"projectName"} value={this.props.item.projectName} size={50}></input>
+                <input placeholder={"Project Name"} onChange={this.handleTitle.bind(this)} id={"projectName"} value={this.props.item.projectName} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
@@ -41,7 +41,7 @@ export default class ProjectContent extends Component {
                 <br/><br/>
 
                 <div><label htmlFor={"desc"}>Description</label></div>
-                <textarea placeholder={"description"} onChange={this.handleDesc.bind(this)} id={"desc"}
+                <textarea placeholder={"Description"} onChange={this.handleDesc.bind(this)} id={"desc"}
                           value={this.props.item.description} cols={50} rows={6}></textarea>
             </div>
         )
