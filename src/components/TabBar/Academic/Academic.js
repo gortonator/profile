@@ -17,7 +17,6 @@ const listItems = courses.map((course) =>
         return (
             <div className="wrapper">
                 <SubTitle1>MY COURSES</SubTitle1>
-                <br/>
                 <List>{listItems}</List>
             </div>
         )
@@ -25,16 +24,17 @@ const listItems = courses.map((course) =>
 }
 
 const SubTitle1 = styled.h5`
-    font-family: 'Khand', sans-serif;
-    font-size: 2em;
-    font-weight: 400;
-    color: #e78885;
+    // font-family: 'Khand', sans-serif;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
     `
 
 const List = styled.li`
-    font-family: 'Oxygen', sans-serif;;
-    font-size: 1em;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
     list-style-type: none;
+    color: #777777;
     `
 
 export default Academic

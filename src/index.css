@@ -16,10 +16,16 @@ body {
 }
 
 #location {
-	font-size: 15px;
+  font-size: 15px;
+  vertical-align: bottom;
+}
 
+#locationImage {
+  width: 20px;
+  vertical-align: bottom;
 }
 .subtitle{
+  font-family: 'Khand', sans-serif;
   font-size: 25px;
   font-weight: 800;
   color: #e78885;
@@ -34,7 +40,12 @@ body {
   width: 100%;
 }
 
+.grayContent{
+  color: #777777;
+}
+
 
 .companyName {
-	font-weight: 800;
+	font-weight: 900;
+	font-size: 18px;
 }

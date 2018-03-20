@@ -62,34 +62,35 @@ class Intro extends Component {
             	<Grid>
             		<Row className="show-grid">
             			<Col md={12}> <p id="intro-name">{this.state.intro.name}
-            			<img style={{width: "20px"}} src={location} alt="pic"/>
-            			<span id="location">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>
+            			&nbsp;&nbsp;&nbsp;
+            			<img id="locationImage" src={location} alt="pic"/>&nbsp;
+            			<span id="location" className="grayContent">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>
             		</Row>
 
             		<br/>
             		<Row className="show-grid">
                         <Col md={3}><p>Gender:</p></Col>
-                        <Col md={3}><p>{this.state.intro.gender}</p></Col>
+                        <Col md={3}><p className="grayContent">{this.state.intro.gender}</p></Col>
                         <Col md={3}><p>Start Term:</p></Col>
-                        <Col md={3}><p>{this.state.intro.startTerm}</p></Col>
+                        <Col md={3}><p className="grayContent">{this.state.intro.startTerm}</p></Col>
             		</Row>
 
             		<Row className="show-grid">
                         <Col md={3}><p>Campus:</p></Col>
-                        <Col md={3}><p>{this.state.intro.campus}</p> </Col>
+                        <Col md={3}><p className="grayContent">{this.state.intro.campus}</p> </Col>
             			<Col md={3}><p>End Term:</p></Col>
-                        <Col md={3}><p>{this.state.intro.endTerm}</p> </Col>
+                        <Col md={3}><p className="grayContent">{this.state.intro.endTerm}</p> </Col>
             			
             		</Row>
 
             	    <hr/>
                     <Row className="show-grid">
-                    	<Col md={12}> <p className="subtitle">Summary <EditIcon onClick={this.handleShow}/></p> </Col>
+                    	<Col md={12}> <p className="subtitle">Summary&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.handleShow}/></p> </Col>
                      
                     </Row>
 
                     <Row className="show-grid">
-                    	<Col md={12}> <p>{this.state.summary}</p> </Col>
+                    	<Col md={12}> <p className="grayContent">{this.state.summary}</p> </Col>
                     </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>

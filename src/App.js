@@ -149,7 +149,7 @@ const divStyle = {
 };
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
-    Font-size: 20px;
+    font-size: 18px;
     width: 70%;
     margin: auto;
     `
