@@ -4,6 +4,7 @@ import {Modal, Button} from "react-bootstrap"
 import EditExperience from "./EditExperience";
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
+import Projects from "../Project/Projects";
 
 export default class ExtraExperiences extends Component {
     constructor() {
@@ -76,10 +77,10 @@ export default class ExtraExperiences extends Component {
                 <table>
                     <tbody>
                     <tr>
-                        <td width="88.5%">
-                            <h2>Experiences</h2>
+                        <td width="90%">
+                            <SubTitle1>My Experiences</SubTitle1>
                         </td>
-                        <td width="11.5%">
+                        <td width="10%">
                             <Button onClick={this.addNewExperience}>
                                 Add
                             </Button>
@@ -95,8 +96,8 @@ export default class ExtraExperiences extends Component {
                         <table>
                             <tbody>
                             <tr>
-                                <td width="90%"><h2>{item.company}</h2></td>
-                                <td width="4%">
+                                <td width="97%"><h2>{item.company}</h2></td>
+                                <td width="3%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
@@ -138,4 +139,11 @@ export default class ExtraExperiences extends Component {
 
 const Wrapper = styled.div`
         margin: 2%;
+    `
+
+const SubTitle1 = styled.h5`
+    font-family: 'Khand', sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+    color: #e78885;
     `
