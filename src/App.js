@@ -119,7 +119,7 @@ class App extends Component {
             <Wrapper>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
-                    <Row className="show-grid" >
+                    <Row className="show-grid">
                         <Col md={4}>
                             <Picture />
                         </Col>
@@ -127,7 +127,7 @@ class App extends Component {
                             <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
                         </Col>
                     </Row>
-                    <Row className="show-grid" style={{margin: "2%"}}>
+                    <Row className="show-grid">
                         <Col md={4}>
                             <Coop/>
                         </Col>
