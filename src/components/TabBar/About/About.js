@@ -27,11 +27,12 @@ class About extends Component {
 }
 
 const AboutTable = styled.table`
+        width: 100%;
         line-height: 20px;
     `
 
 const Wrapper = styled.div`
-        width: 70%;
+        width: 100%;
         margin: 2%;
     `
 
