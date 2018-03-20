@@ -12,10 +12,10 @@ class TabBar extends Component {
     constructor() {
         super();
         this.state = {
-            phone: "(206)306-3178",
+            phone: "+1 (206)306-3178",
             email: "jeremy@gmail.com",
             address: "225 Terry Ave, Seattle, WA",
-            dob: "12/11/1993",
+            dob: "Dec 11, 1993",
             linkedin: "www.linkedin.com/jeremy",
             github: "www.github.com/jeremy",
             facebook: "www.facebook.com/jeremy",

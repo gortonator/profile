@@ -12,14 +12,14 @@ class About extends Component {
         return (
             <Wrapper>
                 <AboutTable>
-                    <AboutItem labelText="Phone" keyName="phone" action={this.props.action} value={this.props.phone} modifiable={true}/>
-                    <AboutItem labelText="Email" value={this.props.email} modifiable={false}/>
-                    <AboutItem labelText="Address" keyName="address" action={this.props.action} value={this.props.address} modifiable={true}/>
-                    <AboutItem labelText="DoB" value={this.props.dob} modifiable={false}/>
-                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.props.action} value={this.props.linkedin} modifiable={true}/>
-                    <AboutItem labelText="Github" keyName="github" action={this.props.action} value={this.props.github} modifiable={true}/>
-                    <AboutItem labelText="Facebook" keyName="facebook" action={this.props.action} value={this.props.facebook} modifiable={true}/>
-                    <AboutItem labelText="Website" keyName="website" action={this.props.action} value={this.props.website} modifiable={true}/>
+                    <AboutItem labelText="Phone" keyName="phone" action={this.props.action} value={this.props.phone} modifiable/>
+                    <AboutItem labelText="Email" value={this.props.email}/>
+                    <AboutItem labelText="Address" keyName="address" action={this.props.action} value={this.props.address} modifiable/>
+                    <AboutItem labelText="DoB" value={this.props.dob}/>
+                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.props.action} value={this.props.linkedin} modifiable isLink/>
+                    <AboutItem labelText="Github" keyName="github" action={this.props.action} value={this.props.github} modifiable isLink/>
+                    <AboutItem labelText="Facebook" keyName="facebook" action={this.props.action} value={this.props.facebook} modifiable isLink/>
+                    <AboutItem labelText="Website" keyName="website" action={this.props.action} value={this.props.website} modifiable isLink/>
                 </AboutTable>
             </Wrapper>
         )
@@ -27,16 +27,17 @@ class About extends Component {
 }
 
 const AboutTable = styled.table`
-        width: 800px;
-        font-size: 20px;
+        width: 600px;
         line-height: 20px;
     `
 
 const Wrapper = styled.div`
-        color: #000000;
-        width: 800px;
-        font-size: 20px;
+        width: 600px;
         margin: 2%;
+        font-family: "Helvetica";
+        font-size: 1.5em;
+        font-weight: 100;
+        color: #555555;
     `
 
 export default About
