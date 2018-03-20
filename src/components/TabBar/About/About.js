@@ -34,6 +34,7 @@ const AboutTable = styled.table`
 const Wrapper = styled.div`
         width: 100%;
         margin: 2%;
+        font-family: 'Oxygen', sans-serif;
     `
 
 export default About

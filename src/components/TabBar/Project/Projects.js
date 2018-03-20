@@ -135,6 +135,7 @@ export default class Projects extends Component {
 
 const Wrapper = styled.div`
         margin: 2%;
+        font-family: 'Oxygen', sans-serif;
     `
 
 const SubTitle1 = styled.h5`
