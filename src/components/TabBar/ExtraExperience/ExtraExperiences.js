@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import AddExperience from "./AddExperience"
 import {Modal, Button} from "react-bootstrap"
 import EditExperience from "./EditExperience";
+import EditIcon from "../About/EditIcon";
+import styled from "styled-components";
 
 export default class ExtraExperiences extends Component {
     constructor() {
@@ -10,6 +12,7 @@ export default class ExtraExperiences extends Component {
             addNew: false,
             edit:false,
             editItem: null,
+            count:0,
             index: 2,
             experiences: [
                 {
@@ -69,15 +72,15 @@ export default class ExtraExperiences extends Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <table>
                     <tbody>
                     <tr>
-                        <td width="90%">
-                            <p>Experiences</p>
+                        <td width="88.5%">
+                            <h2>Experiences</h2>
                         </td>
-                        <td width="10%">
-                            <Button bsStyle="primary" onClick={this.addNewExperience}>
+                        <td width="11.5%">
+                            <Button onClick={this.addNewExperience}>
                                 Add
                             </Button>
                         </td>
@@ -86,25 +89,23 @@ export default class ExtraExperiences extends Component {
                 </table>
                 <br/>
 
+
                 {this.state.experiences.map(item => (
                     <div key={item.id}>
                         <table>
                             <tbody>
                             <tr>
-                                <td width="90%"><p>{item.jobTitle}</p></td>
-                                <td width="10%">
-                                    <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
-                                        Edit
-                                    </Button>
+                                <td width="90%"><h2>{item.company}</h2></td>
+                                <td width="4%">
+                                    <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p>{item.company}</p></td></tr>
+                            <tr><td><p>{item.jobTitle}</p></td></tr>
                             <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
                             <tr><td><p>{item.desc}</p></td></tr>
                             </tbody>
                         </table>
-                        <br/>
-
+                        <hr/>
                     </div>
                 ))}
 
@@ -130,7 +131,11 @@ export default class ExtraExperiences extends Component {
                     >
                     </EditExperience>
                 </Modal>
-            </div>
+            </Wrapper>
         )
     }
 }
+
+const Wrapper = styled.div`
+        margin: 2%;
+    `

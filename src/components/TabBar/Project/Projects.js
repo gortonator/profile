@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import AddProject from "./AddProject"
 import {Modal, Button} from "react-bootstrap"
 import EditProject from "./EditProject";
+import EditIcon from "../About/EditIcon";
+import styled from "styled-components";
 
 export default class Projects extends Component {
     constructor() {
@@ -67,15 +69,15 @@ export default class Projects extends Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <table>
                     <tbody>
                     <tr>
-                        <td width="90%">
-                            <p>Projects</p>
+                        <td width="88.5%">
+                            <h2>Projects</h2>
                         </td>
-                        <td width="10%">
-                            <Button bsStyle="primary" onClick={this.addNewProject}>
+                        <td width="11.5%">
+                            <Button onClick={this.addNewProject}>
                                 Add
                             </Button>
                         </td>
@@ -90,20 +92,17 @@ export default class Projects extends Component {
                             <tbody>
                             <tr>
                                 <td width="90%">
-                                    <p>{item.projectName}</p>
+                                    <h2>{item.projectName}</h2>
                                 </td>
-                                <td width="10%">
-                                    <Button bsStyle="primary" onClick={() => this.handleEdit(item)}>
-                                        Edit
-                                    </Button>
+                                <td width="4%">
+                                    <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
                             <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
                             <tr><td><p>{item.desc}</p></td></tr>
                             </tbody>
                         </table>
-                        <br/>
-
+                        <hr/>
                     </div>
                 ))}
 
@@ -129,7 +128,11 @@ export default class Projects extends Component {
                     >
                     </EditProject>
                 </Modal>
-            </div>
+            </Wrapper>
         )
     }
 }
+
+const Wrapper = styled.div`
+        margin: 2%;
+    `
