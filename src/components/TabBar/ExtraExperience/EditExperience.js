@@ -45,6 +45,16 @@ export default class EditExperience extends Component {
     }
 
     editExperience = () => {
+        if(!this.state.jobTitle || this.state.jobTitle.trim().length === 0){
+            alert("Job Title can't be blank!")
+            return
+        }
+
+        if(!this.state.company || this.state.company.trim().length === 0){
+            alert("Company can't be blank!")
+            return
+        }
+
         if(this.isValidDate(this.state.startDate)) {
             this.props.item.startDate = this.state.startDate
         }
@@ -68,8 +78,12 @@ export default class EditExperience extends Component {
     }
 
     deleteExpeirence = () => {
-        this.props.deleteFunc(this.props.item)
-        this.props.closePopup()
+        if (window.confirm('Are you sure you want to delete this experience?')) {
+            this.props.deleteFunc(this.props.item)
+            this.props.closePopup()
+        } else {
+            // Do nothing!
+        }
     }
 
     isValidDate(dateString)

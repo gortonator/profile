@@ -6,9 +6,9 @@ export default class AddExperience extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobTitle: "title",
-            company: "company",
-            description: "description"
+            jobTitle: "",
+            company: "",
+            description: ""
         }
     }
 
@@ -69,6 +69,16 @@ export default class AddExperience extends Component {
     }
 
     AddExperience = () => {
+        if(!this.state.jobTitle || this.state.jobTitle.trim().length === 0){
+            alert("Job Title can't be blank!")
+            return
+        }
+
+        if(!this.state.company || this.state.company.trim().length === 0){
+            alert("Company can't be blank!")
+            return
+        }
+
         if(!this.isValidDate(this.state.startDate)) {
             alert('Invalid start date. Date must be in mm/dd/yyyy format.')
             return

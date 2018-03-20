@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Row, Col, Grid, css, ListGroup, ListGroupItem, Panel, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 
 import EditIcon from "../TabBar/About/EditIcon";
+import styled from "styled-components";
 
 
 class Intro extends Component {
@@ -56,34 +57,38 @@ class Intro extends Component {
     render() {
         console.log(this.state);
         return (
-            
             	<Grid>
             		<Row className="show-grid">
-            			<Col md={3}> <p className="intro-name">{this.state.intro.name}</p> </Col>
-            			<Col md={3}> <p>{this.state.intro.city}, {this.state.intro.state}</p> </Col>
+            			<Col md={6}> <p className="intro-name">{this.state.intro.name}</p> </Col>
+            			<Col md={6}> <p>{this.state.intro.city}, {this.state.intro.state}</p> </Col>
             		</Row>
 
-            		<p>PROFILE <hr className="inline-hr"/></p>
+            		{/*<p className="subtitle">PROFILE <hr/></p>*/}
+            		<br/>
 
             		<Row className="show-grid">
-            			<Col md={3}> <p>Gender:   {this.state.intro.gender}</p> </Col>
-            			<Col md={3}> <p>Start Term:    {this.state.intro.startTerm}</p> </Col>
+                        <Col md={3}><p>Gender:</p></Col>
+                        <Col md={3}><p>{this.state.intro.gender}</p></Col>
+                        <Col md={3}><p>Start Term:</p></Col>
+                        <Col md={3}><p>{this.state.intro.startTerm}</p></Col>
             		</Row>
 
             		<Row className="show-grid">
-            			<Col md={3}> <p>Campus:   {this.state.intro.campus}</p> </Col>
-            			<Col md={3}> <p>End Term:     {this.state.intro.endTerm}</p> </Col>
+                        <Col md={3}><p>Campus:</p></Col>
+                        <Col md={3}><p>{this.state.intro.campus}</p> </Col>
+            			<Col md={3}><p>End Term:</p></Col>
+                        <Col md={3}><p>{this.state.intro.endTerm}</p> </Col>
             			
             		</Row>
 
-            	
+            	    <hr/>
                     <Row className="show-grid">
-                    	<Col md={3}> <p>Summary <EditIcon onClick={this.handleShow}/></p> </Col>
+                    	<Col md={12}> <p className="subtitle">Summary <EditIcon onClick={this.handleShow}/></p> </Col>
                      
                     </Row>
 
                     <Row className="show-grid">
-                    	<Col md={8}> <p>{this.state.summary}</p> </Col>
+                    	<Col md={12}> <p>{this.state.summary}</p> </Col>
                     </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -101,12 +106,17 @@ class Intro extends Component {
                     </Modal.Footer>
                 </Modal>
 
-            	</Grid>
-               
+                </Grid>
 
             
         )
     }
 }
+
+const Wrapper = styled.div` 
+    width: 100%;
+    margin: auto;
+    `
+
 
 export default Intro
