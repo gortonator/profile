@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+.inline-hr{
+  display: inline-flex;
+  width: 85%;
+}
+
+.intro-name{
+	font-size: 20px;
+}
