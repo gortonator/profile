@@ -31,10 +31,10 @@ class Coop extends Component {
         return this.state.coops.map(coop => {
             return (
                 <div>
-                <h3 className="companyName"> {coop.company} </h3>
-                <p> {coop.title} </p>
-                <p> {coop.time} </p>
-                <p> Worked as {coop.position} </p><hr/>
+                <h2 className="companyName"> {coop.company} </h2>
+                <p className="grayContent"> {coop.title} </p>
+                <p className="grayContent"> {coop.time} </p>
+                <p className="grayContent"> Worked as {coop.position} </p><hr/>
                 </div>
             );
 

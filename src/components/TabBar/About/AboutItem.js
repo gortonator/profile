@@ -49,7 +49,7 @@ class AboutItem extends Component {
         }else if(this.props.isLink){
             return <LinkText onClick={this.openNewPage}>{this.state.content}</LinkText>;
         }else{
-            return this.state.content;
+            return <p className="grayContent">{this.state.content}</p>;
         }
     }
 

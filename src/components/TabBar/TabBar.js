@@ -57,7 +57,7 @@ class TabBar extends Component {
                     <Project/>
                 </Tab>
                 <Tab className="tab nav-tabs pane" eventKey={5} title="Skill">
-                    <Skill labelText="Skill" keyName="skill" action={this.changeState} value={this.state.skill}/>
+                    <Skill labelText="MY SKILLS" keyName="skill" action={this.changeState} value={this.state.skill}/>
                 </Tab>
             </Tabs>
         )

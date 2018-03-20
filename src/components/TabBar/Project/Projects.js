@@ -91,14 +91,14 @@ export default class Projects extends Component {
                             <tbody>
                             <tr>
                                 <td width="95%">
-                                    <h2>{item.projectName}</h2>
+                                    <h2 className="companyName">{item.projectName}</h2>
                                 </td>
                                 <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p>{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><TextArea>{item.desc}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.desc}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -135,13 +135,13 @@ export default class Projects extends Component {
 const Wrapper = styled.div`
         margin: 2%;
         font-family: 'Oxygen', sans-serif;
+        font-size: 18px;
     `
 
 const SubTitle1 = styled.h5`
-    font-family: 'Khand', sans-serif;
-    font-size: 2em;
-    font-weight: 400;
-    color: #e78885;
+        font-family: 'Oxygen', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
     `
 
 const TextArea = styled.p`

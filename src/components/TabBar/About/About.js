@@ -35,6 +35,7 @@ const Wrapper = styled.div`
         width: 100%;
         margin: 2%;
         font-family: 'Oxygen', sans-serif;
+        font-size: 18px;
     `
 
 export default About
