@@ -116,24 +116,27 @@ class App extends Component {
         // console.log("page", this.state);
         return (
             <div>
-                <TopBar/>
-                <Row className="show-grid" style={{margin: "2%"}}>
-                    <Col md={4}>
-                        <Picture/>
-                    </Col>
-                    <Col md={8}>
-                        <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
-                    </Col>
-                </Row>
-                <Row className="show-grid" style={{margin: "2%"}}>
-                    <Col md={4}>
-                        <Coop/>
-                    </Col>
-                    <Col md={8}>
-                        <TabBar/>
-                    </Col>
-                </Row>
+                <div style={{margin:"2%"}}>
+                    <TopBar/>
+                    <Row className="show-grid" style={{margin: "2%"}}>
+                        <Col md={4}>
+                            <Picture/>
+                        </Col>
+                        <Col md={8}>
+                            <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
+                        </Col>
+                    </Row>
+                    <Row className="show-grid" style={{margin: "2%"}}>
+                        <Col md={4}>
+                            <Coop/>
+                        </Col>
+                        <Col md={8}>
+                            <TabBar/>
+                        </Col>
+                    </Row>
+                </div>
             </div>
+
         );
     }
 }
