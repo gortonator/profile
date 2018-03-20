@@ -31,7 +31,7 @@ class Coop extends Component {
         return this.state.coops.map(coop => {
             return (
                 <div>
-                <h2> {coop.company} </h2>
+                <h3 className="companyName"> {coop.company} </h3>
                 <p> {coop.title} </p>
                 <p> {coop.time} </p>
                 <p> Worked as {coop.position} </p><hr/>
@@ -44,7 +44,7 @@ class Coop extends Component {
 
     render() {
         return (
-            <div><p className="subtitle"> COOP <hr className="inline-hr"/> </p>
+            <div><p className="subtitle"> COOP <hr/> </p>
             { this.renderCoop() } </div>
             );
     }

@@ -4,6 +4,7 @@ import {Row, Col, Grid, css, ListGroup, ListGroupItem, Panel, Button, Modal, For
 
 import EditIcon from "../TabBar/About/EditIcon";
 import styled from "styled-components";
+import location from '../../image/location.jpeg'
 
 
 class Intro extends Component {
@@ -57,15 +58,15 @@ class Intro extends Component {
     render() {
         console.log(this.state);
         return (
+
             	<Grid>
             		<Row className="show-grid">
-            			<Col md={6}> <p className="intro-name">{this.state.intro.name}</p> </Col>
-            			<Col md={6}> <p>{this.state.intro.city}, {this.state.intro.state}</p> </Col>
+            			<Col md={12}> <p id="intro-name">{this.state.intro.name}
+            			<img style={{width: "20px"}} src={location} alt="pic"/>
+            			<span id="location">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>
             		</Row>
 
-            		{/*<p className="subtitle">PROFILE <hr/></p>*/}
             		<br/>
-
             		<Row className="show-grid">
                         <Col md={3}><p>Gender:</p></Col>
                         <Col md={3}><p>{this.state.intro.gender}</p></Col>
@@ -108,7 +109,6 @@ class Intro extends Component {
 
                 </Grid>
 
-            
         )
     }
 }
