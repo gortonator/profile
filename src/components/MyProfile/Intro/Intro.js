@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col, Grid, css, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
 import EditIcon from "../TabBar/About/EditIcon";
 import styled from "styled-components";
-import location from '../../image/location.jpeg'
+import location from '../../../image/location.jpeg'
 
 
 class Intro extends Component {

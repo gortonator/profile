@@ -3,12 +3,14 @@ import {nav, css} from 'react-bootstrap';
 import {Navbar, NavItem, Nav, NavDropdown, MenuItem, Image, FormGroup, FormControl, Button} from 'react-bootstrap';
 import profile_image from '../../image/profile_image.png'
 import logo from '../../image/neu.png'
+import styled from "styled-components";
+
 
 class TopBar extends Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
                         <a class="navbar-brand">
@@ -36,7 +38,7 @@ class TopBar extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-            </div>
+            </Wrapper>
         )
     }
 }
@@ -46,5 +48,12 @@ const title = {
     fontWeight: '800',
     color: '#e78885',
 }
+
+const Wrapper = styled.div` 
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    width: 70%;
+    margin: auto;
+    `;
 
 export default TopBar
