@@ -5,8 +5,6 @@ import Experience from './ExtraExperience/ExtraExperiences';
 import Project from './Project/Projects';
 import Skill from './Skill/Skill';
 import { Tab, Tabs } from 'react-bootstrap';
-import './tabBar.css';
-import styled from 'styled-components'
 
 class TabBar extends Component {
 

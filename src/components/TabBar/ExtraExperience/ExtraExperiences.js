@@ -73,12 +73,12 @@ export default class ExtraExperiences extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <div className="wrapper">
                 <table width="100%">
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <SubTitle1>MY EXPERIENCES</SubTitle1>
+                            <h5 className="tab-content-subtitle">MY EXPERIENCES</h5>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewExperience}>
@@ -130,22 +130,10 @@ export default class ExtraExperiences extends Component {
                     >
                     </EditExperience>
                 </Modal>
-            </Wrapper>
+            </div>
         )
     }
 }
-
-const Wrapper = styled.div`
-        margin: 2%;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 18px;
-    `
-
-const SubTitle1 = styled.h5`
-        font-family: 'Oxygen', sans-serif;
-        font-size: 20px;
-        font-weight: 800;
-    `
 
 const TextArea = styled.p`
         white-space: pre-line;

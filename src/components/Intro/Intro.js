@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-
-import {Row, Col, Grid, css, ListGroup, ListGroupItem, Panel, Button, Modal, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
-
+import {Row, Col, Grid, css, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
 import EditIcon from "../TabBar/About/EditIcon";
 import styled from "styled-components";
 import location from '../../image/location.jpeg'
@@ -113,11 +111,5 @@ class Intro extends Component {
         )
     }
 }
-
-const Wrapper = styled.div` 
-    width: 100%;
-    margin: auto;
-    `
-
 
 export default Intro

@@ -9,8 +9,7 @@ class AboutItem extends Component {
         super(props);
         this.state = {
             content: this.props.value,
-            editable: false,
-            // blackIcon: false
+            editable: false
         };
         this.makeEditable = this.makeEditable.bind(this);
         this.changeContentOnEnter = this.changeContentOnEnter.bind(this);
@@ -54,7 +53,6 @@ class AboutItem extends Component {
     }
 
     render() {
-        // console.log(this.state);
 
         let editIcon = "";
         if(this.props.modifiable) {

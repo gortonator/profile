@@ -16,25 +16,11 @@ const listItems = courses.map((course) =>
     render() {
         return (
             <div className="wrapper">
-                <SubTitle1>MY COURSES</SubTitle1>
-                <List>{listItems}</List>
+                <h5 className="tab-content-subtitle">MY COURSES</h5>
+                <ul className="grayContent">{listItems}</ul>
             </div>
         )
     }
 }
-
-const SubTitle1 = styled.h5`
-    // font-family: 'Khand', sans-serif;
-    font-family: 'Oxygen', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    `
-
-const List = styled.li`
-    font-family: 'Oxygen', sans-serif;
-    font-size: 18px;
-    list-style-type: none;
-    color: #777777;
-    `
 
 export default Academic

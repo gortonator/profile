@@ -10,7 +10,7 @@ class About extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <div className="wrapper">
                 <AboutTable>
                     <AboutItem labelText="Phone" keyName="phone" action={this.props.action} value={this.props.phone} modifiable/>
                     <AboutItem labelText="Email" value={this.props.email}/>
@@ -21,7 +21,7 @@ class About extends Component {
                     <AboutItem labelText="Facebook" keyName="facebook" action={this.props.action} value={this.props.facebook} modifiable isLink/>
                     <AboutItem labelText="Website" keyName="website" action={this.props.action} value={this.props.website} modifiable isLink/>
                 </AboutTable>
-            </Wrapper>
+            </div>
         )
     }
 }
@@ -29,13 +29,6 @@ class About extends Component {
 const AboutTable = styled.table`
         width: 100%;
         line-height: 20px;
-    `
-
-const Wrapper = styled.div`
-        width: 100%;
-        margin: 2%;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 18px;
     `
 
 export default About
