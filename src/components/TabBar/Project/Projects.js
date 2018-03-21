@@ -74,7 +74,7 @@ export default class Projects extends Component {
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <h5 className="tab-content-subtitle">MY PROJECTS</h5>
+                            <p className="tab-content-subtitle">MY PROJECTS</p>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewProject}>

@@ -16,7 +16,7 @@ const listItems = courses.map((course) =>
     render() {
         return (
             <div className="wrapper">
-                <h5 className="tab-content-subtitle">MY COURSES</h5>
+                <p className="tab-content-subtitle">MY COURSES</p>
                 <ul className="grayContent">{listItems}</ul>
             </div>
         )

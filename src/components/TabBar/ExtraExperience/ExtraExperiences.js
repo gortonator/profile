@@ -78,7 +78,7 @@ export default class ExtraExperiences extends Component {
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <h5 className="tab-content-subtitle">MY EXPERIENCES</h5>
+                            <p className="tab-content-subtitle">MY EXPERIENCES</p>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewExperience}>

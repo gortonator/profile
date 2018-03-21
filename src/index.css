@@ -27,7 +27,7 @@ body {
 .subtitle{
   font-family: 'Khand', sans-serif;
   font-size: 25px;
-  font-weight: 800;
+  /*font-weight: 800;*/
   color: #e78885;
 }
 
@@ -73,6 +73,7 @@ a:hover,a:focus{
 }
 .tab .nav-tabs{
   font-family: 'Khand', sans-serif;
+  /*font-weight: 800;*/
   font-size: 25px;
   border-bottom: none;
   position: relative;
@@ -145,4 +146,21 @@ a:hover,a:focus{
 @media only screen and (max-width: 479px){
   .tab .nav-tabs li{ width: 100%; }
   .tab .nav-tabs li a{ text-align: center; }
+}
+
+/*Picture*/
+#profile-pic{
+  width:90%;
+}
+
+/*To make Picture height equaled with Intro*/
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.row {
+  margin: 2% 0;
 }

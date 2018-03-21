@@ -119,7 +119,7 @@ class App extends Component {
             <Wrapper>
                 <div style={{margin:"2%"}}>
                     <TopBar/>
-                    <Row className="show-grid">
+                    <Row className="show-grid row-eq-height">
                         <Col md={4}>
                             <Picture />
                         </Col>

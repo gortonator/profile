@@ -41,7 +41,7 @@ class Skill extends Component {
 
         return (
             <div className="wrapper">
-                <h5 className="tab-content-subtitle">{this.props.labelText}</h5>&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/>
+                <p className="tab-content-subtitle">{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
                 <br/>
                 {this.getContentComponent()}
             </div>
