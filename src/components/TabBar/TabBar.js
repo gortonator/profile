@@ -5,8 +5,6 @@ import Experience from './ExtraExperience/ExtraExperiences';
 import Project from './Project/Projects';
 import Skill from './Skill/Skill';
 import { Tab, Tabs } from 'react-bootstrap';
-import './tabBar.css';
-import styled from 'styled-components'
 
 class TabBar extends Component {
 
@@ -16,7 +14,6 @@ class TabBar extends Component {
             phone: "+1 (206)306-3178",
             email: "jeremy@gmail.com",
             address: "225 Terry Ave, Seattle, WA",
-            dob: "Dec 11, 1993",
             linkedin: "www.linkedin.com/jeremy",
             github: "www.github.com/jeremy",
             facebook: "www.facebook.com/jeremy",
@@ -40,7 +37,6 @@ class TabBar extends Component {
                     <About phone={this.state.phone}
                            email={this.state.email}
                            address={this.state.address}
-                           dob={this.state.dob}
                            linkedin={this.state.linkedin}
                            github={this.state.github}
                            facebook={this.state.facebook}

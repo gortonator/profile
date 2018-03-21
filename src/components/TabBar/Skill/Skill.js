@@ -40,21 +40,14 @@ class Skill extends Component {
     render() {
 
         return (
-            <Wrapper>
-                <SubTitle1>{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></SubTitle1>
+            <div className="wrapper">
+                <p className="tab-content-subtitle">{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
                 <br/>
                 {this.getContentComponent()}
-            </Wrapper>
+            </div>
         )
     }
 }
-
-const Wrapper = styled.div`
-        width: 100%;
-        margin: 2%;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 18px;
-    `
 
 const TextArea = styled.textarea`
         width: 70%;   
@@ -67,12 +60,6 @@ const Show = styled.p`
         white-space: pre-line;
         line-height: 50px;
         color: #777777;
-    `
-
-const SubTitle1 = styled.h5`
-        font-family: 'Oxygen', sans-serif;
-        font-size: 20px;
-        font-weight: 800;
     `
 
 export default Skill

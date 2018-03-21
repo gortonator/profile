@@ -12,7 +12,7 @@ body {
 
 #intro-name{
   font-size: 40px;
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 #location {
@@ -27,7 +27,7 @@ body {
 .subtitle{
   font-family: 'Khand', sans-serif;
   font-size: 25px;
-  font-weight: 800;
+  /*font-weight: 800;*/
   color: #e78885;
 }
 
@@ -45,8 +45,123 @@ body {
   color: #777777;
 }
 
-
 .companyName {
 	font-weight: 900;
 	font-size: 18px;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 2%;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 18px;
+}
+
+.tab-content-subtitle{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+a {
+  color: #a09898;
+}
+
+a:hover,a:focus{
+  outline: none;
+  text-decoration: none;
+  background-color: white;
+}
+.tab .nav-tabs{
+  font-family: 'Khand', sans-serif;
+  /*font-weight: 800;*/
+  font-size: 25px;
+  border-bottom: none;
+  position: relative;
+}
+.tab .nav-tabs .pane{
+  margin-right: 15px;
+}
+.tab .nav-tabs .pane{
+  padding: 20px 15px;
+  /*font-size: 17px;*/
+  /*font-weight: 600;*/
+  border-radius: 0;
+  text-transform: uppercase;
+  margin-right: 0;
+  border: none;
+  position: relative;
+  transition: all 0.5s ease 0s;
+}
+.tab .nav-tabs .pane:hover{
+  background: #fff;
+}
+.tab .nav-tabs li a:before{
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0, 0.2);
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transform: scale(0);
+  transition: all 700ms ease 0s;
+}
+.tab .nav-tabs .pane:after{
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e78885;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  transform: scale(0);
+  transition: all 700ms ease 0s;
+}
+.tab .nav-tabs li.active a,
+.tab .nav-tabs li.active a:focus,
+.tab .nav-tabs li.active a:hover{
+  border: none;
+  color: #e78885;
+}
+.tab .nav-tabs li a:hover:before,
+.tab .nav-tabs li.active a:before,
+.tab .nav-tabs li a:hover:after,
+.tab .nav-tabs li.active a:after{
+  transform: scale(1);
+}
+.tab .tab-content{
+  padding: 20px;
+  /*background: #fff;*/
+  /*font-size: 14px;*/
+  /*color: #a09d9d;*/
+  /*line-height: 26px;*/
+}
+.tab .tab-content h3{
+  font-size: 24px;
+  margin-top: 0;
+}
+@media only screen and (max-width: 479px){
+  .tab .nav-tabs li{ width: 100%; }
+  .tab .nav-tabs li a{ text-align: center; }
+}
+
+/*Picture*/
+#profile-pic{
+  width:90%;
+}
+
+/*To make Picture height equaled with Intro*/
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.row {
+  margin: 2% 0;
 }

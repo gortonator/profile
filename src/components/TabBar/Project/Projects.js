@@ -69,12 +69,12 @@ export default class Projects extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <div className="wrapper">
                 <table width="100%">
                     <tbody>
                     <tr>
                         <td width="90%">
-                            <SubTitle1>MY PROJECTS</SubTitle1>
+                            <p className="tab-content-subtitle">MY PROJECTS</p>
                         </td>
                         <td width="10%">
                             <Button onClick={this.addNewProject}>
@@ -127,22 +127,10 @@ export default class Projects extends Component {
                     >
                     </EditProject>
                 </Modal>
-            </Wrapper>
+            </div>
         )
     }
 }
-
-const Wrapper = styled.div`
-        margin: 2%;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 18px;
-    `
-
-const SubTitle1 = styled.h5`
-        font-family: 'Oxygen', sans-serif;
-        font-size: 20px;
-        font-weight: 800;
-    `
 
 const TextArea = styled.p`
         white-space: pre-line;
