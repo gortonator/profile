@@ -15,7 +15,6 @@ class About extends Component {
                     <AboutItem labelText="Phone" keyName="phone" action={this.props.action} value={this.props.phone} modifiable/>
                     <AboutItem labelText="Email" value={this.props.email}/>
                     <AboutItem labelText="Address" keyName="address" action={this.props.action} value={this.props.address} modifiable/>
-                    <AboutItem labelText="DoB" value={this.props.dob}/>
                     <AboutItem labelText="Linkedin" keyName="linkedin" action={this.props.action} value={this.props.linkedin} modifiable isLink/>
                     <AboutItem labelText="Github" keyName="github" action={this.props.action} value={this.props.github} modifiable isLink/>
                     <AboutItem labelText="Facebook" keyName="facebook" action={this.props.action} value={this.props.facebook} modifiable isLink/>
