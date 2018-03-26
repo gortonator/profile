@@ -16,7 +16,6 @@ export function fetchMyProfile() {
             .then((response) => {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);
                 console.log("Now using mock data", {"mock data": {...initialState, skills:['new mock data from API']}});
-                // return "yes";
                 dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:['new mock data from API']}});
             })
     }
