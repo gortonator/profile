@@ -5,9 +5,19 @@ import Coop from './Coop/Coop'
 import TabBar from './TabBar/TabBar'
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
-
+import {connect} from 'react-redux';
+import { FETCH_MY_PROFILE_DATA } from "../../actions/types"
+import {fetchMyProfile} from "../../actions/myProfileActions"
 
 class MyProfile extends Component {
+
+
+    componentWillMount() {
+        console.log("yudong1");
+        // this.props.fetchMyProfile();
+    }
+
+
 
 
     constructor(props) {
@@ -113,6 +123,7 @@ class MyProfile extends Component {
     }
 
     render() {
+
         return (
             <Wrapper>
                 <div style={{margin: "2%"}}>
@@ -121,7 +132,8 @@ class MyProfile extends Component {
                             <Picture />
                         </Col>
                         <Col md={8}>
-                            <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
+                            {/*<Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>*/}
+                            <Intro />
                         </Col>
                     </Row>
                     <Row className="show-grid">
@@ -150,4 +162,23 @@ const Wrapper = styled.div`
     `;
 
 
-export default MyProfile
+
+const mapStateToProps = state => {
+    return {
+        summary: state.myProfileReducer.about.summary
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchMyProfile: () => {
+            dispatch ({
+                type: FETCH_MY_PROFILE_DATA,
+                payload: 'just fetch it!',
+            });
+        }
+    };
+};
+
+
+export default connect(mapStateToProps, {fetchMyProfile})(MyProfile)
