@@ -14,7 +14,7 @@ class MyProfile extends Component {
 
     componentWillMount() {
         console.log("yudong1");
-        // this.props.fetchMyProfile();
+        this.props.fetchMyProfile();
     }
 
 
@@ -123,7 +123,6 @@ class MyProfile extends Component {
     }
 
     render() {
-
         return (
             <Wrapper>
                 <div style={{margin: "2%"}}>
@@ -181,4 +180,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(mapStateToProps, {fetchMyProfile})(MyProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile)

@@ -1,12 +1,12 @@
 import axios from "axios";
 import {FETCH_MY_PROFILE_DATA, SET_SUMMARY} from '../actions/types'
 
-// export function setSummary(summary) {
-//     return {
-//         type: SET_SUMMARY,
-//         payload: summary,
-//     }
-// }
+export function setSummary(summary) {
+    return {
+        type: SET_SUMMARY,
+        payload: summary,
+    }
+}
 
 export function fetchMyProfile() {
     return (dispatch) => {
@@ -16,7 +16,7 @@ export function fetchMyProfile() {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);
                 console.log("Now using mock data", {"mock data": "mock data"});
                 // return "yes";
-                // dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data})
+                dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data})
             })
     }
 };

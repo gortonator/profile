@@ -19,8 +19,8 @@ const allReducers = combineReducers({
 const store = createStore(
     allReducers,
     // {},
-    applyMiddleware(thunk, promise()),
     window.devToolsExtension && window.devToolsExtension(),
+    applyMiddleware(thunk, promise()),
 );
 
 ReactDOM.render(
