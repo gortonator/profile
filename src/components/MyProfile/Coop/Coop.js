@@ -11,12 +11,14 @@ class Coop extends Component {
         this.state = {
             coops : [
             {
+                "id" : 1,
                 "company" : "Amazon.com",
                 "title" : "Software Engineer Intern",
                 "time" : "May 2017 - Sept 2017",
                 "position" : "SDE"
             },
             {
+                "id" : 2,
                 "company" : "Zillow",
                 "title" : "Software Engineer",
                 "time" : "May 2017 - Sept 2017",
@@ -30,7 +32,7 @@ class Coop extends Component {
 
         return this.state.coops.map(coop => {
             return (
-                <div>
+                <div key={coop.id}>
                 <h2 className="companyName"> {coop.company} </h2>
                 <p className="grayContent"> {coop.title} </p>
                 <p className="grayContent"> {coop.time} </p>
@@ -44,8 +46,10 @@ class Coop extends Component {
 
     render() {
         return (
-            <div><p className="subtitle"> COOP <hr/> </p>
-            { this.renderCoop() } </div>
+            <div><p className="subtitle"> COOP </p>
+                <hr/>
+                { this.renderCoop() }
+            </div>
             );
     }
 
