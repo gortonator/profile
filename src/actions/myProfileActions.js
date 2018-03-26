@@ -10,7 +10,7 @@ export function setSummary(summary) {
 
 export function fetchMyProfile() {
     return (dispatch) => {
-        console.lod("yudong action");
+        console.log("yudong action");
         axios.get("http://rest.learncode.academy/api/reacttest/tweets")
             .then((response) => {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);

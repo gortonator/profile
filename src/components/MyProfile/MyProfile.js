@@ -6,7 +6,7 @@ import TabBar from './TabBar/TabBar'
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import { FETCH_MY_PROFILE_DATA } from "../../actions/types"
+import {FETCH_MY_PROFILE_DATA} from "../../actions/types"
 import {fetchMyProfile} from "../../actions/myProfileActions"
 
 class MyProfile extends Component {
@@ -16,8 +16,6 @@ class MyProfile extends Component {
         console.log("yudong1");
         this.props.fetchMyProfile();
     }
-
-
 
 
     constructor(props) {
@@ -161,7 +159,6 @@ const Wrapper = styled.div`
     `;
 
 
-
 const mapStateToProps = state => {
     return {
         summary: state.myProfileReducer.about.summary
@@ -170,12 +167,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchMyProfile: () => {
-            dispatch ({
-                type: FETCH_MY_PROFILE_DATA,
-                payload: 'just fetch it!',
-            });
-        }
+        fetchMyProfile: () => dispatch(fetchMyProfile())
     };
 };
 
