@@ -32,7 +32,7 @@ class TopBar extends Component {
             <Wrapper>
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
-                        <a class="navbar-brand">
+                        <a className="navbar-brand">
                             <Image style={{height: "25px"}} src={logo} alt="pic" />
                         </a>
                         <Navbar.Brand>

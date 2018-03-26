@@ -32,7 +32,7 @@ class TabBar extends Component {
 
     render() {
         return (
-            <Tabs className="tab nav-tabs" defaultActiveKey={1}>
+            <Tabs id="tab" className="tab nav-tabs" defaultActiveKey={1}>
                 <Tab className="tab nav-tabs pane" eventKey={1} title="About">
                     <About phone={this.state.phone}
                            email={this.state.email}

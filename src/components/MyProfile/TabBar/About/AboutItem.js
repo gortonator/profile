@@ -25,7 +25,7 @@ class AboutItem extends Component {
     }
 
     changeContentOnEnter(event) {
-        if(event.keyCode == 13){ // Press ENTER
+        if(event.keyCode === 13){ // Press ENTER
             this.changeContent(event)
         }
     }
@@ -60,11 +60,13 @@ class AboutItem extends Component {
         }
 
         return (
-            <tr>
-                <td width="30%" height="50px">{this.props.labelText}:</td>
-                <td width="50%">{this.getContentComponent()}</td>
-                <td width="20%" align="middle">{editIcon}</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td width="30%" height="50px">{this.props.labelText}:</td>
+                    <td width="50%">{this.getContentComponent()}</td>
+                    <td width="20%" align="middle">{editIcon}</td>
+                </tr>
+            </tbody>
         )
     }
 }

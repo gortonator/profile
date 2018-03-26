@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Row, Col, Grid, css, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
 import EditIcon from "../TabBar/About/EditIcon";
-import location from '../../../image/location.jpeg'
-
+import styled from "styled-components";
+import location from '../../../image/location.jpeg';
+import {connect} from 'react-redux';
+import {SET_SUMMARY} from '../../../actions/types'
 
 class Intro extends Component {
 
@@ -36,6 +38,7 @@ class Intro extends Component {
 
     handleClose() {
         this.setState({show: false});
+        this.setState({summary: this.props.summary});
     }
 
     handleShow() {
@@ -44,16 +47,20 @@ class Intro extends Component {
 
     handleChange(event) {
         this.setState({summary: event.target.value});
+        console.log("change", this.state);
     }
 
     handleSubmit(){
         this.setState({show: false});
-        this.props.handler(this.state.summary);
+        // this.props.handler(this.state.summary);
+        console.log("submit", this.state.summary);
+        this.props.setSummary(this.state.summary);
+
     }
 
 
     render() {
-        console.log(this.state);
+        console.log("yudong intro", this.props.summary);
         return (
             	<Grid>
             		<Row className="show-grid">
@@ -86,7 +93,8 @@ class Intro extends Component {
                     </Row>
 
                     <Row className="show-grid">
-                    	<Col md={12}> <p className="grayContent">{this.state.summary}</p> </Col>
+                    	{/*<Col md={12}> <p className="grayContent">{this.state.summary}</p> </Col>*/}
+                    	<Col md={12}> <p className="grayContent">{this.props.summary}</p> </Col>
                     </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -110,4 +118,24 @@ class Intro extends Component {
     }
 }
 
-export default Intro
+
+
+const mapStateToProps = state => {
+    return {
+        summary: state.myProfileReducer.about.summary
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setSummary: (summay) => {
+            dispatch ({
+                type: SET_SUMMARY,
+                payload: summay,
+            });
+        }
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Intro)
