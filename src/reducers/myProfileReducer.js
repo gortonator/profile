@@ -1,6 +1,6 @@
 import {FETCH_MY_PROFILE_DATA, SET_SUMMARY} from '../actions/types'
 
-const initialState = {
+export const initialState = {
     intro: {
         nuid: '2',
         firstname: 'Yudong',

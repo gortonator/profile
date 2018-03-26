@@ -1,5 +1,6 @@
 import axios from "axios";
 import {FETCH_MY_PROFILE_DATA, SET_SUMMARY} from '../actions/types'
+import {initialState} from '../reducers/myProfileReducer'
 
 export function setSummary(summary) {
     return {
@@ -14,9 +15,9 @@ export function fetchMyProfile() {
         axios.get("http://rest.learncode.academy/api/reacttest/tweets")
             .then((response) => {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);
-                console.log("Now using mock data", {"mock data": "mock data"});
+                console.log("Now using mock data", {"mock data": {...initialState, skills:['new mock data from API']}});
                 // return "yes";
-                dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data})
+                dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:['new mock data from API']}});
             })
     }
 };
