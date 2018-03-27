@@ -6,11 +6,11 @@ export default class EditExperience extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobTitle: this.props.item.jobTitle,
-            company: this.props.item.company,
-            startDate: this.props.item.startDate,
-            endDate: this.props.item.endDate,
-            description: this.props.item.desc
+            jobTitle: this.props.item.Title,
+            company: this.props.item.CompanyName,
+            startDate: this.props.item.StartDate,
+            endDate: this.props.item.EndDate,
+            description: this.props.item.Description
         }
     }
 
@@ -56,7 +56,7 @@ export default class EditExperience extends Component {
         }
 
         if(this.isValidDate(this.state.startDate)) {
-            this.props.item.startDate = this.state.startDate
+            this.props.item.StartDate = this.state.startDate
         }
         else {
             alert('Invalid start date. Date must be in mm/dd/yyyy format.')
@@ -64,16 +64,16 @@ export default class EditExperience extends Component {
         }
 
         if(this.isValidDate(this.state.endDate)) {
-            this.props.item.endDate = this.state.endDate
+            this.props.item.EndDate = this.state.endDate
         }
         else {
             alert('Invalid end date. Date must be in mm/dd/yyyy format.')
             return
         }
 
-        this.props.item.jobTitle = this.state.jobTitle
-        this.props.item.company = this.state.company
-        this.props.item.desc = this.state.description
+        this.props.item.Title = this.state.jobTitle
+        this.props.item.CompanyName = this.state.company
+        this.props.item.Description = this.state.description
         this.props.closePopup()
     }
 

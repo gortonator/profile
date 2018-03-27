@@ -4,35 +4,18 @@ import {Modal, Button} from "react-bootstrap"
 import EditExperience from "./EditExperience";
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
-import Projects from "../Project/Projects";
+import {updateExtraExperience} from "../../../../actions/myProfileActions";
+import {connect} from "react-redux";
 
-export default class ExtraExperiences extends Component {
-    constructor() {
-        super();
+class ExtraExperiences extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             addNew: false,
             edit:false,
             editItem: null,
-            count:0,
-            index: 2,
-            experiences: [
-                {
-                    id: 1,
-                    jobTitle: "Electronic Engineer",
-                    company: "Intel",
-                    startDate: "01/01/2017",
-                    endDate: "12/31/2017",
-                    desc: "I worked as Electronic Engineer."
-                },
-                {
-                    id: 2,
-                    jobTitle: "Automation Engineer",
-                    company: "GE",
-                    startDate: "01/01/2016",
-                    endDate: "12/31/2016",
-                    desc: "I worked as Automation Engineer."
-                }
-            ]
+            index:999999,
+            experiences: this.props.extraExperiences
         };
     }
 
@@ -94,14 +77,14 @@ export default class ExtraExperiences extends Component {
                         <table width="100%">
                             <tbody>
                             <tr>
-                                <td width="95%"><h2 className="companyName">{item.company}</h2></td>
+                                <td width="95%"><h2 className="companyName">{item.CompanyName}</h2></td>
                                 <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p className="grayContent">{item.jobTitle}</p></td></tr>
-                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><TextArea className="grayContent">{item.desc}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.Title}</p></td></tr>
+                            <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.Description}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -138,3 +121,17 @@ export default class ExtraExperiences extends Component {
 const TextArea = styled.p`
         white-space: pre-line;
     `
+
+const mapStateToProps = state => {
+    return {
+        extraExperiences: state.myProfileReducer.extraExperiences
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateExtraExperience: (extraExperience) => dispatch(updateExtraExperience(extraExperience))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExtraExperiences)

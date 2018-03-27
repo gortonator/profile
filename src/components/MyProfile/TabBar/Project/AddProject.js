@@ -80,10 +80,10 @@ export default class AddProject extends Component {
         var count = this.props.index + 1
         var item = {
             id: count,
-            projectName: this.state.projectName,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
-            desc: this.state.description,
+            ProjectName: this.state.projectName,
+            StartDate: this.state.startDate,
+            EndDate: this.state.endDate,
+            Description: this.state.description,
         }
         this.props.addFunc(item)
         this.props.increaseIndex()

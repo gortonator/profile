@@ -6,10 +6,10 @@ export default class EditProject extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            projectName: this.props.item.projectName,
-            startDate: this.props.item.startDate,
-            endDate: this.props.item.endDate,
-            description: this.props.item.desc
+            projectName: this.props.item.ProjectName,
+            startDate: this.props.item.StartDate,
+            endDate: this.props.item.EndDate,
+            description: this.props.item.Description
         }
     }
 
@@ -44,7 +44,7 @@ export default class EditProject extends Component {
         }
 
         if(this.isValidDate(this.state.startDate)) {
-            this.props.item.startDate = this.state.startDate
+            this.props.item.StartDate = this.state.startDate
         }
         else {
             alert('Invalid start date. Date must be in mm/dd/yyyy format.')
@@ -52,15 +52,15 @@ export default class EditProject extends Component {
         }
 
         if(this.isValidDate(this.state.endDate)) {
-            this.props.item.endDate = this.state.endDate
+            this.props.item.EndDate = this.state.endDate
         }
         else {
             alert('Invalid end date. Date must be in mm/dd/yyyy format.')
             return
         }
 
-        this.props.item.projectName = this.state.projectName
-        this.props.item.desc = this.state.description
+        this.props.item.ProjectName = this.state.projectName
+        this.props.item.Description = this.state.description
         this.props.closePopup()
     }
 

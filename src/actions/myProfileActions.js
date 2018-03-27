@@ -1,5 +1,6 @@
 import axios from "axios";
-import {FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT} from '../actions/types'
+import {FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY,
+    UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT} from '../actions/types'
 import {initialState} from '../reducers/myProfileReducer'
 
 export function setSummary(summary) {
@@ -44,6 +45,24 @@ export function updateAbout(about) {
         axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
             .then((response) => {
                 dispatch({type: UPDATE_ABOUT, payload: about});
+            })
+    }
+}
+
+export function updateExtraExperience(extraExperiences) {
+    return (dispatch) => {
+        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
+            .then((response) => {
+                dispatch({type: UPDATE_EXTRA_EXPERIENCE, payload: extraExperiences});
+            })
+    }
+}
+
+export function updateProject(projects) {
+    return (dispatch) => {
+        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
+            .then((response) => {
+                dispatch({type: UPDATE_PROJECT, payload: projects});
             })
     }
 }
