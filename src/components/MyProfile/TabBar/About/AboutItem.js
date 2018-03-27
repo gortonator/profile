@@ -13,7 +13,7 @@ class AboutItem extends Component {
         };
         this.makeEditable = this.makeEditable.bind(this);
         this.changeContentOnEnter = this.changeContentOnEnter.bind(this);
-        this.changeContent = this.changeContent.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.openNewPage = this.openNewPage.bind(this);
     }
 
@@ -21,21 +21,20 @@ class AboutItem extends Component {
         this.setState({
             editable: true
         })
-        console.log("111")
     }
 
     changeContentOnEnter(event) {
-        if(event.keyCode == 13){ // Press ENTER
-            this.changeContent(event)
+        if(event.keyCode === 13){ // Press ENTER
+            this.handleChange(event)
         }
     }
 
-    changeContent(event) {
+    handleChange(e) {
+        this.props.action(this.props.keyName, e.target.value);
         this.setState({
-            content: event.target.value,
+            content: e.target.value,
             editable: false
-        })
-        this.props.action(this.props.keyName, event.target.value);
+        });
     }
 
     openNewPage(){
@@ -44,7 +43,7 @@ class AboutItem extends Component {
 
     getContentComponent() {
         if(this.state.editable) {
-            return <FormControl defaultValue={this.state.content} onKeyDown={this.changeContentOnEnter} onBlur={this.changeContent} autoFocus/>;
+            return <FormControl defaultValue={this.state.content} onKeyDown={this.changeContentOnEnter} onBlur={this.handleChange} autoFocus/>;
         }else if(this.props.isLink){
             return <LinkText onClick={this.openNewPage}>{this.state.content}</LinkText>;
         }else{
@@ -60,11 +59,13 @@ class AboutItem extends Component {
         }
 
         return (
-            <tr>
-                <td width="30%" height="50px">{this.props.labelText}:</td>
-                <td width="50%">{this.getContentComponent()}</td>
-                <td width="20%" align="middle">{editIcon}</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td width="30%" height="50px">{this.props.labelText}:</td>
+                    <td width="50%">{this.getContentComponent()}</td>
+                    <td width="20%" align="middle">{editIcon}</td>
+                </tr>
+            </tbody>
         )
     }
 }
@@ -76,5 +77,6 @@ const LinkText = styled.span`
             cursor: pointer;
         }
     `
+
 
 export default AboutItem

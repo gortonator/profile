@@ -165,3 +165,9 @@ a:hover,a:focus{
 .row {
   margin: 2% 0;
 }
+
+.privacyTable > tbody > tr > td,
+.privacyTable > thead > tr > th {
+  font-size: 15px;
+  vertical-align: middle;
+}

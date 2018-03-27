@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
-import {FormControl, FormGroup} from "react-bootstrap";
+
+import {updateSkill} from "../../../../actions/myProfileActions";
+import {connect} from "react-redux";
 
 class Skill extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            content: this.props.value,
+            content: 'haha',
             editable: false
         };
         this.makeEditable = this.makeEditable.bind(this);
-        this.changeContent = this.changeContent.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     makeEditable() {
@@ -21,27 +23,32 @@ class Skill extends Component {
         })
     }
 
-    changeContent(event) {
+    handleChange(e) {
+        this.props.updateSkill(e.target.value);
         this.setState({
-            content: event.target.value,
+            content: e.target.value,
             editable: false
         })
-        this.props.action(this.props.keyName, event.target.value);
     }
 
     getContentComponent() {
         if(this.state.editable) {
-            return <TextArea defaultValue={this.state.content} onBlur={this.changeContent} autoFocus/>;
+            return <TextArea defaultValue={this.state.content} onBlur={this.handleChange} autoFocus/>;
+
         }else {
-            return <Show>{this.state.content}</Show>;
+            return <Show>{ this.state.content}</Show>;
         }
+
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({content: nextProps.skills})
     }
 
     render() {
-
         return (
             <div className="wrapper">
-                <p className="tab-content-subtitle">{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
+                <p className="tab-content-subtitle">MY SKILLS&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
                 <br/>
                 {this.getContentComponent()}
             </div>
@@ -62,4 +69,18 @@ const Show = styled.p`
         color: #777777;
     `
 
-export default Skill
+const mapStateToProps = state => {
+    return {
+        skills: state.myProfileReducer.skills
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateSkill: (skills) => dispatch(updateSkill(skills))
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Skill)
+
