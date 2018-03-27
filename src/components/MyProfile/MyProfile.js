@@ -86,7 +86,7 @@ class MyProfile extends Component {
                 },
             ],
 
-            skills: [],
+            skills: '',
 
 
             //=====================================================

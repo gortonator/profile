@@ -61,7 +61,7 @@ export const initialState = {
         },
     ],
 
-    skills: "Java\nPython\nC++\nRuby",
+    skills: '',
 
 
     //=====================================================

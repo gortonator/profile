@@ -10,7 +10,7 @@ class Skill extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: this.props.skills,
+            content: 'haha',
             editable: false
         };
         this.makeEditable = this.makeEditable.bind(this);
@@ -32,22 +32,20 @@ class Skill extends Component {
     }
 
     getContentComponent() {
-        // if(this.state.editable) {
-        //     return <TextArea defaultValue={this.state.content} onBlur={this.changeContent} autoFocus/>;
-        // }else {
-        //     return <Show>{this.state.content}</Show>;
-        // }
         if(this.state.editable) {
             return <TextArea defaultValue={this.state.content} onBlur={this.handleChange} autoFocus/>;
 
         }else {
-            return <Show>{ this.props.skills[0]}</Show>;
+            return <Show>{ this.state.content}</Show>;
         }
 
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({content: nextProps.skills})
+    }
+
     render() {
-        console.log("skill", this.props.skills[0]);
         return (
             <div className="wrapper">
                 <p className="tab-content-subtitle">MY SKILLS&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>

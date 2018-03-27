@@ -15,8 +15,8 @@ export function fetchMyProfile() {
         axios.get("http://rest.learncode.academy/api/reacttest/tweets")
             .then((response) => {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);
-                console.log("Now using mock data", {"mock data": {...initialState, skills:['new mock data from API']}});
-                dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:['new mock data from API']}});
+                console.log("Now using mock data", {"mock data": {...initialState, skills:"Java\nPython\nC++\nRuby"}});
+                dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:"Java\nPython\nC++\nRuby"}});
             })
     }
 }
