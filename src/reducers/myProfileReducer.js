@@ -1,4 +1,7 @@
-import {FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT} from '../actions/types'
+import {
+    FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
+    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT
+} from '../actions/types'
 
 export const initialState = {
     intro: {
@@ -39,26 +42,38 @@ export const initialState = {
 
     extraExperiences: [
         {
-            WorkExperienceId: '',
-            NeuId: '',
-            CompanyName: '',
-            StartDate: '',
-            EndDate: '',
-            CurrentJob: '',
-            Title: '',
-            Description: '',
+            id: 1,
+            Title: "Electronic Engineer",
+            CompanyName: "Intel",
+            StartDate: "01/01/2017",
+            EndDate: "12/31/2017",
+            Description: "I worked as Electronic Engineer."
         },
+        {
+            id: 2,
+            Title: "Automation Engineer",
+            CompanyName: "GE",
+            StartDate: "01/01/2016",
+            EndDate: "12/31/2016",
+            Description: "I worked as Automation Engineer."
+        }
     ],
 
     projects: [
         {
-            ProjectId: '',
-            NeuId: '',
-            ProjectName: '',
-            StartDate: '',
-            EndDate: '',
-            Description: '',
+            id: 1,
+            ProjectName: "Student Website",
+            StartDate: "01/01/2018",
+            EndDate: "04/20/2018",
+            Description: "Designed a student website."
         },
+        {
+            id: 2,
+            ProjectName: "Data Mining",
+            StartDate: "01/01/2018",
+            EndDate: "04/20/2018",
+            Description: "Data Mining project."
+        }
     ],
 
     skills: '',
@@ -112,6 +127,10 @@ export default function myProfileReducer(state = initialState,
             return {...state, skills:payload};
         case UPDATE_ABOUT:
             return {...state, about:payload};
+        case UPDATE_EXTRA_EXPERIENCE:
+            return {...state, extraExperiences:payload};
+        case UPDATE_PROJECT:
+            return {...state, projects:payload};
         default:
             console.log("not found any type match in reducer! you are given type " + type);
             return state;

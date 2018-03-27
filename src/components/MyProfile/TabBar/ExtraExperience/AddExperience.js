@@ -92,11 +92,11 @@ export default class AddExperience extends Component {
         var count = this.props.index + 1
         var item = {
             id: count,
-            jobTitle: this.state.jobTitle,
-            company: this.state.company,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
-            desc: this.state.description,
+            Title: this.state.jobTitle,
+            CompanyName: this.state.company,
+            StartDate: this.state.startDate,
+            EndDate: this.state.endDate,
+            Description: this.state.description,
         }
         this.props.addFunc(item)
         this.props.increaseIndex()

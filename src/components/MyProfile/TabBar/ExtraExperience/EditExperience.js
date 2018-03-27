@@ -6,11 +6,12 @@ export default class EditExperience extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobTitle: this.props.item.jobTitle,
-            company: this.props.item.company,
-            startDate: this.props.item.startDate,
-            endDate: this.props.item.endDate,
-            description: this.props.item.desc
+            id : this.props.item.id,
+            jobTitle: this.props.item.Title,
+            company: this.props.item.CompanyName,
+            startDate: this.props.item.StartDate,
+            endDate: this.props.item.EndDate,
+            description: this.props.item.Description
         }
     }
 
@@ -55,25 +56,31 @@ export default class EditExperience extends Component {
             return
         }
 
-        if(this.isValidDate(this.state.startDate)) {
-            this.props.item.startDate = this.state.startDate
-        }
-        else {
+        if(! this.isValidDate(this.state.startDate)) {
             alert('Invalid start date. Date must be in mm/dd/yyyy format.')
             return
         }
 
-        if(this.isValidDate(this.state.endDate)) {
-            this.props.item.endDate = this.state.endDate
-        }
-        else {
+        if(! this.isValidDate(this.state.endDate)) {
             alert('Invalid end date. Date must be in mm/dd/yyyy format.')
             return
         }
 
-        this.props.item.jobTitle = this.state.jobTitle
-        this.props.item.company = this.state.company
-        this.props.item.desc = this.state.description
+        var item = {
+            id: this.state.id,
+            Title: this.state.jobTitle,
+            CompanyName: this.state.company,
+            StartDate: this.state.startDate,
+            EndDate: this.state.endDate,
+            Description: this.state.description,
+        }
+        this.props.editFunc(item)
+
+        this.props.item.Title = item.Title
+        this.props.item.CompanyName = item.CompanyName
+        this.props.item.StartDate = item.StartDate
+        this.props.item.EndDate = item.EndDate
+        this.props.item.Description = item.Description
         this.props.closePopup()
     }
 

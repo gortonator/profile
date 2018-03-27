@@ -4,31 +4,19 @@ import {Modal, Button} from "react-bootstrap"
 import EditProject from "./EditProject";
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
+import {updateExtraExperience, updateProject} from "../../../../actions/myProfileActions";
+import {connect} from "react-redux";
 
-export default class Projects extends Component {
-    constructor() {
-        super();
+
+class Projects extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             addNew: false,
             edit:false,
             editItem: null,
-            index: 2,
-            projects: [
-                {
-                    id: 1,
-                    projectName: "Student Website",
-                    startDate: "01/01/2018",
-                    endDate: "04/20/2018",
-                    desc: "Designed a student website."
-                },
-                {
-                    id: 2,
-                    projectName: "Data Mining",
-                    startDate: "01/01/2018",
-                    endDate: "04/20/2018",
-                    desc: "Data Mining project."
-                }
-            ]
+            index: 999999,
+            projects: this.props.projects
         };
     }
 
@@ -91,14 +79,14 @@ export default class Projects extends Component {
                             <tbody>
                             <tr>
                                 <td width="95%">
-                                    <h2 className="companyName">{item.projectName}</h2>
+                                    <h2 className="companyName">{item.ProjectName}</h2>
                                 </td>
                                 <td width="5%">
                                     <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
-                            <tr><td><TextArea className="grayContent">{item.desc}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.Description}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -135,3 +123,17 @@ export default class Projects extends Component {
 const TextArea = styled.p`
         white-space: pre-line;
     `
+
+const mapStateToProps = state => {
+    return {
+        projects: state.myProfileReducer.projects
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateProject: (project) => dispatch(updateProject(project))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)
