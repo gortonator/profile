@@ -3,6 +3,7 @@ import {Modal, Table, Button} from 'react-bootstrap';
 import PrivacyItem from "./PrivacyItem";
 import {connect} from "react-redux";
 import {updatePrivacy} from "../../actions/myProfileActions";
+import {bindActionCreators} from "redux";
 
 
 class Privacy extends Component {
@@ -21,7 +22,6 @@ class Privacy extends Component {
 
     handleChange(stateName, e){
         this.setState({privacy: {...this.state.privacy, [stateName]: e.target.checked}});
-        console.log(stateName +" changed");
     }
 
 
@@ -37,7 +37,6 @@ class Privacy extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <Modal show={this.props.show} onHide={this.hideAndReloadData}>
                 <Modal.Header closeButton>
@@ -86,11 +85,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updatePrivacy: (privacy) => dispatch(updatePrivacy(privacy))
-    };
-};
-
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    updatePrivacy
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Privacy)

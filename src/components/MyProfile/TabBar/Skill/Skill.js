@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
-
 import {updateSkill} from "../../../../actions/myProfileActions";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 class Skill extends Component {
 
@@ -75,11 +75,9 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateSkill: (skills) => dispatch(updateSkill(skills))
-    };
-};
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    updateSkill
+}, dispatch);
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Skill)
