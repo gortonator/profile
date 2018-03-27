@@ -24,13 +24,13 @@ class ExtraExperiences extends Component {
         this.setState({
             index: this.state.experiences.length
         });
-    }
+    };
 
     clickOnAdd = () => {
         this.setState({
             addNew: !this.state.addNew
         });
-    }
+    };
 
     clickOnEdit (item) {
         this.setState({
@@ -43,23 +43,25 @@ class ExtraExperiences extends Component {
         this.setState({
             edit: !this.state.edit
         });
-    }
+    };
 
     handleAdd = (item) => {
         this.props.addExtraExperience(item);
         this.state.experiences.push(item)
-    }
+    };
 
     handleDel = (item) => {
         this.props.deleteExtraExperience(item);
         this.setState({
             experiences: this.state.experiences.filter(experience => experience.id !== item.id)
         })
-    }
+    };
 
     handleEdit = (item) => {
         this.props.updateExtraExperience(item);
-    }
+        let index = this.state.experiences.indexOf(this.state.editItem);
+        this.state.experiences[index] = item;
+    };
 
     render() {
         return (
@@ -128,7 +130,7 @@ class ExtraExperiences extends Component {
 
 const TextArea = styled.p`
         white-space: pre-line;
-    `
+    `;
 
 const mapStateToProps = state => {
     return {

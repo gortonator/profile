@@ -4,7 +4,7 @@ import {Modal, Button} from "react-bootstrap";
 
 export default class EditExperience extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             id : this.props.item.id,
             jobTitle: this.props.item.Title,
@@ -47,51 +47,51 @@ export default class EditExperience extends Component {
 
     editExperience = () => {
         if(!this.state.jobTitle || this.state.jobTitle.trim().length === 0){
-            alert("Job Title can't be blank!")
+            alert("Job Title can't be blank!");
             return
         }
 
         if(!this.state.company || this.state.company.trim().length === 0){
-            alert("Company can't be blank!")
+            alert("Company can't be blank!");
             return
         }
 
         if(! this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm/dd/yyyy format.')
+            alert('Invalid start date. Date must be in mm/dd/yyyy format.');
             return
         }
 
         if(! this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm/dd/yyyy format.')
+            alert('Invalid end date. Date must be in mm/dd/yyyy format.');
             return
         }
 
-        var item = {
+        let item = {
             id: this.state.id,
             Title: this.state.jobTitle,
             CompanyName: this.state.company,
             StartDate: this.state.startDate,
             EndDate: this.state.endDate,
             Description: this.state.description,
-        }
-        this.props.editFunc(item)
+        };
+        this.props.editFunc(item);
 
-        this.props.item.Title = item.Title
-        this.props.item.CompanyName = item.CompanyName
-        this.props.item.StartDate = item.StartDate
-        this.props.item.EndDate = item.EndDate
-        this.props.item.Description = item.Description
+        // this.props.item.Title = item.Title
+        // this.props.item.CompanyName = item.CompanyName
+        // this.props.item.StartDate = item.StartDate
+        // this.props.item.EndDate = item.EndDate
+        // this.props.item.Description = item.Description
         this.props.closePopup()
-    }
+    };
 
     deleteExpeirence = () => {
         if (window.confirm('Are you sure you want to delete this experience?')) {
-            this.props.deleteFunc(this.props.item)
+            this.props.deleteFunc(this.props.item);
             this.props.closePopup()
         } else {
             // Do nothing!
         }
-    }
+    };
 
     isValidDate(dateString)
     {
@@ -100,16 +100,16 @@ export default class EditExperience extends Component {
             return false;
 
         // Parse the date parts to integers
-        var parts = dateString.split("/");
-        var day = parseInt(parts[1], 10);
-        var month = parseInt(parts[0], 10);
-        var year = parseInt(parts[2], 10);
+        let parts = dateString.split("/");
+        let day = parseInt(parts[1], 10);
+        let month = parseInt(parts[0], 10);
+        let year = parseInt(parts[2], 10);
 
         // Check the ranges of month and year
         if(year < 1000 || year > 3000 || month === 0 || month > 12)
             return false;
 
-        var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+        let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
         // Adjust for leap years
         if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0))

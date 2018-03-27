@@ -4,8 +4,10 @@ import {Modal, Button} from "react-bootstrap"
 import EditProject from "./EditProject";
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
-import {updateExtraExperience, updateProject} from "../../../../actions/myProfileActions";
+import {updateProject, addProject, deleteProject
+} from "../../../../actions/myProfileActions";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 
 class Projects extends Component {
@@ -24,36 +26,44 @@ class Projects extends Component {
         this.setState({
             index: this.state.projects.length
         });
-    }
+    };
 
-    addNewProject = () => {
+    clickOnAdd = () => {
         this.setState({
             addNew: !this.state.addNew
         });
-    }
+    };
 
-    editProject = () => {
-        this.setState({
-            edit: !this.state.edit
-        });
-    }
-
-    handleAdd = (item) => {
-        this.state.projects.push(item)
-    }
-
-    handleDel = (item) => {
-        this.setState({
-            projects: this.state.projects.filter(project => project.id !== item.id)
-        })
-    }
-
-    handleEdit (item) {
+    clickOnEdit (item) {
         this.setState({
             edit: !this.state.edit,
             editItem:item
         });
     }
+
+    setEditFlag = () => {
+        this.setState({
+            edit: !this.state.edit
+        });
+    };
+
+    handleAdd = (item) => {
+        this.props.addProject(item);
+        this.state.projects.push(item)
+    };
+
+    handleDel = (item) => {
+        this.props.deleteProject(item);
+        this.setState({
+            projects: this.state.projects.filter(project => project.id !== item.id)
+        })
+    };
+
+    handleEdit = (item) => {
+        this.props.updateProject(item);
+        let index = this.state.projects.indexOf(this.state.editItem);
+        this.state.projects[index] = item;
+    };
 
     render() {
         return (
@@ -65,7 +75,7 @@ class Projects extends Component {
                             <p className="tab-content-subtitle">MY PROJECTS</p>
                         </td>
                         <td width="10%">
-                            <Button onClick={this.addNewProject}>
+                            <Button onClick={this.clickOnAdd}>
                                 Add
                             </Button>
                         </td>
@@ -82,7 +92,7 @@ class Projects extends Component {
                                     <h2 className="companyName">{item.ProjectName}</h2>
                                 </td>
                                 <td width="5%">
-                                    <EditIcon onClick={() => this.handleEdit(item)}></EditIcon>
+                                    <EditIcon onClick={() => this.clickOnEdit(item)}></EditIcon>
                                 </td>
                             </tr>
                             <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
@@ -93,9 +103,9 @@ class Projects extends Component {
                     </div>
                 ))}
 
-                <Modal show={this.state.addNew} onHide={this.addNewProject}>
+                <Modal show={this.state.addNew} onHide={this.clickOnAdd}>
                     <AddProject
-                        closePopup={this.addNewProject}
+                        closePopup={this.clickOnAdd}
                         text={"Add New Project"}
                         projects={this.state.projects}
                         increaseIndex={this.increase}
@@ -105,13 +115,14 @@ class Projects extends Component {
                     </AddProject>
                 </Modal>
 
-                <Modal show={this.state.edit} onHide={this.editProject}>
+                <Modal show={this.state.edit} onHide={this.setEditFlag}>
                     <EditProject
-                        closePopup={this.editProject}
+                        closePopup={this.setEditFlag}
                         text={"Edit Project"}
                         projects={this.state.projects}
                         item={this.state.editItem}
                         deleteFunc={this.handleDel}
+                        editFunc={this.handleEdit}
                     >
                     </EditProject>
                 </Modal>
@@ -122,7 +133,7 @@ class Projects extends Component {
 
 const TextArea = styled.p`
         white-space: pre-line;
-    `
+    `;
 
 const mapStateToProps = state => {
     return {
@@ -130,10 +141,10 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateProject: (project) => dispatch(updateProject(project))
-    };
-};
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    updateProject,
+    addProject,
+    deleteProject
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects)

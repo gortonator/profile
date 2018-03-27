@@ -49,19 +49,19 @@ export default class AddExperience extends Component {
             return false;
 
         // Parse the date parts to integers
-        var parts = dateString.split("/");
-        var day = parseInt(parts[1], 10);
-        var month = parseInt(parts[0], 10);
-        var year = parseInt(parts[2], 10);
+        let parts = dateString.split("/");
+        let day = parseInt(parts[1], 10);
+        let month = parseInt(parts[0], 10);
+        let year = parseInt(parts[2], 10);
 
         // Check the ranges of month and year
-        if(year < 1000 || year > 3000 || month == 0 || month > 12)
+        if(year < 1000 || year > 3000 || month === 0 || month > 12)
             return false;
 
-        var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+        let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
         // Adjust for leap years
-        if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0))
             monthLength[1] = 29;
 
         // Check the range of the day
@@ -70,38 +70,38 @@ export default class AddExperience extends Component {
 
     AddExperience = () => {
         if(!this.state.jobTitle || this.state.jobTitle.trim().length === 0){
-            alert("Job Title can't be blank!")
+            alert("Job Title can't be blank!");
             return
         }
 
         if(!this.state.company || this.state.company.trim().length === 0){
-            alert("Company can't be blank!")
+            alert("Company can't be blank!");
             return
         }
 
         if(!this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm/dd/yyyy format.')
+            alert('Invalid start date. Date must be in mm/dd/yyyy format.');
             return
         }
 
         if(!this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm/dd/yyyy format.')
+            alert('Invalid end date. Date must be in mm/dd/yyyy format.');
             return
         }
 
-        var count = this.props.index + 1
-        var item = {
+        let count = this.props.index + 1;
+        let item = {
             id: count,
             Title: this.state.jobTitle,
             CompanyName: this.state.company,
             StartDate: this.state.startDate,
             EndDate: this.state.endDate,
             Description: this.state.description,
-        }
-        this.props.addFunc(item)
-        this.props.increaseIndex()
+        };
+        this.props.addFunc(item);
+        this.props.increaseIndex();
         this.props.closePopup()
-    }
+    };
 
     render() {
         return (
