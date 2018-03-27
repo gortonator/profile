@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EditIcon from "../About/EditIcon";
 import styled from "styled-components";
+
 import {updateSkill} from "../../../../actions/myProfileActions";
 import {connect} from "react-redux";
 
@@ -31,15 +32,22 @@ class Skill extends Component {
     }
 
     getContentComponent() {
+        // if(this.state.editable) {
+        //     return <TextArea defaultValue={this.state.content} onBlur={this.changeContent} autoFocus/>;
+        // }else {
+        //     return <Show>{this.state.content}</Show>;
+        // }
         if(this.state.editable) {
             return <TextArea defaultValue={this.state.content} onBlur={this.handleChange} autoFocus/>;
+
         }else {
-            return <Show>{this.state.content}</Show>;
+            return <Show>{ this.props.skills[0]}</Show>;
         }
+
     }
 
     render() {
-
+        console.log("skill", this.props.skills[0]);
         return (
             <div className="wrapper">
                 <p className="tab-content-subtitle">MY SKILLS&nbsp;&nbsp;&nbsp;&nbsp;<EditIcon onClick={this.makeEditable}/></p>
@@ -77,3 +85,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Skill)
+

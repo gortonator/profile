@@ -23,6 +23,8 @@ const store = createStore(
     applyMiddleware(thunk, promise()),
 );
 
+
+
 ReactDOM.render(
     <Provider store={store}>
         <App />

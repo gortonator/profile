@@ -101,8 +101,8 @@ export default function myProfileReducer(state = initialState,
     console.log("reducer", type, payload);
     switch (type) {
         case FETCH_MY_PROFILE_DATA:
-            console.log("yudong2");
-            return {...state, data: payload};
+            console.log("yudong2", payload);
+            return payload;
         case SET_SUMMARY:
             console.log("=================================");
             return {...state, about:{...state.about, summary:payload}};
