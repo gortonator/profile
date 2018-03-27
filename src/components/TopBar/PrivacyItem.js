@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, NavItem, Nav, Modal, Table, FormGroup, FormControl, Button, Checkbox} from 'react-bootstrap';
-import profile_image from '../../image/profile_image.png'
-import logo from '../../image/neu.png'
-import styled from "styled-components";
-
+import {Checkbox} from 'react-bootstrap';
 
 class PrivacyItem extends Component {
 

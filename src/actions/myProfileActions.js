@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_MY_PROFILE_DATA, SET_SUMMARY} from '../actions/types'
+import {FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT} from '../actions/types'
 import {initialState} from '../reducers/myProfileReducer'
 
 export function setSummary(summary) {
@@ -20,7 +20,34 @@ export function fetchMyProfile() {
                 dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:['new mock data from API']}});
             })
     }
-};
+}
+
+export function updatePrivacy(privacy) {
+    return (dispatch) => {
+        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
+            .then((response) => {
+                dispatch({type: UPDATE_PRIVACY, payload: privacy});
+            })
+    }
+}
+
+export function updateSkill(skills) {
+    return (dispatch) => {
+        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
+            .then((response) => {
+                dispatch({type: UPDATE_SKILL, payload: skills});
+            })
+    }
+}
+
+export function updateAbout(about) {
+    return (dispatch) => {
+        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
+            .then((response) => {
+                dispatch({type: UPDATE_ABOUT, payload: about});
+            })
+    }
+}
 // return (dispatch) => {
 //     console.lod("yudong action");
 //     axios.get("http://rest.learncode.academy/api/reacttest/tweets")

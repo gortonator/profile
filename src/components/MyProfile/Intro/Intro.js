@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Row, Col, Grid, css, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
+import {Row, Col, Grid, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
 import EditIcon from "../TabBar/About/EditIcon";
-import styled from "styled-components";
 import location from '../../../image/location.jpeg';
 import {connect} from 'react-redux';
 import {SET_SUMMARY} from '../../../actions/types'

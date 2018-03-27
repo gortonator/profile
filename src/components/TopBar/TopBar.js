@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, NavItem, Nav, Modal, Image, FormGroup, FormControl, Button, Checkbox} from 'react-bootstrap';
+import {Navbar, NavItem, Nav, Image, FormGroup, FormControl, Button} from 'react-bootstrap';
 import profile_image from '../../image/profile_image.png'
 import logo from '../../image/neu.png'
 import styled from "styled-components";
