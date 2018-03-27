@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import AboutItem from "./AboutItem";
 import styled from "styled-components";
-import {updateAbout} from "../../../../actions/myProfileActions";
+import {setSummary, updateAbout} from "../../../../actions/myProfileActions";
 import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
 
 class About extends Component {
 
@@ -50,10 +51,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateAbout: (about) => dispatch(updateAbout(about))
-    };
-};
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    updateAbout,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(About)

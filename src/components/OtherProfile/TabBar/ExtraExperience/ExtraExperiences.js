@@ -15,11 +15,11 @@ export default class ExtraExperiences extends Component {
             experiences: [
                 {
                     id: 1,
-                    jobTitle: "Electronic Engineer",
-                    company: "Intel",
-                    startDate: "01/01/2017",
-                    endDate: "12/31/2017",
-                    desc: "I worked as Electronic Engineer."
+                    jobTitle: "",
+                    company: "******",
+                    startDate: "",
+                    endDate: "",
+                    desc: ""
                 },
                 {
                     id: 2,

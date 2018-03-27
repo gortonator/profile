@@ -13,10 +13,10 @@ export default class Projects extends Component {
             projects: [
                 {
                     id: 1,
-                    projectName: "Student Website",
-                    startDate: "01/01/2018",
-                    endDate: "04/20/2018",
-                    desc: "Designed a student website."
+                    projectName: "******",
+                    startDate: "",
+                    endDate: "",
+                    desc: ""
                 },
                 {
                     id: 2,
