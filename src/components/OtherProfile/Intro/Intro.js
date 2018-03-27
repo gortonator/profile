@@ -16,7 +16,7 @@ class Intro extends Component {
 
         this.state = {
 
-        	intro : {
+        	/**intro : {
         		"name" : "Jeremy Rose",
         		"city" : "Seattle",
         		"state" : "WA",
@@ -25,7 +25,8 @@ class Intro extends Component {
         		"startTerm" : "Fall 2016",
         		"endTerm" : "May 2018",
         		"summary" : "I'm a student"
-        	},
+        	},**/
+            intro: this.props.intro,
             summary: this.props.summary,
             show: false
         };
@@ -57,7 +58,7 @@ class Intro extends Component {
         return (
             	<Grid>
             		<Row className="show-grid">
-            			<Col md={12}> <p id="intro-name">{this.state.intro.name}
+            			<Col md={12}> <p id="intro-name">{this.state.intro.firstName},{this.state.intro.lastName}
             			&nbsp;&nbsp;&nbsp;
             			<img id="locationImage" src={location} alt="pic"/>&nbsp;
             			<span id="location" className="grayContent">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>

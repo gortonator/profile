@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import profile_image from '../../../image/profile_image.png'
+import profile_image from '../../../image/default-avatar.png'
 import {Image} from "react-bootstrap";
 import styled from "styled-components";
 

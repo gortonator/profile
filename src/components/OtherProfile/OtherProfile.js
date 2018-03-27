@@ -19,18 +19,20 @@ class OtherProfile extends Component {
             //The following can not be changed
             intro: {
                 nuid: '2',
-                firstname: 'Yudong',
-                lastname: 'Wang',
-                middlename: 'N/A',
+                firstName: 'Yudong',
+                lastName: 'Wang',
+                middleName: 'N/A',
 
                 gender: 'Male',
                 age: 22,
                 email: null,
                 campus: 'Boston',
-                startterm: 'Spring 2016',
-                expectedgraduation: 'June 2018',
+                startTerm: 'Spring 2016',
+                endTerm: 'June 2018',
                 enrollmentstatus: 'Yes (active student)',
                 photo: 'empty',
+                state: 'MA',
+                city: 'Boston'
             },
 
             workExperiences: [
@@ -121,7 +123,9 @@ class OtherProfile extends Component {
                             <Picture />
                         </Col>
                         <Col md={8}>
-                            <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>
+                            <Intro summary={this.state.about.summary} handler={this.handleSummaryChange}
+                                    intro={this.state.intro}/>
+
                         </Col>
                     </Row>
                     <Row className="show-grid">

@@ -12,12 +12,12 @@ class TabBar extends Component {
         super();
         this.state = {
             phone: "+1 (206)306-3178",
-            email: "jeremy@gmail.com",
-            address: "225 Terry Ave, Seattle, WA",
-            linkedin: "www.linkedin.com/jeremy",
-            github: "www.github.com/jeremy",
-            facebook: "www.facebook.com/jeremy",
-            website: "www.jeremy.com/home",
+            email: "******",
+            address: "******",
+            linkedin: "www.linkedin.com/yudong",
+            github: "www.github.com/yudong",
+            facebook: "www.facebook.com/yudong",
+            website: "www.yudong.com/home",
             skill: "Java\nPython\nC++\nRuby",
             phone: "******"
         };
