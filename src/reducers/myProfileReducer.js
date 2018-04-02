@@ -34,13 +34,23 @@ export const initialState = {
 
     courses: [
         {
-            CourseId: '',
-            CourseName: '',
-            Description: '',
+            CourseId: '1',
+            CourseName: 'Programming Design Paradigm',
+            Description: 'This is a description',
+        },
+        {
+            CourseId: '2',
+            CourseName: 'Fundamentals of Computer Science',
+            Description: 'This is a description',
+        },
+        {
+            CourseId: '3',
+            CourseName: 'Discrete Structures',
+            Description: 'This is a description',
         },
     ],
 
-    extraExperiences: [
+extraExperiences: [
         {
             id: 1,
             Title: "Electronic Engineer",
