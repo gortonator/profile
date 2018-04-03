@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 import {connect} from 'react-redux';
-
-
+import {fetchMyCourses} from '../../../../actions/myProfileActions'
+import {bindActionCreators} from 'redux';
 
 
 class Academic extends Component {
+
 
     render() {
 
@@ -17,7 +18,6 @@ class Academic extends Component {
             </li>
         );
 
-        console.log("yudong courses", this.props.courses);
         return (
             <div className="wrapper">
                 <p className="tab-content-subtitle">MY COURSES</p>
@@ -32,6 +32,7 @@ const mapStateToProps = state => {
         courses: state.myProfileReducer.courses
     };
 };
+
 
 
 export default connect(mapStateToProps)(Academic)

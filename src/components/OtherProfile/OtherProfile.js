@@ -5,10 +5,17 @@ import Coop from './Coop/Coop'
 import TabBar from './TabBar/TabBar'
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
-
+import {FETCH_OTHER_PROFILE_DATA} from "../../actions/types"
+import {fetchOtherProfile} from "../../actions/myProfileActions"
+import {connect} from 'react-redux';
 
 class OtherProfile extends Component {
 
+
+    componentWillMount() {
+        console.log("yudong1");
+        this.props.fetchOtherProfile();
+    }
 
     constructor(props) {
         super(props);
@@ -154,4 +161,16 @@ const Wrapper = styled.div`
     `;
 
 
-export default OtherProfile
+const mapStateToProps = state => {
+    return {
+        summary: state.myProfileReducer.about.summary
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchOtherProfile: () => dispatch(fetchOtherProfile())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OtherProfile)

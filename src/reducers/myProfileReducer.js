@@ -1,5 +1,5 @@
 import {
-    FETCH_MY_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
+    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
     UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT
 } from '../actions/types'
 
@@ -17,17 +17,29 @@ export const initialState = {
         expectedgraduation: 'June 2018',
         enrollmentstatus: 'Yes (active student)',
         photo: 'empty',
+        state: 'MA',
+        city: 'Boston'
     },
 
     workExperiences: [
         {
-            WorkExperienceId: '',
-            NeuId: '',
-            CompanyName: '',
-            StartDate: '',
-            EndDate: '',
-            CurrentJob: '',
-            Title: '',
+            WorkExperienceId: 1,
+            NeuId: 12345,
+            CompanyName: "Amazon.com",
+            StartDate: "May 2017",
+            EndDate: "Sept 2017",
+            CurrentJob: "SDE",
+            Title: "Software Engineer Intern",
+            Description: '',
+        },
+        {
+            WorkExperienceId: 2,
+            NeuId: 12345,
+            CompanyName:"Zillow",
+            StartDate: 'May 2017',
+            EndDate: 'Sept 2017',
+            CurrentJob: 'SDE',
+            Title: 'Software Engineer',
             Description: '',
         },
     ],
@@ -50,7 +62,7 @@ export const initialState = {
         },
     ],
 
-extraExperiences: [
+    extraExperiences: [
         {
             id: 1,
             Title: "Electronic Engineer",
@@ -126,21 +138,21 @@ export default function myProfileReducer(state = initialState,
     console.log("reducer", type, payload);
     switch (type) {
         case FETCH_MY_PROFILE_DATA:
-            console.log("yudong2", payload);
+            return payload;
+        case FETCH_OTHER_PROFILE_DATA:
             return payload;
         case SET_SUMMARY:
-            console.log("=================================");
-            return {...state, about:{...state.about, summary:payload}};
+            return {...state, about: {...state.about, summary: payload}};
         case UPDATE_PRIVACY:
-            return {...state, privacy:payload};
+            return {...state, privacy: payload};
         case UPDATE_SKILL:
-            return {...state, skills:payload};
+            return {...state, skills: payload};
         case UPDATE_ABOUT:
-            return {...state, about:payload};
+            return {...state, about: payload};
         case UPDATE_EXTRA_EXPERIENCE:
-            return {...state, extraExperiences:payload};
+            return {...state, extraExperiences: payload};
         case UPDATE_PROJECT:
-            return {...state, projects:payload};
+            return {...state, projects: payload};
         default:
             console.log("not found any type match in reducer! you are given type " + type);
             return state;

@@ -17,22 +17,9 @@ class Intro extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-
-            intro: {
-                "name": "Jeremy Rose",
-                "city": "Seattle",
-                "state": "WA",
-                "gender": "Male",
-                "campus": "Seattle",
-                "startTerm": "Fall 2016",
-                "endTerm": "May 2018",
-                "summary": "I'm a student"
-            },
             summary: this.props.summary,
             show: false
         };
-
-
     }
 
 
@@ -47,43 +34,38 @@ class Intro extends Component {
 
     handleChange(event) {
         this.setState({summary: event.target.value});
-        console.log("change", this.state);
     }
 
     handleSubmit() {
         this.setState({show: false});
-        // this.props.handler(this.state.summary);
-        console.log("submit", this.state.summary);
         this.props.setSummary(this.state.summary);
-
     }
 
 
     render() {
-        console.log("yudong intro", this.props.summary);
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col md={12}><p id="intro-name">{this.state.intro.name}
+                    <Col md={12}><p id="intro-name">{this.props.intro.firstname}, {this.props.intro.lastname}
                         &nbsp;&nbsp;&nbsp;
                         <img id="locationImage" src={location} alt="pic"/>&nbsp;
                         <span id="location"
-                              className="grayContent">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>
+                              className="grayContent">{this.props.intro.city}, {this.props.intro.state}</span></p></Col>
                 </Row>
 
                 <br/>
                 <Row className="show-grid">
                     <Col md={3}><p>Gender:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.state.intro.gender}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.gender}</p></Col>
                     <Col md={3}><p>Start Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.state.intro.startTerm}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.startterm}</p></Col>
                 </Row>
 
                 <Row className="show-grid">
                     <Col md={3}><p>Campus:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.state.intro.campus}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.campus}</p></Col>
                     <Col md={3}><p>End Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.state.intro.endTerm}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.expectedgraduation}</p></Col>
 
                 </Row>
 
@@ -95,7 +77,6 @@ class Intro extends Component {
                 </Row>
 
                 <Row className="show-grid">
-                    {/*<Col md={12}> <p className="grayContent">{this.state.summary}</p> </Col>*/}
                     <Col md={12}><p className="grayContent">{this.props.summary}</p></Col>
                 </Row>
 
@@ -124,7 +105,8 @@ class Intro extends Component {
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.about.summary
+        summary: state.myProfileReducer.about.summary,
+        intro: state.myProfileReducer.intro,
     };
 };
 
