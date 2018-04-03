@@ -98,7 +98,7 @@ export const initialState = {
         }
     ],
 
-    skills: '',
+    skills: 'is there any skill there?',
 
 
     //=====================================================

@@ -38,7 +38,6 @@ class Skill extends Component {
         }else {
             return <Show>{ this.state.content}</Show>;
         }
-
     }
 
     componentWillReceiveProps(nextProps){

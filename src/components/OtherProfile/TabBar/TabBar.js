@@ -8,44 +8,11 @@ import { Tab, Tabs } from 'react-bootstrap';
 
 class TabBar extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            phone: "+1 (206)306-3178",
-            email: "******",
-            address: "******",
-            linkedin: "www.linkedin.com/yudong",
-            github: "www.github.com/yudong",
-            facebook: "www.facebook.com/yudong",
-            website: "www.yudong.com/home",
-            skill: "Java\nPython\nC++\nRuby",
-            phone: "******"
-        };
-
-
-
-        this.changeState = this.changeState.bind(this);
-    }
-
-    changeState(key, value) {
-        this.setState({
-            [key]: value
-        });
-        console.log("change "+[key]+": "+value);
-    }
-
     render() {
         return (
-            <Tabs className="tab nav-tabs" defaultActiveKey={1}>
+            <Tabs id="tab" className="tab nav-tabs" defaultActiveKey={1}>
                 <Tab className="tab nav-tabs pane" eventKey={1} title="About">
-                    <About phone={this.state.phone}
-                           email={this.state.email}
-                           address={this.state.address}
-                           linkedin={this.state.linkedin}
-                           github={this.state.github}
-                           facebook={this.state.facebook}
-                           website={this.state.website}
-                           action={this.changeState}/>
+                    <About/>
                 </Tab>
                 <Tab className="tab nav-tabs pane" eventKey={2} title="Academic">
                     <Academic/>
@@ -57,7 +24,7 @@ class TabBar extends Component {
                     <Project/>
                 </Tab>
                 <Tab className="tab nav-tabs pane" eventKey={5} title="Skill">
-                    <Skill labelText="MY SKILLS" keyName="skill" action={this.changeState} value={this.state.skill}/>
+                    <Skill/>
                 </Tab>
             </Tabs>
         )

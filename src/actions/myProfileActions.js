@@ -17,7 +17,6 @@ export function fetchMyProfile() {
         axios.get("http://rest.learncode.academy/api/reacttest/tweets")
             .then((response) => {
                 console.log("FETCH_MY_PROFILE_SUCCEED", response);
-                console.log("Now using mock data", {"mock data": {...initialState, skills:"Java\nPython\nC++\nRuby"}});
                 dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:"Java\nPython\nC++\nRuby"}});
             })
     }
@@ -29,8 +28,7 @@ export function fetchOtherProfile() {
         axios.get("http://rest.learncode.academy/api/reacttest/tweets")
             .then((response) => {
                 console.log("FETCH_OTHER_PROFILE_SUCCEED", response);
-                console.log("Now using mock data", {"mock data": {...initialState, skills:"Java\nPython\nC++\nRuby"}});
-                dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: {...initialState, skills:"Java\nPython\nC++\nRuby"}});
+                dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: {...initialState, intro:{...initialState.intro, firstname:"Yang", lastname:"Li"}}});
             })
     }
 }
