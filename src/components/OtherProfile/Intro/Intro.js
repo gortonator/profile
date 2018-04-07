@@ -45,7 +45,7 @@ class Intro extends Component {
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col md={12}><p id="intro-name">{this.props.intro.firstname}, {this.props.intro.lastname}
+                    <Col md={12}><p id="intro-name">{this.props.intro.firstName}, {this.props.intro.lastName}
                         &nbsp;&nbsp;&nbsp;
                         <img id="locationImage" src={location} alt="pic"/>&nbsp;
                         <span id="location"
@@ -57,14 +57,14 @@ class Intro extends Component {
                     <Col md={3}><p>Gender:</p></Col>
                     <Col md={3}><p className="grayContent">{this.props.intro.gender}</p></Col>
                     <Col md={3}><p>Start Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.startterm}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.entryTerm + ' ' + this.props.intro.entryYear}</p></Col>
                 </Row>
 
                 <Row className="show-grid">
                     <Col md={3}><p>Campus:</p></Col>
                     <Col md={3}><p className="grayContent">{this.props.intro.campus}</p></Col>
                     <Col md={3}><p>End Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.expectedgraduation}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.expectedLastTerm + ' ' + this.props.intro.expectedLastYear}</p></Col>
 
                 </Row>
 
@@ -99,8 +99,8 @@ class Intro extends Component {
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.about.summary,
-        intro: state.myProfileReducer.intro,
+        summary: state.myProfileReducer.studentRecord.summary,
+        intro: state.myProfileReducer.studentRecord,
     };
 };
 

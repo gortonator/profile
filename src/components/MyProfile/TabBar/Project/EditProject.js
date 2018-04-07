@@ -6,11 +6,11 @@ export default class EditProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.item.id,
-            projectName: this.props.item.ProjectName,
-            startDate: this.props.item.StartDate,
-            endDate: this.props.item.EndDate,
-            description: this.props.item.Description
+            id: this.props.item.projectId,
+            projectName: this.props.item.projectName,
+            startDate: this.props.item.startDate,
+            endDate: this.props.item.endDate,
+            description: this.props.item.description
         }
     }
 
@@ -55,11 +55,11 @@ export default class EditProject extends Component {
         }
 
         let item = {
-            id: this.state.id,
-            ProjectName: this.state.projectName,
-            StartDate: this.state.startDate,
-            EndDate: this.state.endDate,
-            Description: this.state.description,
+            projectId: this.state.id,
+            projectName: this.state.projectName,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            description: this.state.description,
         };
         this.props.editFunc(item);
 
@@ -69,7 +69,7 @@ export default class EditProject extends Component {
     };
 
     deleteProject = () => {
-        if (window.confirm('Are you sure you want to delete this experience?')) {
+        if (window.confirm('Are you sure you want to delete this project?')) {
             this.props.deleteFunc(this.props.item);
             this.props.closePopup()
         } else {
@@ -80,11 +80,11 @@ export default class EditProject extends Component {
     isValidDate(dateString)
     {
         // First check for the pattern
-        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+        if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
             return false;
 
         // Parse the date parts to integers
-        let parts = dateString.split("/");
+        let parts = dateString.split("-");
         let day = parseInt(parts[1], 10);
         let month = parseInt(parts[0], 10);
         let year = parseInt(parts[2], 10);

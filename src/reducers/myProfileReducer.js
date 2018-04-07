@@ -1,27 +1,27 @@
 import {
     FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
-    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT
+    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE
 } from '../actions/types'
 
 export const initialState = {
     ExtraExperiences: [
         {
-            endDate: "2019-04-01",
+            endDate: "04-01-2019",
             companyName: "Amazon",
             description: "Intern",
             title: "Intern",
             extraExperienceId: 8,
-            startDate: "2019-01-01"
+            startDate: "01-01-2019"
         }
     ],
 
     Projects: [
         {
-            endDate: "2017-12-31",
+            endDate: "12-31-2017",
             description: "Intern",
             projectName: "CNAO",
             projectId: 5,
-            startDate: "2017-12-12"
+            startDate: "12-12-2017"
         }
     ],
 
@@ -59,9 +59,10 @@ export const initialState = {
             companyName: "Amazon.com",
             startDate: "May 2017",
             endDate: "Sept 2017",
-            currentJob: "SDE",
+            currentJob: true,
+            coop: true,
             title: "Software Engineer Intern",
-            description: '',
+            description: 'Work as SDE',
         },
         {
             workExperienceId: 2,
@@ -69,9 +70,10 @@ export const initialState = {
             companyName:"Zillow",
             startDate: 'May 2017',
             endDate: 'Sept 2017',
-            currentJob: 'SDE',
+            currentJob: true,
+            coop: true,
             title: 'Software Engineer',
-            description: '',
+            description: 'Work as SDE',
         },
     ],
 
@@ -103,6 +105,7 @@ export const initialState = {
         summary: 'Hi, I am Yudong. I am a M.S. candidate in Computer Science from Northeastern University-Seattle' +
         'campus. Graduate date: June, 2018 (Expected) Please feel free to contact me via ' +
         'wangyudong53138@gmail.com',
+        skill: "Java C C++",
     },
 
     Privacies: {
@@ -264,7 +267,7 @@ export default function myProfileReducer(state = initialState,
         case FETCH_OTHER_PROFILE_DATA:
             return payload;
         case SET_SUMMARY:
-            return {...state, about: {...state.about, summary: payload}};
+            return {...state, studentRecord: {...state.studentRecord, summary: payload}};
         case UPDATE_PRIVACY:
             return {...state, privacy: payload};
         case UPDATE_SKILL:
@@ -272,9 +275,13 @@ export default function myProfileReducer(state = initialState,
         case UPDATE_ABOUT:
             return {...state, about: payload};
         case UPDATE_EXTRA_EXPERIENCE:
-            return {...state, extraExperiences: payload};
+            return {...state, ExtraExperiences: payload};
         case UPDATE_PROJECT:
-            return {...state, projects: payload};
+            return {...state, Projects: payload};
+        case DELETE_EXTRA_EXPERIENCE:
+            return {...state, ExtraExperiences: payload};
+        case DELETE_PROJECT:
+            return {...state, Projects: payload};
         default:
             console.log("not found any type match in reducer! you are given type " + type);
             return state;

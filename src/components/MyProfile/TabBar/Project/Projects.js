@@ -55,7 +55,7 @@ class Projects extends Component {
     handleDel = (item) => {
         this.props.deleteProject(item);
         this.setState({
-            projects: this.state.projects.filter(project => project.id !== item.id)
+            projects: this.state.projects.filter(project => project.projectId !== item.projectId)
         })
     };
 
@@ -84,19 +84,19 @@ class Projects extends Component {
                 </table>
 
                 {this.state.projects.map(item => (
-                    <div key={item.id}>
+                    <div key={item.projectId}>
                         <table width="100%">
                             <tbody>
                             <tr>
                                 <td width="95%">
-                                    <h2 className="companyName">{item.ProjectName}</h2>
+                                    <h2 className="companyName">{item.projectName}</h2>
                                 </td>
                                 <td width="5%">
                                     <EditIcon onClick={() => this.clickOnEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
-                            <tr><td><TextArea className="grayContent">{item.Description}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.description}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -137,7 +137,7 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        projects: state.myProfileReducer.projects
+        projects: state.myProfileReducer.Projects
     };
 };
 

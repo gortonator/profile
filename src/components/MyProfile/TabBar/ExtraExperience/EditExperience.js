@@ -6,12 +6,12 @@ export default class EditExperience extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id : this.props.item.id,
-            jobTitle: this.props.item.Title,
-            company: this.props.item.CompanyName,
-            startDate: this.props.item.StartDate,
-            endDate: this.props.item.EndDate,
-            description: this.props.item.Description
+            id : this.props.item.extraExperienceId,
+            jobTitle: this.props.item.title,
+            company: this.props.item.companyName,
+            startDate: this.props.item.startDate,
+            endDate: this.props.item.endDate,
+            description: this.props.item.description
         }
     }
 
@@ -57,22 +57,22 @@ export default class EditExperience extends Component {
         }
 
         if(! this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm/dd/yyyy format.');
+            alert('Invalid start date. Date must be in mm-dd-yyyy format.');
             return
         }
 
         if(! this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm/dd/yyyy format.');
+            alert('Invalid end date. Date must be in mm-dd-yyyy format.');
             return
         }
 
         let item = {
-            id: this.state.id,
-            Title: this.state.jobTitle,
-            CompanyName: this.state.company,
-            StartDate: this.state.startDate,
-            EndDate: this.state.endDate,
-            Description: this.state.description,
+            extraExperienceId: this.state.id,
+            title: this.state.jobTitle,
+            companyName: this.state.company,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            description: this.state.description,
         };
         this.props.editFunc(item);
 
@@ -84,7 +84,7 @@ export default class EditExperience extends Component {
         this.props.closePopup()
     };
 
-    deleteExpeirence = () => {
+    deleteExperience = () => {
         if (window.confirm('Are you sure you want to delete this experience?')) {
             this.props.deleteFunc(this.props.item);
             this.props.closePopup()
@@ -96,11 +96,11 @@ export default class EditExperience extends Component {
     isValidDate(dateString)
     {
         // First check for the pattern
-        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+        if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
             return false;
 
         // Parse the date parts to integers
-        let parts = dateString.split("/");
+        let parts = dateString.split("-");
         let day = parseInt(parts[1], 10);
         let month = parseInt(parts[0], 10);
         let year = parseInt(parts[2], 10);
@@ -139,7 +139,7 @@ export default class EditExperience extends Component {
                 <Modal.Footer>
                     <Button onClick={this.props.closePopup}>Cancel</Button>
                     <Button bsStyle="primary" onClick={this.editExperience}>Save</Button>
-                    <Button bsStyle="danger" onClick={this.deleteExpeirence}>Delete</Button>
+                    <Button bsStyle="danger" onClick={this.deleteExperience}>Delete</Button>
                 </Modal.Footer>
             </div>
         )

@@ -38,11 +38,11 @@ export default class AddProject extends Component {
     isValidDate(dateString)
     {
         // First check for the pattern
-        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+        if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
             return false;
 
         // Parse the date parts to integers
-        let parts = dateString.split("/");
+        let parts = dateString.split("-");
         let day = parseInt(parts[1], 10);
         let month = parseInt(parts[0], 10);
         let year = parseInt(parts[2], 10);
@@ -79,11 +79,11 @@ export default class AddProject extends Component {
 
         let count = this.props.index + 1;
         let item = {
-            id: count,
-            ProjectName: this.state.projectName,
-            StartDate: this.state.startDate,
-            EndDate: this.state.endDate,
-            Description: this.state.description,
+            projecId: count,
+            projectName: this.state.projectName,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            description: this.state.description,
         };
         this.props.addFunc(item);
         this.props.increaseIndex();

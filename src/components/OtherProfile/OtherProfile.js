@@ -59,7 +59,7 @@ const Wrapper = styled.div`
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.about.summary
+        summary: state.myProfileReducer.studentRecord.summary
     };
 };
 

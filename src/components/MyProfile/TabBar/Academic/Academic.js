@@ -12,7 +12,7 @@ class Academic extends Component {
 
         var listItems = this.props.courses.map((course) =>
             <li key={course.CourseName}>
-                {course.CourseName}
+                {course.courseId + ': ' + course.courseName}
                 <br/>
                 {course.Description}
             </li>
@@ -29,7 +29,7 @@ class Academic extends Component {
 
 const mapStateToProps = state => {
     return {
-        courses: state.myProfileReducer.courses
+        courses: state.myProfileReducer.Courses
     };
 };
 

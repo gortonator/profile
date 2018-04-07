@@ -7,10 +7,10 @@ class Coop extends Component {
         return this.props.workExperiences.map(coop => {
             return (
                 <div key={coop.WorkExperienceId}>
-                    <h2 className="companyName"> {coop.CompanyName} </h2>
-                    <p className="grayContent"> {coop.Title} </p>
-                    <p className="grayContent"> {coop.StartDate} ~ {coop.EndDate} </p>
-                    <p className="grayContent"> Worked as {coop.CurrentJob} </p>
+                    <h2 className="companyName"> {coop.companyName} </h2>
+                    <p className="grayContent"> {coop.title} </p>
+                    <p className="grayContent"> {coop.startDate} ~ {coop.endDate} </p>
+                    <p className="grayContent"> {coop.description} </p>
                     <hr/>
                 </div>
             );
@@ -30,7 +30,7 @@ class Coop extends Component {
 
 const mapStateToProps = state => {
     return {
-        workExperiences: state.myProfileReducer.workExperiences,
+        workExperiences: state.myProfileReducer.WorkExperiences,
     };
 };
 
