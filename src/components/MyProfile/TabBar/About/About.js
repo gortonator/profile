@@ -10,16 +10,16 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            about: this.props.about
+            StudentRecord: this.props.StudentRecord
         };
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(keyName, value) {
-        this.props.updateAbout({...this.state.about, [keyName]: value});
+        this.props.updateAbout({...this.state.StudentRecord, [keyName]: value});
         this.setState({
-            about: {...this.state.about, [keyName]: value}
+            StudentRecord: {...this.state.StudentRecord, [keyName]: value}
         });
         console.log("change "+[keyName]+": "+value);
     }
@@ -28,13 +28,13 @@ class About extends Component {
         return (
             <div className="wrapper">
                 <AboutTable>
-                    <AboutItem labelText="Phone" keyName="phone" action={this.handleChange} value={this.state.about.phone} modifiable/>
-                    <AboutItem labelText="Email" type='email' keyName="email" action={this.handleChange} value={this.state.about.email} modifiable/>
-                    <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.state.about.address} modifiable/>
-                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.state.about.linkedin} modifiable isLink/>
-                    <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.state.about.github} modifiable isLink/>
-                    <AboutItem labelText="Facebook" keyName="facebook" action={this.handleChange} value={this.state.about.facebook} modifiable isLink/>
-                    <AboutItem labelText="Website" keyName="website" action={this.handleChange} value={this.state.about.website} modifiable isLink/>
+                    <AboutItem labelText="Phone" keyName="phoneNum" action={this.handleChange} value={this.state.StudentRecord.phoneNum} modifiable/>
+                    <AboutItem labelText="Email" type='email' keyName="email" action={this.handleChange} value={this.state.StudentRecord.email} />
+                    <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.state.StudentRecord.address} modifiable/>
+                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.state.StudentRecord.linkedin} modifiable isLink/>
+                    <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.state.StudentRecord.github} modifiable isLink/>
+                    <AboutItem labelText="Facebook" keyName="facebook" action={this.handleChange} value={this.state.StudentRecord.facebook} modifiable isLink/>
+                    <AboutItem labelText="Website" keyName="website" action={this.handleChange} value={this.state.StudentRecord.website} modifiable isLink/>
                 </AboutTable>
             </div>
         )
@@ -47,7 +47,7 @@ const AboutTable = styled.table`
     `
 const mapStateToProps = state => {
     return {
-        about: state.myProfileReducer.studentRecord
+        StudentRecord: state.myProfileReducer.StudentRecord
     };
 };
 

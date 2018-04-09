@@ -1,6 +1,6 @@
 import {
     FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
-    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE
+    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, ADD_PROJECT
 } from '../actions/types'
 
 export const initialState = {
@@ -10,7 +10,7 @@ export const initialState = {
             companyName: "Amazon",
             description: "Intern",
             title: "Intern",
-            extraExperienceId: 8,
+            extraExperienceId: 11,
             startDate: "01-01-2019"
         }
     ],
@@ -77,27 +77,26 @@ export const initialState = {
         },
     ],
 
-    studentRecord: {
-        neuId: "004",
-        publicId: 0,
-        entryYear: 2017,
-        lastName: "Wood",
-        address: "360 Huntington Ave",
-        expectedLastYear: 2020,
+    StudentRecord: {
+        neuId: "002", // set 002 for testing
+        publicId: 9,
+        entryYear: 2016,
+        lastName: "Taylor",
+        address: "401 Terry Ave N",
+        expectedLastYear: 2019,
         visible: false,
-        gender: "M",
-        city: "Boston",
-        campus: "BOSTON",
+        gender: "F",
+        city: "Seattle",
+        campus: "SEATTLE",
         degree: "MASTERS",
-        firstName: "Charles",
-        entryTerm: "FALL",
+        firstName: "Patricia",
+        entryTerm: "SPRING",
         enrollmentStatus: "FULL_TIME",
         scholarship: false,
-        middleName: "new",
+        middleName: "",
         expectedLastTerm: "SUMMER",
-        email: "Charles004@gmail.com",
-        phone: "+1 (206)306-3178",
-        address: "225 Terry Ave, Seattle, WA",
+        email: "Kenneth002@gmail.com",
+        phoneNum: "2060010058",
         linkedin: "www.linkedin.com/jesremy",
         github: "www.github.com/jeremy",
         facebook: "www.facebook.com/jeremy",
@@ -105,7 +104,11 @@ export const initialState = {
         summary: 'Hi, I am Yudong. I am a M.S. candidate in Computer Science from Northeastern University-Seattle' +
         'campus. Graduate date: June, 2018 (Expected) Please feel free to contact me via ' +
         'wangyudong53138@gmail.com',
-        skill: "Java C C++",
+        skills: "Java C C++",
+        race: "",
+        zip: "98109",
+        visa: "",
+        state: "WA",
     },
 
     Privacies: {
@@ -113,7 +116,7 @@ export const initialState = {
         github: true,
         website: true,
         address: true,
-        neuId: "004",
+        neuId: "002",
         facebook: true,
         photo: true,
         project: true,
@@ -267,21 +270,27 @@ export default function myProfileReducer(state = initialState,
         case FETCH_OTHER_PROFILE_DATA:
             return payload;
         case SET_SUMMARY:
-            return {...state, studentRecord: {...state.studentRecord, summary: payload}};
+            return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
         case UPDATE_PRIVACY:
-            return {...state, privacy: payload};
+            return {...state, Privacies: payload};
         case UPDATE_SKILL:
-            return {...state, skills: payload};
+            return {...state, StudentRecord: {...state.StudentRecord, skills: payload}};
         case UPDATE_ABOUT:
-            return {...state, about: payload};
+            return {...state, StudentRecord: payload};
+        case ADD_EXTRA_EXPERIENCE:
+            return {...state, ExtraExperiences:state.ExtraExperiences.concat(payload)};
         case UPDATE_EXTRA_EXPERIENCE:
-            return {...state, ExtraExperiences: payload};
-        case UPDATE_PROJECT:
-            return {...state, Projects: payload};
+            return {...state, ExtraExperiences:state.ExtraExperiences.map(
+                    experience => experience.extraExperienceId === payload.extraExperienceId ? experience = payload : experience)};
         case DELETE_EXTRA_EXPERIENCE:
-            return {...state, ExtraExperiences: payload};
+            return {...state, ExtraExperiences: state.ExtraExperiences.filter(experience => experience.extraExperienceId !== payload.extraExperienceId)};
+        case ADD_PROJECT:
+            return {...state, Projects:state.Projects.concat(payload)};
+        case UPDATE_PROJECT:
+            return {...state, Projects:state.Projects.map(
+                    project => project.projectId === payload.projectId ? project = payload : project)};
         case DELETE_PROJECT:
-            return {...state, Projects: payload};
+            return {...state, Projects: state.Projects.filter(project => project.projectId !== payload.projectId)};
         default:
             console.log("not found any type match in reducer! you are given type " + type);
             return state;

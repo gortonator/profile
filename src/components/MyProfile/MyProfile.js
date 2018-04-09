@@ -161,7 +161,7 @@ const Wrapper = styled.div`
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.studentRecord.summary
+        summary: state.myProfileReducer.StudentRecord.summary
     };
 };
 
@@ -173,3 +173,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyProfile)
+// export default MyProfile

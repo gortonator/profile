@@ -10,7 +10,7 @@ class Skill extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: 'haha',
+            content: this.props.skills,
             editable: false
         };
         this.makeEditable = this.makeEditable.bind(this);
@@ -70,7 +70,7 @@ const Show = styled.p`
 
 const mapStateToProps = state => {
     return {
-        skills: state.myProfileReducer.studentRecord.skill
+        skills: state.myProfileReducer.StudentRecord.skills
     };
 };
 

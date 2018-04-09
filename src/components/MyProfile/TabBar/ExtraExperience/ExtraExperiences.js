@@ -64,6 +64,7 @@ class ExtraExperiences extends Component {
     };
 
     render() {
+        console.log(this.props.extraExperiences);
         return (
             <div className="wrapper">
                 <table width="100%">

@@ -53,19 +53,19 @@ class Privacy extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                        <PrivacyItem text="Photo" value={this.state.privacy.show_photo} stateName="show_photo" action={this.handleChange} />
-                        <PrivacyItem text="Coop" value={this.state.privacy.show_coops} stateName="show_coops" action={this.handleChange} />
-                        <PrivacyItem text="Phone" value={this.state.privacy.show_phone} stateName="show_phone" action={this.handleChange} />
-                        <PrivacyItem text="Email" value={this.state.privacy.show_email} stateName="show_email" action={this.handleChange} />
-                        <PrivacyItem text="Address" value={this.state.privacy.show_address} stateName="show_address" action={this.handleChange} />
-                        <PrivacyItem text="Linkedin" value={this.state.privacy.show_linkedin} stateName="show_linkedin" action={this.handleChange} />
-                        <PrivacyItem text="Github" value={this.state.privacy.show_github} stateName="show_github" action={this.handleChange} />
-                        <PrivacyItem text="Facebook" value={this.state.privacy.show_facebook} stateName="show_facebook" action={this.handleChange} />
-                        <PrivacyItem text="Website" value={this.state.privacy.show_website} stateName="show_website" action={this.handleChange} />
-                        <PrivacyItem text="Courses" value={this.state.privacy.show_courses} stateName="show_courses" action={this.handleChange} />
-                        <PrivacyItem text="Experience" value={this.state.privacy.show_experience} stateName="show_experience" action={this.handleChange} />
-                        <PrivacyItem text="Project" value={this.state.privacy.show_project} stateName="show_project" action={this.handleChange} />
-                        <PrivacyItem text="Skill" value={this.state.privacy.show_skill} stateName="show_skill" action={this.handleChange} />
+                        <PrivacyItem text="Photo" value={this.state.privacy.photo} stateName="photo" action={this.handleChange} />
+                        <PrivacyItem text="Coop" value={this.state.privacy.coop} stateName="coop" action={this.handleChange} />
+                        <PrivacyItem text="Phone" value={this.state.privacy.phone} stateName="phone" action={this.handleChange} />
+                        <PrivacyItem text="Email" value={this.state.privacy.email} stateName="email" action={this.handleChange} />
+                        <PrivacyItem text="Address" value={this.state.privacy.address} stateName="address" action={this.handleChange} />
+                        <PrivacyItem text="Linkedin" value={this.state.privacy.linkedin} stateName="linkedin" action={this.handleChange} />
+                        <PrivacyItem text="Github" value={this.state.privacy.github} stateName="github" action={this.handleChange} />
+                        <PrivacyItem text="Facebook" value={this.state.privacy.facebook} stateName="facebook" action={this.handleChange} />
+                        <PrivacyItem text="Website" value={this.state.privacy.website} stateName="website" action={this.handleChange} />
+                        <PrivacyItem text="Courses" value={this.state.privacy.courses} stateName="courses" action={this.handleChange} />
+                        <PrivacyItem text="Experience" value={this.state.privacy.extraExperience} stateName="extraExperience" action={this.handleChange} />
+                        <PrivacyItem text="Project" value={this.state.privacy.project} stateName="project" action={this.handleChange} />
+                        <PrivacyItem text="Skill" value={this.state.privacy.skill} stateName="skill" action={this.handleChange} />
                     </tbody>
                 </Table>
                 </Modal.Body>

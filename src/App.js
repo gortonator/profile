@@ -4,7 +4,7 @@ import OtherProfile from './components/OtherProfile/OtherProfile'
 import TopBar from './components/TopBar/TopBar'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import {myProfileActions} from './actions/myProfileActions'
+import {bindActionCreators} from "redux";
 class App extends Component {
 
     render() {
@@ -24,15 +24,14 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    // summary: state.myProfileReducer.about.summary
-});
 
 
-const mapActionsToProps = {
-    // myProfileActions: myProfileActions
+const mapStateToProps = state => {
+    //
 };
 
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    //
+}, dispatch);
 
-export default connect(mapStateToProps, mapActionsToProps)(App);
-
+export default connect(mapStateToProps, mapDispatchToProps)(App)
