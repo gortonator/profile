@@ -18,14 +18,13 @@ class Projects extends Component {
             edit:false,
             editItem: null,
             index: 999999,
-            projects: this.props.projects,
             neuId: this.props.neuId
         };
     }
 
     increase = () => {
         this.setState({
-            index: this.state.projects.length
+            index: this.props.projects.length
         });
     };
 
@@ -50,20 +49,14 @@ class Projects extends Component {
 
     handleAdd = (item) => {
         this.props.addProject(item);
-        this.state.projects.push(item)
     };
 
     handleDel = (item) => {
         this.props.deleteProject(item);
-        this.setState({
-            projects: this.state.projects.filter(project => project.projectId !== item.projectId)
-        })
     };
 
     handleEdit = (item) => {
         this.props.updateProject(item);
-        let index = this.state.projects.indexOf(this.state.editItem);
-        this.state.projects[index] = item;
     };
 
     render() {
@@ -84,7 +77,7 @@ class Projects extends Component {
                     </tbody>
                 </table>
 
-                {this.state.projects.map(item => (
+                {this.props.projects.map(item => (
                     <div key={item.projectId}>
                         <table width="100%">
                             <tbody>
@@ -108,7 +101,7 @@ class Projects extends Component {
                     <AddProject
                         closePopup={this.clickOnAdd}
                         text={"Add New Project"}
-                        projects={this.state.projects}
+                        projects={this.props.projects}
                         increaseIndex={this.increase}
                         index={this.state.index}
                         addFunc={this.handleAdd}
@@ -121,7 +114,7 @@ class Projects extends Component {
                     <EditProject
                         closePopup={this.setEditFlag}
                         text={"Edit Project"}
-                        projects={this.state.projects}
+                        projects={this.props.projects}
                         item={this.state.editItem}
                         deleteFunc={this.handleDel}
                         editFunc={this.handleEdit}

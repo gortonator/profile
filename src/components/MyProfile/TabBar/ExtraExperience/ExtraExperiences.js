@@ -16,14 +16,13 @@ class ExtraExperiences extends Component {
             edit:false,
             editItem: null,
             index:999999,
-            experiences: this.props.extraExperiences,
             neuId: this.props.neuId
         };
     }
 
     increase = () => {
         this.setState({
-            index: this.state.experiences.length
+            index: this.props.extraExperiences.length
         });
     };
 
@@ -48,21 +47,14 @@ class ExtraExperiences extends Component {
 
     handleAdd = (item) => {
         this.props.addExtraExperience(item);
-        // this.state.experiences.push(item)
     };
 
     handleDel = (item) => {
-        // let index = this.state.experiences.indexOf(item);
         this.props.deleteExtraExperience(item);
-        // this.setState({
-        //     experiences: this.state.experiences.filter(experience => experience.extraExperienceId !== item.extraExperienceId)
-        // })
     };
 
     handleEdit = (item) => {
         this.props.updateExtraExperience(item);
-        // let index = this.state.experiences.indexOf(this.state.editItem);
-        // this.state.experiences[index] = item;
     };
 
     render() {
@@ -83,7 +75,7 @@ class ExtraExperiences extends Component {
                     </tbody>
                 </table>
 
-                {this.state.experiences.map(item => (
+                {this.props.extraExperiences.map(item => (
                     <div key={item.extraExperienceId}>
                         <table width="100%">
                             <tbody>
@@ -106,7 +98,7 @@ class ExtraExperiences extends Component {
                     <AddExperience
                         closePopup={this.clickOnAdd}
                         text={"Add New Experience"}
-                        experiences={this.state.experiences}
+                        experiences={this.props.extraExperiences}
                         increaseIndex={this.increase}
                         index={this.state.index}
                         addFunc={this.handleAdd}
@@ -119,7 +111,7 @@ class ExtraExperiences extends Component {
                     <EditExperience
                         closePopup={this.setEditFlag}
                         text={"Edit Experience"}
-                        experiences={this.state.experiences}
+                        experiences={this.props.extraExperiences}
                         item={this.state.editItem}
                         deleteFunc={this.handleDel}
                         editFunc={this.handleEdit}
