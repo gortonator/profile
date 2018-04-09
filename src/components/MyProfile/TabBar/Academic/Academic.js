@@ -11,7 +11,7 @@ class Academic extends Component {
     render() {
 
         var listItems = this.props.courses.map((course) =>
-            <li key={course.CourseName}>
+            <li key={course.courseId}>
                 {course.courseId + ': ' + course.courseName}
                 <br/>
                 {course.Description}

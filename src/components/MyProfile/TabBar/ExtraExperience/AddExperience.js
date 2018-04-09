@@ -91,6 +91,7 @@ export default class AddExperience extends Component {
 
         let count = this.props.index + 1;
         let item = {
+            neuId: this.props.neuId,
             extraExperienceId: count,
             title: this.state.jobTitle,
             companyName: this.state.company,

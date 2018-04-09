@@ -6,6 +6,7 @@ export default class EditExperience extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            neuId: this.props.item.neuId,
             id : this.props.item.extraExperienceId,
             jobTitle: this.props.item.title,
             company: this.props.item.companyName,
@@ -67,6 +68,7 @@ export default class EditExperience extends Component {
         }
 
         let item = {
+            neuId: this.state.neuId,
             extraExperienceId: this.state.id,
             title: this.state.jobTitle,
             companyName: this.state.company,
