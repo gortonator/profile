@@ -129,7 +129,6 @@ class MyProfile extends Component {
                             <Picture />
                         </Col>
                         <Col md={8}>
-                            {/*<Intro summary={this.state.about.summary} handler={this.handleSummaryChange}/>*/}
                             <Intro />
                         </Col>
                     </Row>
