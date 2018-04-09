@@ -97,7 +97,6 @@ export const initialState = {
         expectedLastTerm: "SUMMER",
         email: "Charles004@gmail.com",
         phone: "+1 (206)306-3178",
-        address: "225 Terry Ave, Seattle, WA",
         linkedin: "www.linkedin.com/jesremy",
         github: "www.github.com/jeremy",
         facebook: "www.facebook.com/jeremy",
@@ -105,7 +104,7 @@ export const initialState = {
         summary: 'Hi, I am Yudong. I am a M.S. candidate in Computer Science from Northeastern University-Seattle' +
         'campus. Graduate date: June, 2018 (Expected) Please feel free to contact me via ' +
         'wangyudong53138@gmail.com',
-        skill: "Java C C++",
+        skills: "Java C C++",
     },
 
     Privacies: {
