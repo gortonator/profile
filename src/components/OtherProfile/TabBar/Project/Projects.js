@@ -29,16 +29,16 @@ class Projects extends Component {
                 </table>
 
                 {this.state.projects.map(item => (
-                    <div key={item.id}>
+                    <div key={item.projectId}>
                         <table width="100%">
                             <tbody>
                             <tr>
                                 <td width="95%">
-                                    <h2 className="companyName">{item.ProjectName}</h2>
+                                    <h2 className="companyName">{item.projectName}</h2>
                                 </td>
                             </tr>
-                            <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
-                            <tr><td><TextArea className="grayContent">{item.Description}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.description}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -56,7 +56,7 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        projects: state.myProfileReducer.projects
+        projects: state.myProfileReducer.Projects
     };
 };
 

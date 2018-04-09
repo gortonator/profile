@@ -29,7 +29,7 @@ class About extends Component {
             <div className="wrapper">
                 <AboutTable>
                     <AboutItem labelText="Phone" keyName="phone" action={this.handleChange} value={this.state.about.phone} modifiable/>
-                    <AboutItem labelText="Email" value={this.state.about.email}/>
+                    <AboutItem labelText="Email" type='email' keyName="email" action={this.handleChange} value={this.state.about.email} modifiable/>
                     <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.state.about.address} modifiable/>
                     <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.state.about.linkedin} modifiable isLink/>
                     <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.state.about.github} modifiable isLink/>
@@ -47,7 +47,7 @@ const AboutTable = styled.table`
     `
 const mapStateToProps = state => {
     return {
-        about: state.myProfileReducer.about
+        about: state.myProfileReducer.studentRecord
     };
 };
 

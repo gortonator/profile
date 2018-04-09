@@ -70,7 +70,7 @@ const Show = styled.p`
 
 const mapStateToProps = state => {
     return {
-        skills: state.myProfileReducer.skills
+        skills: state.myProfileReducer.studentRecord.skills
     };
 };
 

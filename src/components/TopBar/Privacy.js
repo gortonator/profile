@@ -81,7 +81,7 @@ class Privacy extends Component {
 
 const mapStateToProps = state => {
     return {
-        privacy: state.myProfileReducer.privacy
+        privacy: state.myProfileReducer.Privacies
     };
 };
 
