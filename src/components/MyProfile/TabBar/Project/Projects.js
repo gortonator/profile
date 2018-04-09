@@ -18,7 +18,8 @@ class Projects extends Component {
             edit:false,
             editItem: null,
             index: 999999,
-            projects: this.props.projects
+            projects: this.props.projects,
+            neuId: this.props.neuId
         };
     }
 
@@ -111,6 +112,7 @@ class Projects extends Component {
                         increaseIndex={this.increase}
                         index={this.state.index}
                         addFunc={this.handleAdd}
+                        neuId={this.state.neuId}
                     >
                     </AddProject>
                 </Modal>
@@ -137,7 +139,8 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        projects: state.myProfileReducer.Projects
+        projects: state.myProfileReducer.Projects,
+        neuId: state.myProfileReducer.studentRecord.neuId
     };
 };
 

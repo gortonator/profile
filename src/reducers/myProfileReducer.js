@@ -6,6 +6,7 @@ import {
 export const initialState = {
     ExtraExperiences: [
         {
+            neuId: "004",
             endDate: "04-01-2019",
             companyName: "Amazon",
             description: "Intern",
@@ -17,6 +18,7 @@ export const initialState = {
 
     Projects: [
         {
+            neuId: "004",
             endDate: "12-31-2017",
             description: "Intern",
             projectName: "CNAO",
@@ -55,6 +57,7 @@ export const initialState = {
 
     WorkExperiences: [
         {
+            neuId: "004",
             workExperienceId: 1,
             companyName: "Amazon.com",
             startDate: "May 2017",
@@ -65,8 +68,8 @@ export const initialState = {
             description: 'Work as SDE',
         },
         {
+            neuId: "004",
             workExperienceId: 2,
-            neuId: 12345,
             companyName:"Zillow",
             startDate: 'May 2017',
             endDate: 'Sept 2017',

@@ -6,7 +6,7 @@ class Coop extends Component {
     renderCoop() {
         return this.props.workExperiences.map(coop => {
             return (
-                <div key={coop.WorkExperienceId}>
+                <div key={coop.workExperienceId}>
                     <h2 className="companyName"> {coop.companyName} </h2>
                     <p className="grayContent"> {coop.title} </p>
                     <p className="grayContent"> {coop.startDate} ~ {coop.endDate} </p>

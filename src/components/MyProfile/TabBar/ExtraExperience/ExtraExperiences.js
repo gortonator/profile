@@ -16,7 +16,8 @@ class ExtraExperiences extends Component {
             edit:false,
             editItem: null,
             index:999999,
-            experiences: this.props.extraExperiences
+            experiences: this.props.extraExperiences,
+            neuId: this.props.neuId
         };
     }
 
@@ -108,6 +109,7 @@ class ExtraExperiences extends Component {
                         increaseIndex={this.increase}
                         index={this.state.index}
                         addFunc={this.handleAdd}
+                        neuId={this.state.neuId}
                     >
                     </AddExperience>
                 </Modal>
@@ -134,7 +136,8 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        extraExperiences: state.myProfileReducer.ExtraExperiences
+        extraExperiences: state.myProfileReducer.ExtraExperiences,
+        neuId: state.myProfileReducer.studentRecord.neuId
     };
 };
 
