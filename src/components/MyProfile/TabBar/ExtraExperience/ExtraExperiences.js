@@ -48,20 +48,21 @@ class ExtraExperiences extends Component {
 
     handleAdd = (item) => {
         this.props.addExtraExperience(item);
-        this.state.experiences.push(item)
+        // this.state.experiences.push(item)
     };
 
     handleDel = (item) => {
+        // let index = this.state.experiences.indexOf(item);
         this.props.deleteExtraExperience(item);
-        this.setState({
-            experiences: this.state.experiences.filter(experience => experience.extraExperienceId !== item.extraExperienceId)
-        })
+        // this.setState({
+        //     experiences: this.state.experiences.filter(experience => experience.extraExperienceId !== item.extraExperienceId)
+        // })
     };
 
     handleEdit = (item) => {
         this.props.updateExtraExperience(item);
-        let index = this.state.experiences.indexOf(this.state.editItem);
-        this.state.experiences[index] = item;
+        // let index = this.state.experiences.indexOf(this.state.editItem);
+        // this.state.experiences[index] = item;
     };
 
     render() {
@@ -144,7 +145,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     updateExtraExperience,
     addExtraExperience,
-    deleteExtraExperience
+    deleteExtraExperience,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExtraExperiences)
