@@ -131,7 +131,7 @@ const TextArea = styled.p`
 const mapStateToProps = state => {
     return {
         extraExperiences: state.myProfileReducer.ExtraExperiences,
-        neuId: state.myProfileReducer.studentRecord.neuId
+        neuId: state.myProfileReducer.StudentRecord.neuId
     };
 };
 

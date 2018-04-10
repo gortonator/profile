@@ -1,45 +1,83 @@
 import axios from "axios";
-import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY,
+import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
     UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
-    UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT} from '../actions/types'
-import {initialState} from '../reducers/myProfileReducer'
-
-const myToken = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..yKhmEVH4mQHckfwheQKPdQ.cwGL9uMrsv3JuLoMF9Iqgw66ofYtCyLhuYT1vc4YCG3cLD_U9jq34G7_9jJc_X8Gi5bpOTToC_4d-x_MHCfUDuVn09RKSj_L9ZfpO3d9mao.ATdu6jXd3IZ9Xbm0tHXOrQ"
-export function setSummary(summary) {
-    return {
-        type: SET_SUMMARY,
-        payload: summary,
-    }
-}
+    UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO} from '../actions/types'
 
 export function fetchMyProfile() {
-    return (dispatch) => {
-        console.log("yudong action");
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets")
-            .then((response) => {
-                console.log("FETCH_MY_PROFILE_SUCCEED", response);
-                dispatch({type: FETCH_MY_PROFILE_DATA, payload: {...initialState, skills:"Java\nPython\nC++\nRuby"}});
-            })
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.LoginInfo.id;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        axios.get(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    console.log("FETCH_MY_PROFILE_SUCCEED", response);
+                    dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data});
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
 export function fetchOtherProfile() {
-    return (dispatch) => {
-        console.log("yudong action");
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets")
-            .then((response) => {
-                console.log("FETCH_OTHER_PROFILE_SUCCEED", response);
-                dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: {...initialState, intro:{...initialState.intro, firstname:"Yang", lastname:"Li"}}});
-            })
+    let other_neuid = "010"; // should be obtained by searching result
+    return (dispatch, getState) => {
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        axios.get(
+            "http://asd2.ccs.neu.edu:8082/students/" + other_neuid,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    // console.log("FETCH_MY_PROFILE_SUCCEED", response);
+                    dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: response.data});
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
-
+export function updateSummary(summary) {
+    return (dispatch, getState) => {
+        let state = getState().myProfileReducer;
+        let neuid = state.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify({...state.StudentRecord, summary: summary});
+        axios.put(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            data,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: UPDATE_SUMMARY, payload: summary});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
+    }
+}
 
 export function updatePrivacy(privacy) {
-    let data = JSON.stringify(privacy);
-    let neuid = initialState.StudentRecord.neuId;
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        let state = getState().myProfileReducer;
+        let neuid = state.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(privacy);
         axios.put(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid + "/privacies",
             data,
@@ -60,9 +98,11 @@ export function updatePrivacy(privacy) {
 }
 
 export function updateSkill(skills) {
-    let data = JSON.stringify({...initialState.StudentRecord, skills: skills});
-    let neuid = initialState.StudentRecord.neuId;
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        let state = getState().myProfileReducer;
+        let neuid = state.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify({...state.StudentRecord, skills: skills});
         axios.put(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid,
             data,
@@ -83,9 +123,11 @@ export function updateSkill(skills) {
 }
 
 export function updateAbout(about) {
-    let data = JSON.stringify(about);
-    let neuid = initialState.StudentRecord.neuId;
-    return (dispatch) => {
+    return (dispatch,getState) => {
+        let state = getState().myProfileReducer;
+        let neuid = state.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(about);
         axios.put(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid,
             data,
@@ -107,18 +149,34 @@ export function updateAbout(about) {
 }
 
 export function updateExtraExperience(experience) {
-    return (dispatch) => {
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
-            .then((response) => {
-                dispatch({type: UPDATE_EXTRA_EXPERIENCE, payload: experience});
-            })
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(experience);
+        axios.put(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences/" + experience.extraExperienceId,
+            data,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: UPDATE_EXTRA_EXPERIENCE, payload: experience});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
 export function addExtraExperience(experience) {
-    let data = JSON.stringify(experience);
-    let neuid = initialState.StudentRecord.neuId;
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(experience);
         axios.post(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences",
             data,
@@ -128,8 +186,8 @@ export function addExtraExperience(experience) {
                 }})
             .then(
                 (response) => {
-                    let new_experience = {...experience, extraExperienceId: response.data};
-                    dispatch({type: ADD_EXTRA_EXPERIENCE, payload: new_experience});
+                    experience = {...experience, extraExperienceId: response.data};
+                    dispatch({type: ADD_EXTRA_EXPERIENCE, payload: experience});
                     console.log("Send request successfully.");
                 },
                 (error) => {
@@ -140,8 +198,9 @@ export function addExtraExperience(experience) {
 }
 
 export function deleteExtraExperience(experience) {
-    let neuid = initialState.StudentRecord.neuId;
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.delete(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences/" + experience.extraExperienceId,
             {headers: {
@@ -161,29 +220,98 @@ export function deleteExtraExperience(experience) {
 }
 
 export function updateProject(project) {
-    return (dispatch) => {
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be PUT
-            .then((response) => {
-                dispatch({type: UPDATE_PROJECT, payload: project});
-            })
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(project);
+        axios.put(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects/" + project.projectId,
+            data,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: UPDATE_PROJECT, payload: project});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
 export function addProject(project) {
-    return (dispatch) => {
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be POST
-            .then((response) => {
-                dispatch({type: ADD_PROJECT, payload: project});
-            })
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let data = JSON.stringify(project);
+        axios.post(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects",
+            data,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    project = {...project, projectId: response.data};
+                    dispatch({type: ADD_PROJECT, payload: project});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
 export function deleteProject(project) {
-    return (dispatch) => {
-        axios.get("http://rest.learncode.academy/api/reacttest/tweets") // mock request should be POST
-            .then((response) => {
-                dispatch({type: DELETE_PROJECT, payload: project});
-            })
+    return (dispatch, getState) => {
+        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        axios.delete(
+            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects/" + project.projectId,
+            {headers: {
+                    "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: DELETE_PROJECT, payload: project});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
     }
 }
 
+export function setLoginInfo() {
+    return (dispatch) => {
+        let logInfo = JSON.stringify({
+            username : "studentfetwo@husky.neu.edu",
+            password : "password"
+        });
+        axios.post(
+            "http://asd2.ccs.neu.edu:8082/login",
+            logInfo,
+            {headers: {
+                    "Content-Type": "application/json",
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
+                    // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
+                    console.log("Login successfully.");
+                    dispatch(fetchMyProfile()); // Async request
+                },
+                (error) => {
+                    alert("Login failed. Server error!");
+                    console.log(error);
+                })
+    }
+}

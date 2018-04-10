@@ -1,136 +1,111 @@
 import {
-    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
-    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, ADD_PROJECT
+    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
+    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, ADD_PROJECT,
+    UPDATE_SUMMARY, SET_LOGIN_INFO
 } from '../actions/types'
 
 export const initialState = {
     ExtraExperiences: [
         {
-            neuId: "004",
-            endDate: "04-01-2019",
-            companyName: "Amazon",
-            description: "Intern",
-            title: "Intern",
-            extraExperienceId: 11,
-            startDate: "01-01-2019"
+            neuId: "",
+            endDate: "",
+            companyName: "",
+            description: "",
+            title: "",
+            extraExperienceId: 0,
+            startDate: ""
         }
     ],
 
     Projects: [
         {
-            neuId: "004",
-            endDate: "12-31-2017",
-            description: "Intern",
-            projectName: "CNAO",
-            projectId: 5,
-            startDate: "12-12-2017"
+            neuId: "",
+            endDate: "",
+            description: "",
+            projectName: "",
+            projectId: 0,
+            startDate: ""
         }
     ],
 
     Courses: [
         {
-            courseName: "Intensive Foundations of CS",
-            description: "Intensive Foundations of CS",
-            courseId: "CS 5001"
-        },
-        {
-            courseName: "Discrete and Data Structures",
-            description: "Discrete and Data Structures",
-            courseId: "CS 5002"
-        },
-        {
-            courseName: "Object-Oriented Design",
-            description: "Object-Oriented Design",
-            courseId: "CS 5004"
-        },
-        {
-            courseName: "Algorithms",
-            description: "Algorithms",
-            courseId: "CS 5006"
-        },
-        {
-            courseName: "Computer Systems",
-            description: "Computer Systems",
-            courseId: "CS 5007"
+            courseName: "0",
+            description: "0",
+            courseId: "0"
         }
     ],
 
     WorkExperiences: [
         {
-            neuId: "004",
-            workExperienceId: 1,
-            companyName: "Amazon.com",
-            startDate: "May 2017",
-            endDate: "Sept 2017",
-            currentJob: true,
-            coop: true,
-            title: "Software Engineer Intern",
-            description: 'Work as SDE',
+            neuId: "",
+            workExperienceId: 0,
+            companyName: "",
+            startDate: "",
+            endDate: "",
+            currentJob: false,
+            coop: false,
+            title: "",
+            description: "",
         },
-        {
-            neuId: "004",
-            workExperienceId: 2,
-            companyName:"Zillow",
-            startDate: 'May 2017',
-            endDate: 'Sept 2017',
-            currentJob: true,
-            coop: true,
-            title: 'Software Engineer',
-            description: 'Work as SDE',
-        },
+
     ],
 
     StudentRecord: {
-        neuId: "002", // set 002 for testing
-        publicId: 9,
-        entryYear: 2016,
-        lastName: "Taylor",
-        address: "401 Terry Ave N",
-        expectedLastYear: 2019,
+        neuId: "",
+        publicId: 0,
+        entryYear: 0,
+        lastName: "",
+        address: "",
+        expectedLastYear: 0,
         visible: false,
-        gender: "F",
-        city: "Seattle",
-        campus: "SEATTLE",
-        degree: "MASTERS",
-        firstName: "Patricia",
-        entryTerm: "SPRING",
-        enrollmentStatus: "FULL_TIME",
+        gender: "",
+        city: "",
+        campus: "",
+        degree: "",
+        firstName: "",
+        entryTerm: "",
+        enrollmentStatus: "",
         scholarship: false,
         middleName: "",
-        expectedLastTerm: "SUMMER",
-        email: "Kenneth002@gmail.com",
-        linkedin: "www.linkedin.com/jesremy",
-        github: "www.github.com/jeremy",
-        facebook: "www.facebook.com/jeremy",
-        website: "www.jeremy.com/home",
-        summary: 'Hi, I am Yudong. I am a M.S. candidate in Computer Science from Northeastern University-Seattle' +
-        'campus. Graduate date: June, 2018 (Expected) Please feel free to contact me via ' +
-        'wangyudong53138@gmail.com',
-        skills: "Java C C++",
+        expectedLastTerm: "",
+        email: "",
+        linkedin: "",
+        github: "",
+        facebook: "",
+        website: "",
+        summary: "",
+        skills: "",
         race: "",
-        zip: "98109",
+        zip: "",
         visa: "",
-        state: "WA",
+        state: "",
+        phoneNum: "",
     },
 
     Privacies: {
-        visibleToPublic: true,
-        github: true,
-        website: true,
-        address: true,
-        neuId: "002",
-        facebook: true,
-        photo: true,
-        project: true,
-        linkedin: true,
-        skill: true,
-        course: true,
-        extraExperience: true,
+        visibleToPublic: false,
+        github: false,
+        website: false,
+        address: false,
+        neuId: "",
+        facebook: false,
+        photo: false,
+        project: false,
+        linkedin: false,
+        skill: false,
+        course: false,
+        extraExperience: false,
         publicId: 0,
-        email: true,
-        coop: true,
-        phone: true
-    }
+        email: false,
+        coop: false,
+        phone: false
+    },
+
+    LoginInfo: {
+        id: "",
+        token: ""
+    },
 };
 
 // export const initialState = {
@@ -267,11 +242,13 @@ export default function myProfileReducer(state = initialState,
     {type, payload}) {
     console.log("reducer", type, payload);
     switch (type) {
+        case SET_LOGIN_INFO:
+            return {...state, LoginInfo: payload};
         case FETCH_MY_PROFILE_DATA:
-            return payload;
+            return {...state, ...payload};
         case FETCH_OTHER_PROFILE_DATA:
             return payload;
-        case SET_SUMMARY:
+        case UPDATE_SUMMARY:
             return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
         case UPDATE_PRIVACY:
             return {...state, Privacies: payload};

@@ -133,7 +133,7 @@ const TextArea = styled.p`
 const mapStateToProps = state => {
     return {
         projects: state.myProfileReducer.Projects,
-        neuId: state.myProfileReducer.studentRecord.neuId
+        neuId: state.myProfileReducer.StudentRecord.neuId
     };
 };
 

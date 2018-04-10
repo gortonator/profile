@@ -93,6 +93,10 @@ class AboutItem extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({content: nextProps.value})
+    }
+
     render() {
 
         let editIcon = "";

@@ -5,7 +5,15 @@ import TopBar from './components/TopBar/TopBar'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
+import {setLoginInfo, fetchMyProfile} from "./actions/myProfileActions";
+
 class App extends Component {
+
+    constructor(props){
+        super(props);
+        this.props.setLoginInfo();
+        // this.props.fetchMyProfile();
+    }
 
     render() {
         // console.log("app.js about= ", this.props);
@@ -25,13 +33,10 @@ class App extends Component {
 }
 
 
-
-const mapStateToProps = state => {
-    //
-};
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    //
+    setLoginInfo,fetchMyProfile
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
+export default connect(null, mapDispatchToProps)(App)

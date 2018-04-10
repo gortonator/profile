@@ -3,7 +3,7 @@ import {Row, Col, Grid, Button, Modal, FormGroup, FormControl} from 'react-boots
 import location from '../../../image/location.jpeg';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {setSummary} from '../../../actions/myProfileActions'
+import {updateSummary} from "../../../actions/myProfileActions";
 
 class Intro extends Component {
 
@@ -37,9 +37,8 @@ class Intro extends Component {
 
     handleSubmit() {
         this.setState({show: false});
-        this.props.setSummary(this.state.summary);
+        // this.props.setSummary(this.state.summary);
     }
-
 
     render() {
         return (
@@ -105,7 +104,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setSummary,
+    updateSummary,
 }, dispatch);
 
 

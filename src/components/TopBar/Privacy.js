@@ -36,6 +36,10 @@ class Privacy extends Component {
         this.setState({privacy : this.props.privacy});
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({privacy: nextProps.privacy})
+    }
+
     render() {
         return (
             <Modal show={this.props.show} onHide={this.hideAndReloadData}>

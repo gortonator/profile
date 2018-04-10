@@ -4,7 +4,7 @@ import EditIcon from "../TabBar/About/EditIcon";
 import location from '../../../image/location.jpeg';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {setSummary} from '../../../actions/myProfileActions'
+import {updateSummary} from '../../../actions/myProfileActions'
 
 class Intro extends Component {
 
@@ -38,9 +38,12 @@ class Intro extends Component {
 
     handleSubmit() {
         this.setState({show: false});
-        this.props.setSummary(this.state.summary);
+        this.props.updateSummary(this.state.summary);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({summary: nextProps.summary})
+    }
 
     render() {
         return (
@@ -77,7 +80,7 @@ class Intro extends Component {
                 </Row>
 
                 <Row className="show-grid">
-                    <Col md={12}><p className="grayContent">{this.props.summary}</p></Col>
+                    <Col md={12}><p className="grayContent">{this.state.summary}</p></Col>
                 </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -111,11 +114,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setSummary,
+    updateSummary,
 }, dispatch);
-
-
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Intro)
