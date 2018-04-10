@@ -46,6 +46,7 @@ class Intro extends Component {
     }
 
     render() {
+        console.log("yudong intro", this.props.StudentRecord);
         return (
             <Grid>
                 <Row className="show-grid">

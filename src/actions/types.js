@@ -12,3 +12,7 @@ export const ADD_PROJECT = "add_project";
 export const DELETE_PROJECT = "delete_project";
 export const SET_LOGIN_INFO = "set_login_info";
 
+
+export const DO_LOGIN = "do_login";
+export const CLEAR_LOGIN = "clear_login";
+

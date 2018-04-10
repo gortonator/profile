@@ -98,8 +98,8 @@ class Intro extends Component {
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.studentRecord.summary,
-        intro: state.myProfileReducer.studentRecord,
+        summary: state.myProfileReducer.StudentRecord.summary,
+        intro: state.myProfileReducer.StudentRecord,
     };
 };
 

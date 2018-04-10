@@ -243,7 +243,7 @@ export default function myProfileReducer(state = initialState,
     console.log("reducer", type, payload);
     switch (type) {
         case SET_LOGIN_INFO:
-            return {...state, LoginInfo: payload};
+            return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
             return {...state, ...payload};
         case FETCH_OTHER_PROFILE_DATA:

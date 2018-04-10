@@ -1,12 +1,16 @@
 import axios from "axios";
 import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
     UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
-    UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO} from '../actions/types'
+    UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO, DO_LOGIN, CLEAR_LOGIN} from '../actions/types'
 
-export function fetchMyProfile() {
+const ROOT_URL = 'http://asd2.ccs.neu.edu:8082';
+
+export function fetchMyProfile(LoginInfo) {
+
     return (dispatch, getState) => {
         let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
+        console.log("yudong fetch my profile", LoginInfo);
         axios.get(
             "http://asd2.ccs.neu.edu:8082/students/" + neuid,
             {headers: {
@@ -290,28 +294,51 @@ export function deleteProject(project) {
     }
 }
 
-export function setLoginInfo() {
+export function doLogin(body) {
     return (dispatch) => {
         let logInfo = JSON.stringify({
             username : "studentfetwo@husky.neu.edu",
             password : "password"
         });
+        let newLogInfo = JSON.stringify(body);
+
+        console.log("yudong login", newLogInfo, logInfo);
+
         axios.post(
             "http://asd2.ccs.neu.edu:8082/login",
-            logInfo,
+            newLogInfo,
             {headers: {
                     "Content-Type": "application/json",
                 }})
             .then(
                 (response) => {
-                    dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
+                    console.log("yudong login", response);
+
+                    dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
                     // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
+                    alert("Login successfully");
                     console.log("Login successfully.");
-                    dispatch(fetchMyProfile()); // Async request
+                    dispatch(fetchMyProfile(response.data)); // Async request
                 },
                 (error) => {
                     alert("Login failed. Server error!");
                     console.log(error);
                 })
+    }
+}
+
+
+// export function doLogin(body){
+//     const request = axios.post(`${ROOT_URL}/login`,body,{headers:{"Content-Type":"application/json"}});
+//     return {
+//         type: DO_LOGIN,
+//         payload:request
+//     }
+// }
+
+export function clearLogin(){
+    return {
+        type:CLEAR_LOGIN,
+        payload: null
     }
 }

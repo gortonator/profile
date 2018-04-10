@@ -47,7 +47,7 @@ const AboutTable = styled.table`
     `
 const mapStateToProps = state => {
     return {
-        about: state.myProfileReducer.studentRecord
+        about: state.myProfileReducer.StudentRecord
     };
 };
 

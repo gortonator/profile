@@ -7,6 +7,8 @@ import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {fetchMyProfile} from "../../actions/myProfileActions"
+import TopBar from '../TopBar/TopBar'
+
 
 class MyProfile extends Component {
 
@@ -17,26 +19,29 @@ class MyProfile extends Component {
 
     render() {
         return (
-            <Wrapper>
-                <div style={{margin: "2%"}}>
-                    <Row className="show-grid row-eq-height">
-                        <Col md={4}>
-                            <Picture />
-                        </Col>
-                        <Col md={8}>
-                            <Intro />
-                        </Col>
-                    </Row>
-                    <Row className="show-grid">
-                        <Col md={4}>
-                            <Coop/>
-                        </Col>
-                        <Col md={8}>
-                            <TabBar/>
-                        </Col>
-                    </Row>
-                </div>
-            </Wrapper>
+            <div style={{margin: "2%"}}>
+                <TopBar/>
+                <Wrapper>
+                    <div style={{margin: "2%"}}>
+                        <Row className="show-grid row-eq-height">
+                            <Col md={4}>
+                                <Picture />
+                            </Col>
+                            <Col md={8}>
+                                <Intro />
+                            </Col>
+                        </Row>
+                        <Row className="show-grid">
+                            <Col md={4}>
+                                <Coop/>
+                            </Col>
+                            <Col md={8}>
+                                <TabBar/>
+                            </Col>
+                        </Row>
+                    </div>
+                </Wrapper>
+            </div>
         );
     }
 }

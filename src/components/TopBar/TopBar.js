@@ -76,7 +76,7 @@ const title = {
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    width: 70%;
+    width: 75%;
     margin: auto;
     `;
 
