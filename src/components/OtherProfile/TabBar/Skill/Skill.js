@@ -1,46 +1,34 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
-import {FormControl, FormGroup} from "react-bootstrap";
+import {updateSkill} from "../../../../actions/myProfileActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 class Skill extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            content: this.props.value,
+            content: this.props.skills,
             editable: false
         };
-        this.makeEditable = this.makeEditable.bind(this);
-        this.changeContent = this.changeContent.bind(this);
     }
 
-    makeEditable() {
-        this.setState({
-            editable: true
-        })
-    }
-
-    changeContent(event) {
-        this.setState({
-            content: event.target.value,
-            editable: false
-        })
-        this.props.action(this.props.keyName, event.target.value);
-    }
 
     getContentComponent() {
-        if(this.state.editable) {
-            return <TextArea defaultValue={this.state.content} onBlur={this.changeContent} autoFocus/>;
-        }else {
-            return <Show>{this.state.content}</Show>;
-        }
+        return <Show>{ this.state.content}</Show>;
+
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({content: nextProps.skills})
     }
 
     render() {
-
+        console.log("other skill", this.props);
         return (
             <div className="wrapper">
-                <p className="tab-content-subtitle">{this.props.labelText}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p className="tab-content-subtitle">MY SKILLS&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <br/>
                 {this.getContentComponent()}
             </div>
@@ -61,4 +49,11 @@ const Show = styled.p`
         color: #777777;
     `
 
-export default Skill
+const mapStateToProps = state => {
+    return {
+        skills: state.myProfileReducer.studentRecord.skill
+    };
+};
+
+export default connect(mapStateToProps)(Skill)
+

@@ -42,11 +42,11 @@ export default class ExperienceContent extends Component {
                 <br/><br/>
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
-                <input placeholder={"mm/dd/yyyy"} onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
+                <input placeholder={"mm-dd-yyyy"} onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"endDate"}>End Date</label></div>
-                <input placeholder={"mm/dd/yyyy"} onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
+                <input placeholder={"mm-dd-yyyy"} onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
                 <br/><br/>
 
                 <div><label htmlFor={"desc"}>Description</label></div>

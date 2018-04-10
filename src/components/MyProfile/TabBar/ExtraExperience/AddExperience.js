@@ -45,11 +45,11 @@ export default class AddExperience extends Component {
     isValidDate(dateString)
     {
         // First check for the pattern
-        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+        if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
             return false;
 
         // Parse the date parts to integers
-        let parts = dateString.split("/");
+        let parts = dateString.split("-");
         let day = parseInt(parts[1], 10);
         let month = parseInt(parts[0], 10);
         let year = parseInt(parts[2], 10);
@@ -80,24 +80,26 @@ export default class AddExperience extends Component {
         }
 
         if(!this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm/dd/yyyy format.');
+            alert('Invalid start date. Date must be in mm-dd-yyyy format.');
             return
         }
 
         if(!this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm/dd/yyyy format.');
+            alert('Invalid end date. Date must be in mm-dd-yyyy format.');
             return
         }
 
         let count = this.props.index + 1;
         let item = {
-            id: count,
-            Title: this.state.jobTitle,
-            CompanyName: this.state.company,
-            StartDate: this.state.startDate,
-            EndDate: this.state.endDate,
-            Description: this.state.description,
+            neuId: this.props.neuId,
+            extraExperienceId: count,
+            title: this.state.jobTitle,
+            companyName: this.state.company,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            description: this.state.description,
         };
+
         this.props.addFunc(item);
         this.props.increaseIndex();
         this.props.closePopup()

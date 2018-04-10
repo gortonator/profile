@@ -14,7 +14,11 @@ class PrivacyToPublic extends Component {
 
     handleChange(e){
         this.setState({value : e.target.checked})
-        this.props.action("visibletopublic", e);
+        this.props.action("visibleToPublic", e);
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({value: nextProps.value})
     }
 
     render() {

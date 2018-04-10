@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Row, Col, Grid, css, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
-import styled from "styled-components";
-import location from '../../../image/location.jpeg'
-
+import {Row, Col, Grid, Button, Modal, FormGroup, FormControl} from 'react-bootstrap';
+import location from '../../../image/location.jpeg';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {updateSummary} from "../../../actions/myProfileActions";
 
 class Intro extends Component {
 
@@ -15,28 +16,15 @@ class Intro extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-
-        	/**intro : {
-        		"name" : "Jeremy Rose",
-        		"city" : "Seattle",
-        		"state" : "WA",
-        		"gender" : "Male",
-        		"campus" : "Seattle",
-        		"startTerm" : "Fall 2016",
-        		"endTerm" : "May 2018",
-        		"summary" : "I'm a student"
-        	},**/
-            intro: this.props.intro,
             summary: this.props.summary,
             show: false
         };
-
-
     }
 
 
     handleClose() {
         this.setState({show: false});
+        this.setState({summary: this.props.summary});
     }
 
     handleShow() {
@@ -47,48 +35,43 @@ class Intro extends Component {
         this.setState({summary: event.target.value});
     }
 
-    handleSubmit(){
+    handleSubmit() {
         this.setState({show: false});
-        this.props.handler(this.state.summary);
+        // this.props.setSummary(this.state.summary);
     }
 
-
     render() {
-        console.log(this.state);
         return (
-            	<Grid>
-            		<Row className="show-grid">
-            			<Col md={12}> <p id="intro-name">{this.state.intro.firstName},{this.state.intro.lastName}
-            			&nbsp;&nbsp;&nbsp;
-            			<img id="locationImage" src={location} alt="pic"/>&nbsp;
-            			<span id="location" className="grayContent">{this.state.intro.city}, {this.state.intro.state}</span></p></Col>
-            		</Row>
+            <Grid>
+                <Row className="show-grid">
+                    <Col md={12}><p id="intro-name">{this.props.intro.firstName}, {this.props.intro.lastName}
+                        &nbsp;&nbsp;&nbsp;
+                        <img id="locationImage" src={location} alt="pic"/>&nbsp;
+                        <span id="location"
+                              className="grayContent">{this.props.intro.city}, {this.props.intro.state}</span></p></Col>
+                </Row>
 
-            		<br/>
-            		<Row className="show-grid">
-                        <Col md={3}><p>Gender:</p></Col>
-                        <Col md={3}><p className="grayContent">{this.state.intro.gender}</p></Col>
-                        <Col md={3}><p>Start Term:</p></Col>
-                        <Col md={3}><p className="grayContent">{this.state.intro.startTerm}</p></Col>
-            		</Row>
+                <br/>
+                <Row className="show-grid">
+                    <Col md={3}><p>Gender:</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.gender}</p></Col>
+                    <Col md={3}><p>Start Term:</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.entryTerm + ' ' + this.props.intro.entryYear}</p></Col>
+                </Row>
 
-            		<Row className="show-grid">
-                        <Col md={3}><p>Campus:</p></Col>
-                        <Col md={3}><p className="grayContent">{this.state.intro.campus}</p> </Col>
-            			<Col md={3}><p>End Term:</p></Col>
-                        <Col md={3}><p className="grayContent">{this.state.intro.endTerm}</p> </Col>
+                <Row className="show-grid">
+                    <Col md={3}><p>Campus:</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.campus}</p></Col>
+                    <Col md={3}><p>End Term:</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.intro.expectedLastTerm + ' ' + this.props.intro.expectedLastYear}</p></Col>
 
-            		</Row>
+                </Row>
 
-            	    <hr/>
-                    <Row className="show-grid">
-                    	<Col md={12}> <p className="subtitle">Summary&nbsp;&nbsp;&nbsp;&nbsp;</p> </Col>
+                <hr/>
 
-                    </Row>
-
-                    <Row className="show-grid">
-                    	<Col md={12}> <p className="grayContent">{this.state.summary}</p> </Col>
-                    </Row>
+                <Row className="show-grid">
+                    <Col md={12}><p className="grayContent">{this.props.summary}</p></Col>
+                </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
@@ -96,7 +79,8 @@ class Intro extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <FormGroup controlId="formControlsTextarea">
-                            <FormControl rows="3" value={this.state.summary} onChange={this.handleChange} componentClass="textarea"/>
+                            <FormControl rows="3" value={this.state.summary} onChange={this.handleChange}
+                                         componentClass="textarea"/>
                         </FormGroup>
                     </Modal.Body>
                     <Modal.Footer>
@@ -105,10 +89,26 @@ class Intro extends Component {
                     </Modal.Footer>
                 </Modal>
 
-                </Grid>
+            </Grid>
 
         )
     }
 }
 
-export default Intro
+
+const mapStateToProps = state => {
+    return {
+        summary: state.myProfileReducer.studentRecord.summary,
+        intro: state.myProfileReducer.studentRecord,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    updateSummary,
+}, dispatch);
+
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Intro)

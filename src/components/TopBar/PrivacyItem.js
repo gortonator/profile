@@ -17,6 +17,10 @@ class PrivacyItem extends Component {
         this.props.action(this.props.stateName, e);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({value: nextProps.value})
+    }
+
     render() {
         return (
             <tr>

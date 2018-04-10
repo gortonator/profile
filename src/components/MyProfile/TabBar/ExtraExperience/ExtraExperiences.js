@@ -16,13 +16,13 @@ class ExtraExperiences extends Component {
             edit:false,
             editItem: null,
             index:999999,
-            experiences: this.props.extraExperiences
+            neuId: this.props.neuId
         };
     }
 
     increase = () => {
         this.setState({
-            index: this.state.experiences.length
+            index: this.props.extraExperiences.length
         });
     };
 
@@ -47,23 +47,18 @@ class ExtraExperiences extends Component {
 
     handleAdd = (item) => {
         this.props.addExtraExperience(item);
-        this.state.experiences.push(item)
     };
 
     handleDel = (item) => {
         this.props.deleteExtraExperience(item);
-        this.setState({
-            experiences: this.state.experiences.filter(experience => experience.id !== item.id)
-        })
     };
 
     handleEdit = (item) => {
         this.props.updateExtraExperience(item);
-        let index = this.state.experiences.indexOf(this.state.editItem);
-        this.state.experiences[index] = item;
     };
 
     render() {
+        console.log(this.props.extraExperiences);
         return (
             <div className="wrapper">
                 <table width="100%">
@@ -81,19 +76,19 @@ class ExtraExperiences extends Component {
                     </tbody>
                 </table>
 
-                {this.state.experiences.map(item => (
-                    <div key={item.id}>
+                {this.props.extraExperiences.map(item => (
+                    <div key={item.extraExperienceId}>
                         <table width="100%">
                             <tbody>
                             <tr>
-                                <td width="95%"><h2 className="companyName">{item.CompanyName}</h2></td>
+                                <td width="95%"><h2 className="companyName">{item.companyName}</h2></td>
                                 <td width="5%">
                                     <EditIcon onClick={() => this.clickOnEdit(item)}></EditIcon>
                                 </td>
                             </tr>
-                            <tr><td><p className="grayContent">{item.Title}</p></td></tr>
-                            <tr><td><p className="grayContent">{item.StartDate + " - " + item.EndDate}</p></td></tr>
-                            <tr><td><TextArea className="grayContent">{item.Description}</TextArea></td></tr>
+                            <tr><td><p className="grayContent">{item.title}</p></td></tr>
+                            <tr><td><p className="grayContent">{item.startDate + " - " + item.endDate}</p></td></tr>
+                            <tr><td><TextArea className="grayContent">{item.description}</TextArea></td></tr>
                             </tbody>
                         </table>
                         <hr/>
@@ -104,10 +99,11 @@ class ExtraExperiences extends Component {
                     <AddExperience
                         closePopup={this.clickOnAdd}
                         text={"Add New Experience"}
-                        experiences={this.state.experiences}
+                        experiences={this.props.extraExperiences}
                         increaseIndex={this.increase}
                         index={this.state.index}
                         addFunc={this.handleAdd}
+                        neuId={this.state.neuId}
                     >
                     </AddExperience>
                 </Modal>
@@ -116,7 +112,7 @@ class ExtraExperiences extends Component {
                     <EditExperience
                         closePopup={this.setEditFlag}
                         text={"Edit Experience"}
-                        experiences={this.state.experiences}
+                        experiences={this.props.extraExperiences}
                         item={this.state.editItem}
                         deleteFunc={this.handleDel}
                         editFunc={this.handleEdit}
@@ -134,14 +130,15 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        extraExperiences: state.myProfileReducer.extraExperiences
+        extraExperiences: state.myProfileReducer.ExtraExperiences,
+        neuId: state.myProfileReducer.StudentRecord.neuId
     };
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     updateExtraExperience,
     addExtraExperience,
-    deleteExtraExperience
+    deleteExtraExperience,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExtraExperiences)
