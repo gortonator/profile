@@ -153,14 +153,6 @@ a:hover,a:focus{
   width:90%;
 }
 
-/*To make Picture height equaled with Intro*/
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}
-
 .row {
   margin: 2% 0;
 }
@@ -186,4 +178,25 @@ a:hover,a:focus{
 .brandImg {
   height: 25px;
   vertical-align: text-bottom;
+}
+
+/*set for image vertical middle*/
+.imageContainer{
+  position: relative;
+  margin: 2% 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    vertical-align: center;
+  }
+  .imageContainer{
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

@@ -20,7 +20,7 @@ class MyProfile extends Component {
             <Wrapper>
                 <div>
                     <Row className="show-grid row-eq-height">
-                        <Col md={4}>
+                        <Col md={4} className={"pictureColumn"}>
                             <Picture />
                         </Col>
                         <Col md={8}>
@@ -46,11 +46,12 @@ const Wrapper = styled.div`
     font-size: 18px;
     `;
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchMyProfile: () => dispatch(fetchMyProfile())
-    };
-};
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         fetchMyProfile: () => dispatch(fetchMyProfile())
+//     };
+// };
 
 
-export default connect(null, mapDispatchToProps)(MyProfile)
+// export default connect(null, mapDispatchToProps)(MyProfile)
+export default MyProfile
