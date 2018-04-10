@@ -11,6 +11,7 @@ export default class EditProject extends Component {
             startDate: new Date(),
             endDate: new Date(),
             description: this.props.item.description,
+            neuId: this.props.item.neuId
         }
     }
 
@@ -55,6 +56,7 @@ export default class EditProject extends Component {
         }
 
         let item = {
+            neuId: this.state.neuId,
             projectId: this.state.id,
             projectName: this.state.projectName,
             startDate: this.state.startDate,

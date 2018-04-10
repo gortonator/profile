@@ -4,7 +4,7 @@ import EditIcon from "../TabBar/About/EditIcon";
 import location from '../../../image/location.jpeg';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {setSummary} from '../../../actions/myProfileActions'
+import {updateSummary} from '../../../actions/myProfileActions'
 
 class Intro extends Component {
 
@@ -38,34 +38,38 @@ class Intro extends Component {
 
     handleSubmit() {
         this.setState({show: false});
-        this.props.setSummary(this.state.summary);
+        this.props.updateSummary(this.state.summary);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({summary: nextProps.summary})
+    }
 
     render() {
+        console.log("yudong intro", this.props.StudentRecord);
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col md={12}><p id="intro-name">{this.props.intro.firstName}, {this.props.intro.lastName}
-                        &nbsp;&nbsp;&nbsp;
+                    <Col md={12}><p id="intro-name">{this.props.StudentRecord.firstName}, {this.props.StudentRecord.lastName}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <img id="locationImage" src={location} alt="pic"/>&nbsp;
                         <span id="location"
-                              className="grayContent">{this.props.intro.city}, {this.props.intro.state}</span></p></Col>
+                              className="grayContent">{this.props.StudentRecord.city}, {this.props.StudentRecord.state}</span></p></Col>
                 </Row>
 
                 <br/>
                 <Row className="show-grid">
                     <Col md={3}><p>Gender:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.gender}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.StudentRecord.gender}</p></Col>
                     <Col md={3}><p>Start Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.entryTerm + ' ' + this.props.intro.entryYear}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.StudentRecord.entryTerm + ' ' + this.props.StudentRecord.entryYear}</p></Col>
                 </Row>
 
                 <Row className="show-grid">
                     <Col md={3}><p>Campus:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.campus}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.StudentRecord.campus}</p></Col>
                     <Col md={3}><p>End Term:</p></Col>
-                    <Col md={3}><p className="grayContent">{this.props.intro.expectedLastTerm + ' ' + this.props.intro.expectedLastYear}</p></Col>
+                    <Col md={3}><p className="grayContent">{this.props.StudentRecord.expectedLastTerm + ' ' + this.props.StudentRecord.expectedLastYear}</p></Col>
 
                 </Row>
 
@@ -77,7 +81,7 @@ class Intro extends Component {
                 </Row>
 
                 <Row className="show-grid">
-                    <Col md={12}><p className="grayContent">{this.props.summary}</p></Col>
+                    <Col md={12}><p className="grayContent">{this.state.summary}</p></Col>
                 </Row>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -105,17 +109,14 @@ class Intro extends Component {
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.studentRecord.summary,
-        intro: state.myProfileReducer.studentRecord,
+        summary: state.myProfileReducer.StudentRecord.summary,
+        StudentRecord: state.myProfileReducer.StudentRecord,
     };
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setSummary,
+    updateSummary,
 }, dispatch);
-
-
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Intro)

@@ -45,3 +45,6 @@ gen### Java template
 
 # Mac config file
 *.DS_Store
+
+# Quality Metric
+/report

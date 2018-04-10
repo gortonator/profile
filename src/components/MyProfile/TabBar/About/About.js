@@ -10,7 +10,7 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            about: this.props.about
+            about: this.props.StudentRecord
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -24,12 +24,16 @@ class About extends Component {
         console.log("change "+[keyName]+": "+value);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({about: nextProps.StudentRecord})
+    }
+
     render() {
         return (
             <div className="wrapper">
                 <AboutTable>
-                    <AboutItem labelText="Phone" keyName="phone" action={this.handleChange} value={this.state.about.phone} modifiable/>
-                    <AboutItem labelText="Email" type='email' keyName="email" action={this.handleChange} value={this.state.about.email} modifiable/>
+                    <AboutItem labelText="Phone" keyName="phoneNum" action={this.handleChange} value={this.state.about.phoneNum} modifiable/>
+                    <AboutItem labelText="Email" type='email' keyName="email" action={this.handleChange} value={this.state.about.email} />
                     <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.state.about.address} modifiable/>
                     <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.state.about.linkedin} modifiable isLink/>
                     <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.state.about.github} modifiable isLink/>
@@ -47,7 +51,7 @@ const AboutTable = styled.table`
     `
 const mapStateToProps = state => {
     return {
-        about: state.myProfileReducer.studentRecord
+        StudentRecord: state.myProfileReducer.StudentRecord
     };
 };
 

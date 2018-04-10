@@ -1,131 +1,111 @@
 import {
-    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, SET_SUMMARY, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
-    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE
+    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
+    UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, ADD_PROJECT,
+    UPDATE_SUMMARY, SET_LOGIN_INFO
 } from '../actions/types'
 
 export const initialState = {
     ExtraExperiences: [
         {
-            endDate: "04-01-2019",
-            companyName: "Amazon",
-            description: "Intern",
-            title: "Intern",
-            extraExperienceId: 8,
-            startDate: "01-01-2019"
+            neuId: "",
+            endDate: "",
+            companyName: "",
+            description: "",
+            title: "",
+            extraExperienceId: 0,
+            startDate: ""
         }
     ],
 
     Projects: [
         {
-            endDate: "12-31-2017",
-            description: "Intern",
-            projectName: "CNAO",
-            projectId: 5,
-            startDate: "12-12-2017"
+            neuId: "",
+            endDate: "",
+            description: "",
+            projectName: "",
+            projectId: 0,
+            startDate: ""
         }
     ],
 
     Courses: [
         {
-            courseName: "Intensive Foundations of CS",
-            description: "Intensive Foundations of CS",
-            courseId: "CS 5001"
-        },
-        {
-            courseName: "Discrete and Data Structures",
-            description: "Discrete and Data Structures",
-            courseId: "CS 5002"
-        },
-        {
-            courseName: "Object-Oriented Design",
-            description: "Object-Oriented Design",
-            courseId: "CS 5004"
-        },
-        {
-            courseName: "Algorithms",
-            description: "Algorithms",
-            courseId: "CS 5006"
-        },
-        {
-            courseName: "Computer Systems",
-            description: "Computer Systems",
-            courseId: "CS 5007"
+            courseName: "0",
+            description: "0",
+            courseId: "0"
         }
     ],
 
     WorkExperiences: [
         {
-            workExperienceId: 1,
-            companyName: "Amazon.com",
-            startDate: "May 2017",
-            endDate: "Sept 2017",
-            currentJob: true,
-            coop: true,
-            title: "Software Engineer Intern",
-            description: 'Work as SDE',
+            neuId: "",
+            workExperienceId: 0,
+            companyName: "",
+            startDate: "",
+            endDate: "",
+            currentJob: false,
+            coop: false,
+            title: "",
+            description: "",
         },
-        {
-            workExperienceId: 2,
-            neuId: 12345,
-            companyName:"Zillow",
-            startDate: 'May 2017',
-            endDate: 'Sept 2017',
-            currentJob: true,
-            coop: true,
-            title: 'Software Engineer',
-            description: 'Work as SDE',
-        },
+
     ],
 
-    studentRecord: {
-        neuId: "004",
+    StudentRecord: {
+        neuId: "",
         publicId: 0,
-        entryYear: 2017,
-        lastName: "Wood",
-        address: "360 Huntington Ave",
-        expectedLastYear: 2020,
+        entryYear: 0,
+        lastName: "",
+        address: "",
+        expectedLastYear: 0,
         visible: false,
-        gender: "M",
-        city: "Boston",
-        campus: "BOSTON",
-        degree: "MASTERS",
-        firstName: "Charles",
-        entryTerm: "FALL",
-        enrollmentStatus: "FULL_TIME",
+        gender: "",
+        city: "",
+        campus: "",
+        degree: "",
+        firstName: "",
+        entryTerm: "",
+        enrollmentStatus: "",
         scholarship: false,
-        middleName: "new",
-        expectedLastTerm: "SUMMER",
-        email: "Charles004@gmail.com",
-        phone: "+1 (206)306-3178",
-        address: "225 Terry Ave, Seattle, WA",
-        linkedin: "www.linkedin.com/jesremy",
-        github: "www.github.com/jeremy",
-        facebook: "www.facebook.com/jeremy",
-        website: "www.jeremy.com/home",
-        summary: 'Hi, I am Yudong. I am a M.S. candidate in Computer Science from Northeastern University-Seattle' +
-        'campus. Graduate date: June, 2018 (Expected) Please feel free to contact me via ' +
-        'wangyudong53138@gmail.com',
-        skill: "Java C C++",
+        middleName: "",
+        expectedLastTerm: "",
+        email: "",
+        linkedin: "",
+        github: "",
+        facebook: "",
+        website: "",
+        summary: "",
+        skills: "",
+        race: "",
+        zip: "",
+        visa: "",
+        state: "",
+        phoneNum: "",
     },
 
     Privacies: {
-        visibleToPublic: true,
-        github: true,
-        website: true,
-        address: true,
-        neuId: "004",
-        facebook: true,
-        photo: true,
-        project: true,
-        linkedin: true,
-        skill: true,
-        course: true,
-        extraExperience: true,
+        visibleToPublic: false,
+        github: false,
+        website: false,
+        address: false,
+        neuId: "",
+        facebook: false,
+        photo: false,
+        project: false,
+        linkedin: false,
+        skill: false,
+        course: false,
+        extraExperience: false,
         publicId: 0,
-        email: true,
-        coop: true,
-        phone: true
-    }
+        email: false,
+        coop: false,
+        phone: false
+    },
+    LoginInfo: {
+        id: "",
+        token: ""
+    },
+
 };
 
 // export const initialState = {
@@ -260,28 +240,39 @@ export const initialState = {
 
 export default function myProfileReducer(state = initialState,
     {type, payload}) {
+    console.log("previous reducer", state);
     console.log("reducer", type, payload);
     switch (type) {
+        case SET_LOGIN_INFO:
+            return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
-            return payload;
+            let o = {...payload, LoginInfo: {...state.LoginInfo}};
+            console.log("yudong last", o);
+            return o;
         case FETCH_OTHER_PROFILE_DATA:
             return payload;
-        case SET_SUMMARY:
-            return {...state, studentRecord: {...state.studentRecord, summary: payload}};
+        case UPDATE_SUMMARY:
+            return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
         case UPDATE_PRIVACY:
-            return {...state, privacy: payload};
+            return {...state, Privacies: payload};
         case UPDATE_SKILL:
-            return {...state, skills: payload};
+            return {...state, StudentRecord: {...state.StudentRecord, skills: payload}};
         case UPDATE_ABOUT:
-            return {...state, about: payload};
+            return {...state, StudentRecord: payload};
+        case ADD_EXTRA_EXPERIENCE:
+            return {...state, ExtraExperiences:state.ExtraExperiences.concat(payload)};
         case UPDATE_EXTRA_EXPERIENCE:
-            return {...state, ExtraExperiences: payload};
-        case UPDATE_PROJECT:
-            return {...state, Projects: payload};
+            return {...state, ExtraExperiences:state.ExtraExperiences.map(
+                    experience => experience.extraExperienceId === payload.extraExperienceId ? experience = payload : experience)};
         case DELETE_EXTRA_EXPERIENCE:
-            return {...state, ExtraExperiences: payload};
+            return {...state, ExtraExperiences: state.ExtraExperiences.filter(experience => experience.extraExperienceId !== payload.extraExperienceId)};
+        case ADD_PROJECT:
+            return {...state, Projects:state.Projects.concat(payload)};
+        case UPDATE_PROJECT:
+            return {...state, Projects:state.Projects.map(
+                    project => project.projectId === payload.projectId ? project = payload : project)};
         case DELETE_PROJECT:
-            return {...state, Projects: payload};
+            return {...state, Projects: state.Projects.filter(project => project.projectId !== payload.projectId)};
         default:
             console.log("not found any type match in reducer! you are given type " + type);
             return state;

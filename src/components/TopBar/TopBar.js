@@ -32,11 +32,9 @@ class TopBar extends Component {
             <Wrapper>
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
-                        <a className="navbar-brand">
-                            <Image style={{height: "25px"}} src={logo} alt="pic" />
-                        </a>
                         <Navbar.Brand>
-                            <a style={title}>Northeastern University</a>
+                            {/*<Image className="brandImg" src={logo} alt="pic" />*/}
+                            <a id="brandTitle">Northeastern University</a>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
@@ -67,16 +65,17 @@ class TopBar extends Component {
     }
 }
 
-const title = {
-    fontSize: '25px',
-    fontWeight: '800',
-    color: '#e78885',
-};
+
+const BrandTitle = styled.a` 
+    font-size: 25px;
+    font-weight: 800;
+    color: #e78885;
+    `;
 
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    width: 70%;
+    width: 75%;
     margin: auto;
     `;
 

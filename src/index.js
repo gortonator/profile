@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './css/login.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -10,6 +11,10 @@ import {Provider} from 'react-redux';
 import myProfileReducer from './reducers/myProfileReducer'
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
+
+
+
+
 
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,

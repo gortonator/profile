@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Checkbox} from 'react-bootstrap';
 
-class PrivacyItem extends Component {
+class PrivacyToPublic extends Component {
 
     constructor(props){
         super(props);
@@ -14,7 +14,7 @@ class PrivacyItem extends Component {
 
     handleChange(e){
         this.setState({value : e.target.checked})
-        this.props.action(this.props.stateName, e);
+        this.props.action("visibleToPublic", e);
     }
 
     componentWillReceiveProps(nextProps){
@@ -24,9 +24,8 @@ class PrivacyItem extends Component {
     render() {
         return (
             <tr>
-                <td width="20%"></td>
-                <td width="50%">{this.props.text}</td>
-                <td width="30%"><Checkbox checked={this.state.value} onChange={this.handleChange}/>
+                <td width="80%"><b>Do you want to show your profile in public search results?</b></td>
+                <td width="20%"><Checkbox checked={this.state.value} onChange={this.handleChange}/>
                 </td>
             </tr>
         )
@@ -36,4 +35,4 @@ class PrivacyItem extends Component {
 
 
 
-export default PrivacyItem
+export default PrivacyToPublic

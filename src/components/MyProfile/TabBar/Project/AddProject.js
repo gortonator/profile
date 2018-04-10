@@ -79,7 +79,9 @@ export default class AddProject extends Component {
 
         let count = this.props.index + 1;
         let item = {
-            projecId: count,
+            neuId: this.props.neuId,
+            // projecId: count,
+            projectId: 0,
             projectName: this.state.projectName,
             startDate: this.state.startDate,
             endDate: this.state.endDate,
