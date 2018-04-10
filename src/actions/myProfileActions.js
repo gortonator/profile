@@ -2,13 +2,16 @@ import axios from "axios";
 import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
     UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
     UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO} from '../actions/types'
+import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
+    API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
+    API_PUT_STUDENTRECORD} from "./apis";
 
 export function fetchMyProfile() {
     return (dispatch, getState) => {
         let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.get(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            (HOST + API_GET_PROFILE).format(neuid),
             {headers: {
                     "Content-Type": "application/json",
                     "token" : myToken
@@ -30,7 +33,7 @@ export function fetchOtherProfile() {
     return (dispatch, getState) => {
         let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.get(
-            "http://asd2.ccs.neu.edu:8082/students/" + other_neuid,
+            (HOST + API_GET_PROFILE).format(other_neuid),
             {headers: {
                     "Content-Type": "application/json",
                     "token" : myToken
@@ -50,11 +53,11 @@ export function fetchOtherProfile() {
 export function updateSummary(summary) {
     return (dispatch, getState) => {
         let state = getState().myProfileReducer;
-        let neuid = state.StudentRecord.neuId;
-        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let neuid = state.LoginInfo.id;
+        let myToken = state.LoginInfo.token;
         let data = JSON.stringify({...state.StudentRecord, summary: summary});
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -74,12 +77,11 @@ export function updateSummary(summary) {
 
 export function updatePrivacy(privacy) {
     return (dispatch, getState) => {
-        let state = getState().myProfileReducer;
-        let neuid = state.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(privacy);
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid + "/privacies",
+            (HOST + API_PUT_PRIVACY).format(neuid),
             data,
             {headers: {
                 "Content-Type": "application/json",
@@ -100,11 +102,11 @@ export function updatePrivacy(privacy) {
 export function updateSkill(skills) {
     return (dispatch, getState) => {
         let state = getState().myProfileReducer;
-        let neuid = state.StudentRecord.neuId;
-        let myToken = getState().myProfileReducer.LoginInfo.token;
+        let neuid = state.LoginInfo.id;
+        let myToken = state.LoginInfo.token;
         let data = JSON.stringify({...state.StudentRecord, skills: skills});
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -124,12 +126,11 @@ export function updateSkill(skills) {
 
 export function updateAbout(about) {
     return (dispatch,getState) => {
-        let state = getState().myProfileReducer;
-        let neuid = state.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(about);
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid,
+            (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -150,11 +151,11 @@ export function updateAbout(about) {
 
 export function updateExtraExperience(experience) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(experience);
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences/" + experience.extraExperienceId,
+            (HOST + API_PUT_EXTRA_EXPERIENCE).format(neuid, experience.extraExperienceId),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -174,11 +175,11 @@ export function updateExtraExperience(experience) {
 
 export function addExtraExperience(experience) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(experience);
         axios.post(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences",
+            (HOST + API_POST_EXTRA_EXPERIENCE).format(neuid),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -199,10 +200,10 @@ export function addExtraExperience(experience) {
 
 export function deleteExtraExperience(experience) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.delete(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/extraexperiences/" + experience.extraExperienceId,
+            (HOST + API_DELETE_EXTRA_EXPERIENCE).format(neuid, experience.extraExperienceId),
             {headers: {
                     "Content-Type": "application/json",
                     "token" : myToken
@@ -221,11 +222,11 @@ export function deleteExtraExperience(experience) {
 
 export function updateProject(project) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(project);
         axios.put(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects/" + project.projectId,
+            (HOST + API_PUT_PROJECT).format(neuid, project.projectId),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -245,11 +246,11 @@ export function updateProject(project) {
 
 export function addProject(project) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         let data = JSON.stringify(project);
         axios.post(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects",
+            (HOST + API_POST_PROJECT).format(neuid),
             data,
             {headers: {
                     "Content-Type": "application/json",
@@ -270,10 +271,10 @@ export function addProject(project) {
 
 export function deleteProject(project) {
     return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.StudentRecord.neuId;
+        let neuid = getState().myProfileReducer.LoginInfo.id;
         let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.delete(
-            "http://asd2.ccs.neu.edu:8082/students/" + neuid +"/projects/" + project.projectId,
+            (HOST + API_DELETE_PROJECT).format(neuid, project.projectId),
             {headers: {
                     "Content-Type": "application/json",
                     "token" : myToken
@@ -297,15 +298,15 @@ export function setLoginInfo() {
             password : "password"
         });
         axios.post(
-            "http://asd2.ccs.neu.edu:8082/login",
+            (HOST + API_POST_LOGIN),
             logInfo,
             {headers: {
                     "Content-Type": "application/json",
                 }})
             .then(
                 (response) => {
-                    dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
-                    // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
+                    // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
+                    dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
                     console.log("Login successfully.");
                     dispatch(fetchMyProfile()); // Async request
                 },
@@ -315,3 +316,24 @@ export function setLoginInfo() {
                 })
     }
 }
+
+
+// Format url string
+String.prototype.format = function(args) {
+    var result = this;
+    if (arguments.length < 1) {
+        return result;
+    }
+
+    var data = arguments;
+    if (arguments.length == 1 && typeof (args) == "object") {
+        data = args;
+    }
+    for (var key in data) {
+        var value = data[key];
+        if (undefined != value) {
+            result = result.replace("{" + key + "}", value);
+        }
+    }
+    return result;
+};
