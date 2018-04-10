@@ -101,11 +101,11 @@ export const initialState = {
         coop: false,
         phone: false
     },
-
     LoginInfo: {
         id: "",
         token: ""
     },
+
 };
 
 // export const initialState = {

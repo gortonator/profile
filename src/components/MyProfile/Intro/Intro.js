@@ -51,7 +51,7 @@ class Intro extends Component {
             <Grid>
                 <Row className="show-grid">
                     <Col md={12}><p id="intro-name">{this.props.StudentRecord.firstName}, {this.props.StudentRecord.lastName}
-                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <img id="locationImage" src={location} alt="pic"/>&nbsp;
                         <span id="location"
                               className="grayContent">{this.props.StudentRecord.city}, {this.props.StudentRecord.state}</span></p></Col>

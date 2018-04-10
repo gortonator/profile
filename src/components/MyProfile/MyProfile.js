@@ -22,9 +22,9 @@ class MyProfile extends Component {
             <div style={{margin: "2%"}}>
                 <TopBar/>
                 <Wrapper>
-                    <div style={{margin: "2%"}}>
+                    <div>
                         <Row className="show-grid row-eq-height">
-                            <Col md={4}>
+                            <Col md={4} className={"pictureColumn"}>
                                 <Picture />
                             </Col>
                             <Col md={8}>
@@ -46,22 +46,17 @@ class MyProfile extends Component {
     }
 }
 
-const divStyle = {
-    margin: "2%",
-    maxWidth: 700,
-};
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    width: 70%;
-    margin: auto;
     `;
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchMyProfile: () => dispatch(fetchMyProfile())
-    };
-};
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         fetchMyProfile: () => dispatch(fetchMyProfile())
+//     };
+//  };
 
 
-export default connect(null, mapDispatchToProps)(MyProfile)
+// export default connect(null, mapDispatchToProps)(MyProfile)
+export default MyProfile
