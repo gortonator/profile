@@ -320,7 +320,6 @@ export function doLogin(body) {
                     // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
                     alert("Login successfully");
                     // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
-                    dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
                     console.log("Login successfully.");
                     dispatch(fetchMyProfile(response.data)); // Async request
                 },

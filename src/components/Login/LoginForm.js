@@ -2,6 +2,8 @@ import React from 'react';
 import logo from '../../image/login_logo.png'
 import {doLogin, clearLogin} from '../../actions/myProfileActions';
 import {connect} from 'react-redux';
+import {withRouter} from "react-router-dom";
+import {BrowserRouter} from 'react-router'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -38,7 +40,7 @@ class LoginForm extends React.Component {
 
     handleSubmit(event) {
         if (this.state.username.endsWith("@husky.neu.edu")) {
-            this.props.doLogin({username: this.state.username, password: this.state.password});
+            this.props.doLogin({username: this.state.username, password: this.state.password})
         }
         else {
             alert("Must provide valid Husky email address");
@@ -55,10 +57,10 @@ class LoginForm extends React.Component {
             if (this.props.login.id && this.props.login.token) {
                 sessionStorage.setItem("mscs_align_neu_id", this.props.login.id);
                 sessionStorage.setItem("mscs_align_neu_token", this.props.login.token);
-                this.props.history.push("students");
+                this.props.history.push("/myProfile");
             } else {
-                alert("Must provide valid Husky credentials");
-                this.props.clearLogin();
+                // alert("Must provide valid Husky credentials");
+                // this.props.clearLogin();
             }
         }
 
@@ -90,9 +92,9 @@ class LoginForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        login: state.login,
+        login: state.myProfileReducer.LoginInfo,
         StudentRecord: state.myProfileReducer.StudentRecord,
     };
 }
 
-export default connect(mapStateToProps, {doLogin, clearLogin})(LoginForm);
+export default withRouter(connect(mapStateToProps, {doLogin, clearLogin})(LoginForm));

@@ -240,12 +240,15 @@ export const initialState = {
 
 export default function myProfileReducer(state = initialState,
     {type, payload}) {
+    console.log("previous reducer", state);
     console.log("reducer", type, payload);
     switch (type) {
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
-            return {...state, ...payload};
+            let o = {...payload, LoginInfo: {...state.LoginInfo}};
+            console.log("yudong last", o);
+            return o;
         case FETCH_OTHER_PROFILE_DATA:
             return payload;
         case UPDATE_SUMMARY:
