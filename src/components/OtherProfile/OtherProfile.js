@@ -117,7 +117,7 @@ class OtherProfile extends Component {
     render() {
         return (
             <Wrapper>
-                <div style={{margin: "2%"}}>
+                <div>
                     <Row className="show-grid row-eq-height">
                         <Col md={4}>
                             <Picture />
@@ -142,15 +142,9 @@ class OtherProfile extends Component {
     }
 }
 
-const divStyle = {
-    margin: "2%",
-    maxWidth: 700,
-};
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    width: 70%;
-    margin: auto;
     `;
 
 

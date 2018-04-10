@@ -4,6 +4,7 @@ import PrivacyItem from "./PrivacyItem";
 import {connect} from "react-redux";
 import {updatePrivacy} from "../../actions/myProfileActions";
 import {bindActionCreators} from "redux";
+import PrivacyToPublic from "./PrivacyToPublic";
 
 
 class Privacy extends Component {
@@ -43,7 +44,10 @@ class Privacy extends Component {
                     <Modal.Title>Privacy Setting</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <p>Make your information visible or invisible to others.</p>
+                    <Table className="privacyTable" condensed>
+                            <PrivacyToPublic value={this.state.privacy.visibletopublic} action={this.handleChange} />
+                    </Table>
+                    <p><b>Make your information visible or invisible to other students.</b></p>
                 <Table className="privacyTable" striped condensed hover >
                     <thead>
                     <tr>

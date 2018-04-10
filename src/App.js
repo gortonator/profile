@@ -11,7 +11,7 @@ class App extends Component {
         // console.log("app.js about= ", this.props);
 
         return (
-            <div style={{margin:"2%"}}>
+            <div className="TopContainer">
                 <TopBar/>
                 <Router>
                     <div id="main-nav">

@@ -38,7 +38,6 @@ body {
 .container-fluid,
 .container {
   width: 100%;
-  padding: 0;
 }
 
 .grayContent{
@@ -170,4 +169,21 @@ a:hover,a:focus{
 .privacyTable > thead > tr > th {
   font-size: 15px;
   vertical-align: middle;
+}
+
+/*Top bar related*/
+.TopContainer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2%;
+}
+#brandTitle {
+  font-size: 25px;
+  font-weight: 800;
+  color: #e78885;
+  /*margin-left: 15px;*/
+}
+.brandImg {
+  height: 25px;
+  vertical-align: text-bottom;
 }

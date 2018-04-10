@@ -95,6 +95,7 @@ export const initialState = {
     },
 
     privacy: {
+        visibletopublic: true,
         show_photo: true,
         show_coops: false,
         show_phone: true,
