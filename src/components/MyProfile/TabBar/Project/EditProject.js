@@ -8,9 +8,9 @@ export default class EditProject extends Component {
         this.state = {
             id: this.props.item.projectId,
             projectName: this.props.item.projectName,
-            startDate: this.props.item.startDate,
-            endDate: this.props.item.endDate,
-            description: this.props.item.description
+            startDate: new Date(),
+            endDate: new Date(),
+            description: this.props.item.description,
         }
     }
 
@@ -114,6 +114,7 @@ export default class EditProject extends Component {
                     <ProjectContent
                         changeTitle={this.changeTitle.bind(this)}
                         changeDesc={this.changeDesc.bind(this)}
+                        changeStartDate={this.changeStartDate.bind(this)}
                         changeStartDate={this.changeStartDate.bind(this)}
                         changeEndDate={this.changeEndDate.bind(this)}
                         item={this.state}/> <br/>
