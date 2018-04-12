@@ -15,7 +15,7 @@ import {Provider} from 'react-redux';
 import myProfileReducer from './reducers/myProfileReducer'
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
-
+import storeSynchronize from 'redux-localstore'
 
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
@@ -28,6 +28,10 @@ const store = createStore(
     window.devToolsExtension && window.devToolsExtension(),
     applyMiddleware(thunk, promise()),
 );
+
+
+storeSynchronize(store);
+
 
 ReactDOM.render(
     <Provider store={store}>

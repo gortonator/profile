@@ -331,8 +331,12 @@ export function doLogin(body) {
                     // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
                     // console.log("Login successfully.", response.data);
 
-                    localStorage.setItem('login', JSON.stringify(response.data));
 
+
+
+
+                    localStorage.setItem('login', JSON.stringify(response.data));
+                    //
                     dispatch(fetchMyProfile(response.data)); // Async request //we should not fetch data here.
                 },
                 (error) => {

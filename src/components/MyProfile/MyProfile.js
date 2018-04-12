@@ -11,6 +11,7 @@ import TopBar from '../TopBar/TopBar'
 import {bindActionCreators} from 'redux';
 
 
+
 class MyProfile extends Component {
 
 
@@ -35,7 +36,7 @@ class MyProfile extends Component {
 
 
     render() {
-        // console.log("yudong TV", this.props.StudentRecord);
+        // console.log("yudong TV", getState());
         // console.log("yudong TV2", this.state);
         return (
             <div style={{margin: "2%"}}>
