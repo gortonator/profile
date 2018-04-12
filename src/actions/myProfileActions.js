@@ -8,7 +8,7 @@ import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, 
 import store from '../index'
 
 
-const ROOT_URL = 'http://asd2.ccs.neu.edu:8082';
+const ROOT_URL = 'https://asd4.ccs.neu.edu:8082';
 
 
 
