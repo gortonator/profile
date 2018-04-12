@@ -13,12 +13,16 @@ import {combineReducers, createStore, applyMiddleware} from "redux";
 
 import {Provider} from 'react-redux';
 import myProfileReducer from './reducers/myProfileReducer'
+import studentFilterReducer from "./reducers/student_filter_reducer";
+import filterGroupReducer from "./reducers/filter_group_reducer";
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import storeSynchronize from 'redux-localstore'
 
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
+    studentFilter: studentFilterReducer,
+		filterGroup: filterGroupReducer
 });
 
 
