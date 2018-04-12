@@ -117,8 +117,6 @@ const initialState = defineState(defaultState)('myProfileReducer');
 
 export default function myProfileReducer(state = initialState,
     {type, payload}) {
-    // console.log("previous reducer", state);
-    // console.log("reducer", type, payload);
     switch (type) {
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};

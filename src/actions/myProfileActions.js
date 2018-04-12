@@ -6,18 +6,10 @@ import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, 
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
     API_PUT_STUDENTRECORD} from "./apis";
 
-// import { browserHistory } from 'react-router'
-
-
 export function fetchMyProfile(login) {
     return (dispatch) => {
-        // console.log("yudong 1", login);
-
         let neuid = login.id;
         let myToken = login.token;
-
-
-
         axios.get(
             (HOST + API_GET_PROFILE).format(neuid),
             {headers: {
@@ -26,7 +18,6 @@ export function fetchMyProfile(login) {
                 }})
             .then(
                 (response) => {
-                    // console.log("FETCH_MY_PROFILE_SUCCEED", response);
                     dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data});
                 },
                 (error) => {
@@ -48,7 +39,6 @@ export function fetchOtherProfile() {
                 }})
             .then(
                 (response) => {
-                    // console.log("FETCH_MY_PROFILE_SUCCEED", response);
                     dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: response.data});
                 },
                 (error) => {
@@ -323,20 +313,7 @@ export function doLogin(body) {
                 }})
             .then(
                 (response) => {
-                    // console.log("yudong login", response);
-
                     dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
-                    // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
-                    // alert("Login successfully");
-                    // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
-                    // console.log("Login successfully.", response.data);
-
-
-
-
-
-                    localStorage.setItem('login', JSON.stringify(response.data));
-                    //
                     dispatch(fetchMyProfile(response.data)); // Async request //we should not fetch data here.
                 },
                 (error) => {
@@ -352,9 +329,6 @@ export function clearLogin(){
         payload: null
     }
 }
-
-
-
 
 // Format url string
 String.prototype.format = function(args) {
