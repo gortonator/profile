@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './css/login.css';
+import './css/ResultPanel.css';
+import './css/SearchPage.css';
+import './css/StudentFilter.css';
+import './css/StudentResult.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -11,9 +15,6 @@ import {Provider} from 'react-redux';
 import myProfileReducer from './reducers/myProfileReducer'
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
-
-
-
 
 
 const allReducers = combineReducers({
@@ -28,11 +29,12 @@ const store = createStore(
     applyMiddleware(thunk, promise()),
 );
 
-
-
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
+
+
+export default store;

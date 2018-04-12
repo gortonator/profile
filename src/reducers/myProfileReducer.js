@@ -246,11 +246,9 @@ export default function myProfileReducer(state = initialState,
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
-            let o = {...payload, LoginInfo: {...state.LoginInfo}};
-            console.log("yudong last", o);
-            return o;
+            return {...payload, LoginInfo: {...state.LoginInfo}};
         case FETCH_OTHER_PROFILE_DATA:
-            return payload;
+            return {...payload, LoginInfo: {...state.LoginInfo}};
         case UPDATE_SUMMARY:
             return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
         case UPDATE_PRIVACY:

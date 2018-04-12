@@ -1,0 +1,54 @@
+#student_result_container{
+	text-align: left;
+	background-color: white;
+	display:inline-block;
+	border-radius: 8px;
+	border: 2px solid #aeaeae;
+	padding-left:20px;
+	padding-right:20px;
+	margin:5px;
+}
+
+#student_above_fold{
+	text-align: center;
+	margin:20px;
+}
+
+#student_below_fold{
+	display:block;
+	margin-bottom:20px;
+
+}
+
+hr {
+	size:2px;
+}
+
+.profile_picture{
+	max-width:75px;
+	max-height: 75px;
+	border-radius: 50%;
+}
+
+.student_name{
+	color:#615445;
+	font-size: 1.2em;
+	font-weight: 100;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.student_label{
+	color:#e11a2c;
+	font-size: 0.75em;
+	letter-spacing: .02em;
+	line-height: 1.5em;
+	text-transform: uppercase;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.student_field{
+	color:#615445;
+	font-size: 0.75em;
+	line-height: 1.5em;
+	font-family: 'HelveticaNeueW01-67MdCn 692710', 'HelveticaNeueW01-45Ligh', 'Helvetica Neue', HelveticaNeue, Helvetica, sans-serif;
+}

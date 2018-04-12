@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MyProfile from './components/MyProfile/MyProfile'
 import OtherProfile from './components/OtherProfile/OtherProfile'
 import Login from './components/Login/LoginForm'
-import TopBar from './components/TopBar/TopBar'
+import Search from './components/Search/Search'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
@@ -25,7 +25,8 @@ class App extends Component {
                     <div id="main-nav">
                         <Route exact path="/myProfile" component={MyProfile}/>
                         <Route exact path="/otherProfile" component={OtherProfile}/>
-                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/" component={Login}/>
+                        <Route exact path="/search" component={Search}/>
                     </div>
                 </Router>
             </div>

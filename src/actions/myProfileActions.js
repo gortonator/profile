@@ -5,16 +5,22 @@ import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
 import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
     API_PUT_STUDENTRECORD} from "./apis";
+import store from '../index'
+
 
 const ROOT_URL = 'http://asd2.ccs.neu.edu:8082';
 
 
 
-export function fetchMyProfile(LoginInfo) {
-    return (dispatch, getState) => {
-        let neuid = getState().myProfileReducer.LoginInfo.id;
-        let myToken = getState().myProfileReducer.LoginInfo.token;
-        console.log("yudong fetch my profile", LoginInfo);
+export function fetchMyProfile(login) {
+    return (dispatch) => {
+        console.log("yudong 1", login);
+
+        let neuid = login.id;
+        let myToken = login.token;
+
+
+
         axios.get(
             (HOST + API_GET_PROFILE).format(neuid),
             {headers: {
@@ -27,7 +33,7 @@ export function fetchMyProfile(LoginInfo) {
                     dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data});
                 },
                 (error) => {
-                    alert("Server error!");
+                    alert("Server error!", error);
                     console.log(error);
                 })
     }
@@ -61,6 +67,7 @@ export function updateSummary(summary) {
         let neuid = state.LoginInfo.id;
         let myToken = state.LoginInfo.token;
         let data = JSON.stringify({...state.StudentRecord, summary: summary});
+        console.log("yudong summay", myToken, neuid, data);
         axios.put(
             (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
@@ -290,7 +297,7 @@ export function deleteProject(project) {
                     console.log("Send request successfully.");
                 },
                 (error) => {
-                    alert("Server error!");
+                    // alert("Server error!");
                     console.log(error);
                 })
     }
@@ -320,8 +327,11 @@ export function doLogin(body) {
                     // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
                     alert("Login successfully");
                     // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
-                    console.log("Login successfully.");
-                    dispatch(fetchMyProfile(response.data)); // Async request
+                    console.log("Login successfully.", response.data);
+
+                    localStorage.setItem('login', JSON.stringify(response.data));
+
+                    dispatch(fetchMyProfile(response.data)); // Async request //we should not fetch data here.
                 },
                 (error) => {
                     alert("Login failed. Server error!");

@@ -52,7 +52,9 @@ class OtherProfile extends Component {
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    `;
+    width:70%;
+    margin:auto;
+`;
 
 
 const mapStateToProps = state => {

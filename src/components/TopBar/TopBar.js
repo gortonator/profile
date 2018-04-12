@@ -8,7 +8,7 @@ import Privacy from "./Privacy";
 
 class TopBar extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
             showPrivacy: false
@@ -33,7 +33,6 @@ class TopBar extends Component {
                 <Navbar collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            {/*<Image className="brandImg" src={logo} alt="pic" />*/}
                             <a id="brandTitle">Northeastern University</a>
                         </Navbar.Brand>
                         <Navbar.Toggle />
@@ -41,9 +40,9 @@ class TopBar extends Component {
                     <Navbar.Collapse>
                         <Navbar.Form pullLeft>
                             <FormGroup>
-                                <FormControl type="text" placeholder="Find students" />
+                                <FormControl type="text" placeholder="Find students"/>
                             </FormGroup>{' '}
-                            <Button type="submit">Search</Button>
+                            <Button href="/search">Advance Search</Button>
                         </Navbar.Form>
                         <Nav pullRight>
                             <NavItem eventKey={1} onClick={this.handleShow}>
@@ -58,8 +57,7 @@ class TopBar extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-
-                <Privacy show={this.state.showPrivacy} hideFunc={this.handleClose} />
+                <Privacy show={this.state.showPrivacy} hideFunc={this.handleClose}/>
             </Wrapper>
         )
     }

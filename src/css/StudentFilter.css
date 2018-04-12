@@ -1,0 +1,126 @@
+#filter_container{
+	height:100%;
+	background-color: white;
+	display:inline-block;
+	padding:30px;
+}
+
+#filter_above_fold_mobile{
+	width: 100%;
+}
+
+a{
+	margin-left: 5px;
+	color:#615445;
+	font-size: 0.75em;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_header_title{
+	color:#e11a2c;
+	font-size: 1.5em;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+	margin:0 0 10px;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_header_title_mobile{
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	border: none;
+	color: white;
+	background-color: #e11a2c;
+	font-size: 1.5em;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+	float: left;
+}
+
+.filter_label_mobile{
+	float: right;
+	padding-right: 20px;
+}
+
+.filter_header_title_mobile svg{
+	margin-left: 20px;
+}
+
+.filter_group_title{
+	color:#615445;
+	font-size: 0.75em;
+	font-weight: bold;
+	text-decoration: underline;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_group_label{
+	color:#615445;
+	font-size: 0.75em;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+#filter_group_container{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#filter_contents_container{
+	margin-top:8px;
+}
+
+#filter_contents_container_mobile{
+	background-color: white;
+	opacity: 0.96;
+	position: fixed;
+	top: 50px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.filter_items_mobile{
+	overflow-y: scroll;
+	position: fixed;
+	top: 50px;
+	bottom: 80px;
+	padding-left: 30px;
+	font-size: 150%;
+	width: 100%;
+}
+
+.filter_submit_botton_mobile{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.button_mobile{
+	font-size: 18px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0;
+	height: 50px;
+	opacity: 1;
+}
+
+input[type=checkbox]{
+	vertical-align: middle;
+	width:13px;
+	height:13px;
+	margin: 2px 5px 2px 5px;
+}
+
+button {
+  color: #F7F7F7;
+  background-color: #CC0000;
+  border-color: #CC0000;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px;
+	margin-bottom: 30px;
+  font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
