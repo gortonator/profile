@@ -4,6 +4,8 @@ import {doLogin, clearLogin} from '../../actions/myProfileActions';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
 import {BrowserRouter} from 'react-router'
+import '../../css/login.css';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -57,17 +59,16 @@ class LoginForm extends React.Component {
             <div id="body-container">
                 <div className="login-box">
                     <div className="inner-box">
-                        <img style={{height:"45px"}}src={logo} alt="Northeastern Align">
-                        </img>
+                        <img style={{height:"45px", margin:"10px"}}src={logo} alt="Northeastern Align"/>
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 <p>Email:</p>
-                                <input type="text" name="username" value={this.state.username}
+                                <input id="input1" type="text" name="username" value={this.state.username}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
                             <label>
                                 <p>Password:</p>
-                                <input type="password" name="password" value={this.state.password}
+                                <input id="input2" type="password" name="password" value={this.state.password}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
                             <input type="submit" value="Login"/>

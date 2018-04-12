@@ -12,7 +12,7 @@ class TopBar extends Component {
         super();
         this.state = {
             showPrivacy: false
-        }
+        };
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);

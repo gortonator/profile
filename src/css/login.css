@@ -44,7 +44,7 @@
     text-align:left;
 }
 
-input[type=text], [type=password] {
+#input1 {
     width: 134%;
     height: 40px;
     margin: 8px 0;
@@ -55,6 +55,19 @@ input[type=text], [type=password] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+#input2 {
+    width: 134%;
+    height: 40px;
+    margin: 8px 0;
+    padding-left: 20px;
+    font-size: 1.286em;
+    display: inline-block;
+    border: 1px solid #CC0000;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 
 label{
     color: #333333;
@@ -81,10 +94,6 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #990000;
     border-color: #8F0000;
-}
-
-img {
-    margin:10px;
 }
 
 .register-text-container{
