@@ -30,7 +30,7 @@ class MyProfile extends Component {
 
     componentDidMount() {
         // console.log("componentDidMount", this.state.login);
-        this.props.fetchMyProfile(this.state.login);
+        // this.props.fetchMyProfile(this.state.login);
     }
 
 

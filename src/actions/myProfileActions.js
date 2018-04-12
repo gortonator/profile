@@ -5,9 +5,8 @@ import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
 import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
     API_PUT_STUDENTRECORD} from "./apis";
-import store from '../index'
 
-
+// import { browserHistory } from 'react-router'
 
 
 export function fetchMyProfile(login) {
@@ -313,7 +312,8 @@ export function doLogin(body) {
         });
         let newLogInfo = JSON.stringify(body);
 
-        // console.log("yudong login", newLogInfo, logInfo);
+        // console.log("yudong login", logInfo);
+        body.history.push("/myProfile");
 
         axios.post(
             (HOST + API_POST_LOGIN),
@@ -327,9 +327,9 @@ export function doLogin(body) {
 
                     dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
                     // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues
-                    alert("Login successfully");
+                    // alert("Login successfully");
                     // dispatch({type: SET_LOGIN_INFO, payload: {...response.data, id: "002"}}); // For temporary use
-                    console.log("Login successfully.", response.data);
+                    // console.log("Login successfully.", response.data);
 
                     localStorage.setItem('login', JSON.stringify(response.data));
 

@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
 
     handleSubmit(event) {
         if (this.state.username.endsWith("@husky.neu.edu")) {
-            this.props.doLogin({username: this.state.username, password: this.state.password})
+            this.props.doLogin({username: this.state.username, password: this.state.password, history:this.props.history})
         }
         else {
             alert("Must provide valid Husky email address");
@@ -52,17 +52,6 @@ class LoginForm extends React.Component {
     render() {
         // console.log("yudong login page", this.props);
 
-
-        if (this.props.login) {
-            if (this.props.login.id && this.props.login.token) {
-                sessionStorage.setItem("mscs_align_neu_id", this.props.login.id);
-                sessionStorage.setItem("mscs_align_neu_token", this.props.login.token);
-                this.props.history.push("/myProfile");
-            } else {
-                // alert("Must provide valid Husky credentials");
-                // this.props.clearLogin();
-            }
-        }
 
         return (
             <div id="body-container">
