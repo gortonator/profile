@@ -8,8 +8,6 @@ import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, 
 import store from '../index'
 
 
-const ROOT_URL = 'https://asd4.ccs.neu.edu:8082';
-
 
 
 export function fetchMyProfile(login) {
@@ -67,7 +65,10 @@ export function updateSummary(summary) {
         let neuid = state.LoginInfo.id;
         let myToken = state.LoginInfo.token;
         let data = JSON.stringify({...state.StudentRecord, summary: summary});
-        // console.log("yudong summay", myToken, neuid, data);
+        console.log("state", state);
+        console.log("mytoken", myToken);
+        console.log("neuid", neuid);
+        console.log("data", data);
         axios.put(
             (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
