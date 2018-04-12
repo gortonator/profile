@@ -3,7 +3,6 @@ import logo from '../../image/login_logo.png'
 import {doLogin, clearLogin} from '../../actions/myProfileActions';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
-import {BrowserRouter} from 'react-router'
 import '../../css/login.css';
 
 
@@ -87,4 +86,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps, {doLogin, clearLogin})(LoginForm));
+export default withRouter(connect(mapStateToProps, {doLogin, clearLogin})(LoginForm))
