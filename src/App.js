@@ -18,11 +18,13 @@ class App extends Component {
             <div>
                 <Router>
                     <div id="main-nav">
-                        <Route exact path="/myProfile" component={MyProfile}/>
-                        <Route exact path="/otherProfile" component={OtherProfile}/>
-                        <Route exact path="/search" component={Search}/>
-                        <Route exact path="/" component={Login}/>
-                        <Route path="*" component={NotFound}/>
+                        <Switch>
+                            <Route exact path="/myProfile" component={MyProfile}/>
+                            <Route exact path="/otherProfile" component={OtherProfile}/>
+                            <Route exact path="/search" component={Search}/>
+                            <Route exact path="/" component={Login}/>
+                            <Route path="*" component={NotFound}/>
+                        </Switch>
                     </div>
                 </Router>
             </div>
@@ -32,9 +34,8 @@ class App extends Component {
 
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    doLogin,fetchMyProfile
+    doLogin, fetchMyProfile
 }, dispatch);
-
 
 
 export default connect(null, mapDispatchToProps)(App)
