@@ -24,7 +24,7 @@ class AboutItem extends Component {
     }
 
     changeContentOnEnter(event) {
-        if(event.keyCode == 13){ // Press ENTER
+        if(event.keyCode === 13){ // Press ENTER
             this.changeContent(event)
         }
     }

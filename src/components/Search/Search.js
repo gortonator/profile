@@ -18,7 +18,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
 
-        console.log(this.state);
+        // console.log(this.state);
 
         this.getData();
 

@@ -14,7 +14,7 @@ const ROOT_URL = 'https://asd4.ccs.neu.edu:8082';
 
 export function fetchMyProfile(login) {
     return (dispatch) => {
-        console.log("yudong 1", login);
+        // console.log("yudong 1", login);
 
         let neuid = login.id;
         let myToken = login.token;
@@ -29,7 +29,7 @@ export function fetchMyProfile(login) {
                 }})
             .then(
                 (response) => {
-                    console.log("FETCH_MY_PROFILE_SUCCEED", response);
+                    // console.log("FETCH_MY_PROFILE_SUCCEED", response);
                     dispatch({type: FETCH_MY_PROFILE_DATA, payload: response.data});
                 },
                 (error) => {
@@ -67,7 +67,7 @@ export function updateSummary(summary) {
         let neuid = state.LoginInfo.id;
         let myToken = state.LoginInfo.token;
         let data = JSON.stringify({...state.StudentRecord, summary: summary});
-        console.log("yudong summay", myToken, neuid, data);
+        // console.log("yudong summay", myToken, neuid, data);
         axios.put(
             (HOST + API_PUT_STUDENTRECORD).format(neuid),
             data,
@@ -304,6 +304,7 @@ export function deleteProject(project) {
 }
 
 export function doLogin(body) {
+
     return (dispatch) => {
         let logInfo = JSON.stringify({
             username : "studentfetwo@husky.neu.edu",
@@ -311,7 +312,7 @@ export function doLogin(body) {
         });
         let newLogInfo = JSON.stringify(body);
 
-        console.log("yudong login", newLogInfo, logInfo);
+        // console.log("yudong login", newLogInfo, logInfo);
 
         axios.post(
             (HOST + API_POST_LOGIN),
@@ -321,7 +322,7 @@ export function doLogin(body) {
                 }})
             .then(
                 (response) => {
-                    console.log("yudong login", response);
+                    // console.log("yudong login", response);
 
                     dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
                     // dispatch({type: SET_LOGIN_INFO, payload: response.data}); // uncomment if server-side fixes the issues

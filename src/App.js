@@ -10,12 +10,6 @@ import {doLogin, fetchMyProfile} from "./actions/myProfileActions";
 
 class App extends Component {
 
-    constructor(props){
-        super(props);
-        // this.props.setLoginInfo();
-        // this.props.fetchMyProfile();
-    }
-
     render() {
         // console.log("app.js about= ", this.props);
 

@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        console.log("yudong login page", this.props);
+        // console.log("yudong login page", this.props);
 
 
         if (this.props.login) {

@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
-import styled from 'styled-components'
 import {connect} from 'react-redux';
-import {fetchMyCourses} from '../../../../actions/myProfileActions'
-import {bindActionCreators} from 'redux';
-
-
 class Academic extends Component {
 
 

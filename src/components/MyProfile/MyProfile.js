@@ -22,21 +22,21 @@ class MyProfile extends Component {
     }
 
     componentWillMount() {
-        console.log("yudong componentWillMount", localStorage.getItem('login'));
+        // console.log("yudong componentWillMount", localStorage.getItem('login'));
         localStorage.getItem('login') && this.setState({
             login: JSON.parse(localStorage.getItem('login'))
         })
     }
 
     componentDidMount() {
-        console.log("componentDidMount", this.state.login);
+        // console.log("componentDidMount", this.state.login);
         this.props.fetchMyProfile(this.state.login);
     }
 
 
     render() {
-        console.log("yudong TV", this.props.StudentRecord);
-        console.log("yudong TV2", this.state);
+        // console.log("yudong TV", this.props.StudentRecord);
+        // console.log("yudong TV2", this.state);
         return (
             <div style={{margin: "2%"}}>
                 <TopBar/>

@@ -240,8 +240,8 @@ export const initialState = {
 
 export default function myProfileReducer(state = initialState,
     {type, payload}) {
-    console.log("previous reducer", state);
-    console.log("reducer", type, payload);
+    // console.log("previous reducer", state);
+    // console.log("reducer", type, payload);
     switch (type) {
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};
@@ -272,7 +272,7 @@ export default function myProfileReducer(state = initialState,
         case DELETE_PROJECT:
             return {...state, Projects: state.Projects.filter(project => project.projectId !== payload.projectId)};
         default:
-            console.log("not found any type match in reducer! you are given type " + type);
+            // console.log("not found any type match in reducer! you are given type " + type);
             return state;
     }
 }

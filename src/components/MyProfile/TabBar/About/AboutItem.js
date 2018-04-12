@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import EditIcon from "./EditIcon";
-import { FormControl, FormGroup } from "react-bootstrap";
+import {FormControl, FormGroup} from "react-bootstrap";
 import styled from "styled-components";
 
 class AboutItem extends Component {
@@ -30,7 +30,7 @@ class AboutItem extends Component {
     }
 
     getValidationState() {
-        if (this.props.type == null) {
+        if (this.props.type === null) {
             return null;
         }
         return this.validateEmail(this.state.content) ? 'success' : 'error';
@@ -54,7 +54,7 @@ class AboutItem extends Component {
     }
 
     handleEnter(e) {
-        if(e.keyCode === 13) {
+        if (e.keyCode === 13) {
             this.confirmChange(e);
         }
     }
@@ -73,16 +73,18 @@ class AboutItem extends Component {
 
     getContentComponent() {
         if (this.state.editable) {
-            return <form onSubmit={e => { e.preventDefault(); }} >
+            return <form onSubmit={e => {
+                e.preventDefault();
+            }}>
                 <FormGroup
                     controlId={this.state.content}
-                    validationState={this.getValidationState()} >
+                    validationState={this.getValidationState()}>
                     <FormControl
                         defaultValue={this.state.content}
                         onChange={this.handleChange}
                         onBlur={this.confirmChange}
                         onKeyDown={this.handleEnter}
-                        autoFocus />
+                        autoFocus/>
                 </FormGroup>
             </form>;
 
@@ -93,7 +95,7 @@ class AboutItem extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         this.setState({content: nextProps.value})
     }
 
@@ -101,16 +103,16 @@ class AboutItem extends Component {
 
         let editIcon = "";
         if (this.props.modifiable) {
-            editIcon = <EditIcon onClick={this.makeEditable} />;
+            editIcon = <EditIcon onClick={this.makeEditable}/>;
         }
 
         return (
             <tbody>
-                <tr>
-                    <td width="30%" height="50px">{this.props.labelText}:</td>
-                    <td width="50%">{this.getContentComponent()}</td>
-                    <td width="20%" align="middle">{editIcon}</td>
-                </tr>
+            <tr>
+                <td width="30%" height="50px">{this.props.labelText}:</td>
+                <td width="50%">{this.getContentComponent()}</td>
+                <td width="20%" align="middle">{editIcon}</td>
+            </tr>
             </tbody>
         )
     }
