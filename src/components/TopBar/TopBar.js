@@ -41,19 +41,12 @@ class TopBar extends Component {
                     <Navbar.Collapse>
                         <Navbar.Form pullLeft>
                             <SearchBox/>
-                            {/*<FormGroup>*/}
-                                {/*<FormControl type="text" placeholder="Find students"/>*/}
-                            {/*</FormGroup>{' '}*/}
-                            <Button href="/search">Advance Search</Button>
                         </Navbar.Form>
                         <Nav pullRight>
                             <NavItem eventKey={1} onClick={this.handleShow}>
                                 My Privacy
                             </NavItem>
                             <NavItem eventKey={2} href="/myProfile">
-                                My Profile
-                            </NavItem>
-                            <NavItem eventKey={3} href="/myProfile">
                                 <Image style={{height: "25px"}} src={profile_image} alt="pic" circle/>
                             </NavItem>
                         </Nav>
