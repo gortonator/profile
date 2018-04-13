@@ -11,6 +11,7 @@ export const UPDATE_PROJECT = 'update_project';
 export const ADD_PROJECT = "add_project";
 export const DELETE_PROJECT = "delete_project";
 export const SET_LOGIN_INFO = "set_login_info";
+export const SEARCH_STUDENT = "search_student";
 
 
 export const DO_LOGIN = "do_login";

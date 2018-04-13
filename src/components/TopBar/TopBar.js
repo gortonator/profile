@@ -4,6 +4,7 @@ import profile_image from '../../image/profile_image.png'
 import logo from '../../image/neu.png'
 import styled from "styled-components";
 import Privacy from "./Privacy";
+import SearchBox from "./SearchBox";
 
 
 class TopBar extends Component {
@@ -39,9 +40,10 @@ class TopBar extends Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Navbar.Form pullLeft>
-                            <FormGroup>
-                                <FormControl type="text" placeholder="Find students"/>
-                            </FormGroup>{' '}
+                            <SearchBox/>
+                            {/*<FormGroup>*/}
+                                {/*<FormControl type="text" placeholder="Find students"/>*/}
+                            {/*</FormGroup>{' '}*/}
                             <Button href="/search">Advance Search</Button>
                         </Navbar.Form>
                         <Nav pullRight>
