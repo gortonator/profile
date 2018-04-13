@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import ProjectContent from "./ProjectContent";
 import {Modal, Button} from "react-bootstrap";
+import moment from "moment";
 
 export default class AddProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
             projectName: "",
-            description: ""
+            description: "",
+            startDate: moment(),
+            endDate: moment(),
         }
     }
 
@@ -41,16 +44,22 @@ export default class AddProject extends Component {
             return
         }
 
+        if(this.state.endDate < this.state.startDate) {
+            alert("End date should not earlier than start date.")
+            return
+        }
+
         let count = this.props.index + 1;
         let item = {
             neuId: this.props.neuId,
             // projecId: count,
             projectId: 0,
             projectName: this.state.projectName,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
+            startDate: this.state.startDate.format("MM-DD-YYYY"),
+            endDate: this.state.endDate.format("MM-DD-YYYY"),
             description: this.state.description,
         };
+        console.log(item);
         this.props.addFunc(item);
         this.props.increaseIndex();
         this.props.closePopup()

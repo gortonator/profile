@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 export default class ExperienceContent extends Component {
     constructor() {
@@ -15,14 +19,12 @@ export default class ExperienceContent extends Component {
         this.props.changeCompany(company);
     }
 
-    handleStartDate(e) {
-        const startDate = e.target.value;
-        this.props.changeStartDate(startDate);
+    handleStartDate(date) {
+        this.props.changeStartDate(date);
     }
 
-    handleEndDate(e) {
-        const endDate = e.target.value;
-        this.props.changeEndDate(endDate);
+    handleEndDate(date) {
+        this.props.changeEndDate(date);
     }
 
     handleDesc(e) {
@@ -42,11 +44,11 @@ export default class ExperienceContent extends Component {
                 <br/><br/>
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
-                <input placeholder={"mm-dd-yyyy"} onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50}></input>
+                <DatePicker dateFormat="MM-DD-YYYY" selected={this.props.item.startDate} onChange={this.handleStartDate.bind(this)} id={"startDate"} value={this.props.item.startDate} size={50} />
                 <br/><br/>
 
                 <div><label htmlFor={"endDate"}>End Date</label></div>
-                <input placeholder={"mm-dd-yyyy"} onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></input>
+                <DatePicker dateFormat="MM-DD-YYYY" selected={this.props.item.endDate} onChange={this.handleEndDate.bind(this)} id={"endDate"} value={this.props.item.endDate} size={50}></DatePicker>
                 <br/><br/>
 
                 <div><label htmlFor={"desc"}>Description</label></div>

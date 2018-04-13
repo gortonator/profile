@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ExperienceContent from "./ExperienceContent";
 import {Modal, Button} from "react-bootstrap";
+import moment from "moment";
 
 export default class AddExperience extends Component {
     constructor(props) {
@@ -8,7 +9,9 @@ export default class AddExperience extends Component {
         this.state = {
             jobTitle: "",
             company: "",
-            description: ""
+            description: "",
+            startDate: moment(),
+            endDate:moment(),
         }
     }
 
@@ -42,32 +45,6 @@ export default class AddExperience extends Component {
         })
     }
 
-    isValidDate(dateString)
-    {
-        // First check for the pattern
-        if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
-            return false;
-
-        // Parse the date parts to integers
-        let parts = dateString.split("-");
-        let day = parseInt(parts[1], 10);
-        let month = parseInt(parts[0], 10);
-        let year = parseInt(parts[2], 10);
-
-        // Check the ranges of month and year
-        if(year < 1000 || year > 3000 || month === 0 || month > 12)
-            return false;
-
-        let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-        // Adjust for leap years
-        if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0))
-            monthLength[1] = 29;
-
-        // Check the range of the day
-        return day > 0 && day <= monthLength[month - 1];
-    }
-
     AddExperience = () => {
         if(!this.state.jobTitle || this.state.jobTitle.trim().length === 0){
             alert("Job Title can't be blank!");
@@ -79,13 +56,8 @@ export default class AddExperience extends Component {
             return
         }
 
-        if(!this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm-dd-yyyy format.');
-            return
-        }
-
-        if(!this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm-dd-yyyy format.');
+        if(this.state.endDate < this.state.startDate) {
+            alert("End date should not earlier than start date.")
             return
         }
 
@@ -95,8 +67,8 @@ export default class AddExperience extends Component {
             extraExperienceId: count,
             title: this.state.jobTitle,
             companyName: this.state.company,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
+            startDate: this.state.startDate.format("MM-DD-YYYY"),
+            endDate: this.state.endDate.format("MM-DD-YYYY"),
             description: this.state.description,
         };
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class ProjectContent extends Component {
     constructor() {
@@ -34,12 +36,12 @@ export default class ProjectContent extends Component {
                 <br /><br />
 
                 <div><label htmlFor={"startDate"}>Start Date</label></div>
-                <DatePicker onChange={this.handleStartDate} value={this.props.item.startDate} />
-                <br /><br />
+                <DatePicker type="date" dateFormat="MM-DD-YYYY" selected={this.props.item.startDate} id={"startDate"} onChange={this.handleStartDate} value={this.props.item.startDate} />
+                <br />
 
                 <div><label htmlFor={"endDate"}>End Date</label></div>
-                <DatePicker onChange={this.handleEndDate} value={this.props.item.endDate} />
-                <br /><br />
+                <DatePicker dateFormat="MM-DD-YYYY" selected={this.props.item.endDate} id={"endDate"} onChange={this.handleEndDate} value={this.props.item.endDate} />
+                <br />
 
                 <div><label htmlFor={"desc"}>Description</label></div>
                 <textarea placeholder={"Description"} onChange={this.handleDesc.bind(this)} id={"desc"}

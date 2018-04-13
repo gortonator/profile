@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ExperienceContent from "./ExperienceContent";
 import {Modal, Button} from "react-bootstrap";
+import moment from "moment/moment";
 
 export default class EditExperience extends Component {
     constructor(props) {
@@ -10,8 +11,8 @@ export default class EditExperience extends Component {
             id : this.props.item.extraExperienceId,
             jobTitle: this.props.item.title,
             company: this.props.item.companyName,
-            startDate: this.props.item.startDate,
-            endDate: this.props.item.endDate,
+            startDate: moment(this.props.item.startDate),
+            endDate: moment(this.props.item.endDate),
             description: this.props.item.description
         }
     }
@@ -57,13 +58,8 @@ export default class EditExperience extends Component {
             return
         }
 
-        if(! this.isValidDate(this.state.startDate)) {
-            alert('Invalid start date. Date must be in mm-dd-yyyy format.');
-            return
-        }
-
-        if(! this.isValidDate(this.state.endDate)) {
-            alert('Invalid end date. Date must be in mm-dd-yyyy format.');
+        if(this.state.endDate < this.state.startDate) {
+            alert("End date should not earlier than start date.")
             return
         }
 
@@ -72,8 +68,8 @@ export default class EditExperience extends Component {
             extraExperienceId: this.state.id,
             title: this.state.jobTitle,
             companyName: this.state.company,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
+            startDate: this.state.startDate.format("MM-DD-YYYY"),
+            endDate: this.state.endDate.format("MM-DD-YYYY"),
             description: this.state.description,
         };
         this.props.editFunc(item);
