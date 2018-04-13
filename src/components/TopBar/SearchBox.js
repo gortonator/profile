@@ -49,9 +49,6 @@ class SearchBox extends React.Component {
 
     onSuggestionsFetchRequested = ({value}) => {
         this.props.searchStudent(value);
-        this.setState({
-            suggestions: this.props.SearchResult
-        });
     };
 
     onSuggestionsClearRequested = () => {
@@ -87,7 +84,7 @@ class SearchBox extends React.Component {
         return (
             <div>
                 <Autosuggest
-                    suggestions={suggestions}
+                    suggestions={this.props.SearchResult}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                     getSuggestionValue={getSuggestionValue}
