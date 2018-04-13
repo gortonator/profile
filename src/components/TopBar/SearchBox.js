@@ -6,15 +6,29 @@ import {searchStudent, fetchOtherProfile} from "../../actions/myProfileActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {Button} from 'react-bootstrap';
+import match from "autosuggest-highlight/match";
+import parse from "autosuggest-highlight/parse";
 
 const getSuggestionValue = suggestion => suggestion.name;
 
-const renderSuggestion = suggestion => (
-    <div>
-        {suggestion.name}
-    </div>
-);
+function renderSuggestion(suggestion, { query }) {
+    const matches = match(suggestion.name, query);
+    const parts = parse(suggestion.name, matches);
 
+    return (
+        <span>
+      {parts.map((part, index) => {
+          const className = part.highlight ? 'react-autosuggest__suggestion-match' : null;
+
+          return (
+              <span className={className} key={index}>
+            {part.text}
+          </span>
+          );
+      })}
+    </span>
+    );
+}
 class SearchBox extends React.Component {
     constructor(props) {
         super(props);
