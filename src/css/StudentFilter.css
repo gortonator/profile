@@ -79,6 +79,10 @@ a{
 	width: 100%;
 }
 
+.checkBoxItem{
+	display:block;
+}
+
 .filter_items_mobile{
 	overflow-y: scroll;
 	position: fixed;

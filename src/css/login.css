@@ -70,7 +70,8 @@
 }
 
 
-label{
+.login-label{
+    width: 100%;
     color: #333333;
 }
 
