@@ -23,7 +23,7 @@ class Academic extends Component {
 
 const mapStateToProps = state => {
     return {
-        courses: state.myProfileReducer.Courses
+        courses: state.otherProfileReducer.Courses
     };
 };
 

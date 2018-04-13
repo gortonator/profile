@@ -6,20 +6,13 @@ import TabBar from './TabBar/TabBar'
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
 import {FETCH_OTHER_PROFILE_DATA} from "../../actions/types"
-import {fetchOtherProfile} from "../../actions/myProfileActions"
 import {connect} from 'react-redux';
 import TopBar from '../TopBar/TopBar'
 
 class OtherProfile extends Component {
 
 
-    componentWillMount() {
-        console.log("yudong1");
-        this.props.fetchOtherProfile();
-    }
-
     render() {
-        console.log("yudong other profile", this.props);
         return (
             <div style={{margin: "2%"}}>
                 <TopBar/>
@@ -59,14 +52,9 @@ const Wrapper = styled.div`
 
 const mapStateToProps = state => {
     return {
-        summary: state.myProfileReducer.StudentRecord.summary
+        summary: state.otherProfileReducer.StudentRecord.summary
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchOtherProfile: () => dispatch(fetchOtherProfile())
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(OtherProfile)
+export default connect(mapStateToProps, null)(OtherProfile)

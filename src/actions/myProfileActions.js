@@ -29,29 +29,6 @@ export function fetchMyProfile(login) {
     }
 }
 
-export function fetchOtherProfile(login) {
-    console.log("yudong fetchOtherProfile action", login);
-    let other_neuid = "010"; // should be obtained by searching result
-    return (dispatch, getState) => {
-        let myToken = getState().myProfileReducer.LoginInfo.token;
-        axios.get(
-            (HOST + API_GET_PROFILE).format(other_neuid),
-            {headers: {
-                    "Content-Type": "application/json",
-                    "token" : myToken
-                }})
-            .then(
-                (response) => {
-                    dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: response.data});
-                    // body.history.push("/otherProfile");
-                },
-                (error) => {
-                    alert("Server error!");
-                    console.log(error);
-                })
-    }
-}
-
 export function updateSummary(summary) {
     return (dispatch, getState) => {
         let state = getState().myProfileReducer;

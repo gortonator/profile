@@ -25,7 +25,6 @@ class Skill extends Component {
     }
 
     render() {
-        console.log("other skill", this.props);
         return (
             <div className="wrapper">
                 <p className="tab-content-subtitle">MY SKILLS&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -51,7 +50,7 @@ const Show = styled.p`
 
 const mapStateToProps = state => {
     return {
-        skills: state.myProfileReducer.StudentRecord.skill
+        skills: state.otherProfileReducer.StudentRecord.skill
     };
 };
 

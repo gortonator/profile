@@ -2,7 +2,8 @@ import Autosuggest from 'react-autosuggest';
 import React, {Component} from 'react';
 import styles from './SearchBox.css';
 import {bindActionCreators} from "redux";
-import {searchStudent, fetchOtherProfile} from "../../actions/myProfileActions";
+import {searchStudent} from "../../actions/myProfileActions";
+import {fetchOtherProfile} from "../../actions/otherProfileActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {Button} from 'react-bootstrap';
@@ -65,13 +66,11 @@ class SearchBox extends React.Component {
     };
 
     redirectToOtherStudentProfile = (nuid) => {
-        console.log("Selected student's id: " + nuid); // Change this function to redirect
         let otherProfile = {
             id: nuid,
             token: this.props.token,
             history: this.props.history,
         };
-        console.log("yudong", otherProfile);
         this.props.fetchOtherProfile(otherProfile);
     };
 

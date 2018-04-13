@@ -19,8 +19,7 @@ class AboutItem extends Component {
     makeEditable() {
         this.setState({
             editable: true
-        })
-        console.log("111")
+        });
     }
 
     changeContentOnEnter(event) {
@@ -55,11 +54,13 @@ class AboutItem extends Component {
 
 
         return (
+            <tbody>
             <tr>
                 <td width="30%" height="50px">{this.props.labelText}:</td>
                 <td width="50%">{this.getContentComponent()}</td>
                 <td width="20%" align="middle"></td>
             </tr>
+            </tbody>
         )
     }
 }

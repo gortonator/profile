@@ -56,7 +56,7 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        projects: state.myProfileReducer.Projects
+        projects: state.otherProfileReducer.Projects
     };
 };
 

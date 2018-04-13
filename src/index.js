@@ -12,13 +12,15 @@ import registerServiceWorker from './registerServiceWorker';
 import {combineReducers, createStore, applyMiddleware} from "redux";
 
 import {Provider} from 'react-redux';
-import myProfileReducer from './reducers/myProfileReducer'
+import myProfileReducer from './reducers/myProfileReducer';
+import otherProfileReducer from './reducers/otherProfileReducer'
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import storeSynchronize from 'redux-localstore'
 
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
+    otherProfileReducer: otherProfileReducer,
 });
 
 
