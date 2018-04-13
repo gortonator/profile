@@ -36,7 +36,7 @@ class SearchBox extends React.Component {
 
         this.state = {
             value: '',
-            suggestions: this.props.SearchResult,
+            suggestions: [],
         };
 
     }
@@ -48,7 +48,11 @@ class SearchBox extends React.Component {
     };
 
     onSuggestionsFetchRequested = ({value}) => {
+        console.log("onSuggestionsFetchRequested")
         this.props.searchStudent(value);
+        this.setState({
+            suggestions: this.props.SearchResult
+        });
     };
 
     onSuggestionsClearRequested = () => {
@@ -81,6 +85,7 @@ class SearchBox extends React.Component {
             onChange: this.onChange
         };
 
+        console.log("hmh" + JSON.stringify(this.props.SearchResult));
         return (
             <div>
                 <Autosuggest

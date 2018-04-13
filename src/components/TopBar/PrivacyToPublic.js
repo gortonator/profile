@@ -25,7 +25,7 @@ class PrivacyToPublic extends Component {
         return (
             <tr>
                 <td width="80%"><b>Do you want to show your profile in public search results?</b></td>
-                <td width="20%"><Checkbox checked={this.state.value} onChange={this.handleChange}/>
+                <td width="20%"><Checkbox className="privacyCheckbox" checked={this.state.value} onChange={this.handleChange}/>
                 </td>
             </tr>
         )

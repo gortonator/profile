@@ -40,6 +40,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
+        // console.log("submit")
         if (this.state.username.endsWith("@husky.neu.edu")) {
             this.props.doLogin({username: this.state.username, password: this.state.password, history:this.props.history})
         }

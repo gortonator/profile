@@ -49,9 +49,11 @@ class Privacy extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Table className="privacyTable" condensed>
+                        <tbody>
                             <PrivacyToPublic value={this.state.privacy.visibleToPublic} action={this.handleChange} />
+                        </tbody>
                     </Table>
-                    <p><b>Make your information visible or invisible to other students.</b></p>
+                    <p className="privacyInstruction"><b>Make your information visible or invisible to other students.</b></p>
                 <Table className="privacyTable" striped condensed hover >
                     <thead>
                     <tr>
