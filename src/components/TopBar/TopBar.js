@@ -4,6 +4,7 @@ import profile_image from '../../image/profile_image.png'
 import logo from '../../image/neu.png'
 import styled from "styled-components";
 import Privacy from "./Privacy";
+import SearchBox from "./SearchBox";
 
 
 class TopBar extends Component {
@@ -12,7 +13,7 @@ class TopBar extends Component {
         super();
         this.state = {
             showPrivacy: false
-        }
+        };
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -39,19 +40,13 @@ class TopBar extends Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Navbar.Form pullLeft>
-                            <FormGroup>
-                                <FormControl type="text" placeholder="Find students"/>
-                            </FormGroup>{' '}
-                            <Button href="/search">Advance Search</Button>
+                            <SearchBox/>
                         </Navbar.Form>
                         <Nav pullRight>
                             <NavItem eventKey={1} onClick={this.handleShow}>
                                 My Privacy
                             </NavItem>
                             <NavItem eventKey={2} href="/myProfile">
-                                My Profile
-                            </NavItem>
-                            <NavItem eventKey={3} href="/myProfile">
                                 <Image style={{height: "25px"}} src={profile_image} alt="pic" circle/>
                             </NavItem>
                         </Nav>

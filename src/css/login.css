@@ -44,7 +44,7 @@
     text-align:left;
 }
 
-.login-input[type=text], [type=password] {
+#input1 {
     width: 100%;
     height: 40px;
     margin: 8px 0;
@@ -56,8 +56,21 @@
     box-sizing: border-box;
 }
 
-.login-label{
+
+#input2 {
     width: 100%;
+    height: 40px;
+    margin: 8px 0;
+    padding-left: 20px;
+    font-size: 1.286em;
+    display: inline-block;
+    border: 1px solid #CC0000;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+label{
     color: #333333;
 }
 
@@ -82,10 +95,6 @@
 .login-submit[type=submit]:hover {
     background-color: #990000;
     border-color: #8F0000;
-}
-
-.login-logo {
-    margin:10px;
 }
 
 .register-text-container{

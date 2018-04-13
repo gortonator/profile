@@ -54,7 +54,7 @@ const TextArea = styled.p`
 
 const mapStateToProps = state => {
     return {
-        extraExperiences: state.myProfileReducer.ExtraExperiences
+        extraExperiences: state.otherProfileReducer.ExtraExperiences
     };
 };
 

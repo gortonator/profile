@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './css/login.css';
+
 import './css/ResultPanel.css';
 import './css/SearchPage.css';
 import './css/StudentFilter.css';
@@ -22,7 +22,8 @@ import storeSynchronize from 'redux-localstore'
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
     studentFilter: studentFilterReducer,
-		filterGroup: filterGroupReducer
+		filterGroup: filterGroupReducer,
+    otherProfileReducer: otherProfileReducer,
 });
 
 

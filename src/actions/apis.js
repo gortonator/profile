@@ -9,5 +9,6 @@ export const API_DELETE_EXTRA_EXPERIENCE = '/students/{0}/extraexperiences/{1}';
 export const API_PUT_PROJECT = '/students/{0}/projects/{1}';
 export const API_POST_PROJECT = '/students/{0}/projects';
 export const API_DELETE_PROJECT = '/students/{0}/projects/{1}';
+export const API_POST_SEARCH_STUDENT = '/autofill-search';
 export const API_POST_LOGIN = '/login';
 

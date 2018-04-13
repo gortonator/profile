@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import AboutItem from "./AboutItem";
 import styled from "styled-components";
-import {setSummary, updateAbout} from "../../../../actions/myProfileActions";
+import {updateAbout} from "../../../../actions/myProfileActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 

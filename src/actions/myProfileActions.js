@@ -1,10 +1,12 @@
 import axios from "axios";
-import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY,
+import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, SEARCH_STUDENT,
     UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
     UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO, DO_LOGIN, CLEAR_LOGIN} from '../actions/types'
-import {HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
+import {
+    HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
-    API_PUT_STUDENTRECORD} from "./apis";
+    API_PUT_STUDENTRECORD, API_POST_SEARCH_STUDENT
+} from "./apis";
 
 export function fetchMyProfile(login) {
     return (dispatch) => {
@@ -22,27 +24,6 @@ export function fetchMyProfile(login) {
                 },
                 (error) => {
                     alert("Server error!", error);
-                    console.log(error);
-                })
-    }
-}
-
-export function fetchOtherProfile() {
-    let other_neuid = "010"; // should be obtained by searching result
-    return (dispatch, getState) => {
-        let myToken = getState().myProfileReducer.LoginInfo.token;
-        axios.get(
-            (HOST + API_GET_PROFILE).format(other_neuid),
-            {headers: {
-                    "Content-Type": "application/json",
-                    "token" : myToken
-                }})
-            .then(
-                (response) => {
-                    dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: response.data});
-                },
-                (error) => {
-                    alert("Server error!");
                     console.log(error);
                 })
     }
@@ -293,6 +274,29 @@ export function deleteProject(project) {
     }
 }
 
+export function searchStudent(input) {
+    return (dispatch, getState) => {
+        let myToken = getState().myProfileReducer.LoginInfo.token;
+        axios.post(
+            (HOST + API_POST_SEARCH_STUDENT),
+            input,
+            {headers: {
+                    "Content-Type": "text/plain",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    let data = response.data.students;
+                    dispatch({type: SEARCH_STUDENT, payload: data});
+                    console.log("Send request successfully.");
+                },
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
+    }
+}
+
 export function doLogin(body) {
 
     return (dispatch) => {
@@ -303,8 +307,6 @@ export function doLogin(body) {
         let newLogInfo = JSON.stringify(body);
 
         // console.log("yudong login", logInfo);
-        body.history.push("/myProfile");
-
         axios.post(
             (HOST + API_POST_LOGIN),
             newLogInfo,
@@ -315,6 +317,7 @@ export function doLogin(body) {
                 (response) => {
                     dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
                     dispatch(fetchMyProfile(response.data)); // Async request //we should not fetch data here.
+                    body.history.push("/myProfile");
                 },
                 (error) => {
                     alert("Login failed. Server error!");

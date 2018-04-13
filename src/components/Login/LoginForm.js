@@ -3,7 +3,8 @@ import logo from '../../image/login_logo.png'
 import {doLogin, clearLogin} from '../../actions/myProfileActions';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
-import {BrowserRouter} from 'react-router'
+import '../../css/login.css';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -57,17 +58,16 @@ class LoginForm extends React.Component {
             <div id="body-container">
                 <div className="login-box">
                     <div className="inner-box">
-                        <img className="login-logo" style={{height:"45px"}}src={logo} alt="Northeastern Align">
-                        </img>
+                        <img style={{height:"45px", margin:"10px"}}src={logo} alt="Northeastern Align"/>
                         <form onSubmit={this.handleSubmit}>
                             <label className="login-label">
                                 <p>Email:</p>
-                                <input className="login-input" type="text" name="username" value={this.state.username}
+                                <input id="input1" type="text" name="username" value={this.state.username}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
                             <label className="login-label">
                                 <p>Password:</p>
-                                <input className="login-input" type="password" name="password" value={this.state.password}
+                                <input id="input2" type="password" name="password" value={this.state.password}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
                             <input className="login-submit" type="submit" value="Login"/>
@@ -86,4 +86,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps, {doLogin, clearLogin})(LoginForm));
+export default withRouter(connect(mapStateToProps, {doLogin, clearLogin})(LoginForm))
