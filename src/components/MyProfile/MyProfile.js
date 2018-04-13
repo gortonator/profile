@@ -6,9 +6,19 @@ import TabBar from './TabBar/TabBar'
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
 import TopBar from '../TopBar/TopBar'
+import {withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
 
 
 class MyProfile extends Component {
+
+
+    componentWillMount() {
+        let loginInfo = this.props.login;
+        if (loginInfo.id === "" || loginInfo.token === "") {
+            this.props.history.push("/");
+        }
+    }
 
     render() {
         return (
@@ -46,5 +56,11 @@ const Wrapper = styled.div`
     margin:auto;
 `;
 
+function mapStateToProps(state) {
+    return {
+        login: state.myProfileReducer.LoginInfo,
+    };
+}
 
-export default MyProfile
+
+export default withRouter(connect(mapStateToProps, null) (MyProfile))

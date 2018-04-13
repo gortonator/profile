@@ -328,8 +328,6 @@ export function doLogin(body) {
         let newLogInfo = JSON.stringify(body);
 
         // console.log("yudong login", logInfo);
-        body.history.push("/myProfile");
-
         axios.post(
             (HOST + API_POST_LOGIN),
             newLogInfo,
@@ -340,6 +338,7 @@ export function doLogin(body) {
                 (response) => {
                     dispatch({type: SET_LOGIN_INFO, payload: response.data}); // For temporary use
                     dispatch(fetchMyProfile(response.data)); // Async request //we should not fetch data here.
+                    body.history.push("/myProfile");
                 },
                 (error) => {
                     alert("Login failed. Server error!");
