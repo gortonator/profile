@@ -8,7 +8,7 @@ export function setDisplayedUniversities(){
 		axios({
 			method:'post',
 			data: results,
-			url:'https://129.10.111.214:8080/undergradschools',
+			url:'https://asd4.ccs.neu.edu:8080/undergradschools',
 			headers: { 
 	      'Content-Type': 'text/plain' 
 	    }
@@ -29,7 +29,7 @@ export function setDisplayedCoops(){
 		axios({
 			method:'post',
 			data: results,
-			url:'https://129.10.111.214:8080/coops',
+			url:'https://asd4.ccs.neu.edu:8080/coops',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -50,7 +50,7 @@ export function setDisplayedDegrees(){
 		axios({
 			method:'post',
 			data: results,
-			url:'https://129.10.111.214:8080/undergradmajors',
+			url:'https://asd4.ccs.neu.edu:8080/undergradmajors',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -71,7 +71,7 @@ export function setDisplayedYears(){
 		axios({
 			method:'post',
 			data: results,
-			url:'https://129.10.111.214:8080/graduationyears',
+			url:'httpa://asd4.ccs.neu.edu:8080/graduationyears',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -91,7 +91,7 @@ export function setAllUniversities(){
 	return (dispatch) => {
 		axios({
 			method:'get',
-			url:'https://129.10.111.214:8080/undergradschools',
+			url:'https://asd4.ccs.neu.edu:8080/undergradschools',
 			headers: { 
 	      'Content-Type': 'text/plain' 
 	    }
@@ -111,7 +111,7 @@ export function setAllCoops(){
 	return (dispatch) => {
 		axios({
 			method:'get',
-			url:'https://129.10.111.214:8080/coops',
+			url:'https://asd4.ccs.neu.edu:8080/coops',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -131,7 +131,7 @@ export function setAllDegrees(){
 	return (dispatch) => {
 		axios({
 			method:'get',
-			url:'https://129.10.111.214:8080/undergradmajors',
+			url:'https://asd4.ccs.neu.edu:8080/undergradmajors',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -151,7 +151,7 @@ export function setAllYears(){
 	return (dispatch) => {
 		axios({
 			method:'get',
-			url:'https://129.10.111.214:8080/graduationyears',
+			url:'https://asd4.ccs.neu.edu:8080/graduationyears',
 			headers: { 
         'Content-Type': 'text/plain' 
       }
@@ -172,7 +172,7 @@ export function setResults(results){
 		axios({
 			method:'post',
 			data: results,
-			url:'https://129.10.111.214:8080/students'
+			url:'https://asd4.ccs.neu.edu:8080/students'
 		})
 		.then(
 			(response) => {
