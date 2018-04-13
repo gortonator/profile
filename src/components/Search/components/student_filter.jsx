@@ -3,7 +3,9 @@ import FilterGroupContainer from '../containers/filter_group_container';
 import '../../../css/StudentFilter.css';
 import * as FilterActions from '../redux/filter_actions';
 
-import axios from 'axios';
+import {setResults} from '../../../actions/searchPageActions';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class StudentFilter extends React.Component {
 	constructor(props){
@@ -36,21 +38,7 @@ class StudentFilter extends React.Component {
 			GraduationYear:this.props.selected.selectedYears,
 		}
 
-		console.log(results, "999 input data");
-
-		axios({
-			method:'post',
-			data: results,
-			url:'http://129.10.111.210:8080/students',
-		})
-		.then(function(response) {
-			console.log(response, "999 input data");
-			store.dispatch(FilterActions.setResults(response.data));
-			console.log(response, "results");
-		})
-		.catch(function (error) {
-			console.log(error, "results error");
-		});
+		this.props.setResults(results);
 
 		this.props.submitHandler();
 		this.forceUpdate();
@@ -167,6 +155,7 @@ class StudentFilter extends React.Component {
 				<div id="filter_contents_container">
 					{filterContent}
 					<button
+					className="button_mobile"
 						type="button"
 						onClick={submitHandler}>
 						Update
@@ -178,4 +167,16 @@ class StudentFilter extends React.Component {
 	}
 }
 
-export default StudentFilter;
+const mapStateToProps = (state) => {
+	return {
+		displayed: state.studentFilter,
+		selected: state.filterGroup
+	}
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+		setResults
+}, dispatch);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentFilter);

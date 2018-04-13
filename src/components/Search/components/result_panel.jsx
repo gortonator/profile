@@ -1,22 +1,54 @@
 import React from 'react';
-
+import StudentResult from './student_result';
 import '../../../css/ResultPanel.css';
 
 class ResultPanel extends React.Component {
 
 	render() {
-		let students = this.props.results.students;
+		var {isMobile} = this.props;
 
-		let isMobile = this.props.isMobile;
+    var students = [];
+    students = this.props.results.students;
 
-		let empty = {coop: "No results", undergradschool: "No results", graduationyear: "No results", undergraddegree: "No results"};
-		let loading = {coop: "Loading", undergradschool: "Loading", graduationyear: "Loading", undergraddegree: "Loading"}
+		var isLoading = students === undefined;
 
-		students = students !== undefined ? students : [loading];
-		students = students.length !== 0 ? students : [empty];
 
-		console.log(students, "all the data");
+		var loadingDiv = <div class="loader"></div>;
+		var mainDiv = null;
 
+		if(isLoading){
+			mainDiv = <div class="loader"></div>;
+		}
+		else{
+			mainDiv = 
+	  	<div>
+        <div id="result_list">
+          {students.map(function(student, index){
+            return (
+              <StudentResult
+                key={index}
+                name={"----"}
+                coop={student.coop}
+                undergrad={student.undergraddegree}
+                location={student.undergradschool}
+                year={student.graduationyear}/>
+            );
+          })}
+        </div>
+      </div>;
+		}
+
+	  
+
+    return(
+      <div id="result_panel_main_container">
+      	{
+      		mainDiv
+      	}
+  		</div>
+  	);
+
+		/**
 		return(
 			<div id="result_panel_main_container">
 				{isMobile ? (
@@ -80,7 +112,18 @@ class ResultPanel extends React.Component {
 				)}
 			</div>
 		);
+		**/
 	}
+}
+
+class ResultItem {
+  constructor(name, coop, undergrad, location, year) {
+      this.name = name;
+      this.coop = coop;
+      this.undergrad = undergrad;
+      this.location = location;
+      this.year = year;
+  }
 }
 
 

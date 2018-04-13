@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 import TopBar from '../TopBar/TopBar'
 import styled from "styled-components";
 
-import * as FilterActions from './redux/filter_actions';
-import axios from 'axios';
-
 import '../../css/SearchPage.css';
 
-import StudentFilterContainer from './containers/student_filter_container';
+import StudentFilter from './components/student_filter';
 import ResultPanelContainer from './containers/result_panel_container';
+
+import {setDisplayedUniversities,
+				setDisplayedCoops,
+				setDisplayedDegrees,
+				setDisplayedYears,
+				setAllUniversities,
+				setAllCoops,
+				setAllYears,
+				setAllDegrees,
+				setResults} from '../../actions/searchPageActions';
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as FilterActions from './redux/filter_actions';
+import axios from 'axios';
 
 const MOBILE_VIEW_WIDTH = 600;
 
@@ -23,122 +35,30 @@ class Search extends Component {
 
         // console.log(this.state);
 
-        //this.getData();
-
         this.state = {
             width: window.innerWidth,
         };
     }
 
     componentDidMount(){
+    	this.getData();
     }
 
     getData(){
 			const store = this.props.store;
-			var results = "10";
+			
 
-			axios({
-				method:'post',
-				data: results,
-				url:'http://129.10.111.210:8080/undergradschools',
-				headers: { 
-	        'Content-Type': 'text/plain' 
-	      }
-			})
-			.then(function(response) {
-				store.dispatch(FilterActions.setDisplayedUniversities(response.data));
-				console.log(response, "top schools");
-			})
-			.catch(function (error) {
-				console.log(error, " top schools error");
-			});
+			this.props.setDisplayedUniversities();
+			this.props.setDisplayedCoops();
+			this.props.setDisplayedDegrees();
+			this.props.setDisplayedYears();
 
-			axios({
-				method:'post',
-				data: results,
-				url:'http://129.10.111.210:8080/coops',
-				headers: { 
-	        'Content-Type': 'text/plain' 
-	      }
-			})
-			.then(function(response) {
-				store.dispatch(FilterActions.setDisplayedCoops(response.data));
-				console.log(response, "top coops");
-			})
-			.catch(function (error) {
-				console.log(error, " top coops error");
-			});
+			this.props.setAllUniversities();
+			this.props.setAllCoops();
+			this.props.setAllDegrees();
+			this.props.setAllYears();
 
-			axios({
-				method:'post',
-				data: results,
-				url:'http://129.10.111.210:8080/undergradmajors',
-				headers: { 
-	        'Content-Type': 'text/plain' 
-	      }
-			})
-			.then(function(response) {
-				store.dispatch(FilterActions.setDisplayedDegrees(response.data));
-				console.log(response, "top undergradmajors");
-			})
-			.catch(function (error) {
-				console.log(error, " top majors error");
-			});
-
-			axios({
-				method:'post',
-				data: results,
-				url:'http://129.10.111.210:8080/graduationyears',
-				headers: { 
-	        'Content-Type': 'text/plain' 
-	      }
-			})
-			.then(function(response) {
-				store.dispatch(FilterActions.setDisplayedYears(response.data));
-				console.log(response, "top graduationyears");
-			})
-			.catch(function (error) {
-				console.log(error, " top graduationyears error");
-			});
-
-
-			axios.get('http://129.10.111.210:8080/undergradschools', config)
-			.then(function (response) {
-				console.log(response, "all schools");
-				store.dispatch(FilterActions.setAllUniversities(response.data));
-			})
-			.catch(function (error) {
-				console.log(error, "all schools");
-			});		
-
-			axios.get('http://129.10.111.210:8080/undergradmajors', config)
-			.then(function (response) {
-				console.log(response, "all majors");
-				store.dispatch(FilterActions.setAllDegrees(response.data));
-			})
-			.catch(function (error) {
-				console.log(error, "all degrees");
-			});
-
-			axios.get('http://129.10.111.210:8080/graduationyears', config)
-			.then(function (response) {
-				console.log(response, "all years");
-				store.dispatch(FilterActions.setAllYears(response.data));
-			})
-			.catch(function (error) {
-				console.log(error, "all years");
-			});
-
-			axios.get('http://129.10.111.210:8080/coops', config)
-			.then(function (response) {
-				console.log(response, "all coops");
-				store.dispatch(FilterActions.setAllCoops(response.data));
-			})
-			.catch(function (error) {
-				console.log(error, "all coops");
-			});
-
-			results = 
+			var results = 
 			{
 				BeginIndex:0,
 				EndIndex:10000,
@@ -146,20 +66,9 @@ class Search extends Component {
 				UndergradDegree:[],
 				UndergradSchool:[],
 				GraduationYear:[],
-			}
+			};
 
-			axios({
-				method:'post',
-				data: results,
-				url:'http://129.10.111.210:8080/students',
-			})
-			.then(function(response) {
-				store.dispatch(FilterActions.setResults(response.data));
-				console.log(response, "results");
-			})
-			.catch(function (error) {
-				console.log(error, "results error");
-			});
+			this.props.setResults(results);
 		}
 
     componentWillMount() {
@@ -186,8 +95,7 @@ class Search extends Component {
 				<div>
 					<div id="main_container">
 						<div id="filter_panel_mobile">
-							<StudentFilterContainer
-								store={this.props.store}
+							<StudentFilter
 								isMobile={isMobile}
 								submitHandler= {this.handleSubmit.bind(this)}/>
 						</div>
@@ -202,8 +110,7 @@ class Search extends Component {
 				<div>
 					<div id="main_container">
 						<div id="filter_panel">
-							<StudentFilterContainer
-								store={this.props.store}
+							<StudentFilter
 								isMobile={isMobile}
 								submitHandler= {this.handleSubmit.bind(this)}/>
 						</div>
@@ -214,7 +121,14 @@ class Search extends Component {
 				</div>
 			);
 
-		return isMobile ? mobileView : desktopView;
+			return (
+            <div style={{margin: "2%"}}>
+                <TopBar/>
+                <Wrapper>
+                	{isMobile ? mobileView : desktopView}
+                </Wrapper>
+             </div>
+             );
 	}
 }
 
@@ -226,5 +140,10 @@ const Wrapper = styled.div`
     margin:auto;
  `;
 
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    setDisplayedUniversities, setDisplayedCoops, setDisplayedYears, setDisplayedDegrees,
+    setAllUniversities, setAllCoops, setAllYears, setAllDegrees, setResults
+}, dispatch);
 
-export default Search;
+
+export default connect(null, mapDispatchToProps)(Search);

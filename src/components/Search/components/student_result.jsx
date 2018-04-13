@@ -1,6 +1,5 @@
 import React from 'react';
-import ProfilePlaceholder from 'images/profile_placeholder.png';
-import 'css/StudentResult.css';
+import '../../../css/StudentResult.css';
 
 class StudentResult extends React.Component {
 	constructor(props){
@@ -8,7 +7,6 @@ class StudentResult extends React.Component {
 
 		this.state = {
 			name:this.props.name,
-			image:ProfilePlaceholder,
 			coop:this.props.coop,
 			undergrad:this.props.undergrad,
 			location:this.props.location,
@@ -20,7 +18,6 @@ class StudentResult extends React.Component {
 		return(
 			<div id="student_result_container">
 				<div id="student_above_fold">
-					<img className="profile_picture" alt="" src={ProfilePlaceholder}></img>
 					<br/>
 					<a className="student_name"> {this.state.name}
 					</a>

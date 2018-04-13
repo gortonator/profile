@@ -69,6 +69,7 @@ export function setDisplayedDegrees(degrees) {
 }
 
 export function setDisplayedUniversities(universities) {
+	console.log("dispatch displayed unis");
 	return {
 		type: 'SET_DISPLAYED_UNIVERSITIES',
 		payload: universities

@@ -230,7 +230,7 @@ class FilterGroup extends React.Component {
     };
 
 		var addSection = (
-			<a id="addbutton" onClick={clickHandler}>+Add</a>
+			<a className="filter_group_title" id="addbutton" onClick={clickHandler}>+Add</a>
 		);
 
 		console.log(this.state.suggestions, "suggestions");
@@ -316,6 +316,7 @@ class FilterGroup extends React.Component {
 						return (
 						<div className="checkBoxItem" key={index}>
 								<input
+								className="check-boxes"
 								name={index}
 								type="checkBox"
 								checked={listValue.checked}

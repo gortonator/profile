@@ -57,20 +57,20 @@ class LoginForm extends React.Component {
             <div id="body-container">
                 <div className="login-box">
                     <div className="inner-box">
-                        <img style={{height:"45px"}}src={logo} alt="Northeastern Align">
+                        <img className="login-logo" style={{height:"45px"}}src={logo} alt="Northeastern Align">
                         </img>
                         <form onSubmit={this.handleSubmit}>
-                            <label>
+                            <label className="login-label">
                                 <p>Email:</p>
-                                <input type="text" name="username" value={this.state.username}
+                                <input className="login-input" type="text" name="username" value={this.state.username}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
-                            <label>
+                            <label className="login-label">
                                 <p>Password:</p>
-                                <input type="password" name="password" value={this.state.password}
+                                <input className="login-input" type="password" name="password" value={this.state.password}
                                        onChange={this.handleChange} autoComplete="off"/>
                             </label>
-                            <input type="submit" value="Login"/>
+                            <input className="login-submit" type="submit" value="Login"/>
                         </form>
                     </div>
                 </div>
