@@ -37,16 +37,16 @@ class AboutItem extends Component {
     }
 
     openNewPage(){
-        window.open("http://" + this.state.content);
+        window.open("http://" + this.props.value);
     }
 
     getContentComponent() {
         if(this.state.editable) {
-            return <FormControl defaultValue={this.state.content} onKeyDown={this.changeContentOnEnter} onBlur={this.changeContent} autoFocus/>;
+            return <FormControl defaultValue={this.props.value} onKeyDown={this.changeContentOnEnter} onBlur={this.changeContent} autoFocus/>;
         }else if(this.props.isLink){
-            return <LinkText onClick={this.openNewPage}>{this.state.content}</LinkText>;
+            return <LinkText onClick={this.openNewPage}>{this.props.value}</LinkText>;
         }else{
-            return <p className="grayContent">{this.state.content}</p>;
+            return <p className="grayContent">{this.props.value}</p>;
         }
     }
 

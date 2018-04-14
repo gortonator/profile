@@ -25,16 +25,17 @@ class About extends Component {
     }
 
     render() {
+        console.log("yudong display otherProfile", this.props.about.facebook);
         return (
             <div className="wrapper">
                 <AboutTable>
-                    <AboutItem labelText="Phone" keyName="phone" action={this.handleChange} value={this.state.about.phone} modifiable/>
-                    <AboutItem labelText="Email" value={this.state.about.email}/>
-                    <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.state.about.address} modifiable/>
-                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.state.about.linkedin} modifiable isLink/>
-                    <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.state.about.github} modifiable isLink/>
-                    <AboutItem labelText="Facebook" keyName="facebook" action={this.handleChange} value={this.state.about.facebook} modifiable isLink/>
-                    <AboutItem labelText="Website" keyName="website" action={this.handleChange} value={this.state.about.website} modifiable isLink/>
+                    <AboutItem labelText="Phone" keyName="phone" action={this.handleChange} value={this.props.about.phone} modifiable/>
+                    <AboutItem labelText="Email" value={this.props.about.email}/>
+                    <AboutItem labelText="Address" keyName="address" action={this.handleChange} value={this.props.about.address} modifiable/>
+                    <AboutItem labelText="Linkedin" keyName="linkedin" action={this.handleChange} value={this.props.about.linkedin} modifiable isLink/>
+                    <AboutItem labelText="Github" keyName="github" action={this.handleChange} value={this.props.about.github} modifiable isLink/>
+                    <AboutItem labelText="Facebook" keyName="facebook" action={this.handleChange} value={this.props.about.facebook} modifiable isLink/>
+                    <AboutItem labelText="Website" keyName="website" action={this.handleChange} value={this.props.about.website} modifiable isLink/>
                 </AboutTable>
             </div>
         )
