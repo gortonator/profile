@@ -28,7 +28,7 @@ class ExtraExperiences extends Component {
                     </tbody>
                 </table>
 
-                {this.state.experiences.map(item => (
+                {this.props.extraExperiences.map(item => (
                     <div key={item.extraExperienceId}>
                         <table width="100%">
                             <tbody>
