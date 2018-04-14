@@ -1,9 +1,9 @@
 import axios from "axios";
-import {FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, SEARCH_STUDENT,
+import {FETCH_MY_PROFILE_DATA, UPDATE_PRIVACY, SEARCH_STUDENT,
     UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
     UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO, DO_LOGIN, CLEAR_LOGIN} from '../actions/types'
 import {
-    HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_PROFILE, API_POST_EXTRA_EXPERIENCE,
+    HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_MY_PROFILE, API_POST_EXTRA_EXPERIENCE,
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
     API_PUT_STUDENTRECORD, API_POST_SEARCH_STUDENT
 } from "./apis";
@@ -13,7 +13,7 @@ export function fetchMyProfile(login) {
         let neuid = login.id;
         let myToken = login.token;
         axios.get(
-            (HOST + API_GET_PROFILE).format(neuid),
+            (HOST + API_GET_MY_PROFILE).format(neuid),
             {headers: {
                     "Content-Type": "application/json",
                     "token" : myToken
