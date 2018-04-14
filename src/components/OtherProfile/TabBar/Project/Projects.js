@@ -28,7 +28,7 @@ class Projects extends Component {
                     </tbody>
                 </table>
 
-                {this.state.projects.map(item => (
+                {this.props.projects.map(item => (
                     <div key={item.projectId}>
                         <table width="100%">
                             <tbody>

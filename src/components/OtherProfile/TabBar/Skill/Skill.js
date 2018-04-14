@@ -16,7 +16,7 @@ class Skill extends Component {
 
 
     getContentComponent() {
-        return <Show>{ this.state.content}</Show>;
+        return <Show>{ this.props.skills}</Show>;
 
     }
 

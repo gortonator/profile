@@ -84,6 +84,8 @@ class SearchBox extends React.Component {
             onChange: this.onChange
         };
 
+        console.log("yudong", this.props.SearchResult);
+
         return (
             <div>
                 <Autosuggest
