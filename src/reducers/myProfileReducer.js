@@ -123,12 +123,10 @@ const initialState = defineState(defaultState)('myProfileReducer');
 
 export default function myProfileReducer(state = initialState,
     {type, payload}) {
-    console.log("yudong catch everything", state, type, payload);
     switch (type) {
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
-            console.log("fetch my profile reducer old state=", state);
             return {...payload, LoginInfo:{...state.LoginInfo}, SearchResult:[...state.SearchResult]};
         case UPDATE_SUMMARY:
             return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};

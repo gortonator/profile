@@ -125,7 +125,6 @@ export default function otherProfileReducer(state = initialState,
     {type, payload}) {
     switch (type) {
         case FETCH_OTHER_PROFILE_DATA:
-            console.log("other reducer", payload);
             return {...payload, LoginInfo: {...state.LoginInfo}, SearchResult:{...state.SearchResult}};
         default:
             // console.log("not found any type match in reducer! you are given type " + type);

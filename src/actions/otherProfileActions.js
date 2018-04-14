@@ -14,7 +14,6 @@ export function fetchOtherProfile(login) {
             }})
             .then(
                 (response) => {
-                    console.log("yudong other action", response.data);
                     dispatch({type: FETCH_OTHER_PROFILE_DATA, payload: response.data});
                     login.history.push("/otherProfile");
                 },
