@@ -1,5 +1,5 @@
 // export const HOST = 'https://129.10.111.214:8082';
-export const HOST = 'http://localhost:8080';
+export const HOST = 'https://asd4.ccs.neu.edu:8082';
 
 export const API_GET_MY_PROFILE = '/myProfile/{0}';
 export const API_GET_OTHER_PROFILE = '/students/{0}';
