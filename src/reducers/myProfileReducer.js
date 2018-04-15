@@ -1,5 +1,5 @@
 import {
-    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT,
+    FETCH_MY_PROFILE_DATA, FETCH_OTHER_PROFILE_DATA, UPDATE_PRIVACY, UPDATE_SKILL, UPDATE_ABOUT, UPDATE_IMAGE,
     UPDATE_EXTRA_EXPERIENCE, UPDATE_PROJECT, DELETE_PROJECT, DELETE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, ADD_PROJECT,
     UPDATE_SUMMARY, SET_LOGIN_INFO, SEARCH_STUDENT
 } from '../actions/types'
@@ -104,6 +104,13 @@ export const defaultState = {
         coop: false,
         phone: false
     },
+
+    Photo: {
+        neuId: "",
+        type: "",
+        photo: null
+    },
+
     LoginInfo: {
         id: "",
         token: ""
@@ -130,6 +137,8 @@ export default function myProfileReducer(state = initialState,
             return {...payload, LoginInfo:{...state.LoginInfo}, SearchResult:[...state.SearchResult]};
         case UPDATE_SUMMARY:
             return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
+        case UPDATE_IMAGE:
+            return {...state, Photo: {...state.Photo, photo:payload}};
         case UPDATE_PRIVACY:
             return {...state, Privacies: payload};
         case UPDATE_SKILL:

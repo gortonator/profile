@@ -1,11 +1,11 @@
 import axios from "axios";
 import {FETCH_MY_PROFILE_DATA, UPDATE_PRIVACY, SEARCH_STUDENT,
-    UPDATE_SKILL, UPDATE_ABOUT, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
+    UPDATE_SKILL, UPDATE_ABOUT, UPDATE_IMAGE, UPDATE_EXTRA_EXPERIENCE, ADD_EXTRA_EXPERIENCE, DELETE_EXTRA_EXPERIENCE,
     UPDATE_PROJECT, ADD_PROJECT, DELETE_PROJECT, UPDATE_SUMMARY,SET_LOGIN_INFO, DO_LOGIN, CLEAR_LOGIN} from '../actions/types'
 import {
     HOST, API_DELETE_EXTRA_EXPERIENCE, API_DELETE_PROJECT, API_GET_MY_PROFILE, API_POST_EXTRA_EXPERIENCE,
     API_POST_LOGIN, API_POST_PROJECT, API_PUT_EXTRA_EXPERIENCE, API_PUT_PRIVACY, API_PUT_PROJECT,
-    API_PUT_STUDENTRECORD, API_POST_SEARCH_STUDENT
+    API_PUT_STUDENTRECORD, API_POST_SEARCH_STUDENT, API_PUT_STUDENT_PHOTO
 } from "./apis";
 
 export function fetchMyProfile(login) {
@@ -57,6 +57,34 @@ export function updateSummary(summary) {
                 })
     }
 }
+
+export function updateImage(photo) {
+    return (dispatch, getState) => {
+        let state = getState().myProfileReducer;
+        let neuid = state.LoginInfo.id;
+        let myToken = state.LoginInfo.token;
+        console.log(photo);
+        console.log("state", state);
+        console.log("mytoken", myToken);
+        console.log("neuid", neuid);
+        axios.put(
+            (HOST + API_PUT_STUDENT_PHOTO).format(neuid),
+            photo,
+            {headers: {
+                "Content-Type": "application/json",
+                    "token" : myToken
+                }})
+            .then(
+                (response) => {
+                    dispatch({type: UPDATE_IMAGE, payload: photo});
+                    console.log("Send request successfully.");},
+                (error) => {
+                    alert("Server error!");
+                    console.log(error);
+                })
+            }
+    }
+
 
 export function updatePrivacy(privacy) {
     return (dispatch, getState) => {

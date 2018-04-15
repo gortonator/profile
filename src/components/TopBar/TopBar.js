@@ -5,14 +5,18 @@ import logo from '../../image/neu.png'
 import styled from "styled-components";
 import Privacy from "./Privacy";
 import SearchBox from "./SearchBox";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+
 
 
 class TopBar extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            showPrivacy: false
+            showPrivacy: false,
+            imagePreviewUrl: "data:image/jpeg;base64, " + this.props.file.photo
         };
 
         this.handleShow = this.handleShow.bind(this);
@@ -29,6 +33,7 @@ class TopBar extends Component {
 
 
     render() {
+        let {imagePreviewUrl} = this.state;
         return (
             <Wrapper>
                 <Navbar collapseOnSelect>
@@ -47,7 +52,7 @@ class TopBar extends Component {
                                 My Privacy
                             </NavItem>
                             <NavItem eventKey={2} href="/myProfile">
-                                <Image style={{height: "25px"}} src={profile_image} alt="pic" circle/>
+                                <Image style={{height: "25px"}} src={imagePreviewUrl} alt="pic" circle/>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>
@@ -72,4 +77,14 @@ const Wrapper = styled.div`
     margin: auto;
     `;
 
-export default TopBar
+const mapStateToProps = state => {
+    return {
+        file: state.myProfileReducer.Photo
+    };
+};
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar)

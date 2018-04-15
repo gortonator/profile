@@ -1,6 +1,7 @@
 export const FETCH_MY_PROFILE_DATA = 'fetch_my_profile_data';
 export const FETCH_OTHER_PROFILE_DATA = 'fetch_other_profile_data';
 export const UPDATE_SUMMARY = 'update_summary';
+export const UPDATE_IMAGE = 'update_image';
 export const UPDATE_PRIVACY = 'update_privacy';
 export const UPDATE_SKILL = 'update_skills';
 export const UPDATE_ABOUT = 'update_about';
