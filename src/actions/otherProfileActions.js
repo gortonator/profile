@@ -1,13 +1,13 @@
 import axios from "axios";
 import {FETCH_OTHER_PROFILE_DATA} from '../actions/types'
-import {HOST, API_GET_PROFILE} from "./apis";
+import {HOST, API_GET_OTHER_PROFILE} from "./apis";
 
 
 export function fetchOtherProfile(login) {
     return (dispatch, getState) => {
         let myToken = getState().myProfileReducer.LoginInfo.token;
         axios.get(
-            (HOST + API_GET_PROFILE).format(login.id),
+            (HOST + API_GET_OTHER_PROFILE).format(login.id),
             {headers: {
                 "Content-Type": "application/json",
                 "token" : login.token

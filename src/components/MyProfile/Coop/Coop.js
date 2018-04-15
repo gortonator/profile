@@ -19,7 +19,7 @@ class Coop extends Component {
 
     render() {
         return (
-            <div><p className="subtitle"> COOP </p>
+            <div><p className="subtitle"> &nbsp; &nbsp; &nbsp; COOP </p>
                 <hr/>
                 { this.renderCoop() }
             </div>

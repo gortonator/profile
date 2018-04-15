@@ -26,7 +26,7 @@ class PrivacyItem extends Component {
             <tr>
                 <td width="20%"></td>
                 <td width="50%">{this.props.text}</td>
-                <td width="30%"><Checkbox checked={this.state.value} onChange={this.handleChange}/>
+                <td width="30%"><Checkbox className="privacyCheckbox" checked={this.state.value} onChange={this.handleChange}/>
                 </td>
             </tr>
         )

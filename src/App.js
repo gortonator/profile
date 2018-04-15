@@ -6,14 +6,11 @@ import Search from './components/Search/Search'
 import NotFound from './components/NorFound/NorFound'
 import {Switch, Redirect, BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {bindActionCreators} from "redux";
-import {doLogin, fetchMyProfile} from "./actions/myProfileActions";
 
 class App extends Component {
 
     render() {
-        // console.log("app.js about= ", this.props);
-
+        // console.log("yudong app debug", this.props.debug);
         return (
             <div>
                 <Router>
@@ -32,10 +29,10 @@ class App extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        debug: state.myProfileReducer,
+    };
+}
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-    doLogin, fetchMyProfile
-}, dispatch);
-
-
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, null)(App)

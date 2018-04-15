@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProjectContent from "./ProjectContent";
 import {Modal, Button} from "react-bootstrap";
+import moment from "moment";
 
 export default class EditProject extends Component {
     constructor(props) {
@@ -8,8 +9,8 @@ export default class EditProject extends Component {
         this.state = {
             id: this.props.item.projectId,
             projectName: this.props.item.projectName,
-            startDate: new Date(),
-            endDate: new Date(),
+            startDate: moment(this.props.item.startDate),
+            endDate: moment(this.props.item.endDate),
             description: this.props.item.description,
             neuId: this.props.item.neuId
         }
@@ -45,12 +46,17 @@ export default class EditProject extends Component {
             return
         }
 
+        if(this.state.endDate < this.state.startDate) {
+            alert("End date should not earlier than start date.")
+            return
+        }
+
         let item = {
             neuId: this.state.neuId,
             projectId: this.state.id,
             projectName: this.state.projectName,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
+            startDate: this.state.startDate.format("MM-DD-YYYY"),
+            endDate: this.state.endDate.format("MM-DD-YYYY"),
             description: this.state.description,
         };
         this.props.editFunc(item);

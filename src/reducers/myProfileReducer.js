@@ -127,7 +127,7 @@ export default function myProfileReducer(state = initialState,
         case SET_LOGIN_INFO:
             return {...state, LoginInfo: {id:payload.id, token: payload.token}};
         case FETCH_MY_PROFILE_DATA:
-            return {...payload, LoginInfo:{...state.LoginInfo}, SearchResult:{...state.SearchResult}};
+            return {...payload, LoginInfo:{...state.LoginInfo}, SearchResult:[...state.SearchResult]};
         case UPDATE_SUMMARY:
             return {...state, StudentRecord: {...state.StudentRecord, summary: payload}};
         case UPDATE_PRIVACY:
