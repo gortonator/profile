@@ -1,22 +1,25 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Grid, Row, Col, css} from 'react-bootstrap';
+import TopBar from '../TopBar/TopBar'
 
 
 class NotFound extends Component {
 
     render() {
         return (
+            <div style={{margin: "2%"}}>
+            <TopBar/>
             <Wrapper>
                 <br />
                 <br />
                 <br />
                 <br />
                 <br />
-                Sorry, you are typing an invalid url.
+                Sorry, you typed an invalid url.
                 <hr />
                 <h1>404</h1>
-            </Wrapper>
+            </Wrapper></div>
         );
     }
 }
