@@ -11,9 +11,9 @@ function beforeUpload(file) {
         alert('You can only upload JPG file!');
     }
 
-    const isLt2M = file.size / 1024 / 1024 < 1;
+    const isLt2M = file.size / 1024 / 1024 < 0.2;
     if (!isLt2M) {
-        alert('Image must be smaller than 1MB!');
+        alert('Image should be smaller than 200KB!');
     }
     return isLt2M;
 }
