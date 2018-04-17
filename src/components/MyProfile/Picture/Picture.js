@@ -14,7 +14,7 @@ function beforeUpload(file) {
     if (!isLt2M) {
         alert('Image should be smaller than 500KB!');
     }
-    return isLt2M;
+    return isLt2M&isJPG;
 }
 
 class Picture extends React.Component {
