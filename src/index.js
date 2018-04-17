@@ -18,7 +18,7 @@ import studentFilterReducer from "./reducers/student_filter_reducer";
 import filterGroupReducer from "./reducers/filter_group_reducer";
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
-import storeSynchronize from 'redux-localstore'
+import {saveState, loadState} from './stateLoader'
 
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
@@ -30,14 +30,16 @@ const allReducers = combineReducers({
 
 const store = createStore(
     allReducers,
-    // {},
-    window.devToolsExtension && window.devToolsExtension(),
+    loadState(),
+    // window.devToolsExtension && window.devToolsExtension(),
     applyMiddleware(thunk, promise()),
 );
 
 
-storeSynchronize(store);
-
+store.subscribe(() => {
+    //this is just a function that saves state to localStorage
+    saveState(store.getState());
+});
 
 ReactDOM.render(
     <Provider store={store}>
@@ -48,3 +50,5 @@ registerServiceWorker();
 
 
 export default store;
+
+
