@@ -8,13 +8,16 @@ function beforeUpload(file) {
     const isJPG = file.type === 'image/jpeg';
     if (!isJPG) {
         alert('You can only upload JPG file!');
+        return false;
     }
 
-    const isLt2M = file.size / 1024 / 1024 < 0.5;
-    if (!isLt2M) {
+    const is500K = file.size / 1024 / 1024 < 0.5;
+    if (!is500K) {
         alert('Image should be smaller than 500KB!');
+        return false;
     }
-    return isLt2M&isJPG;
+
+    return true;
 }
 
 class Picture extends React.Component {
