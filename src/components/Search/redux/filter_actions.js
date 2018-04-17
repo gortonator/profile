@@ -12,44 +12,58 @@ export function removeSelectedCoop(coop) {
 	}
 }
 
-export function addSelectedDegree(degree) {
+export function addSelectedCourse(course) {
 	return {
-		type: 'ADD_SELECTED_DEGREE',
-		payload: degree
+		type: 'ADD_SELECTED_COURSE',
+		payload: course
 	}
 }
 
-export function removeSelectedDegree(degree) {
+export function removeSelectedCourse(course) {
 	return {
-		type: 'REMOVE_SELECTED_DEGREE',
-		payload: degree
+		type: 'REMOVE_SELECTED_COURSE',
+		payload: course
 	}
 }
 
-export function addSelectedUniversity(university) {
+export function addSelectedCampus(campus) {
 	return {
-		type: 'ADD_SELECTED_UNIVERSITY',
-		payload: university
+		type: 'ADD_SELECTED_CAMPUS',
+		payload: campus
 	}
 }
 
-export function removeSelectedUniversity(university) {
+export function removeSelectedCampus(campus) {
 	return {
-		type: 'REMOVE_SELECTED_UNIVERSITY',
-		payload: university
+		type: 'REMOVE_SELECTED_CAMPUS',
+		payload: campus
 	}
 }
 
-export function addSelectedYear(year) {
+export function addSelectedGraduationYear(year) {
 	return {
-		type: 'ADD_SELECTED_YEAR',
+		type: 'ADD_SELECTED_GRADUATION_YEAR',
 		payload: year
 	}
 }
 
-export function removeSelectedYear(year) {
+export function removeSelectedGraduationYear(year) {
 	return {
-		type: 'REMOVE_SELECTED_YEAR',
+		type: 'REMOVE_SELECTED_GRADUATION_YEAR',
+		payload: year
+	}
+}
+
+export function addSelectedEnrollmentYear(year) {
+	return {
+		type: 'ADD_SELECTED_ENROLLMENT_YEAR',
+		payload: year
+	}
+}
+
+export function removeSelectedEnrollmentYear(year) {
+	return {
+		type: 'REMOVE_SELECTED_ENROLLMENT_YEAR',
 		payload: year
 	}
 }
@@ -61,24 +75,30 @@ export function setDisplayedCoops(coops) {
 	}
 }
 
-export function setDisplayedDegrees(degrees) {
+export function setDisplayedCourses(courses) {
 	return {
-		type: 'SET_DISPLAYED_DEGREES',
-		payload: degrees
+		type: 'SET_DISPLAYED_COURSES',
+		payload: courses
 	}
 }
 
-export function setDisplayedUniversities(universities) {
-	console.log("dispatch displayed unis");
+export function setDisplayedCampuses(campuses) {
 	return {
-		type: 'SET_DISPLAYED_UNIVERSITIES',
-		payload: universities
+		type: 'SET_DISPLAYED_CAMPUSES',
+		payload: campuses
 	}
 }
 
-export function setDisplayedYears(years) {
+export function setDisplayedGraduationYears(years) {
 	return {
-		type: 'SET_DISPLAYED_YEARS',
+		type: 'SET_DISPLAYED_GRADUATION_YEARS',
+		payload: years
+	}
+}
+
+export function setDisplayedEnrollmentYears(years) {
+	return {
+		type: 'SET_DISPLAYED_ENROLLMENT_YEARS',
 		payload: years
 	}
 }
@@ -90,23 +110,30 @@ export function setAllCoops(coops) {
 	}
 }
 
-export function setAllDegrees(degrees) {
+export function setAllCourses(courses) {
 	return {
-		type: 'SET_ALL_DEGREES',
-		payload: degrees
+		type: 'SET_ALL_COURSES',
+		payload: courses
 	}
 }
 
-export function setAllUniversities(universities) {
+export function setAllCampuses(campuses) {
 	return {
-		type: 'SET_ALL_UNIVERSITIES',
-		payload: universities
+		type: 'SET_ALL_CAMPUSES',
+		payload: campuses
 	}
 }
 
-export function setAllYears(years) {
+export function setAllGraduationYears(years) {
 	return {
-		type: 'SET_ALL_YEARS',
+		type: 'SET_ALL_GRADUATION_YEARS',
+		payload: years
+	}
+}
+
+export function setAllEnrollmentYears(years) {
+	return {
+		type: 'SET_ALL_ENROLLMENT_YEARS',
 		payload: years
 	}
 }

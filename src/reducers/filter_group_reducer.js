@@ -1,8 +1,9 @@
 export default function filterGroupReducer( state = {
 	selectedCoops: [],
-	selectedDegrees: [],
-	selectedUniversities: [],
-	selectedYears: [],
+	selectedCourses: [],
+	selectedCampuses: [],
+	selectedGraduationYears: [],
+	selectedEnrollmentYears: [],
 	error: null
 }, action) {
 	switch (action.type) {
@@ -18,40 +19,52 @@ export default function filterGroupReducer( state = {
 				selectedCoops: state.selectedCoops.filter(coop => coop !== action.payload)
 			}
 		}
-		case "ADD_SELECTED_DEGREE": {
+		case "ADD_SELECTED_COURSE": {
 			return {
 				...state,
-				selectedDegrees: [...state.selectedDegrees, action.payload]
+				selectedCourses: [...state.selectedCourses, action.payload]
 			}
 		}
-		case "REMOVE_SELECTED_DEGREE": {
+		case "REMOVE_SELECTED_COURSE": {
 			return {
 				...state,
-				selectedDegrees: state.selectedDegrees.filter(degree => degree !== action.payload)
+				selectedCourses: state.selectedCourses.filter(course => course !== action.payload)
 			}
 		}
-		case "ADD_SELECTED_UNIVERSITY": {
+		case "ADD_SELECTED_CAMPUS": {
 			return {
 				...state,
-				selectedUniversities: [...state.selectedUniversities, action.payload]
+				selectedCampuses: [...state.selectedCampuses, action.payload]
 			}
 		}
-		case "REMOVE_SELECTED_UNIVERSITY": {
+		case "REMOVE_SELECTED_CAMPUS": {
 			return {
 				...state,
-				selectedUniversities: state.selectedUniversities.filter(university => university !== action.payload)
+				selectedCampuses: state.selectedCampuses.filter(campus => campus !== action.payload)
 			}
 		}
-		case "ADD_SELECTED_YEAR": {
+		case "ADD_SELECTED_GRADUATION_YEAR": {
 			return {
 				...state,
-				selectedYears: [...state.selectedYears, action.payload]
+				selectedGraduationYears: [...state.selectedGraduationYears, action.payload]
 			}
 		}
-		case "REMOVE_SELECTED_YEAR": {
+		case "REMOVE_SELECTED_GRADUATION_YEAR": {
 			return {
 				...state,
-				selectedYears: state.selectedYears.filter(year => year !== action.payload)
+				selectedGraduationYears: state.selectedGraduationYears.filter(year => year !== action.payload)
+			}
+		}
+		case "ADD_SELECTED_ENROLLMENT_YEAR": {
+			return {
+				...state,
+				selectedEnrollmentYears: [...state.selectedEnrollmentYears, action.payload]
+			}
+		}
+		case "REMOVE_SELECTED_ENROLLMENT_YEAR": {
+			return {
+				...state,
+				selectedEnrollmentYears: state.selectedEnrollmentYears.filter(year => year !== action.payload)
 			}
 		}
 		default: {

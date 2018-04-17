@@ -1,12 +1,14 @@
 export default function studentFilterReducer( state = {
 	displayedCoops: [],
-	displayedDegrees: [],
-	displayedUniversities: [],
-	displayedYears: [],
+	displayedCourses: [],
+	displayedCampuses: [],
+	displayedEnrollmentYears: [],
+	displayedGraduationYears: [],
 	allCoops: [],
-	allDegrees: [],
-	allUniversities: [],
-	allYears: [],
+	allCourses: [],
+	allCampuses: [],
+	allGraduationYears: [],
+	allEnrollmentYears: [],
 	results: [],
 	error: null
 }, action) {
@@ -17,22 +19,28 @@ export default function studentFilterReducer( state = {
 				displayedCoops: action.payload
 			}
 		}
-		case "SET_DISPLAYED_DEGREES": {
+		case "SET_DISPLAYED_CAMPUSES": {
 			return {
 				...state,
-				displayedDegrees: action.payload
+				displayedCampuses: action.payload
 			}
 		}
-		case "SET_DISPLAYED_UNIVERSITIES": {
+		case "SET_DISPLAYED_COURSES": {
 			return {
 				...state,
-				displayedUniversities: action.payload
+				displayedCourses: action.payload
 			}
 		}
-		case "SET_DISPLAYED_YEARS": {
+		case "SET_DISPLAYED_GRADUATION_YEARS": {
 			return {
 				...state,
-				displayedYears: action.payload
+				displayedGraduationYears: action.payload
+			}
+		}
+		case "SET_DISPLAYED_ENROLLMENT_YEARS": {
+			return {
+				...state,
+				displayedEnrollmentYears: action.payload
 			}
 		}
 		case "SET_ALL_COOPS": {
@@ -41,22 +49,28 @@ export default function studentFilterReducer( state = {
 				allCoops: action.payload
 			}
 		}
-		case "SET_ALL_DEGREES": {
+		case "SET_ALL_COURSES": {
 			return {
 				...state,
-				allDegrees: action.payload
+				allCourses: action.payload
 			}
 		}
-		case "SET_ALL_UNIVERSITIES": {
+		case "SET_ALL_CAMPUSES": {
 			return {
 				...state,
-				allUniversities: action.payload
+				allCampuses: action.payload
 			}
 		}
-		case "SET_ALL_YEARS": {
+		case "SET_ALL_GRADUATION_YEARS": {
 			return {
 				...state,
-				allYears: action.payload
+				allGraduationYears: action.payload
+			}
+		}
+		case "SET_ALL_ENROLLMENT_YEARS": {
+			return {
+				...state,
+				allEnrollmentYears: action.payload
 			}
 		}
 		case "SET_RESULTS": {

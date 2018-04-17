@@ -15,9 +15,10 @@ class StudentFilter extends React.Component {
 
 		this.state = {
 			selCoops:'',
-			selDegrees:'',
-			selUni:'',
-			selYears:'',
+			selCourses:'',
+			selCampuses:'',
+			selGraduationYears:'',
+			setEnrollmentYears:'',
 			isExpand: false,
 		};
 
@@ -28,15 +29,14 @@ class StudentFilter extends React.Component {
 	handleSubmit(event){
 		let store = this.props.store;
 
-		var results = 
+		let results =
 		{
-			BeginIndex:0,
-			EndIndex:10000,
-			Coops:this.props.selected.selectedCoops,
-			UndergradDegree:this.props.selected.selectedDegrees,
-			UndergradSchool:this.props.selected.selectedUniversities,
-			GraduationYear:this.props.selected.selectedYears,
-		}
+			Coops:[this.props.selected.selectedCoops],
+			Campuses:[this.props.selected.selectedCampuses],
+			EnrollmentYear:[this.props.selected.selectedEnrollmentYears],
+			GraduationYear:[this.props.selected.selectedGraduationYears],
+			Courses:[this.props.selected.selectedCourses]
+		};
 
 		this.props.setResults(results);
 
@@ -62,9 +62,10 @@ class StudentFilter extends React.Component {
 
 		//placeholder code
 		var coop_title = "Coop";
-		var degree_title = "Degree Subject";
-		var uni_title = "Undergraduate University";
-		var year_title = "Year";
+		var course_title = "Courses Taken";
+		var campus_title = "Campus Attended";
+		var grad_year_title = "Graduation Year";
+		var enroll_year_title = "Enrollment Year";
 
 		var filterContent = (
 			<div id="filter_below_fold">
@@ -75,22 +76,28 @@ class StudentFilter extends React.Component {
 					all_items={this.props.displayed.allCoops}
 				/>
 				<FilterGroupContainer
-					name="degree_filter_group"
-					title={degree_title}
-					displayed={this.props.displayed.displayedDegrees}
-					all_items={this.props.displayed.allDegrees}
+					name="course_filter_group"
+					title={course_title}
+					displayed={this.props.displayed.displayedCourses}
+					all_items={this.props.displayed.allCourses}
 				/>
 				<FilterGroupContainer
-					name="uni_filter_group"
-					title={uni_title}
-					displayed={this.props.displayed.displayedUniversities}
-					all_items={this.props.displayed.allUniversities}
+					name="campus_filter_group"
+					title={campus_title}
+					displayed={this.props.displayed.displayedCampuses}
+					all_items={this.props.displayed.allCampuses}
 				/>
 				<FilterGroupContainer
-					name="year_filter_group"
-					title={year_title}
-					displayed={this.props.displayed.displayedYears}
-					all_items={this.props.displayed.allYears}
+					name="enrollment_year_filter_group"
+					title={enroll_year_title}
+					displayed={this.props.displayed.displayedEnrollmentYears}
+					all_items={this.props.displayed.allEnrollmentYears}
+				/>
+				<FilterGroupContainer
+					name="graduation_year_filter_group"
+					title={grad_year_title}
+					displayed={this.props.displayed.displayedGraduationYears}
+					all_items={this.props.displayed.allGraduationYears}
 				/>
 			</div>
 		)
@@ -167,16 +174,4 @@ class StudentFilter extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		displayed: state.studentFilter,
-		selected: state.filterGroup
-	}
-}
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-		setResults
-}, dispatch);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(StudentFilter);
+export default StudentFilter;

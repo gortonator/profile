@@ -1,25 +1,43 @@
-import React, {Component} from 'react';
 import profile_image from '../../../image/default-avatar.png'
-import {Image} from "react-bootstrap";
-import styled from "styled-components";
+import React from 'react';
+import '../../../css/Image.css';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
-class Picture extends Component {
+class Picture extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            imagePreviewUrl: "data:image/jpeg;base64, " + this.props.file.photo
+        };
+    }
 
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl.length > 25) {
+            $imagePreview = (<img src={imagePreviewUrl}/>);
+        } else {
+            $imagePreview = (<img src={profile_image}/>);
+        }
+
         return (
-            <ImageContainer>
-                <Image id="profile-pic" src={profile_image} alt="pic" thumbnail />
-            </ImageContainer>
+            <div className="previewComponent">
+                <div className="image">
+                    {$imagePreview}
+                </div>
+            </div>
         )
     }
 }
 
-const ImageContainer = styled.div`
-        position: relative;
-        margin: 2% 0;
-		top: 50%;
-		transform: translateY(-50%);
-        text-align: center;
-    `
+const mapStateToProps = state => {
+    return {
+        file: state.otherProfileReducer.Photo
+    };
+};
 
-export default Picture
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Picture)

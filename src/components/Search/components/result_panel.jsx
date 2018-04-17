@@ -5,19 +5,21 @@ import '../../../css/ResultPanel.css';
 class ResultPanel extends React.Component {
 
 	render() {
+		console.log(this.props, "result panel rerender");
+
 		var {isMobile} = this.props;
 
-    var students = [];
-    students = this.props.results.students;
+	    var students = [];
+	    students = this.props.results.students;
 
 		var isLoading = students === undefined;
 
 
-		var loadingDiv = <div class="loader"></div>;
+		var loadingDiv = <div className="loader"></div>;
 		var mainDiv = null;
 
 		if(isLoading){
-			mainDiv = <div class="loader"></div>;
+			mainDiv = <div className="loader"></div>;
 		}
 		else{
 			mainDiv = 
@@ -32,21 +34,19 @@ class ResultPanel extends React.Component {
                 undergrad={student.undergraddegree}
                 location={student.undergradschool}
                 year={student.graduationyear}/>
-            );
-          })}
-        </div>
-      </div>;
+	            );
+	          })}
+	        </div>
+	      </div>;
 		}
 
-	  
-
-    return(
-      <div id="result_panel_main_container">
-      	{
-      		mainDiv
-      	}
-  		</div>
-  	);
+	    return(
+	      <div id="result_panel_main_container">
+	      	{
+	      		mainDiv
+	      	}
+	  		</div>
+	  	);
 
 		/**
 		return(

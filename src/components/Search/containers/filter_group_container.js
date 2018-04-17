@@ -14,23 +14,29 @@ const mapDispatchToProps = (dispatch) => {
         removeSelectedCoop: input => {
             dispatch(FilterActions.removeSelectedCoop(input));
         },
-        addSelectedDegree: input => {
-            dispatch(FilterActions.addSelectedDegree(input));
+        addSelectedCourse: input => {
+            dispatch(FilterActions.addSelectedCourse(input));
         },
-        removeSelectedDegree: input => {
-            dispatch(FilterActions.removeSelectedDegree(input));
+        removeSelectedCourse: input => {
+            dispatch(FilterActions.removeSelectedCourse(input));
         },
-        addSelectedUniversity: input => {
-            dispatch(FilterActions.addSelectedUniversity(input));
+        addSelectedCampus: input => {
+            dispatch(FilterActions.addSelectedCampus(input));
         },
-        removeSelectedUniversity: input => {
-            dispatch(FilterActions.removeSelectedUniversity(input));
+        removeSelectedCampus: input => {
+            dispatch(FilterActions.removeSelectedCampus(input));
         },
-        addSelectedYear: input => {
-            dispatch(FilterActions.addSelectedYear(input));
+        addSelectedGraduationYear: input => {
+            dispatch(FilterActions.addSelectedGraduationYear(input));
         },
-        removeSelectedYear: input => {
-            dispatch(FilterActions.removeSelectedYear(input));
+        removeSelectedGraduationYear: input => {
+            dispatch(FilterActions.removeSelectedGraduationYear(input));
+        },
+        addSelectedEnrollmentYear: input => {
+            dispatch(FilterActions.addSelectedEnrollmentYear(input));
+        },
+        removeSelectedEnrollmentYear: input => {
+            dispatch(FilterActions.removeSelectedEnrollmentYear(input));
         },
     };
 };

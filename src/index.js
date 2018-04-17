@@ -23,7 +23,7 @@ import {saveState, loadState} from './stateLoader'
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
     studentFilter: studentFilterReducer,
-		filterGroup: filterGroupReducer,
+	filterGroup: filterGroupReducer,
     otherProfileReducer: otherProfileReducer,
 });
 

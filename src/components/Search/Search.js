@@ -4,18 +4,17 @@ import styled from "styled-components";
 
 import '../../css/SearchPage.css';
 
-import StudentFilter from './components/student_filter';
+import StudentFilterContainer from './containers/student_filter_container';
 import ResultPanelContainer from './containers/result_panel_container';
 
-import {setDisplayedUniversities,
-				setDisplayedCoops,
-				setDisplayedDegrees,
-				setDisplayedYears,
-				setAllUniversities,
-				setAllCoops,
-				setAllYears,
-				setAllDegrees,
-				setResults} from '../../actions/searchPageActions';
+import {
+	setAllCampuses,
+	setAllCoops,
+	setAllCourses,
+	setAllGraduationYears,
+	setAllEnrollmentYears,
+	setResults
+} from '../../actions/searchPageActions';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -33,8 +32,6 @@ class Search extends Component {
     constructor(props) {
         super(props);
 
-        // console.log(this.state);
-
         this.state = {
             width: window.innerWidth,
         };
@@ -45,90 +42,85 @@ class Search extends Component {
     }
 
     getData(){
-			const store = this.props.store;
-			
+		const store = this.props.store;
 
-			this.props.setDisplayedUniversities();
-			this.props.setDisplayedCoops();
-			this.props.setDisplayedDegrees();
-			this.props.setDisplayedYears();
+		console.log(this.props, "is token here");
 
-			this.props.setAllUniversities();
-			this.props.setAllCoops();
-			this.props.setAllDegrees();
-			this.props.setAllYears();
-
-			var results = 
-			{
-				BeginIndex:0,
-				EndIndex:10000,
-				Coops:[],
-				UndergradDegree:[],
-				UndergradSchool:[],
-				GraduationYear:[],
-			};
-
-			this.props.setResults(results);
-		}
-
-    componentWillMount() {
-			window.addEventListener('resize', this.handleWindowSizeChange);
-		}
-
-		componentWillUnmount() {
-			window.removeEventListener('resize', this.handleWindowSizeChange);
-		}
-
-		handleWindowSizeChange = () => {
-			this.setState({ width: window.innerWidth });
+		let results =
+		{
+			Coops:[],
+			Campuses:[],
+			EnrollmentYear:[],
+			GraduationYear:[],
+			Courses:[]
 		};
 
-    handleSubmit(){
-    }
+		this.props.setAllCampuses(this.props.login.token);
+		this.props.setAllCoops(this.props.login.token);
+		this.props.setAllCourses(this.props.login.token);
+		this.props.setAllGraduationYears(this.props.login.token);
+		this.props.setAllEnrollmentYears(this.props.login.token);
+		this.props.setResults(this.props.login.token, results)
+	}
 
+    componentWillMount() {
+		window.addEventListener('resize', this.handleWindowSizeChange);
+	}
 
-		render() {
-			const {width} = this.state;
-			const isMobile = width < MOBILE_VIEW_WIDTH;
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.handleWindowSizeChange);
+	}
 
-			const mobileView = (
-				<div>
-					<div id="main_container">
-						<div id="filter_panel_mobile">
-							<StudentFilter
-								isMobile={isMobile}
-								submitHandler= {this.handleSubmit.bind(this)}/>
-						</div>
-						<div id="result_panel_mobile">
-							<ResultPanelContainer isMobile={isMobile}/>
-						</div>
+	handleWindowSizeChange = () => {
+		this.setState({ width: window.innerWidth });
+	};
+
+	handleSubmit(){
+		
+	}
+
+	render() {
+		const {width} = this.state;
+		const isMobile = width < MOBILE_VIEW_WIDTH;
+
+		const mobileView = (
+			<div>
+				<div id="main_container">
+					<div id="filter_panel_mobile">
+						<StudentFilterContainer
+							isMobile={isMobile}
+							submitHandler= {this.handleSubmit.bind(this)}/>
+					</div>
+					<div id="result_panel_mobile">
+						<ResultPanelContainer isMobile={isMobile}/>
 					</div>
 				</div>
-			)
+			</div>
+		)
 
-			const desktopView = (
-				<div>
-					<div id="main_container">
-						<div id="filter_panel">
-							<StudentFilter
-								isMobile={isMobile}
-								submitHandler= {this.handleSubmit.bind(this)}/>
-						</div>
-						<div id="result_panel">
-							<ResultPanelContainer isMobile={isMobile}/>
-						</div>
+		const desktopView = (
+			<div>
+				<div id="main_container">
+					<div id="filter_panel">
+						<StudentFilterContainer
+							isMobile={isMobile}
+							submitHandler= {this.handleSubmit.bind(this)}/>
+					</div>
+					<div id="result_panel">
+						<ResultPanelContainer isMobile={isMobile}/>
 					</div>
 				</div>
-			);
+			</div>
+		);
 
-			return (
-            <div style={{margin: "2%"}}>
-                <TopBar/>
-                <Wrapper>
-                	{isMobile ? mobileView : desktopView}
-                </Wrapper>
-             </div>
-             );
+		return (
+        <div style={{margin: "2%"}}>
+            <TopBar/>
+            <Wrapper>
+            	{isMobile ? mobileView : desktopView}
+            </Wrapper>
+         </div>
+         );
 	}
 }
 
@@ -141,9 +133,19 @@ const Wrapper = styled.div`
  `;
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    setDisplayedUniversities, setDisplayedCoops, setDisplayedYears, setDisplayedDegrees,
-    setAllUniversities, setAllCoops, setAllYears, setAllDegrees, setResults
+    setAllCampuses,
+	setAllCoops,
+	setAllCourses,
+	setAllGraduationYears,
+	setAllEnrollmentYears,
+	setResults
 }, dispatch);
 
+function mapStateToProps(state) {
+    return {
+        login: state.myProfileReducer.LoginInfo,
+    };
+}
 
-export default connect(null, mapDispatchToProps)(Search);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
