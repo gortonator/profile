@@ -107,7 +107,6 @@ export const defaultState = {
 
     Photo: {
         neuId: "",
-        type: "",
         photo: null
     },
 

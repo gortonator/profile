@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {Button} from "react-bootstrap";
+import React from 'react';
 import '../../../css/Image.css';
 import {updateImage} from "../../../actions/myProfileActions";
 import {connect} from "react-redux";
@@ -11,23 +10,16 @@ function beforeUpload(file) {
         alert('You can only upload JPG file!');
     }
 
-    const isLt2M = file.size / 1024 / 1024 < 0.2;
+    const isLt2M = file.size / 1024 / 1024 < 0.5;
     if (!isLt2M) {
-        alert('Image should be smaller than 200KB!');
+        alert('Image should be smaller than 500KB!');
     }
     return isLt2M;
-}
-
-function blobToDataURL(blob, callback) {
-    var a = new FileReader();
-    a.onload = function(e) {callback(e.target.result);}
-    a.readAsDataURL(blob);
 }
 
 class Picture extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props.file);
         this.state = {
                 imagePreviewUrl: "data:image/jpeg;base64, " + this.props.file.photo
         };
@@ -36,7 +28,6 @@ class Picture extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const image = this.state.imagePreviewUrl.split(',');
-        console.log(image);
         this.props.updateImage(image[1]);
     }
 
@@ -66,32 +57,25 @@ class Picture extends React.Component {
     render() {
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
+        if (imagePreviewUrl.length > 25) {
+            $imagePreview = (<img src={imagePreviewUrl} onClick={(e) => this.upload.click()}/>);
         } else {
-            $imagePreview = (<div className="previewText">Your photo for review</div>);
+            $imagePreview = (<div onClick={(e) => this.upload.click()}>Click here to upload your photo</div>);
         }
 
         return (
             <div className="previewComponent">
-                <tbody>
-                    <tr>
-                        <div className="imgPreview">
-                            {$imagePreview}
-                        </div>
-                    </tr>
-                    <tr>
-                        <form onSubmit={(e)=>this.handleSubmit(e)}>
-                            <input ref={(ref) => this.upload = ref}
-                                   type="file"
-                                   style={{display: "none"}}
-                                   onChange={(e)=>this.handleImageChange(e)} />
-                            <Button className="uploadButton" onClick={(e) => this.upload.click() }>
-                                Upload Picture
-                            </Button>
-                        </form>
-                    </tr>
-                </tbody>
+                <div className="image">
+                    {$imagePreview}
+                </div>
+
+                <input ref={(ref) => this.upload = ref}
+                       type="file"
+                       style={{display: "none"}}
+                       onChange={(e)=>this.handleImageChange(e)} />
+                {/*<Button className="uploadButton" onClick={(e) => this.upload.click() }>*/}
+                    {/*Upload Picture*/}
+                {/*</Button>*/}
             </div>
         )
     }

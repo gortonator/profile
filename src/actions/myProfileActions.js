@@ -63,7 +63,6 @@ export function updateImage(photo) {
         let state = getState().myProfileReducer;
         let neuid = state.LoginInfo.id;
         let myToken = state.LoginInfo.token;
-        console.log(photo);
         console.log("state", state);
         console.log("mytoken", myToken);
         console.log("neuid", neuid);
