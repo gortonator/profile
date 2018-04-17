@@ -23,7 +23,7 @@ import storeSynchronize from 'redux-localstore'
 const allReducers = combineReducers({
     myProfileReducer: myProfileReducer,
     studentFilter: studentFilterReducer,
-		filterGroup: filterGroupReducer,
+	filterGroup: filterGroupReducer,
     otherProfileReducer: otherProfileReducer,
 });
 

@@ -14,7 +14,7 @@ class FilterGroup extends React.Component {
 		let displayed = this.props.displayed;
 		let title = this.props.title;
 
-		suggestions = suggestions.filter(function(e){return this.indexOf(e)<0;},displayed);
+		suggestions = suggestions === undefined ? [] : suggestions.filter(function(e){return this.indexOf(e)<0;},displayed);
 
 		this.state = {
 			title: title,
@@ -94,28 +94,36 @@ class FilterGroup extends React.Component {
 					this.props.removeSelectedCoop(selectedItem);
 				}
 				break;
-			case "Degree Subject":
+			case "Courses Taken":
 				if(checked){
-					this.props.addSelectedDegree(selectedItem);
+					this.props.addSelectedCourse(selectedItem);
 				}
 				else {
-					this.props.removeSelectedDegree(selectedItem);
+					this.props.removeSelectedCourse(selectedItem);
 				}
 				break;
-			case "Undergraduate University":
+			case "Campus Attended":
 				if(checked){
-					this.props.addSelectedUniversity(selectedItem);
+					this.props.addSelectedCampus(selectedItem);
 				}
 				else {
-					this.props.removeSelectedUniversity(selectedItem);
+					this.props.removeSelectedCampus(selectedItem);
 				}
 				break;
-			case "Year":
+			case "Graduation Year":
 				if(checked){
-					this.props.addSelectedYear(selectedItem);
+					this.props.addSelectedGraduationYear(selectedItem);
 				}
 				else {
-					this.props.removeSelectedYear(selectedItem);
+					this.props.removeSelectedGraduationYear(selectedItem);
+				}
+				break;
+			case "Enrollment Year":
+				if(checked){
+					this.props.addSelectedEnrollmentYear(selectedItem);
+				}
+				else {
+					this.props.removeSelectedEnrollmentYear(selectedItem);
 				}
 				break;
 			default:
