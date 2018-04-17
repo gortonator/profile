@@ -104,6 +104,10 @@ export const defaultState = {
         coop: false,
         phone: false
     },
+    Photo: {
+        neuId: "",
+        photo: null
+    },
     LoginInfo: {
         id: "",
         token: ""
