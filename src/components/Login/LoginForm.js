@@ -52,8 +52,6 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        // console.log("yudong login page", this.props);
-
 
         return (
             <div id="body-container">

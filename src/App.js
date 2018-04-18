@@ -10,7 +10,6 @@ import {connect} from 'react-redux';
 class App extends Component {
 
     render() {
-        // console.log("yudong app debug", this.props.debug);
         return (
             <div>
                 <Router>

@@ -58,8 +58,6 @@ class Picture extends React.Component {
     }
 
     render() {
-        console.log("yudong", this.props.file);
-        // let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
         if (("data:image/jpeg;base64, " + this.props.file.photo).length > 25) {
             $imagePreview = (<img src={"data:image/jpeg;base64, " + this.props.file.photo} onClick={(e) => this.upload.click()}/>);

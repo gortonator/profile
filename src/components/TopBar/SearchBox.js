@@ -100,6 +100,7 @@ class SearchBox extends React.Component {
                 <Button href="/search">Advance Search</Button>
             </div>
 
+
         );
     }
 }

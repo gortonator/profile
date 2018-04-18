@@ -333,7 +333,6 @@ export function doLogin(body) {
         });
         let newLogInfo = JSON.stringify(body);
 
-        // console.log("yudong login", logInfo);
         axios.post(
             (HOST + API_POST_LOGIN),
             newLogInfo,
