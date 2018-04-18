@@ -16,7 +16,6 @@ class TopBar extends Component {
         super(props);
         this.state = {
             showPrivacy: false,
-            imagePreviewUrl: "data:image/jpeg;base64, " + this.props.file.photo
         };
 
         this.handleShow = this.handleShow.bind(this);
@@ -33,7 +32,6 @@ class TopBar extends Component {
 
 
     render() {
-        let {imagePreviewUrl} = this.state;
         return (
             <Wrapper>
                 <Navbar collapseOnSelect>
@@ -52,7 +50,7 @@ class TopBar extends Component {
                                 My Privacy
                             </NavItem>
                             <NavItem eventKey={2} href="/myProfile">
-                                <Image style={{height: "25px"}} src={imagePreviewUrl} alt="pic" circle/>
+                                <Image style={{height: "25px"}} src={"data:image/jpeg;base64, " + this.props.file.photo} alt="pic" circle/>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>
