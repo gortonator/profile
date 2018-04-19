@@ -13,7 +13,7 @@ class Picture extends React.Component {
     }
 
     render() {
-        let {imagePreviewUrl} = this.state;
+        let {imagePreviewUrl} = "data:image/jpeg;base64, " + this.props.file.photo;
         let $imagePreview = null;
         if (imagePreviewUrl.length > 25) {
             $imagePreview = (<img src={imagePreviewUrl}/>);
