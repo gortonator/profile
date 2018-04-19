@@ -68,7 +68,7 @@ class TopBar extends Component {
                             <NavItem eventKey={2} onClick={this.handleShow}>
                                 My Privacy
                             </NavItem>
-                            </NavItem>ventKey={3} onClick={this.handleLogoutShow}>
+                            <NavItem eventKey={3} onClick={this.handleLogoutShow}>
                                 Logout
                             </NavItem>
                         </Nav>
