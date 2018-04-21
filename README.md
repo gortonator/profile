@@ -48,6 +48,23 @@ Info part including students name, location, Gender, Start/End term. These info 
 
 In the coop, there would be unchangeable coop info from neu database, in the tab there would be About, Academic, Experiecnes, Project and Skill. Except for the Acadmic all the other field can be edit and add.
 
-![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_summary.jpg)
+3.1 About
+
+About shows the Phone, Email, Address, Linkedin, Github, Facebook and personal website. You can edit the link and also change the visibility to other student in the "my privacy" setting.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_About.jpg)
+
+3.2 Experices and Project
+
+You can add your expericences and project here.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_Experience.jpg)
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_addExperiences.jpg)
+
+
+
+
+
 
 
