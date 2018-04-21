@@ -1,6 +1,6 @@
 # Student front end
 
-1 Top bar
+## 1 Top bar
 
 In the Topbar, there is logo, simply search, advance search, my profile, my privacy setting and logout. 
 
@@ -30,7 +30,7 @@ Log out can be used to clear the local session Storage and exit to the login pag
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_logout.jpg)
 
-2 Info Section
+## 2 Info Section
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_info.jpg)
 
@@ -41,6 +41,12 @@ The picture part is clickable and upload the local picture for the profile pictu
 2.2 
 
 Info part including students name, location, Gender, Start/End term. These info can not be changed and it is fetch directly from neu database. The summary can be edit and show people your self introduction.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_summary.jpg)
+
+## 3 coop and tab details
+
+In the coop, there would be unchangeable coop info from neu database, in the tab there would be About, Academic, Experiecnes, Project and Skill. Except for the Acadmic all the other field can be edit and add.
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_summary.jpg)
 
