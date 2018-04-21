@@ -54,13 +54,23 @@ About shows the Phone, Email, Address, Linkedin, Github, Facebook and personal w
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_About.jpg)
 
-3.2 Experices and Project
+3.2 Academic 
+
+Academic will show our class from the neu database, this is can not be edit.
+
+3.3 Experices and Project
 
 You can add your expericences and project here.
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_Experience.jpg)
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_addExperiences.jpg)
+
+3.4 Skill
+
+You can add/edit you skills here.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_Skill.jpg)
 
 
 
