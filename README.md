@@ -2,6 +2,8 @@
 
 In the Topbar, there is logo, simply search, advance search, my profile, my privacy setting and logout. 
 
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_topbar.jpg)
+
 1.1
 
 The simple search can be used for search by name (can be part of the first or last name). When you type in a name, there would be a autofill dropdown list of names, you can click by name to jump to other student's profile. 
