@@ -62,14 +62,14 @@ class TopBar extends Component {
                             <SearchBox/>
                         </Navbar.Form>
                         <Nav pullRight>
-                            <NavItem eventKey={1} onClick={this.handleShow}>
+			    <NavItem eventKey={1} href="/myProfile">
+                                <Image style={{height: "25px"}} src={"data:image/jpeg;base64, " + this.props.file.photo} alt="pic" circle/>
+                            </NavItem>
+                            <NavItem eventKey={2} onClick={this.handleShow}>
                                 My Privacy
                             </NavItem>
-                            <NavItem eventKey={2} onClick={this.handleLogoutShow}>
+                            <NavItem eventKey={3} onClick={this.handleLogoutShow}>
                                 Logout
-                            </NavItem>
-                            <NavItem eventKey={3} href="/myProfile">
-                                <Image style={{height: "25px"}} src={"data:image/jpeg;base64, " + this.props.file.photo} alt="pic" circle/>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>
