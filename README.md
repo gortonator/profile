@@ -30,4 +30,18 @@ Log out can be used to clear the local session Storage and exit to the login pag
 
 ![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_logout.jpg)
 
+2 Info Section
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_info.jpg)
+
+2.1
+
+The picture part is clickable and upload the local picture for the profile picture.
+
+2.2 
+
+Info part including students name, location, Gender, Start/End term. These info can not be changed and it is fetch directly from neu database. The summary can be edit and show people your self introduction.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_summary.jpg)
+
 
