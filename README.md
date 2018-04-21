@@ -22,4 +22,12 @@ My profile picture can be used to redirect back to my profile page.
 
 My privacy setting can be used to open the privacy setting, includes whether open my profile to public frontend, whether open visibility to other student for different field like github, facebook, picture and so on.
 
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_privacysetting.jpg)
+
+
+1.5
+Log out can be used to clear the local session Storage and exit to the login page.
+
+![stack Overflow](https://github.com/rexue70/profile/blob/master/src/image/md_logout.jpg)
+
 
