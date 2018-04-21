@@ -1,4 +1,4 @@
-1. Top bar
+1 Top bar
 
 In the Topbar, there is logo, simply search, advance search, my profile, my privacy setting and logout. 
 
