@@ -1,15 +1,13 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
 
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class FilterGroup extends React.Component {
 	constructor(props) {
-		console.log("created");
 		super(props);
 
-		console.log(props, "props");
-
-		let checked = [];
+		let checked = this.props.selected === undefined ? [] : this.props.selected;
 		let suggestions = this.props.all_items;
 		let displayed = this.props.displayed;
 		let title = this.props.title;
@@ -31,8 +29,6 @@ class FilterGroup extends React.Component {
 	}
 
 	componentWillReceiveProps(newProps){
-		console.log(newProps, "new filters 2");
-		
 		let displayed = newProps.displayed;
 		let suggestions = newProps.all_items;
 
@@ -41,7 +37,6 @@ class FilterGroup extends React.Component {
 		suggestions = suggestions.sort();
 
 		if(this.props !== newProps){
-			console.log(newProps, "new props - update");
 			this.setState((prevState) => {
 				return ({
 					suggestions: suggestions,
@@ -63,14 +58,14 @@ class FilterGroup extends React.Component {
 	}
 
 	handleChange(event) {
-		var checked = this.state.checked;
-		var labels = this.state.labels;
+		let checked = this.state.checked;
+		let labels = this.state.labels;
 
-		if(event.target.checked){
+		if(event.target.checked && checked.indexOf(labels[event.target.name]) < 0){
 			checked.push(labels[event.target.name]);
 		}
 		else {
-			var index = checked.indexOf(labels[event.target.name]);
+			let index = checked.indexOf(labels[event.target.name]);
 			checked.splice(index, 1);
 		}
 
@@ -79,7 +74,7 @@ class FilterGroup extends React.Component {
 			checked: checked
 		});
 
-		var selectedItem = this.state.labels[event.target.name];
+		let selectedItem = this.state.labels[event.target.name];
 
 		this.toggleState(selectedItem, event.target.checked);
 	}
@@ -133,12 +128,11 @@ class FilterGroup extends React.Component {
 	}
 
 	getFilterItemList() {
-		var size = this.state.labels.length;
-		console.log(this.state, "getting items");
-		var itemArr = new Array(size);
+		let size = this.state.labels.length;
+		let itemArr = new Array(size);
 
-		for(var x = 0; x < size; x++){
-			var checked = false;
+		for(let x = 0; x < size; x++){
+			let checked = false;
 
 			if(this.state.checked.indexOf(this.state.labels[x]) > -1){
 				checked = true;
@@ -153,10 +147,10 @@ class FilterGroup extends React.Component {
 	}
 
 	onChange = (event, { newValue }) => {
-    this.setState({
-			value: newValue
-    });
-  };
+		this.setState({
+				value: newValue
+		});
+	};
 
 	// Autosuggest will call this function every time you need to update suggestions.
 	// You already implemented this logic above, so just use it.
@@ -175,15 +169,15 @@ class FilterGroup extends React.Component {
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })  => {
 		this.setState((prevState) => {
-			var labels = this.state.labels.slice(0);
-			var checked = this.state.checked.slice(0);
-			var all_suggestions = this.state.all_suggestions.slice(0);
-			var index = all_suggestions.indexOf(suggestion);
+			let labels = this.state.labels.slice(0);
+			let checked = this.state.checked.slice(0);
+			let all_suggestions = this.state.all_suggestions.slice(0);
+			let index = all_suggestions.indexOf(suggestion);
 			all_suggestions.splice(index, 1);
 			labels.push(suggestion);
-			checked.push(suggestion);
 
-			this.toggleState(suggestion, checked);
+			checked.push(suggestion);
+			//this.toggleState(suggestion, checked);
 
 			return ({
 				labels: labels,
@@ -200,19 +194,17 @@ class FilterGroup extends React.Component {
 		const inputLength = inputValue.length;
 		let suggestions = this.state.all_suggestions;
 
-		console.log(inputLength, "length");
-
 		return inputLength === 0 ? suggestions : suggestions.filter(sugg =>
 			sugg.toLowerCase().slice(0, inputLength) === inputValue
 		);
 	}
 
 	getSuggestionValue(suggestion) {
-  	return suggestion.name;
+		return suggestion.name;
 	}
 
 	shouldRenderSuggestions() {
-  	return true;
+		return true;
 	}
 
 	renderSuggestion = suggestion => (
@@ -222,127 +214,64 @@ class FilterGroup extends React.Component {
 	);
 
 	render() {
-		console.log(this.state, "rerender");
-		var changeHandler = this.handleChange;
-		var clickHandler = this.handleClick;
+		console.log(this.props, "filtergroup props");
+		let changeHandler = this.handleChange;
+		let clickHandler = this.handleClick;
 
-		var itemArr = this.getFilterItemList();
+		let itemArr = this.getFilterItemList();
 
-		var value = this.state.value;
-		var suggestions = this.state.suggestions;
+		let value = this.state.value;
+		let suggestions = this.state.suggestions;
 
-		var inputProps = {
-      placeholder: 'Search for more',
-      value,
-      onChange: this.onChange
-    };
-
-		var addSection = (
-			<a className="filter_group_title" id="addbutton" onClick={clickHandler}>+Add</a>
-		);
-
-		console.log(this.state.suggestions, "suggestions");
-
-		const theme = {
-		  container: {
-		    position: 'relative'
-		  },
-		  input: {
-		  	padding: '10px',
-		  	margin: '5px',
-		    width: '-webkit-fill-available',
-		    fontFamily: 'Helvetica, sans-serif',
-		    fontSize: 12,
-		    border: '1px solid #aaa',
-		    borderTopLeftRadius: 4,
-		    borderTopRightRadius: 4,
-		    borderBottomLeftRadius: 4,
-		    borderBottomRightRadius: 4,
-		  },
-		  inputFocused: {
-		    outline: 'none'
-		  },
-		  inputOpen: {
-		    borderBottomLeftRadius: 0,
-		    borderBottomRightRadius: 0
-		  },
-		  suggestionsContainer: {
-		  	padding: '5px',
-		    display: 'none'
-		  },
-		  suggestionsContainerOpen: {
-		    display: 'block',
-		    position: 'absolute',
-		    top: 34,
-		    margin: '5px',
-		    width: '-webkit-fill-available',
-		    border: '1px solid #aaa',
-		    backgroundColor: '#fff',
-		    fontFamily: 'Helvetica, sans-serif',
-		    fontSize: 12,
-		    borderBottomLeftRadius: 4,
-		    borderBottomRightRadius: 4,
-		    zIndex: 2
-		  },
-		  suggestionsList: {
-		    margin: 0,
-		    padding: 0,
-		    listStyleType: 'none',
-		  },
-		  suggestion: {
-		    cursor: 'pointer',
-		    padding: '5px 5px'
-		  },
-		  suggestionHighlighted: {
-		    backgroundColor: '#ddd'
-		  }
+		let inputProps = {
+			placeholder: 'Search for more',
+			value,
+			onChange: this.onChange
 		};
 
-		var searchBar = (
-			<Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        onSuggestionSelected={this.onSuggestionSelected}
-        getSuggestionValue={this.getSuggestionValue}
-        shouldRenderSuggestions={this.shouldRenderSuggestions}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps}
-        theme={theme}
-      />
+		let addSection = (
+			<Button id="addbutton" color="link" onClick={clickHandler} style={addLabelStyle} >+Add</Button>
 		);
 
-		console.log(searchBar);
+		let searchBar = (
+			<Autosuggest
+				suggestions={suggestions}
+				onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+				onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+				onSuggestionSelected={this.onSuggestionSelected}
+				getSuggestionValue={this.getSuggestionValue}
+				shouldRenderSuggestions={this.shouldRenderSuggestions}
+				renderSuggestion={this.renderSuggestion}
+				inputProps={inputProps}
+				theme={theme}
+			/>
+		);
 
-		console.log(itemArr, "itemArr");
+		let displayedOptions = 
+		itemArr.map(function(listValue, index){
+			return (
+			<FormGroup check key={index}>
+				<a>
+					<Input
+						name={index}
+						type="checkbox"
+						checked={listValue.checked}
+						onChange={changeHandler}
+					/>
+					{' ' + listValue.label }
+				</a>
+			</FormGroup>
+			);
+		});
 
 		return(
-			<div id="filter_group_container">
-				<a className="filter_group_title">{this.state.title}</a>
-				<div id="filter_contents_container"> {
-					itemArr.map(function(listValue, index){
-						return (
-						<div className="checkBoxItem" key={index}>
-								<input
-								className="check-boxes"
-								name={index}
-								type="checkBox"
-								checked={listValue.checked}
-								onChange={changeHandler}
-								/>
-								<label className="filter_group_label"> {
-									listValue.label
-								}
-								</label>
-						</div>
-						);
-					})
-				}
-					<div className="checkBoxItem">
-						{this.state.searchBar ? searchBar : addSection}
-					</div>
+			<Form >
+				<Label style={titleLabelStyle}>{this.state.title}</Label>
+				{displayedOptions}
+				<div className="checkBoxItem">
+					{this.state.searchBar ? searchBar : addSection}
 				</div>
-			</div>
+			</Form>
 		);
 	}
 }
@@ -353,5 +282,71 @@ class FilterItem {
 		this.label = label;
 	}
 }
+
+const addLabelStyle = {
+	color: '#e88d8a',
+	fontFamily: '"HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif'
+}
+
+const titleLabelStyle = {
+	textDecoration: "underline",
+	fontWeight: "100"
+}
+
+//styling for autosuggest
+const theme = {
+	container: {
+		position: 'relative'
+	},
+	input: {
+		padding: '10px',
+		margin: '5px',
+		width: '-webkit-fill-available',
+		fontFamily: 'Helvetica, sans-serif',
+		fontSize: 12,
+		border: '1px solid #aaa',
+		borderTopLeftRadius: 4,
+		borderTopRightRadius: 4,
+		borderBottomLeftRadius: 4,
+		borderBottomRightRadius: 4,
+	},
+	inputFocused: {
+		outline: 'none'
+	},
+	inputOpen: {
+		borderBottomLeftRadius: 0,
+		borderBottomRightRadius: 0
+	},
+	suggestionsContainer: {
+		padding: '5px',
+		display: 'none'
+	},
+	suggestionsContainerOpen: {
+		display: 'block',
+		position: 'absolute',
+		top: 34,
+		margin: '5px',
+		width: '-webkit-fill-available',
+		border: '1px solid #aaa',
+		backgroundColor: '#fff',
+		fontFamily: 'Helvetica, sans-serif',
+		fontSize: 12,
+		borderBottomLeftRadius: 4,
+		borderBottomRightRadius: 4,
+		zIndex: 2
+	},
+	suggestionsList: {
+		margin: 0,
+		padding: 0,
+		listStyleType: 'none',
+	},
+	suggestion: {
+		cursor: 'pointer',
+		padding: '5px 5px'
+	},
+	suggestionHighlighted: {
+		backgroundColor: '#ddd'
+	}
+};
 
 export default FilterGroup;

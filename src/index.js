@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import './css/ResultPanel.css';
-import './css/SearchPage.css';
-import './css/StudentFilter.css';
-import './css/StudentResult.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -21,9 +17,9 @@ import promise from "redux-promise-middleware";
 import {saveState, loadState} from './stateLoader'
 
 const allReducers = combineReducers({
-    myProfileReducer: myProfileReducer,
     studentFilter: studentFilterReducer,
-	filterGroup: filterGroupReducer,
+    filterGroup: filterGroupReducer,
+    myProfileReducer: myProfileReducer,
     otherProfileReducer: otherProfileReducer,
 });
 

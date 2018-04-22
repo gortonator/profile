@@ -1,11 +1,4 @@
-export default function filterGroupReducer( state = {
-	selectedCoops: [],
-	selectedCourses: [],
-	selectedCampuses: [],
-	selectedGraduationYears: [],
-	selectedEnrollmentYears: [],
-	error: null
-}, action) {
+export default function filterGroupReducer( state = null, action) {
 	switch (action.type) {
 		case "ADD_SELECTED_COOP": {
 			return {

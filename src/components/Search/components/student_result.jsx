@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../css/StudentResult.css';
 
 class StudentResult extends React.Component {
 	constructor(props){

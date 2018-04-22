@@ -1,11 +1,12 @@
 import React from 'react';
 import FilterGroupContainer from '../containers/filter_group_container';
-import '../../../css/StudentFilter.css';
 import * as FilterActions from '../redux/filter_actions';
 
 import {setResults} from '../../../actions/searchPageActions';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+
+import { Button } from 'reactstrap';
 
 class StudentFilter extends React.Component {
 	constructor(props){
@@ -72,30 +73,35 @@ class StudentFilter extends React.Component {
 				<FilterGroupContainer
 					name="coop_filter_group"
 					title={coop_title}
+					selected={this.props.selected.selectedCoops}
 					displayed={this.props.displayed.displayedCoops}
 					all_items={this.props.displayed.allCoops}
 				/>
 				<FilterGroupContainer
 					name="course_filter_group"
 					title={course_title}
+					selected={this.props.selected.selectedCourses}
 					displayed={this.props.displayed.displayedCourses}
 					all_items={this.props.displayed.allCourses}
 				/>
 				<FilterGroupContainer
 					name="campus_filter_group"
 					title={campus_title}
+					selected={this.props.selected.selectedCampuses}
 					displayed={this.props.displayed.displayedCampuses}
 					all_items={this.props.displayed.allCampuses}
 				/>
 				<FilterGroupContainer
 					name="enrollment_year_filter_group"
 					title={enroll_year_title}
+					selected={this.props.selected.selectedEnrollmentYears}
 					displayed={this.props.displayed.displayedEnrollmentYears}
 					all_items={this.props.displayed.allEnrollmentYears}
 				/>
 				<FilterGroupContainer
 					name="graduation_year_filter_group"
 					title={grad_year_title}
+					selected={this.props.selected.selectedGraduationYears}
 					displayed={this.props.displayed.displayedGraduationYears}
 					all_items={this.props.displayed.allGraduationYears}
 				/>
@@ -161,12 +167,10 @@ class StudentFilter extends React.Component {
 				<hr />
 				<div id="filter_contents_container">
 					{filterContent}
-					<button
-					className="button_mobile"
-						type="button"
+					<Button
 						onClick={submitHandler}>
 						Update
-					</button>
+					</Button>
 				</div>
 			</div>
 		);

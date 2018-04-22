@@ -1,17 +1,4 @@
-export default function studentFilterReducer( state = {
-	displayedCoops: [],
-	displayedCourses: [],
-	displayedCampuses: [],
-	displayedEnrollmentYears: [],
-	displayedGraduationYears: [],
-	allCoops: [],
-	allCourses: [],
-	allCampuses: [],
-	allGraduationYears: [],
-	allEnrollmentYears: [],
-	results: [],
-	error: null
-}, action) {
+export default function studentFilterReducer( state = null, action) {
 	switch (action.type) {
 		case "SET_DISPLAYED_COOPS": {
 			return {

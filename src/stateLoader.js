@@ -15,6 +15,13 @@ export function loadState() {
 
 export function saveState(state) {
     try {
+        //reset filters before saving
+        state.filterGroup.selectedCoops = [];
+        state.filterGroup.selectedCampuses = [];
+        state.filterGroup.selectedCourses = [];
+        state.filterGroup.selectedEnrollmentYears = [];
+        state.filterGroup.selectedGraduationYears = [];
+        
         let serializedState = JSON.stringify(state);
         sessionStorage.setItem("store", serializedState);
 
@@ -25,6 +32,32 @@ export function saveState(state) {
 
 
 export function initializeState() {
+    let defaultStudentFilter = 
+    {
+        displayedCoops: [],
+        displayedCourses: [],
+        displayedCampuses: [],
+        displayedEnrollmentYears: [],
+        displayedGraduationYears: [],
+        allCoops: [],
+        allCourses: [],
+        allCampuses: [],
+        allGraduationYears: [],
+        allEnrollmentYears: [],
+        results: [],
+        error: null
+    };
+
+    let defaultFilterGroup =
+    {
+        selectedCoops: [],
+        selectedCourses: [],
+        selectedCampuses: [],
+        selectedGraduationYears: [],
+        selectedEnrollmentYears: [],
+        error: null
+    };
+
     let defaultStateMyProfileReducer = {
         ExtraExperiences: [
             {
@@ -143,8 +176,8 @@ export function initializeState() {
 
     return {
         myProfileReducer: defaultStateMyProfileReducer,
-        studentFilter: null,
-        filterGroup: null,
+        studentFilter: defaultStudentFilter,
+        filterGroup: defaultFilterGroup,
         otherProfileReducer: defaultStateMyProfileReducer,
     };
 }

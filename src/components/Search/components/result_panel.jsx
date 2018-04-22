@@ -1,6 +1,5 @@
 import React from 'react';
 import StudentResult from './student_result';
-import '../../../css/ResultPanel.css';
 
 class ResultPanel extends React.Component {
 

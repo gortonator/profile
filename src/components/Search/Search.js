@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TopBar from '../TopBar/TopBar'
 import styled from "styled-components";
-
-import '../../css/SearchPage.css';
+import { Button } from 'reactstrap';
 
 import StudentFilterContainer from './containers/student_filter_container';
 import ResultPanelContainer from './containers/result_panel_container';
@@ -13,7 +12,7 @@ import {
 	setAllCourses,
 	setAllGraduationYears,
 	setAllEnrollmentYears,
-	setResults
+	setResults,
 } from '../../actions/searchPageActions';
 
 import {connect} from 'react-redux';
@@ -43,8 +42,6 @@ class Search extends Component {
 
     getData(){
 		const store = this.props.store;
-
-		console.log(this.props, "is token here");
 
 		let results =
 		{
@@ -138,7 +135,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 	setAllCourses,
 	setAllGraduationYears,
 	setAllEnrollmentYears,
-	setResults
+	setResults,
 }, dispatch);
 
 function mapStateToProps(state) {
