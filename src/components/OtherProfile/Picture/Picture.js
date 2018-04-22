@@ -13,10 +13,9 @@ class Picture extends React.Component {
     }
 
     render() {
-        let {imagePreviewUrl} = "data:image/jpeg;base64, " + this.props.file.photo;
         let $imagePreview = null;
-        if (imagePreviewUrl.length > 25) {
-            $imagePreview = (<img src={imagePreviewUrl}/>);
+        if (("data:image/jpeg;base64, " + this.props.file.photo).length > 40) {
+            $imagePreview = (<img src={ "data:image/jpeg;base64, " + this.props.file.photo}/>);
         } else {
             $imagePreview = (<img src={profile_image}/>);
         }
@@ -33,8 +32,8 @@ class Picture extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        file: state.otherProfileReducer.Photo
-    };
+    file: state.otherProfileReducer.Photo
+};
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
