@@ -59,7 +59,7 @@ class Picture extends React.Component {
 
     render() {
         let $imagePreview = null;
-        if (("data:image/jpeg;base64, " + this.props.file.photo).length > 25) {
+        if (("data:image/jpeg;base64, " + this.props.file.photo).length > 40) {
             $imagePreview = (<img src={"data:image/jpeg;base64, " + this.props.file.photo} onClick={(e) => this.upload.click()}/>);
         } else {
             $imagePreview = (<div onClick={(e) => this.upload.click()}>Click here to upload your photo</div>);
