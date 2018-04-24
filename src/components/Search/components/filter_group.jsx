@@ -3,11 +3,13 @@ import Autosuggest from 'react-autosuggest';
 
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
+import { Checkbox, FlatButton, RaisedButton, AutoComplete } from 'material-ui';
+
 class FilterGroup extends React.Component {
 	constructor(props) {
 		super(props);
 
-		let checked = this.props.selected === undefined ? [] : this.props.selected;
+		let checked = [];
 		let suggestions = this.props.all_items;
 		let displayed = this.props.displayed;
 		let title = this.props.title;
@@ -19,13 +21,12 @@ class FilterGroup extends React.Component {
 			labels: displayed,
 			checked: checked,
 			searchBar: false,
-			value: '',
+			searchText: '',
 			suggestions: suggestions,
-			all_suggestions: suggestions
 		};
 
 		this.handleClick = this.handleClick.bind(this);
-		this.handleChange = this.handleChange.bind(this);
+		this.handleCheck = this.handleCheck.bind(this);
 	}
 
 	componentWillReceiveProps(newProps){
@@ -34,34 +35,55 @@ class FilterGroup extends React.Component {
 
 		suggestions = suggestions.filter(function(e){return this.indexOf(e)<0;},displayed);
 
-		suggestions = suggestions.sort();
-
-		if(this.props !== newProps){
+		if(this.props !== newProps && this.state.labels.length === 0){
 			this.setState((prevState) => {
 				return ({
 					suggestions: suggestions,
-					all_suggestions: suggestions,
 					labels: displayed,
 				});
 			});
 		}
 	}
 
+	handleUpdateInput = (searchText) => {
+		this.setState({
+			searchText: searchText,
+		});
+	};
+
+	handleNewRequest = (suggestion) => {
+		let labels = this.state.labels.slice(0);
+		let checked = this.state.checked.slice(0);
+		let suggestions = this.state.suggestions.slice(0);
+		let index = suggestions.indexOf(suggestion);
+
+		suggestions.splice(index, 1);
+
+		labels.push(suggestion);
+		checked.push(suggestions);
+
+		this.setState({
+			searchText: '',
+			labels: labels,
+			checked: checked,
+			searchBar: false,
+			suggestions: suggestions,
+		});
+	};
+
 	handleClick(event) {
-		if(event.target.id === "addbutton"){
-			this.setState((prevState) => {
-				return ({
-					searchBar: !prevState.searchBar
-				});
+		this.setState((prevState) => {
+			return ({
+				searchBar: !prevState.searchBar
 			});
-		}
+		});
 	}
 
-	handleChange(event) {
+	handleCheck(event, isInputChecked) {
 		let checked = this.state.checked;
 		let labels = this.state.labels;
 
-		if(event.target.checked && checked.indexOf(labels[event.target.name]) < 0){
+		if(isInputChecked && checked.indexOf(labels[event.target.name]) < 0){
 			checked.push(labels[event.target.name]);
 		}
 		else {
@@ -76,7 +98,7 @@ class FilterGroup extends React.Component {
 
 		let selectedItem = this.state.labels[event.target.name];
 
-		this.toggleState(selectedItem, event.target.checked);
+		this.toggleState(selectedItem, isInputChecked);
 	}
 
 	toggleState(selectedItem, checked){
@@ -146,76 +168,8 @@ class FilterGroup extends React.Component {
 		return itemArr;
 	}
 
-	onChange = (event, { newValue }) => {
-		this.setState({
-				value: newValue
-		});
-	};
-
-	// Autosuggest will call this function every time you need to update suggestions.
-	// You already implemented this logic above, so just use it.
-	onSuggestionsFetchRequested = ({ value }) => {
-		this.setState({
-			suggestions: this.getSuggestions(value)
-		});
-	};
-
-	// Autosuggest will call this function every time you need to clear suggestions.
-	onSuggestionsClearRequested = () => {
-		this.setState({
-			value: ""
-		});
-	};
-
-	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })  => {
-		this.setState((prevState) => {
-			let labels = this.state.labels.slice(0);
-			let checked = this.state.checked.slice(0);
-			let all_suggestions = this.state.all_suggestions.slice(0);
-			let index = all_suggestions.indexOf(suggestion);
-			all_suggestions.splice(index, 1);
-			labels.push(suggestion);
-
-			checked.push(suggestion);
-			//this.toggleState(suggestion, checked);
-
-			return ({
-				labels: labels,
-				checked: checked,
-				searchBar: false,
-				suggestions: all_suggestions,
-				all_suggestions: all_suggestions
-			});
-		});
-	}
-
-	getSuggestions(value) {
-		const inputValue = value.trim().toLowerCase();
-		const inputLength = inputValue.length;
-		let suggestions = this.state.all_suggestions;
-
-		return inputLength === 0 ? suggestions : suggestions.filter(sugg =>
-			sugg.toLowerCase().slice(0, inputLength) === inputValue
-		);
-	}
-
-	getSuggestionValue(suggestion) {
-		return suggestion.name;
-	}
-
-	shouldRenderSuggestions() {
-		return true;
-	}
-
-	renderSuggestion = suggestion => (
-		<div>
-			{suggestion}
-		</div>
-	);
-
 	render() {
-		console.log(this.props, "filtergroup props");
-		let changeHandler = this.handleChange;
+		let checkHandler = this.handleCheck;
 		let clickHandler = this.handleClick;
 
 		let itemArr = this.getFilterItemList();
@@ -223,53 +177,54 @@ class FilterGroup extends React.Component {
 		let value = this.state.value;
 		let suggestions = this.state.suggestions;
 
-		let inputProps = {
-			placeholder: 'Search for more',
-			value,
-			onChange: this.onChange
-		};
-
 		let addSection = (
-			<Button id="addbutton" color="link" onClick={clickHandler} style={addLabelStyle} >+Add</Button>
+			<FlatButton 
+				label="Add More"
+				onClick={clickHandler} 
+				style={addLabelStyle} >
+			</FlatButton>
 		);
 
 		let searchBar = (
-			<Autosuggest
-				suggestions={suggestions}
-				onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-				onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-				onSuggestionSelected={this.onSuggestionSelected}
-				getSuggestionValue={this.getSuggestionValue}
-				shouldRenderSuggestions={this.shouldRenderSuggestions}
-				renderSuggestion={this.renderSuggestion}
-				inputProps={inputProps}
-				theme={theme}
-			/>
+		<AutoComplete
+			hintText="Search for more"
+			searchText={this.state.searchText}
+			onUpdateInput={this.handleUpdateInput}
+			onNewRequest={this.handleNewRequest}
+			dataSource={suggestions.sort()}
+			filter={AutoComplete.fuzzyFilter}
+			openOnFocus={true}
+			underlineStyle={autosuggestStyle}
+			underlineFocusStyle={autosuggestStyle}
+		/>
 		);
 
 		let displayedOptions = 
 		itemArr.map(function(listValue, index){
 			return (
-			<FormGroup check key={index}>
-				<a>
-					<Input
-						name={index}
-						type="checkbox"
-						checked={listValue.checked}
-						onChange={changeHandler}
-					/>
-					{' ' + listValue.label }
-				</a>
-			</FormGroup>
+			<Checkbox
+				key={index}
+				name={ index.toString() }
+				checked={listValue.checked}
+				onCheck={checkHandler}
+				label={listValue.label}
+				iconStyle={checkboxIconStyle}
+				labelStyle={checkboxLabelStyle}
+			/>
 			);
 		});
+
+		let addComponent = this.state.searchBar ? searchBar : addSection;
+		if(this.state.suggestions.length === 0){
+			addComponent = null;
+		}
 
 		return(
 			<Form >
 				<Label style={titleLabelStyle}>{this.state.title}</Label>
 				{displayedOptions}
 				<div className="checkBoxItem">
-					{this.state.searchBar ? searchBar : addSection}
+					{addComponent}
 				</div>
 			</Form>
 		);
@@ -283,6 +238,11 @@ class FilterItem {
 	}
 }
 
+const autosuggestStyle = {
+	color: '#e88d8a',
+	borderColor: '#e88d8a'
+}
+
 const addLabelStyle = {
 	color: '#e88d8a',
 	fontFamily: '"HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif'
@@ -293,60 +253,13 @@ const titleLabelStyle = {
 	fontWeight: "100"
 }
 
-//styling for autosuggest
-const theme = {
-	container: {
-		position: 'relative'
-	},
-	input: {
-		padding: '10px',
-		margin: '5px',
-		width: '-webkit-fill-available',
-		fontFamily: 'Helvetica, sans-serif',
-		fontSize: 12,
-		border: '1px solid #aaa',
-		borderTopLeftRadius: 4,
-		borderTopRightRadius: 4,
-		borderBottomLeftRadius: 4,
-		borderBottomRightRadius: 4,
-	},
-	inputFocused: {
-		outline: 'none'
-	},
-	inputOpen: {
-		borderBottomLeftRadius: 0,
-		borderBottomRightRadius: 0
-	},
-	suggestionsContainer: {
-		padding: '5px',
-		display: 'none'
-	},
-	suggestionsContainerOpen: {
-		display: 'block',
-		position: 'absolute',
-		top: 34,
-		margin: '5px',
-		width: '-webkit-fill-available',
-		border: '1px solid #aaa',
-		backgroundColor: '#fff',
-		fontFamily: 'Helvetica, sans-serif',
-		fontSize: 12,
-		borderBottomLeftRadius: 4,
-		borderBottomRightRadius: 4,
-		zIndex: 2
-	},
-	suggestionsList: {
-		margin: 0,
-		padding: 0,
-		listStyleType: 'none',
-	},
-	suggestion: {
-		cursor: 'pointer',
-		padding: '5px 5px'
-	},
-	suggestionHighlighted: {
-		backgroundColor: '#ddd'
-	}
-};
+const checkboxIconStyle = {
+	fill: '#e88d8a'
+}
+
+const checkboxLabelStyle = {
+	fontWeight: "100",
+	fontFamily: '"HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif'
+}
 
 export default FilterGroup;

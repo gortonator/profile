@@ -15,13 +15,7 @@ export function loadState() {
 
 export function saveState(state) {
     try {
-        //reset filters before saving
-        state.filterGroup.selectedCoops = [];
-        state.filterGroup.selectedCampuses = [];
-        state.filterGroup.selectedCourses = [];
-        state.filterGroup.selectedEnrollmentYears = [];
-        state.filterGroup.selectedGraduationYears = [];
-        
+        //reset filters before saving        
         let serializedState = JSON.stringify(state);
         sessionStorage.setItem("store", serializedState);
 

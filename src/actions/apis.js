@@ -4,9 +4,6 @@ export const HOST = 'https://asd4.ccs.neu.edu:8082';
 export const API_GET_MY_PROFILE = '/myProfile/{0}';
 export const API_GET_OTHER_PROFILE = '/students/{0}';
 
-
-
-
 export const API_PUT_STUDENTRECORD = '/students/{0}';
 export const API_PUT_PRIVACY = '/students/{0}/privacies';
 export const API_PUT_EXTRA_EXPERIENCE = '/students/{0}/extraexperiences/{1}';

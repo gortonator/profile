@@ -3,11 +3,13 @@ import * as FilterActions from '../components/Search/redux/filter_actions';
 
 const displayed = 5;
 
+const apiUrl = "https://asd4.ccs.neu.edu:8082/"
+
 export function setAllCampuses(token){
 	return (dispatch, getState) => {
 		axios({
 			method:'get',
-			url:'https://asd4.ccs.neu.edu:8082/campuses',
+			url: apiUrl + 'campuses',
 			headers: { 
 				'Content-Type': 'text/plain',
 				"token" : token
@@ -27,7 +29,7 @@ export function setAllCoops(token){
 	return (dispatch, getState) => {
 		axios({
 			method:'get',
-			url:'https://asd4.ccs.neu.edu:8082/coops',
+			url: apiUrl + 'coops',
 			headers: { 
 				'Content-Type': 'text/plain',
 				"token" : token
@@ -47,7 +49,7 @@ export function setAllCourses(token){
 	return (dispatch, getState) => {
 		axios({
 			method:'get',
-			url:'https://asd4.ccs.neu.edu:8082/courses',
+			url: apiUrl + 'courses',
 			headers: { 
 				'Content-Type': 'text/plain',
 				"token" : token
@@ -67,7 +69,7 @@ export function setAllGraduationYears(token){
 	return (dispatch, getState) => {
 		axios({
 			method:'get',
-			url:'https://asd4.ccs.neu.edu:8082/graduationyears',
+			url: apiUrl + 'graduationyears',
 			headers: { 
 				'Content-Type': 'text/plain',
 				"token" : token
@@ -87,7 +89,7 @@ export function setAllEnrollmentYears(token){
 	return (dispatch, getState) => {
 		axios({
 			method:'get',
-			url:'https://asd4.ccs.neu.edu:8082/enrollmentyears',
+			url: apiUrl + 'enrollmentyears',
 			headers: { 
 				'Content-Type': 'text/plain',
 				"token" : token
@@ -104,11 +106,12 @@ export function setAllEnrollmentYears(token){
 }
 
 export function setResults(token, results){
+	console.log(results, "results");
 	return (dispatch, getState) => {
 		axios({
 			method:'post',
-			data: {results},
-			url:'https://asd4.ccs.neu.edu:8082/filterstudents',
+			data: results,
+			url: apiUrl + 'filterstudents',
 			headers: { 
 				"Content-Type": "application/json",
 				"token" : token
@@ -118,8 +121,7 @@ export function setResults(token, results){
 			dispatch(FilterActions.setResults(response.data));
 		})
 		.catch((error) => {
-			dispatch(FilterActions.setResults(["test"]));
-			console.log(error, "all results error");
+			dispatch(FilterActions.setResults([]));
 		});
 	}
 }

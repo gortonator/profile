@@ -2,10 +2,6 @@ import FilterGroup from '../components/filter_group'
 import { connect } from 'react-redux';
 import * as FilterActions from '../redux/filter_actions';
 
-const mapStateToProps = (state) => {
-    return { }
-}
-
 const mapDispatchToProps = (dispatch) => {
     return {
         addSelectedCoop: input => {
@@ -41,5 +37,5 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-const FilterGroupContainer = connect(mapStateToProps,mapDispatchToProps)(FilterGroup);
+const FilterGroupContainer = connect(null,mapDispatchToProps)(FilterGroup);
 export default FilterGroupContainer;

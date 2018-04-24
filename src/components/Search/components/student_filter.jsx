@@ -2,24 +2,18 @@ import React from 'react';
 import FilterGroupContainer from '../containers/filter_group_container';
 import * as FilterActions from '../redux/filter_actions';
 
-import {setResults} from '../../../actions/searchPageActions';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
-import { Button } from 'reactstrap';
+import { Label } from 'reactstrap';
+
+import { RaisedButton, Divider, Paper } from 'material-ui';
 
 class StudentFilter extends React.Component {
 	constructor(props){
 		super(props);
 
-		console.log(props, "monkey");
-
 		this.state = {
-			selCoops:'',
-			selCourses:'',
-			selCampuses:'',
-			selGraduationYears:'',
-			setEnrollmentYears:'',
 			isExpand: false,
 		};
 
@@ -30,18 +24,19 @@ class StudentFilter extends React.Component {
 	handleSubmit(event){
 		let store = this.props.store;
 
-		let results =
+		let data =
 		{
-			Coops:[this.props.selected.selectedCoops],
-			Campuses:[this.props.selected.selectedCampuses],
-			EnrollmentYear:[this.props.selected.selectedEnrollmentYears],
-			GraduationYear:[this.props.selected.selectedGraduationYears],
-			Courses:[this.props.selected.selectedCourses]
+			Coops: this.props.selected.selectedCoops,
+			Campuses: this.props.selected.selectedCampuses,
+			EnrollmentYear: this.props.selected.selectedEnrollmentYears,
+			GraduationYear: this.props.selected.selectedGraduationYears,
+			Courses: this.props.selected.selectedCourses
 		};
 
-		this.props.setResults(results);
+		let token = this.props.token
 
-		this.props.submitHandler();
+		this.props.setResults(token, data);
+
 		this.forceUpdate();
 		this.setState({
 			isExpand: false,
@@ -57,11 +52,9 @@ class StudentFilter extends React.Component {
 	}
 
 	render(){
-		console.log(this.props, "proppies");
 		var submitHandler = this.handleSubmit;
 		const isMobile = this.props.isMobile;
 
-		//placeholder code
 		var coop_title = "Coop";
 		var course_title = "Courses Taken";
 		var campus_title = "Campus Attended";
@@ -143,12 +136,12 @@ class StudentFilter extends React.Component {
 							<div id="filter_contents_container_mobile">
 								<div className="filter_items_mobile">{filterContent}</div>
 								<div className="filter_submit_botton_mobile">
-									<button
-										className="button_mobile"
-										type="button"
-										onClick={submitHandler}>
-										Update
-									</button>
+									<RaisedButton
+										backgroundColor="#e88d8a"
+										labelColor="#ffffff"
+										onClick={submitHandler}
+										label="Update">
+									</RaisedButton>
 								</div>
 							</div>
 						</div>
@@ -158,24 +151,32 @@ class StudentFilter extends React.Component {
 		)
 
 		var desktopView = (
-			<div id="filter_container">
-				<div id="filter_above_fold">
-					<a className="filter_header_title">
-						Filter Students
-					</a>
-				</div>
+			<div id="filter_container"
+				style={{paddingRight:"20px"}}>
+				<Label 
+					className="filter_header_title"
+					style={titleLabelStyle}>
+					Filter Students
+				</Label>
 				<hr />
-				<div id="filter_contents_container">
-					{filterContent}
-					<Button
-						onClick={submitHandler}>
-						Update
-					</Button>
-				</div>
+				{filterContent}
+				<RaisedButton
+					backgroundColor="#e88d8a"
+					labelColor="#ffffff"
+					onClick={submitHandler}
+					label="Update">
+				</RaisedButton>
 			</div>
 		);
+
 		return isMobile ? mobileView : desktopView;
 	}
+}
+
+const titleLabelStyle = {
+	fontWeight: "100",
+	fontSize: "24px",
+	color: "#777777"
 }
 
 export default StudentFilter;

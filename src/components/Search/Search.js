@@ -57,7 +57,7 @@ class Search extends Component {
 		this.props.setAllCourses(this.props.login.token);
 		this.props.setAllGraduationYears(this.props.login.token);
 		this.props.setAllEnrollmentYears(this.props.login.token);
-		this.props.setResults(this.props.login.token, results)
+		this.props.setResults(this.props.login.token, results);
 	}
 
     componentWillMount() {
@@ -97,8 +97,12 @@ class Search extends Component {
 
 		const desktopView = (
 			<div>
-				<div id="main_container">
-					<div id="filter_panel">
+				<div 
+					id="main_container"
+					style={{display:"inline-flex"}}>
+					<div 
+						id="filter_panel"
+						style={{display:"inline-flex"}}>
 						<StudentFilterContainer
 							isMobile={isMobile}
 							submitHandler= {this.handleSubmit.bind(this)}/>

@@ -6,10 +6,12 @@
     "react-scripts": "1.1.1"
   },
   "dependencies": {
+    "ajv": "^6.0.0",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
     "jquery": "^1.9.1",
+    "material-ui": "^0.20.0",
     "moment": "^2.22.0",
     "react": "^16.0.0",
     "react-autosuggest": "^9.3.4",

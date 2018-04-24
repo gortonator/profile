@@ -15,6 +15,9 @@ import filterGroupReducer from "./reducers/filter_group_reducer";
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import {saveState, loadState} from './stateLoader'
+import logger from 'redux-logger';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const allReducers = combineReducers({
     studentFilter: studentFilterReducer,
@@ -39,7 +42,9 @@ store.subscribe(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <MuiThemeProvider>
+            <App />
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
