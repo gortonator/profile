@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import StudentFilter from '../components/student_filter'
-import {setResults} from '../../../actions/searchPageActions';
-import {bindActionCreators} from 'redux';
+import { setResults } from '../../../actions/searchPageActions';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => {
 	return {
 		displayed: state.studentFilter,
-		selected: state.filterGroup
+		selected: state.filterGroup,
+		token: state.myProfileReducer.LoginInfo.token,
 	}
 }
 
@@ -15,5 +16,5 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch);
 
 
-const StudentFilterContainer = connect(mapStateToProps)(StudentFilter);
+const StudentFilterContainer = connect(mapStateToProps, mapDispatchToProps)(StudentFilter);
 export default StudentFilterContainer;

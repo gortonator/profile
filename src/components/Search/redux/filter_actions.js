@@ -144,5 +144,3 @@ export function setResults(students){
 		payload: students
 	}
 }
-
-

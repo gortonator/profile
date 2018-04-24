@@ -4,7 +4,7 @@ import {
     UPDATE_SUMMARY, SET_LOGIN_INFO, SEARCH_STUDENT
 } from '../actions/types'
 
-export default function myProfileReducer(state = null,
+export default function myProfileReducer(state = {},
     {type, payload}) {
     switch (type) {
         case SET_LOGIN_INFO:

@@ -1,5 +1,5 @@
 export default function filterGroupReducer( state = {
-	selectedCoops: [],
+	selectedCoops: ["Expedia"],
 	selectedCourses: [],
 	selectedCampuses: [],
 	selectedGraduationYears: [],

@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import './css/ResultPanel.css';
-import './css/SearchPage.css';
-import './css/StudentFilter.css';
-import './css/StudentResult.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -19,11 +15,14 @@ import filterGroupReducer from "./reducers/filter_group_reducer";
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import {saveState, loadState} from './stateLoader'
+import logger from 'redux-logger';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const allReducers = combineReducers({
-    myProfileReducer: myProfileReducer,
     studentFilter: studentFilterReducer,
-	filterGroup: filterGroupReducer,
+    filterGroup: filterGroupReducer,
+    myProfileReducer: myProfileReducer,
     otherProfileReducer: otherProfileReducer,
 });
 
@@ -43,7 +42,9 @@ store.subscribe(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <MuiThemeProvider>
+            <App />
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();

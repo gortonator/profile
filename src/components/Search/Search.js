@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TopBar from '../TopBar/TopBar'
 import styled from "styled-components";
-
-import '../../css/SearchPage.css';
+import { Button } from 'reactstrap';
 
 import StudentFilterContainer from './containers/student_filter_container';
 import ResultPanelContainer from './containers/result_panel_container';
@@ -13,7 +12,7 @@ import {
 	setAllCourses,
 	setAllGraduationYears,
 	setAllEnrollmentYears,
-	setResults
+	setResults,
 } from '../../actions/searchPageActions';
 
 import {connect} from 'react-redux';
@@ -44,8 +43,6 @@ class Search extends Component {
     getData(){
 		const store = this.props.store;
 
-		console.log(this.props, "is token here");
-
 		let results =
 		{
 			Coops:[],
@@ -60,7 +57,7 @@ class Search extends Component {
 		this.props.setAllCourses(this.props.login.token);
 		this.props.setAllGraduationYears(this.props.login.token);
 		this.props.setAllEnrollmentYears(this.props.login.token);
-		this.props.setResults(this.props.login.token, results)
+		this.props.setResults(this.props.login.token, results);
 	}
 
     componentWillMount() {
@@ -100,8 +97,12 @@ class Search extends Component {
 
 		const desktopView = (
 			<div>
-				<div id="main_container">
-					<div id="filter_panel">
+				<div 
+					id="main_container"
+					style={{display:"inline-flex"}}>
+					<div 
+						id="filter_panel"
+						style={{display:"inline-flex"}}>
 						<StudentFilterContainer
 							isMobile={isMobile}
 							submitHandler= {this.handleSubmit.bind(this)}/>
@@ -138,7 +139,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 	setAllCourses,
 	setAllGraduationYears,
 	setAllEnrollmentYears,
-	setResults
+	setResults,
 }, dispatch);
 
 function mapStateToProps(state) {
