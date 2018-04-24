@@ -19,6 +19,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as FilterActions from './redux/filter_actions';
 import axios from 'axios';
+import {withRouter} from "react-router-dom";
 
 const MOBILE_VIEW_WIDTH = 600;
 
@@ -61,6 +62,10 @@ class Search extends Component {
 	}
 
     componentWillMount() {
+        let loginInfo = this.props.login;
+        if (loginInfo.id === "" || loginInfo.token === "") {
+            this.props.history.push("/");
+        }
 		window.addEventListener('resize', this.handleWindowSizeChange);
 	}
 
@@ -149,4 +154,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));

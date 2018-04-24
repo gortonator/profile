@@ -25,7 +25,6 @@ class About extends Component {
     }
 
     render() {
-        console.log("yudong display otherProfile", this.props.about.facebook);
         return (
             <div className="wrapper">
                 <AboutTable>
