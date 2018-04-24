@@ -8,9 +8,16 @@ import {Grid, Row, Col, css} from 'react-bootstrap';
 import {FETCH_OTHER_PROFILE_DATA} from "../../actions/types"
 import {connect} from 'react-redux';
 import TopBar from '../TopBar/TopBar'
+import {withRouter} from "react-router-dom";
 
 class OtherProfile extends Component {
 
+    componentWillMount() {
+        let loginInfo = this.props.login;
+        if (loginInfo.id === "" || loginInfo.token === "") {
+            this.props.history.push("/");
+        }
+    }
 
     render() {
         return (
@@ -52,9 +59,10 @@ const Wrapper = styled.div`
 
 const mapStateToProps = state => {
     return {
-        summary: state.otherProfileReducer.StudentRecord.summary
+        summary: state.otherProfileReducer.StudentRecord.summary,
+        login: state.myProfileReducer.LoginInfo,
     };
 };
 
 
-export default connect(mapStateToProps, null)(OtherProfile)
+export default withRouter(connect(mapStateToProps, null)(OtherProfile))
