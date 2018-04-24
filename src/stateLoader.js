@@ -6,7 +6,15 @@ export function loadState() {
             return this.initializeState();
         }
 
-        return JSON.parse(serializedState);
+        let state = JSON.parse(serializedState);
+
+        state.filterGroup.selectedCoops = [];
+        state.filterGroup.selectedCourses = [];
+        state.filterGroup.selectedCampuses = [];
+        state.filterGroup.selectedGraduationYears = [];
+        state.filterGroup.selectedEnrollmentYears = [];
+
+        return state;
     }
     catch (err) {
         return initializeState();
@@ -14,8 +22,7 @@ export function loadState() {
 }
 
 export function saveState(state) {
-    try {
-        //reset filters before saving        
+    try {     
         let serializedState = JSON.stringify(state);
         sessionStorage.setItem("store", serializedState);
 
