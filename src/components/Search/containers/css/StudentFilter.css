@@ -1,0 +1,69 @@
+#filter_container{
+	height:100%;
+	background-color: white;
+	display:inline-block;
+	padding:30px;
+	width:280px;
+}
+
+a{
+	margin-left: 5px;
+	color:#615445;
+	font-size: 0.75em;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_header_title{
+	color:#e11a2c;
+	font-size: 1.5em;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+	margin:0 0 10px;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_header_title_mobile{
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	border: none;
+	color: white;
+	background-color: #e11a2c;
+	font-size: 1.5em;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+	float: left;
+}
+
+.filter_label_mobile{
+	float: right;
+	padding-right: 20px;
+}
+
+.filter_header_title_mobile svg{
+	margin-left: 20px;
+}
+
+.filter_group_title{
+	color:#615445;
+	font-size: 0.75em;
+	font-weight: bold;
+	text-decoration: underline;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+.filter_group_label{
+	color:#615445;
+	font-size: 0.75em;
+	font-family: "HelveticaNeueW01-67MdCn 692710", "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+
+#filter_group_container{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#filter_contents_container{
+	margin-top:8px;
+}

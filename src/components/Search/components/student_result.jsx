@@ -38,11 +38,14 @@ class StudentResult extends React.Component {
     }
 
 	render() {
+		const width = window.innerWidth;
+		const isMobile = width < 600;
+
 		let clickHandler = this.handleClick;
 
 		let firstname = this.props.firstname;
 		let lastname = this.props.lastname;
-		let coop = this.props.coop.length > 0 ? this.props.coops : "No coop";
+		let coop = this.props.coop.length > 0 ? this.props.coop : "No coop";
 		let campus = this.props.campus;
 		let enrollmentYear = this.props.enroll;
 		let graduationYear = this.props.grad;
@@ -56,7 +59,7 @@ class StudentResult extends React.Component {
 
 		return(
 			<Card
-				style={{
+				style={isMobile ? mobileCardStyle : cardStyle}>
 					width: "200px",
 					overflow: "hidden",
 					margin: "16px"}}>
@@ -89,6 +92,24 @@ class StudentResult extends React.Component {
 			</Card>
 		);
 	}
+}
+
+const mobileCardStyle={
+	width: "100%",
+	maxHeight: "300px",
+	overflow: "hidden",
+	margin: "10px",
+	paddingBottom: "10px",
+	paddingLeft:"20px"
+}
+
+
+const cardStyle={
+	width: "200px",
+	maxHeight: "300px",
+	overflow: "hidden",
+	margin: "10px",
+	paddingBottom: "10px"
 }
 
 const buttonStyling = {

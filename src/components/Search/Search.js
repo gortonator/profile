@@ -21,12 +21,10 @@ import * as FilterActions from './redux/filter_actions';
 import axios from 'axios';
 import {withRouter} from "react-router-dom";
 
-const MOBILE_VIEW_WIDTH = 600;
+import {FloatingActionButton, Drawer} from 'material-ui';
+import ContentFilterList from 'material-ui/svg-icons/content/filter-list';
 
-const config  = {
-	timeout: 1000,
-	"Content-Type": "application/json"
-}
+const MOBILE_VIEW_WIDTH = 600;
 
 class Search extends Component {
     constructor(props) {
@@ -34,12 +32,24 @@ class Search extends Component {
 
         this.state = {
             width: window.innerWidth,
+            navOpen: false
         };
+
+        this.handleNavClose = this.handleNavClose.bind(this);
+        this.handleNavToggle = this.handleNavToggle.bind(this);
     }
 
     componentDidMount(){
     	this.getData();
     }
+
+    	handleNavToggle(){
+		this.setState({navOpen: !this.state.navOpen});
+	}
+
+	handleNavClose(){
+		this.setState({navOpen: false});
+	}
 
     getData(){
 		const store = this.props.store;
@@ -77,44 +87,46 @@ class Search extends Component {
 		this.setState({ width: window.innerWidth });
 	};
 
-	handleSubmit(){
-		
-	}
-
 	render() {
 		const {width} = this.state;
 		const isMobile = width < MOBILE_VIEW_WIDTH;
 
+		let navToggleHandler = this.handleNavToggle;
+
+		let filterFab = 
+		<FloatingActionButton 
+			style={fabStyle}
+			backgroundColor="#e11a2c"
+			onClick={navToggleHandler}>
+			<ContentFilterList />
+		</FloatingActionButton>;
+
 		const mobileView = (
-			<div>
-				<div id="main_container">
-					<div id="filter_panel_mobile">
-						<StudentFilterContainer
-							isMobile={isMobile}
-							submitHandler= {this.handleSubmit.bind(this)}/>
-					</div>
-					<div id="result_panel_mobile">
-						<ResultPanelContainer isMobile={isMobile}/>
-					</div>
-				</div>
+			<div id="main_container">
+				<Drawer
+					docked={false}
+					width={320}
+					open={this.state.navOpen}
+					onRequestChange={(open) => this.setState({navOpen: open})} >
+					<StudentFilterContainer />
+				</Drawer>
+				{filterFab}
+				<ResultPanelContainer isMobile={isMobile}/>
 			</div>
 		)
 
 		const desktopView = (
-			<div>
+			<div 
+				id="main_container"
+				style={{display:"inline-flex"}}>
 				<div 
-					id="main_container"
+					id="filter_panel"
 					style={{display:"inline-flex"}}>
-					<div 
-						id="filter_panel"
-						style={{display:"inline-flex"}}>
-						<StudentFilterContainer
-							isMobile={isMobile}
-							submitHandler= {this.handleSubmit.bind(this)}/>
-					</div>
-					<div id="result_panel">
-						<ResultPanelContainer isMobile={isMobile}/>
-					</div>
+					<StudentFilterContainer
+						isMobile={isMobile} />
+				</div>
+				<div id="result_panel">
+					<ResultPanelContainer isMobile={isMobile}/>
 				</div>
 			</div>
 		);
@@ -130,6 +142,7 @@ class Search extends Component {
 	}
 }
 
+const fabStyle = {position: "fixed", zIndex: "2", right: "10px", bottom: "10px"};
 
 const Wrapper = styled.div` 
     font-family: 'Oxygen', sans-serif;

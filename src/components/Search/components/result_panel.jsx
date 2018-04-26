@@ -4,24 +4,37 @@ import StudentResult from './student_result';
 class ResultPanel extends React.Component {
 
 	render() {
-		const resultListStyle = {
-			justifyContent: "center",
+		const width = window.innerWidth;
+		const isMobile = width < 600;
+
+		const mobileResultListStyle = {
+			justifyContent: "flex-start",
 			display: "flex",
 			flexWrap: "wrap",
 			webKitFlexWrap: "wrap",
+			minHeight: "100vh",
+			midWidth: width
 		}
 
-		console.log(this.props, "result panel rerender");
-
-		var {isMobile} = this.props;
+		const resultListStyle = {
+			justifyContent: "flex-start",
+			display: "flex",
+			flexWrap: "wrap",
+			webKitFlexWrap: "wrap",
+			minHeight: "100vh",
+		}
 
 	    var students = this.props.results.Students === undefined ? [] : this.props.results.Students;
 
-		var isLoading = students === undefined;
+		let isLoading = students !== undefined ? (students.length < 1) : true;
 		var mainDiv = null;
 
 		if(isLoading){
-			mainDiv = <div className="loader"></div>;
+			mainDiv = (
+			<div>
+				<h6>No results match your filter</h6>
+			</div>
+			);
 		}
 		else{
 			mainDiv = (
