@@ -27,12 +27,13 @@ class ResultPanel extends React.Component {
 	    var students = this.props.results.Students === undefined ? [] : this.props.results.Students;
 
 		let isLoading = students !== undefined ? (students.length < 1) : true;
+
 		var mainDiv = null;
 
 		if(isLoading){
 			mainDiv = (
 			<div>
-				<h6>No results match your filter</h6>
+				<h2>No results match your filter</h2>
 			</div>
 			);
 		}
